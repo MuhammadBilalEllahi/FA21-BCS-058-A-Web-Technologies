@@ -1,19 +1,32 @@
 #nav-id{
     
     display: flex;
-    
+    padding: 10px ;
 }
 #nav-ul-id{
     display: flex;
     list-style: none;
+    color: white;
     
 }
 #nav-li-id{
-    padding: 10px 10px;
+    padding: 15px 15px;
 }
 
 #header-id{
-    width: 100%;
-    min-height: 2em;
-    background-color: aquamarine;
+    width: fit-content;
+    min-height: 3em;
+    background-color: #2a2a2b;
+
+    position: absolute;
+    border: 1px solid #383838;
+    border-radius: 0 2em 0 2em;
+
+    top: 0;
+    right: 0;
+
+}
+
+.content-nav-box{
+    position: relative;
 }
