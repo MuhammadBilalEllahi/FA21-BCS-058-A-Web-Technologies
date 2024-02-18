@@ -1,0 +1,19 @@
+#nav-id{
+    
+    display: flex;
+    
+}
+#nav-ul-id{
+    display: flex;
+    list-style: none;
+    
+}
+#nav-li-id{
+    padding: 10px 10px;
+}
+
+#header-id{
+    width: 100%;
+    min-height: 2em;
+    background-color: aquamarine;
+}
