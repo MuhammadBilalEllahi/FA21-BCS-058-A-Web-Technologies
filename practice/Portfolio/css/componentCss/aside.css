@@ -31,10 +31,7 @@
     padding:  3em 1em;
     border-radius: 1em;
 }
-.content{
-    width: 80%;
-    height: 100%;
-}
+
 .sticky{
     position: sticky;
 
@@ -55,6 +52,11 @@
 .curved-box20perc{
     border-radius: 20%;
     /* border-radius: 2em; */
+}
+
+.curved-box2perc{
+    /* border-radius: 20%; */
+    border-radius: 2em;
 }
 
 .outer-box{
@@ -86,6 +88,11 @@ h2.name{
 h6.title-contact{
     color:rgb(134, 134, 134)
 }
+.designation{
+    color: white;
+    font-weight: lighter;
+}
+
 p.subtitle-contact{
     color:rgb(197, 197, 197)
     /* color:#D6D6D6;
@@ -106,15 +113,18 @@ p.subtitle-contact{
 .padding10on10{
     padding: 10px 10px;
 }
+.padding3on10{
+    padding: 3px 10px;
+}
 .width100perc{
     width: 100%;
 }
 
 
-
+/* 
 .social-links{
 
-}
+} */
 
 .hr-underline{
     width: 80%;
@@ -124,8 +134,8 @@ p.subtitle-contact{
 a.social-links-a{
     padding: 5px;
 }
-.social-links-img{
-}
+/* .social-links-img{
+} */
 
 .social{
     position: relative;

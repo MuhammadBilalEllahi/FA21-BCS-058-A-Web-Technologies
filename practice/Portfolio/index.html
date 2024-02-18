@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/App.css" />
     <link rel="stylesheet" href="css/componentCss/header.css"/>
     <link rel="stylesheet" href="css/componentCss/aside.css"/>
+    <link rel="stylesheet" href="css/componentCss/content.css"/>
 </head>
 <body>
 
@@ -29,13 +30,16 @@
 
 
     <section class="main-section">
-        <div class="width90perc center-div flex-direction-row">
-            <aside class="sidebar center-div sticky curved-box2perc  border outer-box" >
+        <div class="width90perc padding10 center-div flex-direction-row">
+            <!--Sidebar on left-->
+            <aside class="sidebar center-div sticky   border outer-box" >
                 <div class="width100perc  center-div flex-direction-column">
 
                     <div class="avatar-box"><img id="avatar" class="curved-box20perc inner-box"  src="public/images/aside/avatar.png"/></div>
                     <h2 class="name">M. Bilal Ellahi</h2>
-
+                    <br/>
+                    <p class="designation curved-box2perc padding3on10 border inner-box">Programmer</p>
+                    <br/>
 
                     <hr class="hr-underline"/>
 
@@ -83,6 +87,8 @@
                     </li>
                    </ul>
 
+                   <!-- <br/> -->
+
                    <div class="social flex-direction-row  flex">
                         <a href="#" class="social-links-a"> <img src="public/assets/aside/facebook.svg"/></a>
                         <a href="#" class="social-links-a"> <img src="public/assets/aside/github.svg"/></a>
@@ -93,10 +99,50 @@
                     
                 </div>
             </aside>
-           
+            
 
-            <div class="content">
-                nkjn
+           
+            <!--Content on right : css in content.css --> 
+            <div class="content ">
+                <div class="content-inside curved-box2perc border  outer-box">
+
+                    <div class>
+                <!-- <header id="header-id">
+                <nav id="nav-id">
+                    <ul id="nav-ul-id">
+                
+                <li id="nav-li-id">About</li>
+                <li id="nav-li-id">Resume</li>
+                <li id="nav-li-id">Portfolio</li>
+                <li id="nav-li-id">Blog</li>
+                <li id="nav-li-id">Contact</li>
+
+                    </ul>
+                </nav>
+            </header> -->
+                    </div>
+
+
+                    <div class="file  padding-30">
+                        <h1 class="content-heading">About Me</h1>
+
+                        <div class="padding-tb-10">
+                            <hr class="golden-horizontal"/>
+                        </div>
+
+
+                        <div class="padding-tb-10">
+                            <p class="description">
+                                I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.
+                                <br/>
+                                <br/>
+                                My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
 
