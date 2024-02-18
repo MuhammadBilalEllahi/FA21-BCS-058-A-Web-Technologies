@@ -6,7 +6,12 @@
 .width90perc{
     width: 90%;
 }
-
+.width75perc{
+    width: 75%;
+}
+.width100perc{
+    width: 100%;
+}
 .center-div{
     display: flex;
     justify-content: center;
@@ -65,7 +70,8 @@
 }
 .inner-box{
     background: linear-gradient(137.84deg, #3F3F40 2.69%, #303030 93.75%);
-    box-shadow:  0px 25px 50px rgba(10, 0, 0, 0.15);
+    /* box-shadow:  0px 25px 50px rgba(10, 0, 0, 0.15); */
+    box-shadow: 10px 16px 3px rgba(10, 0, 0, 0.15);
 }
 .uppercase{
     text-transform: uppercase;

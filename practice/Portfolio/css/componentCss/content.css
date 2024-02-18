@@ -29,15 +29,77 @@ h1.content-heading{
 .padding-tb-10{
     padding:10px 2px;
 }
-
-p.description{
-    color:rgb(197, 197, 197);
+.padding0on30{
+    padding: 0px 30px;
 }
 .description{
+    color:rgb(197, 197, 197);
     font-size: 	1rem;
     font-weight: 100;
     line-height: 26px;
     
+}
+
+.content-sub-heading{
+    font-size: 1.4rem;
+    color: white
+}
+
+
+.curved-box1em{
+    /* border-radius: 20%; */
+    border-radius: 1em;
+}
+
+.title{
+    color: white;
+}
+.img-logo{
+    width: 60px;
+    height: 30px;
+}
+
+.width50perc{
+    width: 50%;
+}
+
+.width80vh{
+    min-width: 80%;
+}
+
+
+.margin10px{
+    margin: 10px;
+}
+
+.margin2perc{
+    margin: 2%;
+    margin-left: 4px;
+}
+
+.margin--10px{
+    margin-top: -10%;
+}
+
+#avatar-testimonial{
+    width: 6em;
+    height: 6em;
+}
+
+.avatar-box-testimonial{
+    padding: 20px;
+    /* box-shadow:  0px 25px 50px rgba(0, 0, 0, 0.15); */
+}
+
+.width25perc{
+    width: 25%;
+}
+
+.client-logo{
+    filter: grayscale(100%);
+}
+.client-logo:hover{
+    filter: grayscale(0%);
 }
 /* 
 .padding-l-20{
