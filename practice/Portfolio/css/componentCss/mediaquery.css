@@ -86,6 +86,11 @@
     .width25perc{
         width: 50%;
     }
-
+    .content{
+        width: 99%;
+    }
+    .sidebar{
+        width: 99%;
+    }
     
 }
