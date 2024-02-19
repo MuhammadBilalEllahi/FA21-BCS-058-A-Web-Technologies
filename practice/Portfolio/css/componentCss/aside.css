@@ -45,7 +45,7 @@
 
 .sticky{
     position: sticky;
-    z-index: 20 !important;
+    z-index: 5 !important;
     top: 0;
 }
 
