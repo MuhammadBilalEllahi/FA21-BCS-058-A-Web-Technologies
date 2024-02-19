@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/componentCss/header.css" />
     <link rel="stylesheet" href="css/componentCss/aside.css" />
     <link rel="stylesheet" href="css/componentCss/content.css" />
+    <link rel="stylesheet" href="css/componentCss/mediaquery.css" />
 </head>
 
 <body>
@@ -32,13 +33,16 @@
 
 
     <section class="main-section width100perc center-div">
-        <div class="width75perc padding10 center-start-div flex-direction-row">
+        <div class="width75perc padding10 center-start-div flex-direction-row change-direction-to-column">
             <!--Sidebar on left-->
             <aside class="margin2perc sidebar center-div sticky   border outer-box">
-                <div class="width100perc  center-div flex-direction-column">
+                <div class="width100perc  center-div flex-direction-column change-direction-to-row ">
 
                     <div class="avatar-box"><img id="avatar" class="curved-box20perc inner-box"
                             src="public/images/aside/avatar.png" /></div>
+
+                <div class="width100perc  center-div flex-direction-column margin0  aside-info">
+                        
                     <h2 class="name">M. Bilal Ellahi</h2>
                     <br />
                     <p class="designation curved-box2perc padding3on10 border inner-box">Programmer</p>
@@ -99,6 +103,7 @@
                         <a href="#" class="social-links-a"> <img src="public/assets/aside/linkedin.svg" /></a>
                         <a href="#" class="social-links-a"> <img src="public/assets/aside/phone.svg" /></a>
                     </div>
+                </div>
 
                 </div>
             </aside>
@@ -153,7 +158,7 @@
 
                         <div class="padding-tb-10">
 
-                            <div class="flex-direction-row flex">
+                            <div class="flex-direction-row  change-direction-to-column-992 flex">
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px  width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
@@ -178,7 +183,7 @@
                                 </li>
                             </div>
 
-                            <div class="flex-direction-row flex">
+                            <div class="flex-direction-row change-direction-to-column-992 flex">
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
@@ -217,14 +222,14 @@
 
                             <div class="flex-direction-row flex">
                                 <div
-                                    class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
+                                    class="testimonials-n curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
 
                                     <div class="flex-direction-row flex ">
 
                                         <div class="avatar-box-testimonial margin--10px"><img id="avatar-testimonial"
                                                 class="curved-box20perc inner-box"
                                                 src="public/images/aside/avatar.png" /></div>
-                                        <div class="padding10on10">
+                                        <div class="title-container padding10on10">
                                             <h3 class="title">Photography</h3>
                                         </div>
                                     </div>
@@ -237,14 +242,14 @@
                                 </div>
 
                                 <div
-                                    class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
+                                    class="testimonials-n curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
 
                                     <div class="flex-direction-row flex ">
 
                                         <div class="avatar-box-testimonial margin--10px"><img id="avatar-testimonial"
                                                 class="curved-box20perc inner-box"
                                                 src="public/images/aside/avatar.png" /></div>
-                                        <div class="padding10on10">
+                                        <div class="title-container padding10on10">
                                             <h3 class="title">Photography</h3>
                                         </div>
                                     </div>
@@ -284,22 +289,22 @@
                         </div>
 
 
-                        <div class="flex flex-direction-row padding10on10">
+                        <div class="client-logo-box flex flex-direction-row padding10on10">
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-1-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-1-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-2-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-2-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-3-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-3-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-4-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-4-color.png" />
                             </div>
 
                         </div>
@@ -357,16 +362,16 @@
                         </div>
 
                         <div class="padding-tb-10">
-                            <h2 class="content-sub-heading">Experience</h2>
+                            <h2 class="content-sub-heading">What I'm Doing</h2>
                         </div>
 
                         <div class="padding-tb-10">
 
-                            <div class="flex-direction-row flex">
+                            <div class="flex-direction-row  change-direction-to-column-992 flex">
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px  width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
-                                        <img class="img-logo " src="public/images/aside/mail.png" />
+                                        <img class="img-logo " src="public/assets/content/icon-design.svg" />
                                     </div>
                                     <div class="padding10on10">
                                         <h3 class="title">Web Design</h3>
@@ -377,7 +382,7 @@
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
-                                        <img class="img-logo " src="public/images/aside/mail.png" />
+                                        <img class="img-logo " src="public/assets/content/icon-dev.svg" />
                                     </div>
                                     <div class="padding10on10">
                                         <h3 class="title">Web Development</h3>
@@ -387,11 +392,11 @@
                                 </li>
                             </div>
 
-                            <div class="flex-direction-row flex">
+                            <div class="flex-direction-row change-direction-to-column-992 flex">
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
-                                        <img class="img-logo " src="public/images/aside/mail.png" />
+                                        <img class="img-logo " src="public/assets/content/icon-app.svg" />
                                     </div>
                                     <div class="padding10on10">
                                         <h3 class="title">Mobile Apps</h3>
@@ -402,7 +407,7 @@
                                 <li
                                     class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-row flex ">
                                     <div class="  flex center-div padding10">
-                                        <img class="img-logo " src="public/images/aside/mail.png" />
+                                        <img class="img-logo " src="public/assets/content/icon-photo.svg" />
                                     </div>
                                     <div class="padding10on10">
                                         <h3 class="title">Photography</h3>
@@ -426,14 +431,14 @@
 
                             <div class="flex-direction-row flex">
                                 <div
-                                    class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
+                                    class="testimonials-n curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
 
                                     <div class="flex-direction-row flex ">
 
                                         <div class="avatar-box-testimonial margin--10px"><img id="avatar-testimonial"
                                                 class="curved-box20perc inner-box"
                                                 src="public/images/aside/avatar.png" /></div>
-                                        <div class="padding10on10">
+                                        <div class="title-container padding10on10">
                                             <h3 class="title">Photography</h3>
                                         </div>
                                     </div>
@@ -446,14 +451,14 @@
                                 </div>
 
                                 <div
-                                    class="curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
+                                    class="testimonials-n curved-box1em inner-box box-contact margin10px width50perc flex-direction-column flex ">
 
                                     <div class="flex-direction-row flex ">
 
                                         <div class="avatar-box-testimonial margin--10px"><img id="avatar-testimonial"
                                                 class="curved-box20perc inner-box"
                                                 src="public/images/aside/avatar.png" /></div>
-                                        <div class="padding10on10">
+                                        <div class="title-container padding10on10">
                                             <h3 class="title">Photography</h3>
                                         </div>
                                     </div>
@@ -493,22 +498,22 @@
                         </div>
 
 
-                        <div class="flex flex-direction-row padding10on10">
+                        <div class="client-logo-box flex flex-direction-row padding10on10">
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-1-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-1-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-2-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-2-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-3-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-3-color.png" />
                             </div>
 
                             <div class="client-logo width25perc padding10">
-                                <img src="public/images/client_logos/logo-4-color.png" />
+                                <img class="client-logo-size" src="public/images/client_logos/logo-4-color.png" />
                             </div>
 
                         </div>

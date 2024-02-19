@@ -91,6 +91,13 @@ h1.content-heading{
     /* box-shadow:  0px 25px 50px rgba(0, 0, 0, 0.15); */
 }
 
+.title-container{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 10px;
+}
+
 .width25perc{
     width: 25%;
 }
