@@ -14,8 +14,8 @@
 }
 .center-div{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: start; /*reuirement changed from center*/
 }
 
 
@@ -37,10 +37,16 @@
     border-radius: 1em;
 }
 
+/* aside{
+    position: -webkit-sticky;
+  position: sticky;
+  
+} */
+
 .sticky{
     position: sticky;
     z-index: 20 !important;
-
+    top: 0;
 }
 
 #avatar{
