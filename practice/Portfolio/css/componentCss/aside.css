@@ -12,10 +12,16 @@
 .width100perc{
     width: 100%;
 }
-.center-div{
+.center-start-div{
     display: flex;
     justify-content: center; 
     align-items: start; /*reuirement changed from center*/
+}
+
+.center-div{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
 
@@ -154,3 +160,6 @@ a.social-links-a{
     position: relative;
     bottom: 0;
 }
+
+
+

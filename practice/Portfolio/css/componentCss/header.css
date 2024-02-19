@@ -9,6 +9,17 @@
     color: white;
     
 }
+
+
+.nav-ul-id-a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+}
+.nav-ul-id-a:hover{
+    color:gold;
+}
+
 #nav-li-id{
     padding: 15px 15px;
 }
@@ -30,3 +41,18 @@
 .content-nav-box{
     position: relative;
 }
+
+
+
+.file {
+    display: none;
+}
+
+.file:target {
+    display: block;
+}
+
+::selection {
+    color: gold;
+    background: transparent;
+  }
