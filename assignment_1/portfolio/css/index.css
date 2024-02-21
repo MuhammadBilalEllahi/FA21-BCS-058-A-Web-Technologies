@@ -1,0 +1,50 @@
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .nav_ul{
+        list-style: none;
+        display: flex;
+    
+        
+    }
+    .nav_li{
+        margin: 8px 8px;
+        color: white;
+    }
+    .nav_li:hover{
+        color: grey;
+    }
+    
+    .logo {
+        color: rgb(217, 217, 217);
+        padding: 1px;
+        text-wrap: nowrap;
+        display: flex;
+        align-items: center;
+    }
+    
+    .header{
+        background-color: #1f1f1f;
+    
+        min-height: 10px;
+    
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .logo-svg{
+        height: 4rem;
+        width: 4rem;
+    }
+    .logo-svg:hover{
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .section-hero{
+        height: 100vh;
+        width: 100%;
+    }

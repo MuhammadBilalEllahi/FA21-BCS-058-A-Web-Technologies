@@ -1,0 +1,72 @@
+.file{
+    border: 1px solid grey;
+    width: 80%;
+    min-height: 60vh;
+    margin: 20px;
+
+}
+
+.flex-direction-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-direction-column{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.left-block{
+    width: 30%;
+    padding: 10px ;
+    padding-left: 20px;
+    background-color: #ededed;
+}
+
+.right-block{
+    width: 70%;
+}
+
+
+
+
+.crendential-holder{
+    width: 100%;
+    height: auto;
+    margin: 2%;
+}
+.my-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin: 10px;
+}
+.name-h3{
+    font-size: 1.6rem;
+}
+.designation-h4{
+    font-size: 1rem ;
+}
+
+.contact-info-h6{
+    font-size: 0.8rem;
+    
+}
+
+.fa-contact-info{
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    margin: 2% 0;
+}
+
+.contact-icon{
+    margin: 2%;
+}
+
+.contact-info-a{
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: black;
+}
