@@ -41,3 +41,10 @@ html,body{
 .margin20px{
     margin:  10px 20px;
 }
+
+.margin30px{
+    margin:  10px 30px;
+}
+.width80perc{
+    width: 80%;
+}
