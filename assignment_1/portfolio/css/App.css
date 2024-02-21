@@ -27,3 +27,17 @@ html,body{
     align-items: start;
 }
 
+
+.width10perc{
+    width: 20%;
+}
+
+.flex{
+    display: flex;
+}
+.padding5px{
+    padding: 5px;
+}
+.margin20px{
+    margin:  10px 20px;
+}
