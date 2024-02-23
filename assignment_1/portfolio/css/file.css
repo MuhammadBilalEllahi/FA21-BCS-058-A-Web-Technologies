@@ -90,6 +90,10 @@
     margin-left: 10px;
     border-top: 1px solid red;
 }
+.hr-proj{
+    border-top: 1px solid red;
+    width: 25%;
+}
 
 .skills-box{
     padding: 10px;
