@@ -3,6 +3,7 @@
     width: 60%;
     min-height: 60vh;
     margin: 20px;
+    border-radius: 1%;
 
 }
 
@@ -22,6 +23,7 @@
     padding: 10px ;
     padding-left: 20px;
     background-color: #ededed;
+    border-radius: 2%;
 }
 
 .right-block{
