@@ -1,0 +1,42 @@
+
+
+/* Nav Start */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav_li {
+    margin: 8px 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav_li:hover {
+    color: grey;
+}
+
+.name{
+    color: white;
+    margin: 10% ;
+    width: 100%;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #1f1f1f;
+
+    min-height: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Nav End */
