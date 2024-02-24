@@ -37,10 +37,17 @@
     margin: 2%;
 }
 .my-img{
-    width: 100px;
-    height: 100px;
+    width: 80%;
+    height: 100%;
     border-radius: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* object-fit: fill; */
+    
+}
+.my-img-holder{
     margin: 10px;
+    width: 100%;
+    height: 200px;
 }
 .name-h3{
     font-size: 1.6rem;
@@ -158,4 +165,17 @@
 .href-a-contact{
     text-decoration: none;
     color: black;
+    cursor: pointer;
+}
+.repo{
+    color: rgb(92, 92, 92);
+    margin-top: -1%;
+}
+.relative{
+    position: relative;
+    
+}
+.absolute-r{
+    position: absolute;
+    right: 0;
 }
