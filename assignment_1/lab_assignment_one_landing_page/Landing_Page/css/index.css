@@ -4,8 +4,11 @@
 .nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 5px 5px;
+    justify-content: space-between;
+
+    background-color: #1f1f1f;
+    min-height: 10px;
+    
 }
 
 .nav_ul {
@@ -14,7 +17,7 @@
 }
 
 .nav_li {
-    margin: 8px 8px;
+    margin: 8px 16px;
     color: white;
     cursor: pointer;
 }
@@ -25,19 +28,11 @@
 
 .name{
     color: white;
-    margin: 10% ;
-    width: 100%;
+    margin: 10px 20px ;
     cursor: pointer;
 }
 
-.header {
-    background-color: #1f1f1f;
 
-    min-height: 10px;
-
-    display: flex;
-    justify-content: space-between;
-}
 
 
 /* Nav End */
