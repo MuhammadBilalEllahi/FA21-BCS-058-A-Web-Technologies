@@ -157,21 +157,23 @@
     
 
     <section class="min-vh-100 container-fluid d-flex justify-content-center ">
-      <div class=" d-flex justify-content-center align-items-center">
+      <div class="p-5 d-flex justify-content-center align-items-center ">
         
 
         center div
-        <div class="card">
-          <img src="./public/images/1.png" class="card-img-top" alt="./public/images/1.png">
+ <div style="height: 500px; width: 500px;">
+  <div class="p-5 card"  >
+    <img style="height: 500px; width:400px;" src="./public/images/1.png" class="card-img-top" alt="./public/images/1.png">
+  
+    <div class="card-body " >
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+ </div>
         
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        
-        <div class="card" aria-hidden="true">
+        <div class="p-5 card" aria-hidden="true">
           <img src="./public/images/1.png" class="card-img-top" alt="./public/images/1.png">
           <div class="card-body">
             <h5 class="card-title placeholder-glow">
@@ -189,12 +191,7 @@
         </div>
 
 
-        <p aria-hidden="true">
-          <span class="placeholder col-6"></span>
-        </p>
-        
-        <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
-        
+  
       </div>
 
       
@@ -275,7 +272,11 @@
     <section class="min-vh-1 text-end sticky-bottom container">
       container4 +min-vh-1 text-end sticky-bottom container
 
-
+      <p aria-hidden="true">
+        <span class="placeholder col-6"></span>
+      </p>
+      
+      <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
     </section>
 
     <form class="d-flex w-25 sticky-bottom" role="search">
