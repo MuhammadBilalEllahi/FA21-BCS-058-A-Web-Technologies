@@ -15,6 +15,10 @@ body {
     background: #6A84ED;
 } */
 
+
+
+/* Laptop Start*/
+
 .laptop {
     position: relative;
     margin: auto;
@@ -67,7 +71,7 @@ body {
     left: 25%;
     display: block;
     width: 50%;
-    height: 1.5rem;
+    height: 1.4rem;
     background: #e2e8f0;
     background-image: linear-gradient(to bottom, #e2e8f0, #bec7d1);
 }
@@ -101,3 +105,4 @@ body {
     background: radial-gradient(ellipse closest-side, #000, transparent);
     opacity: 0.5;
 }
+/* Laptop End */

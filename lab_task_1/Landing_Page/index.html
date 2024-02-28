@@ -24,53 +24,86 @@
 <body>
 
   <!-- d-flex justify-content-between -->
-  <nav class="navbar navbar-expand-lg   fixed-top">
+  <nav class="navbar navbar-expand-lg     fixed-top">
     <div class="container-fluid ">
       <a class="navbar-brand text-light" href="#">Universian</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+
+      <!-- Canvas Drawer Button Start-->
+      <button class="navbar-toggler  navbar-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon  "></span>
       </button>
-
-    </div>
-    <div class="collapse navbar-collapse m-1" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+      <!-- Canvas Drawer Button End-->
 
 
-        <!-- <li class="nav-item dropdown text-dark">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <!-- Canvas Drawer Start-->
+      <div class="offcanvas offcanvas-end text-bg-dark d-lg-none" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Universian</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+            <li class="nav-item">
+              <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">About</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link text-light"  href="#">Services</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">Contact</a>
+            </li>
+           
           </ul>
-        </li> -->
-
-
-        <li class="nav-item">
-          <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">About</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-light active" aria-current="page" href="#">Services</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">Contact</a>
-        </li>
+          
+        </div>
 
 
 
-      </ul>
+      </div>
+      <!-- Canvas Drawer End -->
 
-    </div>
+      
+
+
+      <!-- List item Start-->
+      <div class="collapse navbar-collapse m-1  flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+
+          <li class="nav-item">
+            <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light active" aria-current="page" href="#">Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Contact</a>
+          </li>
+
+
+
+        </ul>
+      </div>
+      <!-- List item End-->
+
+
   </nav>
 
 
@@ -102,7 +135,7 @@
           </div>
 
           <div class="col-lg-6 col-12 col-sm-10 col-md-8 p-5">
-         
+
             <div class="container">
               <div class="laptop">
                 <!-- width="100%" -->
@@ -167,7 +200,7 @@
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
               </ul>
             </div>
-      
+
             <div class="col-6 col-sm-4 col-md-2 mb-3">
               <h5>Section</h5>
               <ul class="nav flex-column">
@@ -178,7 +211,7 @@
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
               </ul>
             </div>
-      
+
             <div class="col-6 col-sm-4 col-md-2 mb-3">
               <h5>Section</h5>
               <ul class="nav flex-column">
@@ -189,7 +222,7 @@
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
               </ul>
             </div>
-      
+
             <div class="col-md-5 offset-md-1 mb-3 text-white">
               <form>
                 <h5>Subscribe to our newsletter</h5>
@@ -202,13 +235,19 @@
               </form>
             </div>
           </div>
-      
+
           <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
             <p>© 2024 Company, Inc. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#twitter"></use>
+                  </svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#instagram"></use>
+                  </svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#facebook"></use>
+                  </svg></a></li>
             </ul>
           </div>
         </footer>
@@ -217,7 +256,7 @@
 
 
 
-    
+
 
   </main>
 
