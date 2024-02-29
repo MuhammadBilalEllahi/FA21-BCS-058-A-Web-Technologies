@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,51 +8,82 @@
 </head>
 
 <style>
-    .flex{
+    .flex {
         display: flex;
     }
-    .relative{
+
+    .relative {
         position: relative;
     }
-    .absolute{
+
+    .absolute {
         position: absolute;
     }
-    .float-left{
+
+    .float-left {
         float: left;
     }
-    .float-right{
+
+    .float-right {
         float: right;
     }
-    .clear-left{
+
+    .clear-left {
         clear: left;
     }
-    .clear-right{
+
+    .clear-right {
         clear: right
     }
-    .border{
+
+    .border {
         border: 1px solid black;
     }
-    .bg-red{
-        background-color:red
+
+    .bg-red {
+        background-color: red
     }
-    .bg-green{
+
+    .bg-green {
         background-color: greenyellow;
     }
-    .top-0{
-        top:0;
+
+    .top-0 {
+        top: 0;
     }
-    .right-0{
+
+    .right-0 {
         right: 0;
+    }
+
+    .br {
+        margin: 20px;
+    }
+
+
+
+    .static {
+        position: static;
+    }
+    .fixed{
+        position: fixed;
+    }
+    .sticky{
+        position: -webkit-sticky;
+        position: sticky;
+    }
+    .min-vh-150{
+        height: 150vh;
     }
 </style>
 
 <body>
 
-   
+
 
     <!-- Postioning -->
     <div class="relative border">
-        2. without top 0 
+        2. without top 0
         <div class="absolute border bg-green">
             This is behind The next div because of absolute
         </div>
@@ -59,140 +91,191 @@
 
     <div class="bg-red border">
         Ovderlapping because i took its place
-        
+
     </div>
 
-    <br/>
+    <br />
 
     <div class="relative border">
-        now its child is on top 0 
+        now its child is on top 0
         <div class="absolute border  top-0">
             This is front The next div because of absolute
         </div>
     </div>
 
-    <br/>
+    <br />
 
     <div class="relative border">
         now its child is on top 0 and right 0
         <div class="absolute border  top-0 right-0">
-            This is on right  because of absolute a right 0
+            This is on right because of absolute a right 0
         </div>
     </div>
-    
-    
-    <br/>
-    
 
-     <!-- Floating -->
-     <div class="border ">
+
+    <br />
+
+
+    <!-- Floating -->
+    <div class="border ">
         1
         <div class="float-right">
-            float-right (same as right 0) 
+            float-right (same as right 0)
         </div>
 
     </div>
 
-    <br/>
+    <br />
     <h2>Without float</h2>
     <div class="border ">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, repellendus similique, deleniti quas facere eius expedita error animi nulla rem voluptates. Odit voluptatibus nisi delectus explicabo iste consectetur at voluptate?</p>
-       <p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, repellendus similique, deleniti quas
+            facere eius expedita error animi nulla rem voluptates. Odit voluptatibus nisi delectus explicabo iste
+            consectetur at voluptate?</p>
+        <p>
         <div class=" bg-red">
-            float-right (same as right 0)  but not full flex
+            float-right (same as right 0) but not full flex
         </div>
-        <img src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-right:15px;">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore similique.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
-       </p>
+        <img src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple"
+            style="width:170px;height:170px;margin-right:15px;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro
+        voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore
+        similique.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium
+        aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus
+        expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
+        </p>
 
-       
+
 
     </div>
 
-    <br/>
+    <br />
     <h2>With float</h2>
     <div class="border  ">
         with flex
-        <br/>
-        <p>  
-            <div class="float-left bg-red" style="width:170px;height:170px;margin-right:15px;">
-                float-left
-            </div>
-            <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-right:15px;">
+        <br />
+        <p>
+        <div class="float-left bg-red" style="width:170px;height:170px;margin-right:15px;">
+            float-left
+        </div>
+        <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple"
+            style="width:170px;height:170px;margin-right:15px;">
 
 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore similique.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro
+        voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore
+        similique.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium
+        aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus
+        expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
         </p>
-        
+
 
     </div>
 
-    
-    <br/>
-    <br/>
 
-    
-    
-    
-    
+    <br />
+    <br />
+
+
+
+
+
 
     <h2>Without clear-right (heading below)</h2>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <h2>Without clear-right </h2>
 
     <div class="border   ">
-        
-        <br/>
-        
+
+        <br />
+
         <div class="">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
-        <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-right:15px;">
+        <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple"
+            style="width:170px;height:170px;margin-right:15px;">
         <div class="float-right bg-red">
-            float-right (same as right 0)  but not full flex
+            float-right (same as right 0) but not full flex
         </div>
 
         <div class=" bg-green">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet, distinctio voluptatem.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis
+            repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet,
+            distinctio voluptatem.
         </div>
 
     </div>
 
-    <br/>
+    <br />
 
     <h2> clear-right</h2>
 
 
 
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
 
-    
+
     <div class="border   ">
-        
-        <br/>
-        
+
+        <br />
+
         <div class="">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
-        <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-right:15px;">
+        <img class="float-right" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple"
+            style="width:170px;height:170px;margin-right:15px;">
         <div class="float-right bg-red">
-            float-right (same as right 0)  but not full flex
+            float-right (same as right 0) but not full flex
         </div>
 
         <div class="clear-right bg-green">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet, distinctio voluptatem.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis
+            repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet,
+            distinctio voluptatem.
         </div>
 
     </div>
     <h2>With clear-right </h2>
 
+
+
+    <br class="br" />
+
+
+    <!-- Postion static -->
+    <div >
+        Staic
+        <div class="static">
+            Normal Flow. Static is always normal
+        </div>
+    </div>
+
+
+    <div class="sticky top-0 bg-green">
+      
+        sticky Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor recusandae libero vero ullam, voluptatibus at! Voluptatem facere ab hic deserunt esse labore blanditiis rerum iusto cum quam, sapiente dolores sit.
+       
+    </div>
+
+    <div class="fixed top-0 bg-red">
+        Fixed with top-0 is sticky
+    </div>
+
+    <div class="min-vh-150">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor architecto dolore? Voluptates, blanditiis perspiciatis ex eum ducimus obcaecati tempora a repellat sint velit id officia beatae ab, et neque.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor architecto dolore? Voluptates, blanditiis perspiciatis ex eum ducimus obcaecati tempora a repellat sint velit id officia beatae ab, et neque.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor architecto dolore? Voluptates, blanditiis perspiciatis ex eum ducimus obcaecati tempora a repellat sint velit id officia beatae ab, et neque.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor architecto dolore? Voluptates, blanditiis perspiciatis ex eum ducimus obcaecati tempora a repellat sint velit id officia beatae ab, et neque.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolor architecto dolore? Voluptates, blanditiis perspiciatis ex eum ducimus obcaecati tempora a repellat sint velit id officia beatae ab, et neque.
+    </div>
+
 </body>
+
 </html>
