@@ -1,0 +1,1 @@
+Explain the difference between floating and positioning with the help of examples also describe different types of positioning

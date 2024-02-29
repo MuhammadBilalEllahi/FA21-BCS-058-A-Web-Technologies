@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz One</title>
+</head>
+
+<style>
+    .flex{
+        display: flex;
+    }
+    .relative{
+        position: relative;
+    }
+    .absolute{
+        position: absolute;
+    }
+    .float-left{
+        float: left;
+    }
+    .float-right{
+        float: right;
+    }
+    .clear-left{
+        clear: left;
+    }
+    .clear-right{
+        clear: right
+    }
+    .border{
+        border: 1px solid black;
+    }
+    .bg-red{
+        background-color:red
+    }
+    .bg-green{
+        background-color: greenyellow;
+    }
+    .top-0{
+        top:0;
+    }
+    .right-0{
+        right: 0;
+    }
+</style>
+
+<body>
+
+   
+
+    <!-- Postioning -->
+    <div class="relative border">
+        2. without top 0 
+        <div class="absolute border bg-green">
+            This is behind The next div because of absolute
+        </div>
+    </div>
+
+    <div class="bg-red border">
+        Ovderlapping because i took its place
+        
+    </div>
+
+    <br/>
+
+    <div class="relative border">
+        now its child is on top 0 
+        <div class="absolute border  top-0">
+            This is front The next div because of absolute
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="relative border">
+        now its child is on top 0 and right 0
+        <div class="absolute border  top-0 right-0">
+            This is on right  because of absolute a right 0
+        </div>
+    </div>
+    
+    
+    <br/>
+
+     <!-- Floating -->
+     <div class="border ">
+        1
+        <div class="float-right">
+            float-right (same as right 0) 
+        </div>
+
+    </div>
+
+    <br/>
+
+    <div class="border ">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore similique.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
+
+        <div class="float-right">
+            float-right (same as right 0)  but not full flex
+        </div>
+
+    </div>
+
+    <br/>
+
+    <div class="border flex ">
+        with flex
+        <br/>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore est sequi explicabo, dolores porro voluptatibus libero numquam, eos quia iure quaerat rerum reiciendis. Iste quaerat unde fugit, obcaecati dolore similique.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim tempore vel optio atque, in velit accusantium aliquid consequuntur facere ea quas blanditiis sunt eos consectetur nulla, sequi tenetur ut accusamus.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim cum assumenda atque in voluptatibus possimus expedita officia alias veniam commodi ipsam at sapiente nihil impedit, accusantium quasi aliquam quisquam.
+
+        <div class="float-right">
+            float-right (same as right 0)  but not full flex
+        </div>
+
+    </div>
+
+    
+    <br/>
+    <br/>
+
+    <h2>Without clear-right</h2>
+    <br/>
+
+    <div class="border   ">
+        
+        <br/>
+        
+        <div class="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+
+        <div class="float-right bg-red">
+            float-right (same as right 0)  but not full flex
+        </div>
+
+        <div class=" bg-green">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet, distinctio voluptatem.
+        </div>
+
+    </div>
+
+    <br/>
+
+    <h2> clear-right</h2>
+
+    <div class="border   ">
+        
+        <br/>
+        
+        <div class="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+
+        <div class="float-right bg-red">
+            float-right (same as right 0)  but not full flex
+        </div>
+
+        <div class="clear-right bg-green">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate dolores eum harum. Vitae assumenda quis repudiandae. Ducimus quasi voluptate alias maiores ad, debitis quibusdam beatae quisquam autem. Amet, distinctio voluptatem.
+        </div>
+
+    </div>
+
+
+</body>
+</html>
