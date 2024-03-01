@@ -173,7 +173,7 @@ html {
 
 .here{
     margin: 0 auto;
-    background-color: #26FFC5;
+    background-color: #898989;
     width: 30px;
     height: 40px;
     position: relative;
@@ -182,13 +182,13 @@ html {
 
 .here:before{
     
-    background-color: #ff0000;
+    background-color: #959595;
     width: 20px;
     height: 30px;
 }
 .here:after{
     
-    background-color: #ffff00;
+    background-color: #d5d5d5;
     width: 10px;
     height: 20px;
 }
