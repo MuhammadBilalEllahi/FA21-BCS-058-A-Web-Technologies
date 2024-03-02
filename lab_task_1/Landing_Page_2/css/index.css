@@ -644,3 +644,8 @@ html,body {
 .feature-img{
     width: 90%;
 }
+
+.navbar.scrolled {
+    background-color: rgb(33,37,41, 0.95) !important;
+    transition: background-color 200ms linear;
+  }
