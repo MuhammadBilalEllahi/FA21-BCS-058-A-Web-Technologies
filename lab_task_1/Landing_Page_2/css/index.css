@@ -1,6 +1,13 @@
-html {
-    font-family: 'Courier New', Courier, monospace !important;
+*{
 
+margin: 0;
+padding: 0;
+
+}
+
+html,body {
+    font-family: 'Courier New', Courier, monospace !important;
+    overflow-x: hidden !important;
     font-weight: 300 !important;
 }
 
@@ -62,6 +69,105 @@ html {
     height: 0.375rem;
     border-radius: 100%;
     animation: trackBallSlide 2s linear infinite;
+}
+
+.landing{
+    margin-top: 1.25rem;
+    color: white;
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .375rem;
+    text-indent: 0.375rem;
+    animation: textColor 5s ease-out infinite, moveText 5s ease-out infinite;
+}
+
+.pt-20perc{
+    padding-top: 16%;
+}
+
+
+
+
+.circles-group{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transform: translate3d(0px, -400px, 0px);
+    /* overflow: visible; */
+}
+
+.circle{
+    position: absolute;
+    width: 80%;
+    margin: 10%;
+    height: 100px;
+    border-radius: 100%;
+    box-shadow: 150px 100px 30px -100px #1f1f1f ;
+}
+
+.circle>img{
+    display: block;
+    width: 100%;
+}
+
+.circle:nth-child(1){
+    top: 0;
+    left: 0;
+    transform: translate3d(40%,20%,0);
+    box-shadow: 200px -150px 50px -200px #2c333e ;
+    
+}
+.circle:nth-child(2){
+    width: 90%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* margin: auto; */
+    transform: translate3d(-6%, 250px, 0px) 
+
+}
+.circle:nth-child(3){ /*1 now */
+    top: 0;
+    right: 0;
+    transform: translate3d(-40%, -10px, 0px) 
+}
+
+
+
+
+
+
+
+
+
+
+@keyframes textColor {
+    0%, 40% , 70%{
+        color: rgb(65, 65, 65)
+    }
+    20%, 50%, 90%{
+        color: rgb(233, 233, 233);
+    }
+    
+}
+
+@keyframes moveText {
+    /* 0%,20%,40%,60%,80% */
+    0%,
+    30%,
+    60%,
+    90% 
+    {
+        transform: translateY(0);
+    }
+    /* 30%,50%,70%,90% */
+    20%,
+    50%,
+    80% 
+   {
+        transform: translateY(2px);
+    }
+    
 }
 
 @keyframes colorSlide {
@@ -171,6 +277,8 @@ html {
 }
 
 
+
+/* 
 .here{
     margin: 0 auto;
     background-color: #898989;
@@ -208,3 +316,31 @@ html {
     border-radius: 10%;
     
 }
+
+
+
+
+.laptop_screen{
+    background-color: rgb(30, 30, 30);
+    position: relative;
+    width: 500px;
+    height: 250px;
+    border-radius: 1rem;
+}
+
+.laptop_screen::after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: '';
+    margin: auto;  
+}
+
+.laptop_screen::after{
+    width: 95%;
+    height: 95%;
+    background-color: #b8d3ff;
+    border-radius: 1rem;
+} */ 
