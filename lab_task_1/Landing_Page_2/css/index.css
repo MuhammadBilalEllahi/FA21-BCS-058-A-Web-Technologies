@@ -367,8 +367,8 @@ html,body {
 
 
 .news-letter{
-    width: 100%;
-    min-height: 400px;
+    width: 90%;
+    min-height: 100px;
     height: max-content;
 }
 
@@ -377,20 +377,19 @@ html,body {
     outline:0;
 }
 
-.news-letter-cont{
-    max-width: 50%;
-}
+/* .news-letter-cont{
+    width: 50%;
+} */
 
 
 .news-letter-h1{
-    font-size: 3rem;
+    /* text-wrap: nowrap; */
     
 }
 
 
 .news-letter-p{
-    padding-left: 7rem !important;
-    padding-right: 7rem !important;
+    
 }
 
 
