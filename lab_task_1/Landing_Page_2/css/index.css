@@ -372,6 +372,7 @@ html,body {
     height: max-content;
     z-index: 0;
     overflow: hidden;
+    
 }
 
 .border-none{
