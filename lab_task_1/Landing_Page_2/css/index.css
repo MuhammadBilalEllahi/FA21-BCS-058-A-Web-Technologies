@@ -318,14 +318,15 @@ html,body {
 }
 
 
-
+*/
 
 .laptop_screen{
     background-color: rgb(30, 30, 30);
     position: relative;
-    width: 500px;
-    height: 250px;
+    width: 250px;
+    height: 500px;
     border-radius: 1rem;
+
 }
 
 .laptop_screen::after{
@@ -334,7 +335,7 @@ html,body {
     right: 0;
     left: 0;
     bottom: 0;
-    content: '';
+    content: 'Buy this Now';
     margin: auto;  
 }
 
@@ -343,4 +344,4 @@ html,body {
     height: 95%;
     background-color: #b8d3ff;
     border-radius: 1rem;
-} */ 
+} 
