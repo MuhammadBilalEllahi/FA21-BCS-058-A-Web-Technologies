@@ -370,6 +370,8 @@ html,body {
     width: 90%;
     min-height: 370px;
     height: max-content;
+    z-index: 0;
+    overflow: hidden;
 }
 
 .border-none{
@@ -385,7 +387,7 @@ html,body {
     border-radius: 50%;
     left: 100px;
     overflow: hidden;
-    animation: scroll 0.5s linear;
+    animation: scroll 1s ease-in;
 }
 
 
@@ -422,12 +424,38 @@ html,body {
 @keyframes scroll {
     0%{
         left: 0;
+        transform: rotate(0deg);
+    }
+    25%{
+        left: 25px;
+        transform: rotate(90deg);
+    }
+    50%{
+        left: 50px;
         transform: rotate(180deg);
+    }
+    75%{
+        left: 75px;
+        transform: rotate(270deg);
     }
     100%{
         left: 100px;
         transform: rotate(360deg);
     }
+}
+
+
+.half-circle{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    top: -100px;
+    right: 100px;
+    /* background-color:  red; */
+    box-shadow: -50px 100px 0 0  #262626d0;
+    border-radius: 50%;
+    z-index: -1;
+    
 }
 
 /* 
