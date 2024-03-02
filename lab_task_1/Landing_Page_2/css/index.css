@@ -392,6 +392,10 @@ html,body {
     animation: scroll 1s ease-in;
 }
 
+.scroll-keyframe{
+    animation: scroll 1s ease-in;
+}
+
 
 .pacman::after{
     position: absolute;
