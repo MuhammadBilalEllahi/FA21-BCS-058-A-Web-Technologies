@@ -635,3 +635,12 @@ html,body {
     }
     
 }
+
+
+
+.bg-green-light{
+    background-color: #458d7441;
+}
+.feature-img{
+    width: 90%;
+}
