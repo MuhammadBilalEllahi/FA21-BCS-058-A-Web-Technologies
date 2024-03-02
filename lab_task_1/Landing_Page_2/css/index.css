@@ -6,7 +6,8 @@ padding: 0;
 }
 
 html,body {
-    font-family: 'Courier New', Courier, monospace !important;
+    /* font-family: 'Courier New', Courier, monospace !important; */
+    font-family: Arial, Helvetica, sans-serif !important;
     overflow-x: hidden !important;
     font-weight: 300 !important;
 }
