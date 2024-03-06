@@ -72,17 +72,27 @@
             e.preventDefault()
         }
         function validator(){
+          validatorSingle()
             return (f_name.value != '') &&  (l_name.value != '')&& (email.value != '')&& (address.value!= '') && (message.value != '');
         }
 
-       /* function validatorSingle(){
-          f_name.classList.add("border-red")
-          !(f_name.value != '') && setTimeout(()=>{
-            f_name.classList.remove("border-red")
-          }, 3000);
+        function validatorSingle(){
+            f(f_name);
+            f(l_name);
+            f(email);
+            f(address);
+            f(message);
         }
-      */
 
+        function f(x){
+          if(x.value == '') {
+            (x).classList.add("border-red")
+            setTimeout(()=>{
+              (x).classList.remove("border-red")
+            }, 3000);
+          }     
+        }
+      
 
         function doBinding() {
             let submit = document.getElementById('submit_btn');
