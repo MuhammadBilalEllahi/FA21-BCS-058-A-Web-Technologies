@@ -23,6 +23,8 @@
         function handleFormSubmit(e) {
             let responseDiv = document.getElementById('response');
 
+            let submit_btn = document.getElementById('submit_btn');
+
             let f_name = document.getElementById('f_name')
             let l_name = document.getElementById('l_name')
             let email = document.getElementById('email')
@@ -31,11 +33,13 @@
 
            if(validator()){
 
+            submit_btn.classList.add('btn-success')
             responseDiv.classList.add('success')
             responseDiv.innerText = "Email Sent";
 
             setTimeout(
                 ()=>{
+                  submit_btn.classList.remove('btn-success')
                     responseDiv.classList.remove('success')
                     responseDiv.innerText = "";
                 },
@@ -57,19 +61,28 @@
            }
 
             
-            console.log(f_name.value)
-            console.log(l_name.value)
-            console.log(email.value)
-            console.log(address.value)
-            console.log(message.value)
+            console.log(f_name.value != '')
+            console.log(l_name.value != '')
+            console.log(email.value != '')
+            console.log(address.value != '')
+            console.log(message.value != '')
 
             
             console.log(event)
             e.preventDefault()
         }
         function validator(){
-            return f_name.value ||  l_name.value || email.value || address.value || message.value ;
+            return (f_name.value != '') &&  (l_name.value != '')&& (email.value != '')&& (address.value!= '') && (message.value != '');
         }
+
+       /* function validatorSingle(){
+          f_name.classList.add("border-red")
+          !(f_name.value != '') && setTimeout(()=>{
+            f_name.classList.remove("border-red")
+          }, 3000);
+        }
+      */
+
 
         function doBinding() {
             let submit = document.getElementById('submit_btn');
@@ -212,7 +225,7 @@
         
                     <input class="w-100" type="text" name="message" id="message" placeholder="Message"  >
         
-                    <button id="submit_btn" class="w-100 mt-2">
+                    <button id="submit_btn" class="btn btn-primary w-100 mt-2">
                         Submit
                     </button>
 

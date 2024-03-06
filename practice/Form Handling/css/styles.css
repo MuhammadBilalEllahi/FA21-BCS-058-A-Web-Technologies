@@ -17,6 +17,9 @@ input{
     margin-top: 2% !important;
 }
 
+.border-red{
+    border: 1px solid red;
+}
 
 .hr-line{
     width: 5%;
