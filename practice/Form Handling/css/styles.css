@@ -1,0 +1,32 @@
+.error{
+    border: 1px solid red;
+    background-color: rgb(246, 98, 98);
+}
+
+.success{
+    border: 1px solid green;
+    background-color: rgb(138, 255, 138);
+}
+/* .response{
+    color: white;
+} */
+
+input{
+    width: 100%;
+    border: 1px solid grey;
+    margin-top: 2% !important;
+}
+
+
+.hr-line{
+    width: 5%;
+    border: 2px solid black;
+    height: fit-content;
+
+  
+}
+
+.bg-whitish{
+    background-color: #DBEFFE;
+}
+
