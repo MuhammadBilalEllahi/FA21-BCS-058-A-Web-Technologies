@@ -7,7 +7,7 @@
     <title>Contact Us</title>
 
     <script src="./js/form.js"></script>
-    <link rel="stylesheet" href="./css/styles.css">
+    
 
 
     <!-- bootstrap css  -->
@@ -136,35 +136,38 @@
                     <h6 class="m-3">Contact us</h6>
                 </div>
                 <h1 class="m-3 ">LET'S MAKE IT HAPPEN NOW</h1>
-                <p class="m-3 mt-4">If you want to address a challenge or achieve a goal by providing the finest digital experience for your customers and users, we're eager to connect with you. We're excited to welcome you to our offices!
+                <p class="m-3 mt-4 " >If you want to address a challenge or achieve a goal by providing the finest digital experience for your customers and users, we're eager to connect with you. We're excited to welcome you to our offices!
                 </p>
-                
+                <!-- contenteditable="true" -->
             </div>
     
     
-            <div class="col-lg-6  col-12">
+            <div class="col-lg-6  col-12 pl-1">
                 <h3 class="p-2">Get in Touch</h3>
-                <form  action="">
+                <form  action=""  class="row">
 
 
-                    <div class="d-flex ">
-                        <input class=" rounded-1 m1-1  " type="name" id="f_name" name="f_name" placeholder="First Name" >
-                        <input class=" rounded-1 m1-1  " type="name" id="l_name" name="l_name" placeholder="Last Name">
+                   <div class="d-flex column input-div">
+                    <div class="d-flex row">
+                        <input class=" rounded-3   " type="name" id="f_name" name="f_name" placeholder="First Name" >
+                        <input class=" rounded-3   " type="email" name="email" id="email" placeholder="Email" >
                     </div>
         
-                    <div class="d-flex">
-                        <input class=" rounded-1 m1-1  " type="email" name="email" id="email" placeholder="Email" >
-                        <input class=" rounded-1 m1-1  " type="text" name="address" id="address" placeholder="Address">
+                    <div class="d-flex row">
+                        <input class=" rounded-3   " type="name" id="l_name" name="l_name" placeholder="Last Name">
+                        
+                        <input class=" rounded-3   " type="text" name="address" id="address" placeholder="Address">
                     </div>
+                   </div>
         
-                    <input class=" rounded-1 m1-1  w-100" type="text" name="message" id="message" placeholder="Message"  >
+                    <textarea role="textbox " contenteditable="true" class="message-input rounded-3   w-100" type="text" name="message" id="message" placeholder="Message"  ></textarea>
         
                     <button id="submit_btn" class="btn btn-primary w-100 mt-2">
                         Submit
                     </button>
 
                
-                      <div id="response"></div>
+                      
                     
                     <!-- <input type="button" name="Submit" id="submit_btn" placeholder="Submit"> -->
         
@@ -172,6 +175,7 @@
                 </form>
             </div>
         </div>
+        <div id="response"></div>
     </section>
 
 
