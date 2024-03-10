@@ -68,3 +68,15 @@ $(document).ready(function(){
   });
 
 //   works like interpreter, similar to js , jquery is extendee fro js anyway
+
+
+$(document).ready(function () {
+    $('#drkbtn').click(
+        // $('html').addClass('invert')
+        ()=>{
+            $('html').toggleClass('invert')
+        }
+    )
+    
+});
+
