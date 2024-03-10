@@ -218,3 +218,13 @@ $(document).ready(function(){
       alert("Data: " + data + "\nStatus: " + status);
     });
   });
+
+
+//   Get hold of $
+//dont use it after writing with $. assign it at the start and use it carefully
+
+var i = $.noConflict();
+
+i('#htp').css({
+    "font-size": "6rem"
+})
