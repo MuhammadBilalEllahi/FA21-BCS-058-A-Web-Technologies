@@ -155,4 +155,16 @@ $(document).ready(function () {
         "border":"2px dotted black"
     })
     
+    $('h1').eq(2).animate({
+        "font-size": "4rem"
+    },3000)
+
+
+    $('h1').filter(".j").animate({
+        "opacity": "0.5"
+    })
+
+    $('h1').not(".j").animate({
+        "opacity": "0.1"
+    })
 });
