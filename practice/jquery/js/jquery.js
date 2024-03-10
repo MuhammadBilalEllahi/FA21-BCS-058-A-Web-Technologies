@@ -223,8 +223,31 @@ $(document).ready(function(){
 //   Get hold of $
 //dont use it after writing with $. assign it at the start and use it carefully
 
-var i = $.noConflict();
+// var i = $.noConflict();
 
-i('#htp').css({
-    "font-size": "6rem"
-})
+// i('#htp').css({
+//     "font-size": "6rem"
+// })
+
+
+// Table Search with ajax
+
+$(document).ready(function () {
+    $('#myInput').on("keyup", function(){
+       var val = $(this).val().toLowerCase();
+
+        $('#myTable tr').filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(val) > -1)
+        })
+    })
+});
+
+
+// $(document).ready(function(){
+//     $("#myInput").on("keyup", function() {
+//       var value = $(this).val().toLowerCase();
+//       $("#myTable tr").filter(function() {
+//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//       });
+//     });
+//   });
