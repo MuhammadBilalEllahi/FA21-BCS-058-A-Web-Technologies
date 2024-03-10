@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    $('button').click(function () { 
+    $('#button1').click(function () { 
         // e.preventDefault();
         $('#p1').fadeIn();
         
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function(){
-    $("button").click(function(){
+    $("#animate").click(function(){
       var div = $("div");
       div.animate({height: '200px', opacity: '0.4'}, "slow");
       div.animate({width: '200px', opacity: '0.8'}, "slow");
@@ -105,15 +105,15 @@ console.log($(window).width())
 
 
 
-$(window).focus(function() { 
-    //called when you switch to your //test tab 
-    alert("Once you enter you cant leave or marks will be deducted")
-}); 
+// $(window).focus(function() { 
+//     //called when you switch to your //test tab 
+//     alert("Once you enter you cant leave or marks will be deducted")
+// }); 
  
-$(window).blur(function() { 
-    // called when you switch to another //tab 
-    alert("You cant leave this browser, 5 points deducted")
-});
+// $(window).blur(function() { 
+//     // called when you switch to another //tab 
+//     alert("You cant leave this browser, 5 points deducted")
+// });
 
 
 
@@ -167,4 +167,30 @@ $(document).ready(function () {
     $('h1').not(".j").animate({
         "opacity": "0.1"
     })
+});
+
+// AJAX
+
+
+$(document).ready(function () {
+    $('#ajax1-btn').click( ()=>{
+        $('#ajax1').load("./data.txt")
+        $('h1').load("./data.txt h1")
+
+        $('#ajax1').load("./data.txt", "data", function (response, status, request) {
+            
+            alert(response, status, request)
+            
+        })
+
+        $('#ajax1').load("forerror",  function (_responseTxt, _statusTxt, xhr) {
+            
+            alert("Error : " + xhr.status)
+            
+        })
+    });
+    
+    
+       
+    
 });
