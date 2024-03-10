@@ -243,11 +243,13 @@ $(document).ready(function () {
 });
 
 
-// $(document).ready(function(){
-//     $("#myInput").on("keyup", function() {
-//       var value = $(this).val().toLowerCase();
-//       $("#myTable tr").filter(function() {
-//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//       });
-//     });
-//   });
+$(document).ready(function(){
+    $("html").click(function(){
+      $(this).hide("slow", function () {
+            alert("reload Page on OK")
+            // window.reload()
+            location.reload()
+        });
+      
+    });
+  });
