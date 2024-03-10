@@ -75,8 +75,78 @@ $(document).ready(function () {
         // $('html').addClass('invert')
         ()=>{
             $('html').toggleClass('invert')
+            $('#drkbtn').fadeOut("slow").css("font-size", "45px")
         }
     )
+
+    
     
 });
 
+$(document).ready(function(){
+    $("#widths").click(function(){
+      var txt = "";
+      txt += "Document width/height: " + $(document).width();
+      txt += "x" + $(document).height() + "\n";
+      txt += "Window width/height: " + $(window).width();
+      txt += "x" + $(window).height();
+      
+
+        $("#widths").text(txt)
+
+
+      newwidth= $(window).width() + 200;
+console.log(newwidth)
+      window.resizeTo(newwidth, $(window).height())
+console.log($(window).width())
+
+    });
+  });
+
+
+
+$(window).focus(function() { 
+    //called when you switch to your //test tab 
+    alert("Once you enter you cant leave or marks will be deducted")
+}); 
+ 
+$(window).blur(function() { 
+    // called when you switch to another //tab 
+    alert("You cant leave this browser, 5 points deducted")
+});
+
+
+
+// TREE Traversal
+
+
+$(document).ready(function () {
+
+    $('span').parents().css({
+        "border" : "2px solid blue"
+    })
+
+
+    
+
+    $("span").parentsUntil("div").css({"color": "red", "border": "5px solid yellow"});
+
+    $('span').parent().css({
+        "border" : "5px solid green"
+    })
+
+
+    $('p').find('span').css({
+        "background-color": "yellow"
+    })
+
+    $('div').find('*').css({
+        "font-size" : "3rem"
+    })
+
+    $('#H2').siblings().css({
+        "background-color": "yellow",
+        "border":"2px dotted blue"
+    })
+    
+});
