@@ -194,3 +194,27 @@ $(document).ready(function () {
        
     
 });
+
+
+$(document).ready(function(){
+    $("#ht").click(function(){
+      $.get("https://tailor-api-seven.vercel.app/controller", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
+      $.get("file.asp", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
+    });
+  });
+
+
+  $("#htp").click(function(){
+    $.post("file.asp",
+    {
+      name: "J",
+      city: "K"
+    },
+    function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
