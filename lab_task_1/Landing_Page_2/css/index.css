@@ -652,4 +652,4 @@ html,body {
 .navbar.scrolled {
     background-color: rgb(33,37,41, 0.95) !important;
     transition: background-color 200ms linear;
-  }
+}

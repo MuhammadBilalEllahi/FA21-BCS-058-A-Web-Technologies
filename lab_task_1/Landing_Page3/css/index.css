@@ -1,0 +1,19 @@
+/* .bg-whitish{
+    background-color: #DBEFFE;
+} */
+
+
+html,body{
+    /* background-color: #DBEFFE; */
+    /* background-color: #d0ded8; */
+    /* background-color: #474A4B; */
+    /* background-color: #DADDDE; */
+    background-color: #ffffff;
+    
+    
+}
+
+section{
+    background-color: transparent !important; 
+
+}
