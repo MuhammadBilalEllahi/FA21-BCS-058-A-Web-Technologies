@@ -69,3 +69,11 @@ html,body{
     column-gap: 2%;
     padding: 2%;
 }
+
+.sec1{
+    /* background-color: #FCF6DE !important;  */
+    /* background-image: linear-gradient(#FCF6DE,#B194D6); */
+    /* background-image: linear-gradient(to right,#B194D6,#FCF6DE); */
+    background-image: linear-gradient(30deg,#B194D6 17.25%,#FCF6DE 48.725%);
+
+}
