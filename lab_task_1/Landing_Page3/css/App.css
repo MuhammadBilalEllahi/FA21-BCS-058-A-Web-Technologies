@@ -79,7 +79,7 @@ html,body{
 }
 
 .sec2{
-    background-color: rgb(22, 22, 22) !important;
-    /* background-image: linear-gradient(to right,rgb(22, 22, 22),rgb(175, 175, 175)); */
+    /* background-color: rgb(22, 22, 22) !important; */
+    background-image: linear-gradient(rgb(22, 22, 22) 90%,rgb(255, 255, 255) 10%);
     color: white;
 }
