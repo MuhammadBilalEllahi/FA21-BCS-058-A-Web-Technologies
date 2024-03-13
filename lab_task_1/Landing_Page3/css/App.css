@@ -9,10 +9,10 @@
 
 }
 
-html,body{
+body{
     height: 100%;
     width: 100%;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 .prm-xl-g{
     background-color: #d0ded8 !important;
@@ -35,6 +35,10 @@ html,body{
 
 .min-vh-60{
     min-height: 60vh;
+}
+
+.navbar{
+    overflow: unset;
 }
 
 .navbar.scrolled{
