@@ -41,8 +41,21 @@ html,body{
     background-color: #fafafa !important;
     transition: background-color 400ms linear;
 }
+.nav-container.scrolled-pad-less{
+    padding: 1rem !important;
+    transition: padding 400ms linear;
+}
 
+.nav-link{
+    color:rgb(17, 17, 17);
+}
 
+.active{
+    color: #B194D6 !important;
+}
+.btn-contact{
+    color: #B194D6 !important;
+}
 .w-80{
     width: 80px;
 }

@@ -17,3 +17,78 @@ section{
     background-color: transparent !important; 
 
 }
+
+
+.hero-h1{
+    font-size: 4rem;
+    line-height: 6rem;
+    /* font-weight: 0; */
+}
+.pl-1{
+    padding-left: 1rem;
+}
+
+.circle{
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(46, 46, 46);
+    border: 1px solid white;
+    border-radius: 100%;
+    top: 0;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle img{
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    
+    
+}
+
+.circle-container{
+    width: 100%;
+    height: 80px; 
+}
+.circle:nth-child(2){
+    left: 2.5rem;
+}
+.circle:nth-child(3){
+    left: 5rem;
+}
+.circle:nth-child(4){
+    left: 7.5rem;
+}
+.circle:nth-child(5){
+    left: 10rem;
+}
+
+
+.btns-hero{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-hero{
+    
+    background-color: #B194D6 !important;
+    color: white !important;
+    
+    padding:  1rem 1.5rem;
+    width: 60%;
+
+    
+}
+
+.btn-review{
+    background-color: rgb(255, 246, 230) !important;
+    /* background-color: rgb(255, 189, 76) !important; */
+    color: rgb(180, 180, 180);
+    width: 30%;
+
+}
