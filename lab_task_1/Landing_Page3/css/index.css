@@ -92,3 +92,27 @@ section{
     width: 30%;
 
 }
+
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.card-container{
+    width: 85%;
+    margin: 5% 0 ;
+}
+.card-img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 2%;
+    border-radius: 25%;
+}
+.card-h3{
+    padding: 2% 0;
+}
+.card-p{
+    padding: 2% 0;
+}
