@@ -300,13 +300,18 @@ padding-top: 2rem;
     width: 50%;
     border-radius: 5rem ;
     height: 3rem;
+    margin: 0 1rem;
+    padding: 1rem;
 }
 
+.btn-submit:hover{
+    background-color: #cdb2f0;
+    
+}
 .btn-submit{
-    background-color: #B194D6;
     color: white;
     width: 7rem;
-
+    border: 1px solid white;
 }
 .newsletter-search{
     padding: 2rem;
