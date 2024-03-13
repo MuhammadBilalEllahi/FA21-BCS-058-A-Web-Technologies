@@ -99,6 +99,7 @@ section{
     justify-content: center;
     align-items: center;
     width: 90%;
+    
 }
 .card-container{
     width: 85%;
@@ -116,3 +117,4 @@ section{
 .card-p{
     padding: 2% 0;
 }
+
