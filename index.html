@@ -43,6 +43,15 @@
         display: grid;
         grid-template-columns: repeat(auto-fill,49%);
 	}
+    @media (max-width: 1000px) {
+        .grid{
+            
+            grid-template-columns: repeat(auto-fill,99%);
+        }
+        .column{
+            width: 90%;
+        }
+    }
 	.column {
 	  padding: 1%;
 	  height: 35rem;
