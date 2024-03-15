@@ -63,7 +63,14 @@ body{
 .w-80{
     width: 80px;
 }
-
+.w-100{
+    width: 100%;
+}
+.center-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 .bg-l-grey{
     background-color: #FAFAFA;
 }
