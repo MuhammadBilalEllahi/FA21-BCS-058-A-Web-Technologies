@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects</title>
 </head>
+
 <body>
     <section style="width:100%; height: 100vh ">
 
         <h1 style="display: flex; align-items: center; justify-content: center; ">Some Projects/Assignments</h1>
         <div class="grid">
-            <iframe class="column"  src="./assignment_1/portfolio/index.html" frameborder="0"></iframe>
 
-            <iframe class="column"  src="./lab_task_1/Landing_Page_2/index.html" frameborder="0"></iframe>
-
-            <iframe class="column" src="./lab_task_1/Landing_Page3/index.html" frameborder="0"></iframe>
-
-            <iframe class="column" src="./practice/Form Handling/index.html" frameborder="0"></iframe>
-
-            <iframe class="column" src="./practice/Portfolio/index.html#about" frameborder="0"></iframe>
-
-            <iframe class="column"  src="./lab_task_1/Landing_Page/index.html" frameborder="0"></iframe>
-
-
-            <iframe class="column" src="./practice/jquery/index.html" frameborder="0"></iframe>
-
-            <iframe class="column" src="./practice/InpageCss/index.html" frameborder="0"></iframe>
-
-
-            <iframe class="column" src="./practice/Landing Practice/index.html" frameborder="0"></iframe>
-
+            <div>
+                <iframe class="column" src="./assignment_1/portfolio/index.html" frameborder="0"></iframe>
+                <p class="center">CV</p>
+            </div>
             
+            <div>
+                <iframe class="column" src="./lab_task_1/Landing_Page_2/index.html" frameborder="0"></iframe>
+                <p class="center">Landing Page - Around</p>
+            </div>
+
+            <div>
+                <iframe class="column" src="./lab_task_1/Landing_Page3/index.html" frameborder="0"></iframe>
+                <p class="center">Landing Page - Term Project</p>
+            </div>
+          
+            <div>
+                <iframe class="column" src="./practice/Form Handling/index.html" frameborder="0"></iframe>
+                <p class="center">Contact Page with Javascript enabled</p>
+            </div>
+          
+            <div>
+                <iframe class="column" src="./practice/Portfolio/index.html#about" frameborder="0"></iframe>
+                <p class="center">Portfolio Site</p>
+            </div>
+           
+            <div>
+                <iframe class="column" src="./lab_task_1/Landing_Page/index.html" frameborder="0"></iframe>
+                <p class="center">Landing Page - Universian</p>
+            </div>
+           
+            <div>
+                <iframe class="column" src="./practice/jquery/index.html" frameborder="0"></iframe>
+                <p class="center">Practice 1</p>
+            </div>
+           
+            <div>
+                <iframe class="column" src="./practice/InpageCss/index.html" frameborder="0"></iframe>
+                <p class="center">Practice 2</p>
+            </div>
+            
+            <div>
+                <iframe class="column" src="./practice/Landing Practice/index.html" frameborder="0"></iframe>
+                <p class="center">Practice 3</p>
+            </div>
+
 
         </div>
     </section>
 </body>
+
 </html>
 
 
 <style>
-    .grid{
+    .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill,49%);
-	}
+        grid-template-columns: repeat(auto-fill, 49%);
+    }
+
     @media (max-width: 1000px) {
-        .grid{
-            
-            grid-template-columns: repeat(auto-fill,99%);
+        .grid {
+
+            grid-template-columns: repeat(auto-fill, 99%);
         }
-        .column{
+
+        .column {
             width: 90%;
         }
     }
-	.column {
-	  padding: 1%;
-	  height: 35rem;
-      width: 98%;
-      border: 2px solid black;
-	}
-    html,body{
+
+    .column {
+        padding: 1%;
+        height: 35rem;
+        width: 98%;
+        border: 2px solid black;
+    }
+
+    html,
+    body {
         /*background-image: linear-gradient(to left, black,grey);*/
         background-color: white;
         color: black;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
