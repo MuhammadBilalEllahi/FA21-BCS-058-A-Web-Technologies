@@ -37,8 +37,12 @@ $(document).ready(function () {
         });
     }
 
-    function uploadStory(){
+    function uploadStory(event){
 
+        event.preventDefault()
+
+
+        if(checkFields()){
        s_title = $('#input-title').val();
        s_description = $('#input-descrption').val();
         $.ajax({
@@ -47,9 +51,13 @@ $(document).ready(function () {
             data: {title: s_title , content: s_description},
             success: function (response) {
                 console.log("Success"+ response)
+                clearForm()
                 loadStories();
             }
         });
+
+
+    }
     }
 
     function deleteStory(){
@@ -115,6 +123,18 @@ $(document).ready(function () {
             };
         
             xhr.send();
+    }
+    function checkFields(){
+
+        if($('#input-title').val().length < 1 ) {$('.input-descrption-error').removeClass('d-none') }
+        if($('#input-descrption').val().length < 1 ) {$('.input-title-error').removeClass('d-none') }
+
+        setTimeout(()=>{
+            $('.input-title-error').addClass('d-none') 
+            $('.input-descrption-error').addClass('d-none') 
+        },3000)
+
+        return ($('#input-title').val().length > 0 ) && ($('#input-descrption').val().length > 0) ;
     }
 
     function editStory(){
