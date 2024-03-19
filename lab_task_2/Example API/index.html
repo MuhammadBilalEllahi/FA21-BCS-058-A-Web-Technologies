@@ -125,12 +125,13 @@
 
     <main>
 
-        <section class="min-vh-100 d-flex justify-content-center align-items-center">
+        <section class="min-vh-x d-flex justify-content-center align-items-center">
 
             <div class="contanier  ">
 
                 <div class="container-fluid ">
-                    <form class="row" action="">
+                    <form class="row"  action="">
+                        <div id="s-id" class="invisible">empty</div>
                         <div class="form-floating input-label">
                             <input class="w-100 p-1 mt-1" id="input-title" type="text" placeholder="Story Title">
                             <label for="input-title"></label>
@@ -144,9 +145,17 @@
                             <p class="input-descrption-error d-none">Description is required</p>
                         </div>
 
-                        <div class="edit-btns">
+                        <div class="edit-btns d-none">
                             <button id="update-btn" class="btn btn-primary ">Update</button>
                             <button id="cancel-btn" class="btn btn-light ">Cancel</button>
+                        </div>
+
+                        <div>
+                            <button id="create-btn" class="btn btn-primary">Create Story</button>
+                        </div>
+
+                        <div>
+                            <button id="refresh-btn" class="btn btn-primary">RESET Stories</button>
                         </div>
 
 
@@ -161,12 +170,12 @@
 
         </section>
 
-        <section class="min-vh-100">
+        <section class="min-vh-100 w-100 ">
 
-            <div class="container ">
-                <div id="stories" class="col-12">
+            <div class="container-fluid   ">
+                <div id="stories" class="d-flex flex-wrap  d-flex justify-content-center align-items-center">
 
-
+<!-- 
                     <div class="card m-1 col-4">
                         <div id="t-id" class="">
 
@@ -183,7 +192,7 @@
                               <button class="btn btn-danger w-75 btn-delete">Delete</button>
                             </div>
                           </div>
-                    </div>
+                    </div> -->
 
 
 

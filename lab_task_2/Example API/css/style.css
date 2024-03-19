@@ -9,4 +9,8 @@
     justify-content: space-between;
     /* align-items: center; */
     padding: 2rem;
+    min-height: 20rem;
+}
+.min-vh-x{
+    min-height: 70vh;
 }
