@@ -4,6 +4,9 @@ const server = express();
 const PORT = 7860;
 
 mongoose.connect("mongodb://localhost/teachersdb")
+const db = mongoose.connection
+db.on('error', (error)=>{ console.error(error)})
+db.on('open', ()=>{console.log("Connected to Database")})
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
@@ -59,13 +62,13 @@ server.get(
     }
 );
 
-server.post("/teachers", (res, req) => {
-    console.log(res.body)
-    console.log(req)
-    return res.json(
-        { "t_name": req.body.t_name, "t_occupation": req.body.t_occupation, "rating": req.body.rating, "t_reviews": [...req.body.t_reviews] }
-    )
-})
+// server.post("/teachers", (res, req) => {
+//     console.log(res.body)
+//     console.log(req)
+//     return res.json(
+//         { "t_name": req.body.t_name, "t_occupation": req.body.t_occupation, "rating": req.body.rating, "t_reviews": [...req.body.t_reviews] }
+//     )
+// })
 
 // server.put('teachers/:id', (rq,res)=>{
 //     const teacherId = parseInt(req.params.id);
