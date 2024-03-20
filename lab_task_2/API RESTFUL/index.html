@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="../../lab_task_1/Landing_Page3/css/App.css">
     <link rel="stylesheet" href="../../lab_task_1/Landing_Page3/css//index.css">
 
+    <!-- own css -->
+    <link rel="stylesheet" href="./css/style.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     
@@ -127,6 +130,49 @@
 
         <section class="min-vh-100">
 
+            <div class="sec1-div container-fluid ">
+                
+                    <h1>Review Your Teachers Now</h1>
+                    <div>
+                        <h5 id="add-new">Add new Teacher</h5>
+
+                        <form id="t-form" action="" class="row m-2 d-none" style="max-width: 20rem;">
+                            <input name="name" type="text" placeholder="Teacher Name">
+                            <input name="designation" type="text" placeholder="Designation">
+                            <button id="add-new-teacher" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+
+                    <div id="teachers" class=" row">
+
+                        <!-- <div class="border rounded-2 col-3 m-2 p-2 ">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                <h5>${teacher.t_name}</h5>
+                                <h6>${teacher.t_occupation}</h6>
+                                </div>
+                                <p>${teacher.rating} star</p>
+                            </div>
+        
+        
+                            <div>
+                            <h5>Comments </h5>
+                            <p>${teacher.t_reviews}</p>
+                            </div>
+                            <div class="">
+                                <input id="input-review" class="border rounded-2 bg-light" type="text">
+                                <button id="review-btn" class="btn btn-light  float-end">Review</button>
+                            </div>
+                        </div> -->
+
+                        
+                        
+                    </div>
+                
+                
+            </div>
+
         </section>
 
 
@@ -219,7 +265,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script src="../../lab_task_1/Landing_Page3/js/index.js"></script>
+    <script src="./js/ajax.js"></script>
 
 </body>
 
