@@ -1,6 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const server = express();
 const PORT = 7860;
+
+mongoose.connect("mongodb://localhost/teachersdb")
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
