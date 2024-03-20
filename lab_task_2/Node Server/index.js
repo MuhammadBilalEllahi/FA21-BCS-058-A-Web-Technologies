@@ -1,15 +1,17 @@
+require("dotenv").config()
 const express = require('express');
 const mongoose = require('mongoose')
 const server = express();
 const PORT = 7860;
 
-mongoose.connect("mongodb://localhost/teachersdb")
+mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
+
+
 db.on('error', (error)=>{ console.error(error)})
 db.on('open', ()=>{console.log("Connected to Database")})
 
-const bodyParser = require('body-parser');
-server.use(bodyParser.json());
+server.use(express.json());
 
 const teachers =
     [{
