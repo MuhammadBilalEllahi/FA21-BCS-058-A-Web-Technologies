@@ -47,7 +47,7 @@ server.get(
         res.send(teachers);
     }
 );
-
+ 
 server.get(
 
     '/',
