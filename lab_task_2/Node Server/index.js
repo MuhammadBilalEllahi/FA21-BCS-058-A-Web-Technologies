@@ -40,15 +40,21 @@ server.delete("/api/students/:id", async function (req,res){
     res.send({"message": "Deleted Successfuly"})
 });
 
+
+
+
+
+
+
 server.put("/api/students/:id", async function (req,res){
-    let student = await Student.findByIdAndDelete(req.params.id);
-    if(!student) return res.status(404).send("Record Not Found")
+    let student = await Student.findById(req.params.id);
+    // if(!student) return res.status(404).send("Record Not Found")
 
     student.name = req.body.name;
     student.address = req.body.address;
 
     await student.save()
-    res.send({"message": "Deleted Successfuly"})
+    res.send({"message": "Added Successfuly"})
 });
 
 
