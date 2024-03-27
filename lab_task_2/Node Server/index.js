@@ -31,3 +31,8 @@ server.get("/api/students/:id", async function  (req,res){
     let students = await Student.findById(req.params.id);
     res.send(students)
 })
+
+server.get("/api/students/:id", async function (req,res){
+    let student = await Student.findByIdAndDelete (req.params.id);
+    req.send({"message": "Deleted Successfuly"})
+});
