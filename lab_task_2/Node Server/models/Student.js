@@ -5,4 +5,4 @@ let studentsSchema = mongoose.Schema({
     address: String,
 });
 let  Student = mongoose.model("Student", studentsSchema)
-module.export = Student;
+module.exports = Student;

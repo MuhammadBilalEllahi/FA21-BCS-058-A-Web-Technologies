@@ -15,18 +15,14 @@ const db = mongoose.connection;
 db.on("error", (error)=>{console.error(error)});
 db.once("open", ()=>{console.log("Connected to database")});
 
+
+server.get("/",function(req,res){
+    res.send("Hello")
+});
+
+
 server.get("/api/students", async function  (req,res){
     let students = await Student.find();
-    // let students = [
-    //     {
-    //         name : "Abc", 
-    //         address: "Abcd"
-    //     },
-    //     {
-    //         name : "def", 
-    //         address: "defg"
-    //     }
-    // ]
     res.send(students)
 })
 
