@@ -21,7 +21,7 @@ db.once("open", () => { console.log("Connected to database") });
 
 
 server.get("/", function (req, res) {
-    res.send("Hello")
+    res.send("Un Authorized")
 });
 
 
