@@ -227,3 +227,29 @@ left: -20px;
 .slider-wrappers .slide-btn#next-slide{
 right: 20px;
 }
+
+
+.item-img{
+    width: 100%;
+    height: 100%;
+}
+
+.img-container{
+    /* width: 500% !important; */
+    width: 40rem !important;
+}
+
+
+.bestseller-h6{
+    font-weight: bold;
+}
+
+
+.bestseller-p{
+    font-weight: lighter;
+    color: #a1a1a1;
+    font-size: .84rem;
+}
+.bestseller-price{
+    color: red;
+}
