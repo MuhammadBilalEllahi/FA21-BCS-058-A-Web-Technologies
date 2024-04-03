@@ -108,3 +108,7 @@ color : red;
 .hero3-img{
     height: 13rem;
 }
+
+.bg-r{
+    background-image: radial-gradient(circle at 96% 96%,#1a0a23,#0d1727 43%,#121212 73%);;
+}
