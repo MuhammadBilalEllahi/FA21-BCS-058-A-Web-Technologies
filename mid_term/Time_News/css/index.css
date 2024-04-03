@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+
+    margin: 0;
+}
+
+.nav-btn{
+color : red;
+}
+
+.nav-btn2{
+    color : white;
+    background-color: red;
+}
+.newsletter-btn{
+    color: red;
+    font-weight: bold;
+}
+
+.main-nav{
+    margin: 0 1rem;
+}
+
+.hero-img-size{
+    height: 20rem;
+}
+
+.hero2-img{
+    height: 11rem;
+}
+
+.line-h{
+    line-height: 1rem;
+}
+.hero2 h5{
+
+}
