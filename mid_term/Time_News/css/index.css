@@ -16,11 +16,11 @@ color : red;
     position: fixed;
     top:0;
 } */
-/* #task{
-    position: absolute;
-    top: 2rem;
+#task2{
+    position: fixed;
+    top: 0;
     right: 0;
-} */
+}
 .nav-btn2{
     color : white;
     background-color: red;
