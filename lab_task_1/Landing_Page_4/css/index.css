@@ -271,3 +271,8 @@ body {
 .bestseller-price {
     color: red;
 }
+
+.sale {
+    height: 95%;
+    width: 48%;
+}
