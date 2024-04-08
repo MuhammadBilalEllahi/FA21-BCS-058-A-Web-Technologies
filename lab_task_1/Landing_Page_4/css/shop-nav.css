@@ -43,3 +43,12 @@
     margin: 0 .5rem;
 }
 
+.product-ul{
+    list-style: none;
+    line-height: 2rem;
+}
+
+.product-ul .li{
+    font-size: .9rem;
+    color: rgb(130, 130, 130);
+}
