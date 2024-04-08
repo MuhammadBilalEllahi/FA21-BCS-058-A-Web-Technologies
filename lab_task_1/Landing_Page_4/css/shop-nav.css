@@ -64,5 +64,13 @@
 
 .colors{
     display: flex;
-    padding: 1rem 1rem;
+    padding:  1rem;
+}
+
+.size-border{
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 0;
+    font-size: .8rem;
+    margin-right: .5rem;
+    width: 3rem;
 }
