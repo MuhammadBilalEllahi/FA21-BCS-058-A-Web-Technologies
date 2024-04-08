@@ -231,7 +231,11 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+    left: 80%;
+    right: 85%;
+    transform: translateX(10%);
+
+    border: 0;
 }
 
 .slider-wrappers .slide-btn#previous-slide {
