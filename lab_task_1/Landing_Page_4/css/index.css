@@ -165,91 +165,104 @@ body {
 
 
 .nav-container {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 }
-.nav-container::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
 
 
 
-.shop-by-category{
+.shop-by-category {
     padding: 5%;
 }
 
 
-.description{
+.description {
     margin-top: 1rem;
 }
-.description h6{
+
+.description h6 {
     font-weight: bold;
 }
 
-.description p{
+.description p {
     font-weight: lighter;
     color: #a1a1a1;
     font-size: .84rem;
 }
 
-.slider-container{
+.slider-container {
     /* max-width: 1200px; */
     width: 100%;
 }
-.slider-wrappers .img-list{
+
+.slider-wrappers .img-list {
     display: grid;
     gap: 1rem;
     overflow-x: auto;
     font-size: 0;
-    grid-template-columns: repeat(10,1fr);
+    grid-template-columns: repeat(10, 1fr);
     scrollbar-width: none;
 }
 
-.slider-wrappers .img-list .img-item{
+.slider-wrappers .img-list .img-item {
     width: 325px;
     height: 400px;
     object-fit: cover;
 }
-.slider-wrappers .img-list::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+
+.slider-wrappers .img-list::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
 }
-.slider-wrappers{
+
+.slider-wrappers {
     position: relative;
+
 }
-.slider-wrappers .slide-btn{
+
+.slider-wrappers .slide-btn {
     position: absolute;
-    transform: translateY(-50%);
+    /* transform: translateY(-500%); */
 }
 
-.slider-wrappers .slide-btn#previous-slide{
-left: -20px;
-} 
-.slider-wrappers .slide-btn#next-slide{
-right: 20px;
+.slider-wrappers .slide-btn#previous-slide {
+    left: -20px;
+}
+
+.slider-wrappers .slide-btn#next-slide {
+    right: 20px;
 }
 
 
-.item-img{
+.item-img {
     width: 100%;
     height: 100%;
 }
 
-.img-container{
+.img-container {
     /* width: 500% !important; */
     width: 40rem !important;
 }
 
 
-.bestseller-h6{
+.bestseller-h6 {
     font-weight: bold;
 }
 
 
-.bestseller-p{
+.bestseller-p {
     font-weight: lighter;
     color: #a1a1a1;
     font-size: .84rem;
 }
-.bestseller-price{
+
+.bestseller-price {
     color: red;
 }
