@@ -281,3 +281,37 @@ body {
     margin: 1%;
     height: 15rem;
 }
+
+.bg-greyish{
+    background-color: #5A674D0D;
+    margin-top: 5% ;
+    min-height: 80vh;
+    padding: 5%;
+}
+
+
+
+
+
+.description2 {
+    margin-top: 1rem;
+}
+
+.description2 h6 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.description2 p {
+    font-weight: lighter;
+    color: #868686;
+    font-size: .89rem;
+}
+
+.description2 button{
+    background-color: transparent;
+}
+
+.description2 button:hover{
+    color:red;
+}
