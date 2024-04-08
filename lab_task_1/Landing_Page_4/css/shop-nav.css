@@ -52,3 +52,17 @@
     font-size: .9rem;
     color: rgb(130, 130, 130);
 }
+
+
+.color{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 0.5px solid rgb(107, 107, 107);
+    margin-right: .5rem;
+}
+
+.colors{
+    display: flex;
+    padding: 1rem 1rem;
+}
