@@ -1,0 +1,34 @@
+.shop-nav{
+    background-color: black;
+    height: 3rem !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-nav a{
+    color: white !important;
+    text-decoration: none;
+}
+
+.shop-nav li{
+    margin: auto 1.7rem;
+    
+}
+.shop-nav ul{
+    padding-top: 1rem;
+}
+
+.red-box-contact{
+    
+    height: 100% !important;
+    background-color: #ba0f0c;
+    color: white;
+    margin: 1%;
+    padding: .6%;
+    
+}
+.red-box-contact h4{
+    
+    font-size: 1.3rem;
+}
