@@ -229,7 +229,9 @@ body {
 
 .slider-wrappers .slide-btn {
     position: absolute;
-    /* transform: translateY(-500%); */
+    top: 50%;
+    transform: translateY(-50%);
+    
 }
 
 .slider-wrappers .slide-btn#previous-slide {
@@ -255,7 +257,6 @@ body {
 .bestseller-h6 {
     font-weight: bold;
 }
-
 
 .bestseller-p {
     font-weight: lighter;
