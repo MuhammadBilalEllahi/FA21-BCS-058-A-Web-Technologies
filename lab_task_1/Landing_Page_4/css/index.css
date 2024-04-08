@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    z-index: 0;
 }
 
 html,
@@ -12,12 +13,25 @@ body {
 }
 
 
+.quote{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    background-color: #ba0f0c;
+}
+.quote a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 .navbar {
     width: 100%;
     display: fixed;
     top: 0;
     position: sticky;
-    z-index: 2;
+    z-index: 1000 !important;
     background-color: #ffffff;
 }
 
@@ -224,7 +238,6 @@ body {
 
 .slider-wrappers {
     position: relative;
-
 }
 
 .slider-wrappers .slide-btn {
@@ -269,7 +282,7 @@ body {
 }
 
 .bestseller-price {
-    color: red;
+    color: #ba0f0c;
 }
 
 .sale {
@@ -317,7 +330,7 @@ body {
 }
 
 .description2 button:hover{
-    color:red;
+    color:#ba0f0c;
 }
 
 .ul{
@@ -397,7 +410,7 @@ body {
     height: 3rem;
     width: 2.7rem;
 
-    background-color: red;
+    background-color: #ba0f0c;
 }
 
 .red-box svg{
