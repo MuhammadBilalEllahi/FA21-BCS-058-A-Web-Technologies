@@ -18,15 +18,15 @@ body {
     top: 0;
     position: sticky;
     z-index: 2;
-    background-color: #d2c8c8;
+    background-color: #ffffff;
 }
 
 .nav-container {
     display: flex;
     flex-wrap: nowrap;
-    width: 100%;
+    
     justify-content: space-between;
-    padding: 3% 3rem;
+    padding:  1rem;
 }
 
 .nav-ul {
@@ -320,7 +320,7 @@ body {
     color:red;
 }
 
-ul{
+.ul{
     list-style: none;
 }
 
@@ -330,11 +330,11 @@ ul{
     margin-bottom: 5%;
     color: rgb(20, 20, 20) !important;
 }
-ul li{
+.ul .li{
     font-size: .79rem;
     color: rgb(130, 130, 130);
 }
-ul {
+.ul {
     line-height: 2rem;
 }
 .t-dark{
