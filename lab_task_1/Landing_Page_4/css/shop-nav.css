@@ -156,3 +156,46 @@ p {
 .row h4{
     font-size: 1.2rem;
 }
+
+
+
+
+
+.p-l-prod-disp{
+    padding-top: 1rem;
+    font-size: .9rem;
+}
+
+.p-l-prod-disp span{
+    color: #ba0f0c;
+    
+}
+
+.p-l-prod-disp h6{
+    color: #2a2a2a;
+}
+.margin-product{
+    
+    margin-top: 2rem;
+    flex: 90% 0 23%;
+    
+}
+
+
+@media (max-width: 992px) {
+    .margin-product {
+        flex: 0 0 32%;
+    }
+}
+
+@media (max-width: 768px) {
+    .margin-product {
+        flex: 0 0 48%;
+    }
+}
+
+@media (max-width: 576px) {
+    .margin-product {
+        flex: 0 0 100%;
+    }
+}
