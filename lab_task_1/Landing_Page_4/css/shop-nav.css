@@ -181,6 +181,10 @@ p {
     
 }
 
+.margin-product img{
+    min-height: 15rem;
+}
+
 
 @media (max-width: 992px) {
     .margin-product {
