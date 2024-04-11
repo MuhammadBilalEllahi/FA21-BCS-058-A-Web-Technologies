@@ -36,6 +36,12 @@ server.get("/api/products", async function (req, res) {
 })
 
 
+server.get("/shops", async function (req, res) {
+    let product = await Products.find();
+    res.render("shops",{product})
+})
+
+
 server.get("/api/products/:id", async function (req, res) {
     let product = await Products.findById(req.params.id);
     res.send(product)
