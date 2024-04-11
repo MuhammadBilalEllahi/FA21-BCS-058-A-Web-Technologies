@@ -203,3 +203,28 @@ p {
         flex: 0 0 100%;
     }
 }
+
+
+
+.search-select{
+    border: 0;
+    font-size: .85rem;
+    padding: .2rem;
+}
+.search-input{
+    border: 0;
+    font-size: .9rem;
+    width: 100%;
+    border-left: 1px solid black;
+    margin: 0 1rem;
+}
+.search-svg{
+    padding: .2rem;
+}
+.search-box{
+    width: 40rem;
+    height: 3rem;
+    border: 1px solid red;
+    padding: .7rem 1rem;
+    border-radius: 2rem;
+}
