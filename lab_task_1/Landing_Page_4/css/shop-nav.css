@@ -217,6 +217,7 @@ p {
     width: 100%;
     border-left: 1px solid black;
     margin: 0 1rem;
+    padding-left: 1rem;
 }
 .search-svg{
     padding: .2rem;
@@ -227,4 +228,7 @@ p {
     border: 1px solid red;
     padding: .7rem 1rem;
     border-radius: 2rem;
+}
+.search-input:focus{
+    outline: 0;
 }
