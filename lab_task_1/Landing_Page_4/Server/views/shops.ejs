@@ -232,14 +232,17 @@
 
                                 <div class="col-3 margin-product">
                                     <div>
-                                        <img class="col-11" src="<%= product.p_img%>" alt="">
+                                        <img class="col-11" src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>" alt="">
+
+
+                                        <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
                                     </div>
                                     
                                     
                                     <div class="p-l-prod-disp">
                                         <h6><%=product.p_name%></h6>
-                                        <p><strike> <%= product.p_orig_price %>$</strike>
-                                             <span> <%= product.p_sale_price %>$</span></p>
+                                        <p><strike> <%= product.p_orig_price.toFixed(2) %>$</strike>
+                                             <span> <%= product.p_sale_price.toFixed(2) %>$</span></p>
                                     </div>
         
         

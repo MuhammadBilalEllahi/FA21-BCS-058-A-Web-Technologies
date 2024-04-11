@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const server = express();
 const PORT = 2211;
-const fs = require("fs").promises;
+// const fs = require("fs").promises;
+const fs = require("fs");
 let Products = require("./models/Products.js")
 
 server.set("view engine","ejs");
@@ -120,3 +121,30 @@ server.get("/api/products/refresh", async function (req, res) {
 //   .then(data => console.log(data))
 //   .catch(error => console.error('Error:', error));
   
+
+async function uploadImageToMongoDB() {
+    try {
+        
+        const imageData = fs.readFileSync('../public/product-27-600x655.jpg');
+
+        
+        const newProduct = new Products({
+            p_name: 'A New Product',
+            p_orig_price: 100,
+            p_sale_price: 80,
+            p_img: {
+                data: imageData,
+                contentType: 'image/jpeg' 
+            }
+        });
+
+        
+        await newProduct.save();
+        console.log('Image uploaded to MongoDB successfully');
+    } catch (error) {
+        console.error('Error uploading image to MongoDB:', error);
+    }
+}
+
+
+// uploadImageToMongoDB();
