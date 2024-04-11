@@ -38,7 +38,7 @@ server.get("/api/products", async function (req, res) {
 
 server.get("/shops", async function (req, res) {
     let product = await Products.find();
-    res.render("shops",{product})
+    res.render("shops",{title: "Product Shop", products: product})
 })
 
 
