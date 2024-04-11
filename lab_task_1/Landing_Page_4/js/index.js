@@ -21,16 +21,17 @@ window.addEventListener("load", initSlider);
 
 
 
-// Get the range input element and span elements for displaying price values
+//Slider
+
 const range = document.getElementById('price_range');
 const priceFrom = document.getElementById('price_from');
 const priceTo = document.getElementById('price_to');
 
-// Display initial price values
+
 priceFrom.textContent = range.min;
 priceTo.textContent = range.value;
 
-// Update displayed price as the range slider value changes
+
 range.addEventListener('input', function() {
     priceTo.textContent = this.value;
 });
