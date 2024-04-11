@@ -1,71 +1,71 @@
 [
     {
         "p_name": "T-shirt",
-        "p_orig_price": "$25.99",
-        "p_sale_price": "$19.99",
+        "p_orig_price": 25.99,
+        "p_sale_price": 19.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Running Shoes",
-        "p_orig_price": "$89.99",
-        "p_sale_price": "$69.99",
+        "p_orig_price": 89.99,
+        "p_sale_price": 69.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Backpack",
-        "p_orig_price": "$49.99",
-        "p_sale_price": "$39.99",
+        "p_orig_price": 49.99,
+        "p_sale_price": 39.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Smartphone",
-        "p_orig_price": "$599.99",
-        "p_sale_price": "$549.99",
+        "p_orig_price": 599.99,
+        "p_sale_price": 549.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Headphones",
-        "p_orig_price": "$129.99",
-        "p_sale_price": "$99.99",
+        "p_orig_price": 129.99,
+        "p_sale_price": 99.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Laptop",
-        "p_orig_price": "$999.99",
-        "p_sale_price": "$899.99",
+        "p_orig_price": 999.99,
+        "p_sale_price": 899.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Dress",
-        "p_orig_price": "$79.99",
-        "p_sale_price": "$59.99",
+        "p_orig_price": 79.99,
+        "p_sale_price": 59.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Watch",
-        "p_orig_price": "$199.99",
-        "p_sale_price": "$149.99",
+        "p_orig_price": 199.99,
+        "p_sale_price": 149.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Sunglasses",
-        "p_orig_price": "$49.99",
-        "p_sale_price": "$29.99",
+        "p_orig_price": 49.99,
+        "p_sale_price": 29.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     },
     {
         "p_name": "Coffee Maker",
-        "p_orig_price": "$79.99",
-        "p_sale_price": "$69.99",
+        "p_orig_price": 79.99,
+        "p_sale_price": 69.99,
         "img_link": "./public/product-18-600x655.jpg",
         "p_img_on_error": "./public/product-18-600x655.jpg"
     }
