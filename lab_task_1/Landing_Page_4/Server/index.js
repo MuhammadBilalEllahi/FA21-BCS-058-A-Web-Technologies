@@ -3,11 +3,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const server = express();
 const PORT = 2211;
-let Student = require("./models/Products.js")
-
 const fs = require("fs").promises;
+let Products = require("./models/Products.js")
 
-server.use(express.json())
+server.set("view engine","ejs");
+server.use(express.json());
+server.use(express.static("public"))
 
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
 mongoose.connect("mongodb://localhost:27017/Products")
@@ -22,21 +23,26 @@ server.get("/", function (req, res) {
     res.send("Un Authorized")
 });
 
+server.get("/shop", async function (req, res) {
+    res.render("shop", { title: "This is EJS Title"})
+})
+
+
 
 server.get("/api/products", async function (req, res) {
-    let students = await Student.find();
-    res.send(students)
+    let product = await Products.find();
+    res.send(product)
 })
 
 
 server.get("/api/products/:id", async function (req, res) {
-    let students = await Student.findById(req.params.id);
-    res.send(students)
+    let product = await Products.findById(req.params.id);
+    res.send(product)
 })
 
 server.delete("/api/products/:id", async function (req, res) {
-    let student = await Student.findByIdAndDelete(req.params.id);
-    if (!student) return res.status(404).send("Record Not Found")
+    let product = await Products.findByIdAndDelete(req.params.id);
+    if (!product) return res.status(404).send("Record Not Found")
     res.send({ "message": "Deleted Successfuly" })
 });
 
@@ -46,31 +52,26 @@ server.delete("/api/products/:id", async function (req, res) {
 
 
 server.put("/api/products/:id", async function (req, res) {
-    let student = await Student.findById(req.params.id);
-    // if(!student) return res.status(404).send("Record Not Found")
+    let product = await Products.findById(req.params.id);
+    // if(!product) return res.status(404).send("Record Not Found")
 
 
     console.log(req.body,req.body.name, req.body.address)
 
-    student.name = req.body.name;
-    student.address = req.body.address;
-
-
-
-  
-      
-    await student.save()
+    product.name = req.body.name;
+    product.address = req.body.address;
+    await product.save()
     res.send({ "message": "Added Successfuly" })
 });
 
 
 
 
-server.post("/api/products/", async function (req, res) {
+server.post("/api/products", async function (req, res) {
     let data = req.body;
-    let student = new Student(data)
-    await student.save()
-    res.send(student)
+    let product = new Products(data)
+    await product.save()
+    res.send(product)
 })
 
 
@@ -79,9 +80,9 @@ server.post("/api/products/", async function (req, res) {
 server.get("/api/products/refresh", async function (req, res) {
     try {
         const data = await fs.readFile("./dumb.json", "utf-8");
-        const studentDataFromFile = JSON.parse(data);
+        const productDataFromFile = JSON.parse(data);
 
-        await Student.insertMany(studentDataFromFile);
+        await Products.insertMany(productDataFromFile);
         res.send({ "message": "Data refreshed" });
     } catch (error) {
         console.error("Error refreshing data:", error);
