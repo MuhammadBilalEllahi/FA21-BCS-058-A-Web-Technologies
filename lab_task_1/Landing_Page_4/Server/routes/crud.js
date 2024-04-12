@@ -1,10 +1,7 @@
-
-
-
 const express = require("express");
 const crud = express();
 let Products = require("../models/Products.js")
-
+// const fs = require("fs").promises;
 
 
 
@@ -106,18 +103,33 @@ crud.post("/products", async function (req, res) {
 
 
 // Refresh
-crud.get("/products/refresh", async function (req, res) {
+crud.post("/products/refresh",   function (req, res) {
+    console.log("here0")
     try {
-        const data = await fs.readFile("./dumb.json", "utf-8");
+        console.log("here1")
+        const data =  fs.readFileSync("./dumb.json", "utf-8");
+        console.log("here")
         const productDataFromFile = JSON.parse(data);
 
-        await Products.insertMany(productDataFromFile);
+        Products.insertMany(productDataFromFile);
         res.send({ "message": "Data refreshed" });
     } catch (error) {
         console.error("Error refreshing data:", error);
         res.status(500).send("Internal Server Error");
     }
 });
+
+
+// const filePath = './dumb.json';
+
+// // Asynchronously read the file
+// fs.readFile(filePath, 'utf-8', (error, data) => {
+//     if (error) {
+//         console.error('Error reading file:', error);
+//     } else {
+//         console.log(data); // Output file contents
+//     }
+// });
 
 
 

@@ -9,7 +9,6 @@ server.set("view engine","ejs");
 // server.set("views","./template/pages")
 server.use(express.json());
 server.use(express.static("public"))
-// const fs = require("fs").promises;
 
 
 
