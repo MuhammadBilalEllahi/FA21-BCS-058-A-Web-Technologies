@@ -12,10 +12,18 @@ let Products = require("../models/Products.js")
 // RESTFUL METHODS
 
 // GET
+// GET BY ID
 crud.get("/products/:id", async function (req, res) {
     let product = await Products.findById(req.params.id);
     res.send(product)
 })
+// GET ALL
+crud.get("/products", async function (req, res) {
+    let product = await Products.find();
+    res.send(product)
+})
+
+
 
 // DELETE
 crud.delete("/products/:id", async function (req, res) {
