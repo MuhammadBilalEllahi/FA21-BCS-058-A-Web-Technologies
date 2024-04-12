@@ -23,7 +23,7 @@ db.once("open", () => { console.log("Connected to database") });
 
 server.get("/", function (req, res) {
     // res.send("Un Authorized")
-    res.render("shop", {title: "Main Page"})
+    res.render("index", {title: "Main Page"})
 });
 
 server.get("/shop", async function (req, res) {
