@@ -77,10 +77,23 @@ server.put("/api/products/:id", async function (req, res) {
 
 
 server.post("/api/products", async function (req, res) {
-    let data = req.body;
-    let product = new Products(data)
-    await product.save()
-    res.send(product)
+    
+
+    const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
+
+    
+    const product = new Products({
+        p_name,
+        p_orig_price,
+        p_sale_price,
+        p_img,
+        p_img_on_error
+    });
+
+
+    let saved_product = await product.save()
+    
+    res.send(saved_product)
 })
 
 
