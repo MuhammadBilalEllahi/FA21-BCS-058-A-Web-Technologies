@@ -8,41 +8,42 @@ mongoose.connect("mongodb://localhost:27017/Products", {
 
 const productsData = [
     {
-      p_name: "Laptop",
-      p_orig_price: 1200,
-      p_sale_price: 999,
-      p_img: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
-        contentType: "image/jpeg"
-      },
-      p_img_on_error: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
-        contentType: "image/jpeg"
-      }
-    },
-    {
-      p_name: "Smartphone",
-      p_orig_price: 800,
-      p_sale_price: 699,
-      p_img: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
-        contentType: "image/png"
-      },
-      p_img_on_error: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
-        contentType: "image/png"
-      }
-    },
-    {
-      p_name: "Headphones",
-      p_orig_price: 150,
+      p_name: "Wood",
+      p_orig_price: 120,
       p_sale_price: 99,
       p_img: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
+        // data: Buffer.from("../public/product-2-600x655.jpg", "base64"),
+        data: Buffer.from("../public/product-2-600x655.jpg", "base64"),
         contentType: "image/jpeg"
       },
       p_img_on_error: {
-        data: Buffer.from("../../public/product-2-600x655.jpg", "base64"),
+        data: Buffer.from("../public/product-2-600x655.jpg", "base64"),
+        contentType: "image/jpeg"
+      }
+    },
+    {
+      p_name: "Nokia",
+      p_orig_price: 80,
+      p_sale_price: 69,
+      p_img: {
+        data: Buffer.from("../public/product-18-600x655.jpg.jpg", "base64"),
+        contentType: "image/png"
+      },
+      p_img_on_error: {
+        data: Buffer.from("../public/product-2-600x655.jpg", "base64"),
+        contentType: "image/png"
+      }
+    },
+    {
+      p_name: "Camera",
+      p_orig_price: 90,
+      p_sale_price: 59,
+      p_img: {
+        data: Buffer.from("../public/product-27-600x655.jpg.jpg", "base64"),
+        contentType: "image/jpeg"
+      },
+      p_img_on_error: {
+        data: Buffer.from("../public/product-2-600x655.jpg", "base64"),
         contentType: "image/jpeg"
       }
     }
