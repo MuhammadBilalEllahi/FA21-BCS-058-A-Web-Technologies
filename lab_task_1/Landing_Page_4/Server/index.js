@@ -61,40 +61,42 @@ server.delete("/api/products/:id", async function (req, res) {
 
 
 server.put("/api/products/:id", async function (req, res) {
-    let product = await Products.findById(req.params.id);
-    // if(!product) return res.status(404).send("Record Not Found")
+    const productId = req.params.id;
+    const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
 
+    try {
+        if (!mongoose.Types.ObjectId.isValid(productId)) {
+            return res.status(400).json({ error: "Invalid product ID" });
+        }
 
-    console.log(req.body,req.body.name, req.body.address)
+        let product = await Products.findById(productId);
+        if (!product) {
+            return res.status(404).json({ error: "Product not found" });
+        }
 
-    product.name = req.body.name;
-    product.address = req.body.address;
-    await product.save()
-    res.send({ "message": "Added Successfuly" })
+        if (p_name) product.p_name = p_name;
+        if (p_orig_price) product.p_orig_price = p_orig_price;
+        if (p_sale_price) product.p_sale_price = p_sale_price;
+        if (p_img) product.p_img = p_img;
+        if (p_img_on_error) product.p_img_on_error = p_img_on_error;
+
+        // if (!p_name || !p_orig_price || !p_sale_price || !p_img || !p_img_on_error) {
+        //     return res.status(400).json({ error: "Incomplete product data" });
+        // }
+
+        await product.save();
+
+        res.status(200).json({ message: "Product updated successfully", product });
+    } catch (error) {
+        console.error("Error updating product:", error);
+        res.status(500).json({ error: "Failed to update product" });
+    }
 });
 
 
 
 
-// server.post("/api/products", async function (req, res) {
-    
 
-//     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
-
-    
-//     const product = new Products({
-//         p_name,
-//         p_orig_price,
-//         p_sale_price,
-//         p_img,
-//         p_img_on_error
-//     });
-
-
-//     let saved_product = await product.save()
-    
-//     res.send(saved_product)
-// })
 
 server.post("/api/products", async function (req, res) {
     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
@@ -151,6 +153,8 @@ server.get("/api/products/refresh", async function (req, res) {
 
 
 
+
+
 /*? Test  */
 
 // fetch('http://localhost:2211/api/products/6609a178622a3db23003c8a8', {
@@ -204,3 +208,28 @@ server.get("/api/products/refresh", async function (req, res) {
 
 
 // uploadImageToMongoDB();
+
+
+
+
+
+// Without Try Catch Code
+// server.post("/api/products", async function (req, res) {
+    
+
+//     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
+
+    
+//     const product = new Products({
+//         p_name,
+//         p_orig_price,
+//         p_sale_price,
+//         p_img,
+//         p_img_on_error
+//     });
+
+
+//     let saved_product = await product.save()
+    
+//     res.send(saved_product)
+// })
