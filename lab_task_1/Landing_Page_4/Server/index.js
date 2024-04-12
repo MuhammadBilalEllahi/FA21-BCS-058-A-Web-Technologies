@@ -76,25 +76,62 @@ server.put("/api/products/:id", async function (req, res) {
 
 
 
-server.post("/api/products", async function (req, res) {
+// server.post("/api/products", async function (req, res) {
     
 
+//     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
+
+    
+//     const product = new Products({
+//         p_name,
+//         p_orig_price,
+//         p_sale_price,
+//         p_img,
+//         p_img_on_error
+//     });
+
+
+//     let saved_product = await product.save()
+    
+//     res.send(saved_product)
+// })
+
+server.post("/api/products", async function (req, res) {
     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
 
-    
-    const product = new Products({
-        p_name,
-        p_orig_price,
-        p_sale_price,
-        p_img,
-        p_img_on_error
-    });
+    try {
+        if (!p_name || !p_orig_price || !p_sale_price || !p_img || !p_img_on_error) {
+            return res.status(400).json({ error: "Incomplete product data" });
+        }
 
+        if (typeof p_orig_price !== "number" || typeof p_sale_price !== "number") {
+            return res.status(400).json({ error: "Invalid price format" });
+        }
 
-    let saved_product = await product.save()
-    
-    res.send(saved_product)
-})
+        if (!p_img || typeof p_img !== "object" || !p_img.data || !p_img.contentType) {
+            return res.status(400).json({ error: "Invalid main image data" });
+        }
+
+        if (!p_img_on_error || typeof p_img_on_error !== "object" || !p_img_on_error.data || !p_img_on_error.contentType) {
+            return res.status(400).json({ error: "Invalid error image data" });
+        }
+
+        const product = new Products({
+            p_name,
+            p_orig_price,
+            p_sale_price,
+            p_img,
+            p_img_on_error
+        });
+
+        const savedProduct = await product.save();
+
+        res.status(201).json(savedProduct);
+    } catch (error) {
+        console.error("Error saving product:", error);
+        res.status(500).json({ error: "Failed to save product" });
+    }
+});
 
 
 
