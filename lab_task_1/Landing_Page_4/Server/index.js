@@ -8,6 +8,7 @@ const fs = require("fs");
 let Products = require("./models/Products.js")
 
 server.set("view engine","ejs");
+// server.set("views","./template/pages")
 server.use(express.json());
 server.use(express.static("public"))
 
