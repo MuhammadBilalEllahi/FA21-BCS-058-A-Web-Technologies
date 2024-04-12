@@ -1,11 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
+
 const server = express();
 const PORT = 2211;
 // const fs = require("fs").promises;
-const fs = require("fs");
-let Products = require("./models/Products.js")
+const mongoDB = require('./connection.js')
+
+
 
 server.set("view engine","ejs");
 // server.set("views","./template/pages")
@@ -13,12 +14,6 @@ server.use(express.json());
 server.use(express.static("public"))
 
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
-mongoose.connect("mongodb://localhost:27017/Products")
-const db = mongoose.connection;
-
-
-db.on("error", (error) => { console.error(error) });
-db.once("open", () => { console.log("Connected to database") });
 
 
 server.get("/", function (req, res) {
@@ -44,6 +39,19 @@ server.get("/shops", async function (req, res) {
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// RESTFUL METHODS
 server.get("/api/products/:id", async function (req, res) {
     let product = await Products.findById(req.params.id);
     res.send(product)
