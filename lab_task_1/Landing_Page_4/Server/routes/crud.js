@@ -29,6 +29,8 @@ crud.delete("/products/:id", async function (req, res) {
     let product = await Products.findByIdAndDelete(req.params.id);
     if (!product) return res.status(404).send("Record Not Found")
     res.send({ "message": "Deleted Successfuly" })
+
+    // we can also use filter and delte which is same and updating data
 });
 
 // PUT (As a PATCH)
@@ -127,7 +129,7 @@ crud.patch("/updateall/:id", (req, res) => {
     // Filter and Add Records to that specific record
     // {
     //     "filter": {
-    //         p_name: "Wooden Table"
+    //         p_name: "Wooden Table"  //to update each and every record in db then remove this field  p_name: "Wooden Table" from here
     //     },
 
     //     "data": {
