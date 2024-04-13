@@ -65,15 +65,32 @@ crud.put("/products/:id", async function (req, res) {
     }
 });
 
-crud.put("/update/:id", (req,res)=>{
+// crud.put("/update/:id", (req,res)=>{
 
     
-    const objectId = new ObjectId(req.params.id) //Some new keyword problem
-    console.log(objectId)
+//     const objectId = new ObjectId(req.params.id) //Some new keyword problem
+//     console.log(objectId)
 
-    db.collection("products").updateOne(
-        {id: objectId},
-        {$set: req.body},
+//     db.collection("products").updateOne(
+//         {id: objectId},
+//         {$set: req.body},
+//         (error,resData)=>{
+//             if(error){
+//                 res.send(error.toString())
+//             }
+//             res.send(resData)
+//         }
+        
+//     )
+// })
+
+crud.patch("/updateall/:id", (req,res)=>{
+
+    
+    db.collection("products").updateMany(
+        {},
+        // {...req.body},
+        req.body,
         (error,resData)=>{
             if(error){
                 res.send(error.toString())
