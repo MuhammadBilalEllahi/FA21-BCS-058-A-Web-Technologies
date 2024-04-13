@@ -53,6 +53,29 @@ crud.delete("/deleteallwhere", (req, res) => {
     ).catch((e)=> res.send(e.toString()))
 })
 
+// Delte where one value of x is found
+
+crud.delete("/deleteonewhere", (req, res) => {
+
+    //  {
+    //     "p_name": "Delete where value is same as here"
+    //  }
+    
+    
+    
+        db.collection("products").deleteOne(
+            req.body,
+            (error, resData) => {
+                if (error) {
+                    res.send(error.toString())
+                }
+                res.send(resData)
+            }
+    
+        ).catch((e)=> res.send(e.toString()))
+    })
+    
+
 
 
 
