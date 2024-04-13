@@ -2,6 +2,8 @@ const express = require("express");
 const crud = express();
 let Products = require("../models/Products.js")
 // const fs = require("fs").promises;
+const {db} = require("../connection.js")
+const { ObjectId } = require('mongodb');
 
 
 
@@ -29,7 +31,7 @@ crud.delete("/products/:id", async function (req, res) {
     res.send({ "message": "Deleted Successfuly" })
 });
 
-// PUT
+// PUT (As a PATCH)
 crud.put("/products/:id", async function (req, res) {
     const productId = req.params.id;
     const { p_name, p_orig_price, p_sale_price, p_img, p_img_on_error } = req.body;
@@ -62,6 +64,31 @@ crud.put("/products/:id", async function (req, res) {
         res.status(500).json({ error: "Failed to update product" });
     }
 });
+
+crud.put("/update/:id", (req,res)=>{
+
+    
+    const objectId = new ObjectId(req.params.id) //Some new keyword problem
+    console.log(objectId)
+
+    db.collection("products").updateOne(
+        {id: objectId},
+        {$set: req.body},
+        (error,resData)=>{
+            if(error){
+                res.send(error.toString())
+            }
+            res.send(resData)
+        }
+        
+    )
+})
+
+
+
+
+
+
 
 // POST
 crud.post("/products", async function (req, res) {
