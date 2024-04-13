@@ -24,6 +24,12 @@ crud.get("/products", async function (req, res) {
 
 
 
+
+
+
+
+
+
 // DELETE
 crud.delete("/products/:id", async function (req, res) {
     let product = await Products.findByIdAndDelete(req.params.id);
@@ -54,7 +60,6 @@ crud.delete("/deleteallwhere", (req, res) => {
 })
 
 // Delte where one value of x is found
-
 crud.delete("/deleteonewhere", (req, res) => {
 
     //  {
@@ -75,6 +80,12 @@ crud.delete("/deleteonewhere", (req, res) => {
         ).catch((e)=> res.send(e.toString()))
     })
     
+
+
+
+
+
+
 
 
 
@@ -202,6 +213,9 @@ crud.patch("/updateall/:id", (req, res) => {
 
     )
 })
+
+
+
 
 
 
