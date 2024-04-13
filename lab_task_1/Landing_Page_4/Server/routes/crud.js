@@ -2,7 +2,7 @@ const express = require("express");
 const crud = express();
 let Products = require("../models/Products.js")
 // const fs = require("fs").promises;
-const {db} = require("../connection.js")
+const { db } = require("../connection.js")
 const { ObjectId } = require('mongodb');
 
 
@@ -67,7 +67,7 @@ crud.put("/products/:id", async function (req, res) {
 
 // crud.put("/update/:id", (req,res)=>{
 
-    
+
 //     const objectId = new ObjectId(req.params.id) //Some new keyword problem
 //     console.log(objectId)
 
@@ -80,24 +80,43 @@ crud.put("/products/:id", async function (req, res) {
 //             }
 //             res.send(resData)
 //         }
-        
+
 //     )
 // })
 
-crud.patch("/updateall/:id", (req,res)=>{
 
-    
+
+// PATCH (Adds/removes fields from all records)
+crud.patch("/updateall/:id", (req, res) => {
+
+    // Add Records
+    // {
+    //     $set: {
+    //         p_new: "val"
+    //     }
+    // }
+
+    // Remove Records
+
+    // {
+    //     $unset: {
+    //         p_new: "val"
+    //     }
+    // }
+
+
+
     db.collection("products").updateMany(
         {},
         // {...req.body},
         req.body,
-        (error,resData)=>{
-            if(error){
+        (error, resData) => {
+            if (error) {
                 res.send(error.toString())
             }
             res.send(resData)
         }
-        
+
     )
 })
 
@@ -147,11 +166,11 @@ crud.post("/products", async function (req, res) {
 
 
 // Refresh
-crud.post("/products/refresh",   function (req, res) {
+crud.post("/products/refresh", function (req, res) {
     console.log("here0")
     try {
         console.log("here1")
-        const data =  fs.readFileSync("./dumb.json", "utf-8");
+        const data = fs.readFileSync("./dumb.json", "utf-8");
         console.log("here")
         const productDataFromFile = JSON.parse(data);
 
