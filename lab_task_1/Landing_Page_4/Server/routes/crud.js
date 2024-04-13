@@ -91,16 +91,16 @@ crud.patch("/updateall/:id", (req, res) => {
 
     // Add Records
     // {
-    //     $set: {
-    //         p_new: "val"
+    //     "$set": {
+    //         "p_new": "val"
     //     }
     // }
 
     // Remove Records
 
     // {
-    //     $unset: {
-    //         p_new: "val"
+    //     "$unset": {
+    //         "p_new": "val"
     //     }
     // }
 
@@ -120,6 +120,40 @@ crud.patch("/updateall/:id", (req, res) => {
     )
 })
 
+
+
+crud.patch("/updateall/:id", (req, res) => {
+
+    // Filter and Add Records to that specific record
+    // {
+    //     "filter": {
+    //         p_name: "Wooden Table"
+    //     },
+
+    //     "data": {
+    //         $set: {
+    //             p_orig_price: 298 //or add new field
+    //         } 
+    //     }
+
+    // }
+
+
+
+
+    db.collection("products").updateMany(
+       req.body.filter,
+        // {...req.body},
+        req.body.data,
+        (error, resData) => {
+            if (error) {
+                res.send(error.toString())
+            }
+            res.send(resData)
+        }
+
+    )
+})
 
 
 
