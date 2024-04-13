@@ -32,6 +32,29 @@ crud.delete("/products/:id", async function (req, res) {
 
     // we can also use filter and delte which is same and updating data
 });
+// Delte All
+crud.delete("/deleteallwhere", (req, res) => {
+
+//  {
+//     "p_name": "Delete where value is same as here"
+//  }
+
+
+
+    db.collection("products").deleteMany(
+        req.body,
+        (error, resData) => {
+            if (error) {
+                res.send(error.toString())
+            }
+            res.send(resData)
+        }
+
+    ).catch((e)=> res.send(e.toString()))
+})
+
+
+
 
 // PUT (As a PATCH)
 crud.put("/products/:id", async function (req, res) {
