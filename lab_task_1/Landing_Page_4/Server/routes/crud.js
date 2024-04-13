@@ -22,6 +22,31 @@ crud.get("/products", async function (req, res) {
     res.send(product)
 })
 
+// crud.get("/productsname", function (req, res) {
+
+
+//   const cursor =  db.collection("products").find(
+//         {}, {
+//         // projection: { p_name: 1 }
+//     }
+//     )
+//     // .toArray(
+//     //     (error, result) => {
+//     //         if (error) {
+//     //             res.send(error)
+//     //         }
+//     //         if (result) {
+//     //             result.forEach(doc => console.log(doc))
+//     //           }
+//     //         res.send(result)
+//     //     }
+//     // ).catch((e) => res.send(e.toString()));
+//     res.send(cursor.forEach(element => {
+//         element
+//     }))
+
+// })
+
 
 
 
@@ -41,9 +66,9 @@ crud.delete("/products/:id", async function (req, res) {
 // Delte All
 crud.delete("/deleteallwhere", (req, res) => {
 
-//  {
-//     "p_name": "Delete where value is same as here"
-//  }
+    //  {
+    //     "p_name": "Delete where value is same as here"
+    //  }
 
 
 
@@ -56,7 +81,7 @@ crud.delete("/deleteallwhere", (req, res) => {
             res.send(resData)
         }
 
-    ).catch((e)=> res.send(e.toString()))
+    ).catch((e) => res.send(e.toString()))
 })
 
 // Delte where one value of x is found
@@ -65,21 +90,21 @@ crud.delete("/deleteonewhere", (req, res) => {
     //  {
     //     "p_name": "Delete where value is same as here"
     //  }
-    
-    
-    
-        db.collection("products").deleteOne(
-            req.body,
-            (error, resData) => {
-                if (error) {
-                    res.send(error.toString())
-                }
-                res.send(resData)
+
+
+
+    db.collection("products").deleteOne(
+        req.body,
+        (error, resData) => {
+            if (error) {
+                res.send(error.toString())
             }
-    
-        ).catch((e)=> res.send(e.toString()))
-    })
-    
+            res.send(resData)
+        }
+
+    ).catch((e) => res.send(e.toString()))
+})
+
 
 
 
@@ -201,7 +226,7 @@ crud.patch("/updateall/:id", (req, res) => {
 
 
     db.collection("products").updateMany(
-       req.body.filter,
+        req.body.filter,
         // {...req.body},
         req.body.data,
         (error, resData) => {
