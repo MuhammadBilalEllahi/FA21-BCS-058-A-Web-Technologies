@@ -14,11 +14,11 @@ function InstaBoxes() {
             <div className="mt-3 d-flex justify-content-between">
 
 
-                <img className="col-2 insta-pic" src="./public/instagram-1.jpg" alt=""/>
-                <img className="col-2 insta-pic" src="./public/instagram-2.jpg" alt=""/>
-                <img className="col-2 insta-pic" src="./public/instagram-3.jpg" alt=""/>
-                <img className="col-2 insta-pic" src="./public/instagram-4.jpg" alt=""/>
-                <img className="col-2 insta-pic" src="./public/instagram-5.jpg" alt=""/>
+                <img className="col-2 insta-pic" src="/home_assets/instagram/instagram-1.jpg" alt=""/>
+                <img className="col-2 insta-pic" src="/home_assets/instagram/instagram-2.jpg" alt=""/>
+                <img className="col-2 insta-pic" src="/home_assets/instagram/instagram-3.jpg" alt=""/>
+                <img className="col-2 insta-pic" src="/home_assets/instagram/instagram-4.jpg" alt=""/>
+                <img className="col-2 insta-pic" src="/home_assets/instagram/instagram-5.jpg" alt=""/>
 
 
             </div>
