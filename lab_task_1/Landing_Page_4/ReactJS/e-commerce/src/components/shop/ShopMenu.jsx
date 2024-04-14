@@ -80,7 +80,7 @@ function ShopMenu() {
 
                         <div className="d-flex f-prod">
                             <div className="cont-img">
-                                <img src="./public/banner-8.jpg" alt=""/>
+                                <img src="/home_assets/banner/banner-8.jpg" alt=""/>
                             </div>
                             <div className="p-l-prod">
                                 <h6>Upholstered Double Bed</h6>
@@ -90,7 +90,7 @@ function ShopMenu() {
 
                         <div className="d-flex f-prod">
                             <div className="cont-img">
-                                <img src="./public/banner-8.jpg" alt=""/>
+                                <img src="/home_assets/banner/banner-8.jpg" alt=""/>
                             </div>
                             <div className="p-l-prod">
                                 <h6>Upholstered Double Bed</h6>
@@ -100,7 +100,7 @@ function ShopMenu() {
 
                         <div className="d-flex f-prod">
                             <div className="cont-img">
-                                <img src="./public/banner-8.jpg" alt=""/>
+                                <img src="/home_assets/banner/banner-8.jpg" alt=""/>
                             </div>
                             <div className="p-l-prod">
                                 <h6>Upholstered Double Bed</h6>
@@ -110,7 +110,7 @@ function ShopMenu() {
 
                         <div className="d-flex f-prod">
                             <div className="cont-img">
-                                <img src="./public/banner-8.jpg" alt=""/>
+                                <img src="/home_assets/banner/banner-8.jpg" alt=""/>
                             </div>
                             <div className="p-l-prod">
                                 <h6>Upholstered Double Bed</h6>
@@ -139,7 +139,7 @@ function ShopMenu() {
                         
                         <div className="col-3 margin-product">
                             <div>
-                                <img className="col-11" src="./public/product-2-600x655.jpg" alt=""/>
+                                <img className="col-11" src="/home_assets/products/product-2-600x655.jpg" alt=""/>
                             </div>
                             
                             <div className="p-l-prod-disp">
@@ -152,7 +152,7 @@ function ShopMenu() {
 
                         <div className="col-3 margin-product">
                             <div>
-                                <img className="col-11" src="./public/product-9-1-600x655.jpg" alt=""/>
+                                <img className="col-11" src="/home_assets/products/product-9-1-600x655.jpg" alt=""/>
                             </div>
                             
                             <div className="p-l-prod-disp">
@@ -164,7 +164,7 @@ function ShopMenu() {
                         </div>
                         <div className="col-3 margin-product">
                             <div>
-                                <img className="col-11" src="./public/product-27-600x655.jpg" alt=""/>
+                                <img className="col-11" src="/home_assets/products/product-27-600x655.jpg" alt=""/>
                             </div>
                             
                             <div className="p-l-prod-disp">
@@ -177,12 +177,14 @@ function ShopMenu() {
 
                         <div className="col-3 margin-product">
                             <div>
-                                <img className="col-11" src="./public/prduct-18-600x655.jpg" alt="" onerror="
-                                this.src = './public/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+                                <img className="col-11" src="/home_assets/products/product-18-600x655.jpg" alt=""
+                                onerror="
+                                this.src = '/home_assets/error_images/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700' "
+                                />
                             </div>
                             
                             <div className="p-l-prod-disp">
-                                <h6>Upholstered Double Bed</h6>
+                                <h6>Upholstered Double Bed2</h6>
                                 <p><strike>200.00$</strike> <span>116.00$</span></p>
                             </div>
 
@@ -192,7 +194,7 @@ function ShopMenu() {
 
                         <div className="col-3 margin-product">
                             <div>
-                                <img className="col-11" src="./public/product-51-600x655.jpg" alt=""/>
+                                <img className="col-11" src="/home_assets/products/product-51-600x655.jpg" alt=""/>
                             </div>
                             
                             <div className="p-l-prod-disp">
