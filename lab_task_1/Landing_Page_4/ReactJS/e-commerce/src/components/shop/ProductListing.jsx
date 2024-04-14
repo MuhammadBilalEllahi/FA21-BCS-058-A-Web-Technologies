@@ -20,9 +20,8 @@ const ProductListing = () => {
             <div>
               <img
                 className="col-11"
-                src={`data:${product.p_img.contentType};base64,${Buffer.from(
-                  product.p_img.data
-                ).toString('base64')}`}
+                src={`data:${product.p_img.contentType};base64,${product.p_img.data}`}
+
                 alt={product.p_name}
               />
             </div>
