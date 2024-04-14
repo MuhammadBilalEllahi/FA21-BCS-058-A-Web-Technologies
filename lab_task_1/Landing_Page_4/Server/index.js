@@ -11,6 +11,7 @@ server.use(express.json());
 server.use(express.static("public"))
 
 
+// Added for Communication between different Hosts
 const cors = require('cors');
 server.use(cors())
 
