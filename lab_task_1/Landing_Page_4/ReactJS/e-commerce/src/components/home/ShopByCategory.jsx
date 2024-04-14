@@ -1,6 +1,7 @@
 import React from 'react'
 
 function ShopByCategory() {
+    // use map on img lateron
   return (
     <>
        <section className="container-fluid ">
@@ -15,7 +16,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="/public/banner-10.jpg" alt="un"/>
+                            <img src="/home_assets/banner/banner-10.jpg" alt="un"/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>
@@ -28,7 +29,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="/public/banner-9.jpg" alt=""/>
+                            <img src="/home_assets/banner/banner-9.jpg" alt=""/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>
@@ -41,7 +42,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="/public/banner-10.jpg" alt=""/>
+                            <img src="/home_assets/banner/banner-10.jpg" alt=""/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>
@@ -53,7 +54,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="./public/banner-8.jpg" alt=""/>
+                            <img src="/home_assets/banner/banner-8.jpg" alt=""/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>

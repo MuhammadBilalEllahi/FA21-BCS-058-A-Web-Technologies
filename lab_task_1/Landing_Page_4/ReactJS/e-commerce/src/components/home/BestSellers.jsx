@@ -40,7 +40,7 @@ function BestSellers() {
                     <div className="img-item img-container">
                         <div className="d-flex align-items-center">
                             <div className="container">
-                                <img className="item-img" src="/public/products/product-18-600x655.jpg" alt=""/>
+                                <img className="item-img" src="/home_assets/products/product-18-600x655.jpg" alt=""/>
                             </div>
 
                             <div className="column container">
@@ -62,7 +62,7 @@ function BestSellers() {
                     <div className="img-item img-container">
                         <div className="d-flex align-items-center">
                             <div className="container">
-                                <img className="item-img" src="./public/product-27-600x655.jpg" alt=""/>
+                                <img className="item-img" src="/home_assets/products/product-27-600x655.jpg" alt=""/>
                             </div>
 
                             <div className="column container">
@@ -84,7 +84,7 @@ function BestSellers() {
                     <div className="img-item img-container">
                         <div className="d-flex align-items-center">
                             <div className="container">
-                                <img className="item-img" src="./public/product-31-600x655.jpg" alt=""/>
+                                <img className="item-img" src="/home_assets/products//product-31-600x655.jpg" alt=""/>
                             </div>
 
                             <div className="column container">
@@ -107,7 +107,7 @@ function BestSellers() {
                     <div className="img-item img-container">
                         <div className="d-flex align-items-center">
                             <div className="container">
-                                <img className="item-img" src="./public/product-18-600x655.jpg" alt=""/>
+                                <img className="item-img" src="/home_assets/products//product-18-600x655.jpg" alt=""/>
                             </div>
 
                             <div className="column container">
