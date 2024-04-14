@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Nav() {
+function Nav() {
   return (
     <>
        <nav  class="navbar">
@@ -26,3 +26,7 @@ export default function Nav() {
     </>
   )
 }
+
+
+
+export default Nav;
