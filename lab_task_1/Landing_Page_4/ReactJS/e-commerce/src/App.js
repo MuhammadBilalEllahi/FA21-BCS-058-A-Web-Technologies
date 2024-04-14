@@ -1,12 +1,13 @@
 import './App.css';
-import Footer from './components/Footer.js';
-import Nav from './components/Nav.js';
+import Footer from './components/main/Footer.js';
+import Nav from './components/main/Nav.js';
 
 
 function App() {
   return (
     <>
     <Nav/>
+    
     <Footer/>
     </>
   );
