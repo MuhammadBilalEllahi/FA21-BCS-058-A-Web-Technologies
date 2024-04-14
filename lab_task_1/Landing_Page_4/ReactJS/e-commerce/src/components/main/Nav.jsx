@@ -11,11 +11,18 @@ function Nav() {
 
 
           <ul className="nav-ul">
-            <li className="nav-li"><a href="./index.html">Home</a> </li>
+            <ToLink to="/" text="Home" />
+            <ToLink to="/standard-shop" text="Shop" />
+            <ToLink to="/products" text="Products" />
+            <ToLink to="/blogs" text="Blog" />
+            <ToLink to="/page" text="Page" />
+
+
+            {/* <li className="nav-li"><a href="./index.html">Home</a> </li>
             <li className="nav-li"><a href="./standard-shop.html">Shop</a> </li>
             <li className="nav-li"> <a href="#Products">Products</a> </li>
             <li className="nav-li"> <a href="#Blog">Blog</a> </li>
-            <li className="nav-li"> <a href="#Page">Page</a> </li>
+            <li className="nav-li"> <a href="#Page">Page</a> </li> */}
           </ul>
 
 
@@ -36,5 +43,5 @@ export default Nav;
 function ToLink({ to, text }) {
   const resolvedPath = useResolvedPath(to);
   useMatch({ path: resolvedPath.pathname, end: true })
-  return (<li><Link to={to}>{text}</Link> </li>)
+  return (<li className="nav-li"><Link to={to}>{text}</Link> </li>)
 }
