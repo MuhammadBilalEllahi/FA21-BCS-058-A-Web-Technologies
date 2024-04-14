@@ -1,3 +1,5 @@
+// This code is not component Based. next thing is too make it reusable in many places
+
 import React from 'react'
 
 function ShopMenu() {
