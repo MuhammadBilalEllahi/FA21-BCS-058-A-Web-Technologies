@@ -11,6 +11,10 @@ server.use(express.json());
 server.use(express.static("public"))
 
 
+const cors = require('cors');
+server.use(cors())
+
+
 
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
 
