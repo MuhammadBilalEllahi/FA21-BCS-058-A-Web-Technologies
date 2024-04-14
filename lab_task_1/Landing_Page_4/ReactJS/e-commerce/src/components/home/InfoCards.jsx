@@ -3,14 +3,14 @@ import React from 'react'
 function InfoCards() {
   return (
     <>
-       <section class="container">
-        <div class="support container">
-            <div class="support-sec">
-                <div class="d-flex">
-                    <div class="support-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
-                            viewBox="0 0 511.414 511.414" style="enable-background:new 0 0 512 512" xml:space="preserve"
+       <section className="container">
+        <div className="support container">
+            <div className="support-sec">
+                <div className="d-flex">
+                    <div className="support-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                            xmlnsSvgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
+                            viewBox="0 0 511.414 511.414" style={{enableBackground: "new 0 0 512 512"}} xmlSpace="preserve"
                             element-id="1049">
                             <g element-id="1048">
                                 <path
@@ -19,22 +19,22 @@ function InfoCards() {
                             </g>
                         </svg>
                     </div>
-                    <div class="">
-                        <h5 class="h5-support">Free Shipping Over $50
+                    <div className="">
+                        <h5 className="h5-support">Free Shipping Over $50
                         </h5>
-                        <p class="p-support">Deliver within 24 hours
+                        <p className="p-support">Deliver within 24 hours
 
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="support-sec">
-                <div class="d-flex">
-                    <div class="support-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
-                            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            <div className="support-sec">
+                <div className="d-flex">
+                    <div className="support-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                            xmlnsSvgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
+                            viewBox="0 0 512 512" style={{enableBackground: "new 0 0 512 512"}} xmlSpace="preserve"
                             element-id="1035">
                             <g element-id="1034">
                                 <path
@@ -43,22 +43,22 @@ function InfoCards() {
                             </g>
                         </svg>
                     </div>
-                    <div class="">
-                        <h5 class="h5-support">Free Shipping Over $50
+                    <div className="">
+                        <h5 className="h5-support">Free Shipping Over $50
                         </h5>
-                        <p class="p-support">Deliver within 24 hours
+                        <p className="p-support">Deliver within 24 hours
 
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="support-sec">
-                <div class="d-flex">
-                    <div class="support-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xmlns:svgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
-                            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            <div className="support-sec">
+                <div className="d-flex">
+                    <div className="support-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                            xmlnsSvgjs="http://svgjs.com/svgjs" width="64" height="64" x="0" y="0"
+                            viewBox="0 0 512 512" style={{enableBackground: "new 0 0 512 512"}} xmlSpace="preserve"
                             element-id="1021">
                             <g element-id="1020">
                                 <path
@@ -70,10 +70,10 @@ function InfoCards() {
                             </g>
                         </svg>
                     </div>
-                    <div class="">
-                        <h5 class="h5-support">Free Shipping Over $50
+                    <div className="">
+                        <h5 className="h5-support">Free Shipping Over $50
                         </h5>
-                        <p class="p-support">Deliver within 24 hours
+                        <p className="p-support">Deliver within 24 hours
 
                         </p>
                     </div>

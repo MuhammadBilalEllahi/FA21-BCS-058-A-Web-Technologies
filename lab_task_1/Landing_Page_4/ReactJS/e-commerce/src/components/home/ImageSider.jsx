@@ -20,10 +20,10 @@ function ImageSider() {
             </div>
 
             <div className="slider-nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
-                <a href="#slide-4"></a>
+                <a href="#slide-1"> </a>
+                <a href="#slide-2"> </a>
+                <a href="#slide-3"> </a>
+                <a href="#slide-4"> </a>
             </div>
         </div>
     </section>
