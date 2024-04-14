@@ -15,7 +15,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="./public/banner-8.jpg" alt=""/>
+                            <img src="./public/home_assets/banner-8.jpg" alt=""/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>

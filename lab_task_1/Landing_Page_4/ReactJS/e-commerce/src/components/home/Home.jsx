@@ -4,7 +4,8 @@ import InfoCards from './InfoCards'
 import ShopByCategory from './ShopByCategory'
 import BestSellers from './BestSellers'
 import ImageContainer from './ImageContainer'
-
+import TwoByTwoLayout from './TwoByTwoLayout'
+import InstaBoxes from './InstaBoxes'
 function Home() {
   return (
     <>
@@ -13,7 +14,8 @@ function Home() {
       <ShopByCategory/>
       <BestSellers/>
       <ImageContainer/>
-      
+      <TwoByTwoLayout/>
+      <InstaBoxes/>
     </>
   )
 }
