@@ -16,20 +16,7 @@ function ShopByCategory() {
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
-                            <img src="/home_assets/banner/banner-10.jpg" alt="un"/>
-                        </div>
-                        <div className="description ">
-                            <h6>Furniture</h6>
-                            <p>6 products</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className="col-3">
-                    <div className="column">
-                        <div className="d-flex">
-                            <img src="/home_assets/banner/banner-9.jpg" alt=""/>
+                            <img src="/home_assets/banner/banner-9.jpg" alt="un"/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>
@@ -51,10 +38,23 @@ function ShopByCategory() {
                     </div>
                 </div>
 
+
                 <div className="col-3">
                     <div className="column">
                         <div className="d-flex">
                             <img src="/home_assets/banner/banner-8.jpg" alt=""/>
+                        </div>
+                        <div className="description ">
+                            <h6>Furniture</h6>
+                            <p>6 products</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-3">
+                    <div className="column">
+                        <div className="d-flex">
+                            <img src="/home_assets/banner/banner-10.jpg" alt=""/>
                         </div>
                         <div className="description ">
                             <h6>Furniture</h6>
