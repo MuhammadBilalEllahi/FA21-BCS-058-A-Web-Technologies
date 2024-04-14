@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 
+
+
 const ProductListing = () => {
+
+    
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -20,10 +24,12 @@ const ProductListing = () => {
             <div>
               <img
                 className="col-11"
-                src={`data:${product.p_img.contentType};base64,${product.p_img.data}`}
+                src={`data:${product.p_img.contentType};base64,${product.p_img.data.toString('base64') }`}
 
                 alt={product.p_name}
-              />
+
+                onerror={"this.src = '/public/home_assets/banner/banner-10.jpg'"}
+/>
             </div>
             <div className="p-l-prod-disp">
               <h6>{product.p_name}</h6>
