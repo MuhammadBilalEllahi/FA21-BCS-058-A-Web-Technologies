@@ -9,7 +9,7 @@ function TwoByTwoLayout() {
             <div className="row p-3 ">
 
                 <div className="col-12 ">
-                    <img className="col-12 " src="./public/banner-16.jpg" alt=""/>
+                    <img className="col-12 " src="/home_assets/banner/banner-16.jpg" alt=""/>
 
                     <div className="description2 col-12 ">
                         <h6>Mid-Century Bookshelf</h6>
@@ -26,7 +26,7 @@ function TwoByTwoLayout() {
             <div className="row p-3">
 
                 <div className="col-12 ">
-                    <img className="col-12 " src="./public/banner-16.jpg" alt=""/>
+                    <img className="col-12 " src="/home_assets/banner/banner-16.jpg" alt=""/>
 
                     <div className="description2 col-12 ">
                         <h6>Mid-Century Bookshelf</h6>
