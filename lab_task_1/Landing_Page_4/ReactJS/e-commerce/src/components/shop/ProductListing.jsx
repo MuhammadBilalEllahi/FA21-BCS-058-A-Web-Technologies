@@ -22,13 +22,14 @@ const ProductListing = () => {
   // console.log(products[3].p_img.data)
   // console.log(products[3].p_img.data.toString())
   return (
-    <div className="d-flex flex-wrap mt-2 online-products-ajax">
+    <>
       {products.length > 0 ? (
         
         products.map((product, index) => (
           
           <div key={index} className="col-3 margin-product">
             <div>
+            <ProductImage product={product}/>
               {/* <img
                 className="col-11"
                 src={`data:${product.p_img.contentType};base64,${product.p_img.data.toString('base64') }`}
@@ -37,7 +38,7 @@ const ProductListing = () => {
                 onError={ ()=> {this.src = '/home_assets/error_images/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700' }}
 
               /> */}
-              <ProductImage product={product}/>
+              
             </div>
             <div className="p-l-prod-disp">
               <h6>{product.p_name}</h6>
@@ -51,7 +52,7 @@ const ProductListing = () => {
       ) : (
         <p>No products found.</p>
       )}
-    </div>
+    </>
   );
 };
 

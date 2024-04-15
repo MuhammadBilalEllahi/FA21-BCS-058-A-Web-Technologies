@@ -29,14 +29,14 @@ const ProductImage = ({ product }) => {
   };
 
   return (
-    <div>
+    <>
       <img
         className="col-11"
         src={imageSrc}
         alt={product.p_name}
         onError={handleImageError}
       />
-    </div>
+    </>
   );
 };
 
