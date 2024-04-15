@@ -1,6 +1,5 @@
 ﻿# FA21-BCS-058-A-Web-Technologies
 
-<h1>All Vercel Deployments will be Deleted (Free Version)</h1>
 <a href="https://all-in-one-projects.netlify.app/" target="_blank">ALL Pojects on netlify</a>
 <br/><br/>
 <a href="https://ajax-exammple.netlify.app/" target="_blank">AJAX Example on netlify</a>
@@ -9,6 +8,8 @@
 <br/>
 <a href="https://main--vermillion-alpaca-fbf450.netlify.app/" target="_blank">Landing Page 2 AROUND on netlify</a>
 <br/>
+<h3>All Vercel Deployments will be Deleted (Free Version)</h3>
+<h5>Click on "ALL Pojects on netlify" to see all Deployments</h5>
 <a href="https://fa-21-bcs-058-a-web-technologies-zpcs.vercel.app/" target="_blank">Landing Page 1 on vercel</a>
 <br/>
 <a href="https://fa-21-bcs-058-a-web-technologies-9xet.vercel.app/" target="_blank">Asignment 1 on CV vercel</a>
