@@ -1,6 +1,6 @@
 ﻿# FA21-BCS-058-A-Web-Technologies
 
-
+<h1>All Vercel Deployments will be Deleted (Free Version)</h1>
 <a href="https://all-in-one-projects.netlify.app/" target="_blank">ALL Pojects on netlify</a>
 <br/><br/>
 <a href="https://ajax-exammple.netlify.app/" target="_blank">AJAX Example on netlify</a>
