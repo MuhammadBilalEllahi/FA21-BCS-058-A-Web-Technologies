@@ -1,6 +1,7 @@
 // src/components/ProductListing.js
 
 import React, { useState, useEffect } from 'react';
+import ProductImage from './ProductImage';
 
 
 
@@ -16,20 +17,27 @@ const ProductListing = () => {
       .catch((error) => console.log('Error fetching products:', error));
   }, []);
 
+
+  // console.log(products[3].p_img.contentType)
+  // console.log(products[3].p_img.data)
+  // console.log(products[3].p_img.data.toString())
   return (
     <div className="d-flex flex-wrap mt-2 online-products-ajax">
       {products.length > 0 ? (
+        
         products.map((product, index) => (
+          
           <div key={index} className="col-3 margin-product">
             <div>
-              <img
+              {/* <img
                 className="col-11"
                 src={`data:${product.p_img.contentType};base64,${product.p_img.data.toString('base64') }`}
-
                 alt={product.p_name}
+                // onerror={"this.src = '/public/home_assets/banner/banner-10.jpg'"}
+                onError={ ()=> {this.src = '/home_assets/error_images/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700' }}
 
-                onerror={"this.src = '/public/home_assets/banner/banner-10.jpg'"}
-/>
+              /> */}
+              <ProductImage product={product}/>
             </div>
             <div className="p-l-prod-disp">
               <h6>{product.p_name}</h6>

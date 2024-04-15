@@ -27,7 +27,7 @@ function ShopMenu() {
                                 <h4>Price</h4>
 
                                 <div className="p-2">
-                                    <input type="range" min="1" max="100" value="50" id="price_range" />
+                                    <input readOnly type="range" min="1" max="100" value="50" id="price_range" />
 
                                 </div>
 
@@ -43,12 +43,12 @@ function ShopMenu() {
                             <div className="row">
                                 <h4>Colors</h4>
                                 <div className="colors ">
-                                    <div className="color" style={{ "backgroundColor": "#ffffff;" }}></div>
-                                    <div className="color" style={{ "backgroundColor": "#E7D3B4;" }}></div>
-                                    <div className="color" style={{ "backgroundColor": "#292929;" }}></div>
-                                    <div className="color" style={{ "backgroundColor": "#828282;" }}></div>
-                                    <div className="color" style={{ "backgroundColor": "#303aff;" }}></div>
-                                    <div className="color" style={{ "backgroundColor": "#ead118;" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#ffffff" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#E7D3B4" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#292929" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#828282" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#303aff" }}></div>
+                                    <div className="color" style={{ "backgroundColor": "#ead118" }}></div>
 
                                 </div>
                             </div>
@@ -179,8 +179,7 @@ function ShopMenu() {
                                 <div className="col-3 margin-product">
                                     <div>
                                         <img className="col-11" src="/home_assets/products/product-18-600x655.jpg" alt=""
-                                            onerror="
-                                this.src = '/home_assets/error_images/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700' "
+                                            onError={ ()=> this.src = '/home_assets/error_images/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700' }
                                         />
                                     </div>
 
