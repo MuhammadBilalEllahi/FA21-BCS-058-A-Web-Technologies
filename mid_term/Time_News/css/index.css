@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+
+    margin: 0;
+}
+
+.nav-btn{
+color : red;
+}
+/* .nav2{
+    margin-top: 4rem;
+}
+
+.nav1{
+    position: fixed;
+    top:0;
+} */
+#task2{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.nav-btn2{
+    color : white;
+    background-color: red;
+}
+.newsletter-btn{
+    color: red;
+    font-weight: bold;
+}
+
+.main-nav{
+    margin: 0 1rem;
+}
+
+.hero-img-size{
+    height: 20rem;
+}
+
+.hero2-img{
+    height: 11rem;
+}
+
+.line-h{
+    line-height: 1rem;
+}
+.hero2 h5{
+
+}
+
+.min-read{
+    font-size: .75rem ;
+    font-weight: bold;
+}
+.line-h2{
+    line-height: .4rem;
+}
+
+
+.shop-by-category{
+    padding: 5%;
+}
+
+
+.description{
+    margin-top: 1rem;
+}
+.description h6{
+    font-weight: bold;
+}
+
+.description p{
+    font-weight: lighter;
+    color: #a1a1a1;
+    font-size: .84rem;
+}
+
+.should-know{
+    margin-right: 2rem;
+    position: relative;
+}
+
+.should-know-img{
+    width: 18rem;
+}
+
+.should-know h3{
+    margin-top: 1rem;
+    font-size: .75rem;
+}
+.should-know button {
+    /* height: 1rem; */
+    font-size: .6rem;
+}
+
+.should-know-content{
+    margin: 0 1rem;
+    line-height: 2rem;
+    position: absolute;
+    bottom: 0
+}
+.mrg-l{
+    padding-right: .2rem;
+    font-size: 1rem;
+}
+
+.hero3-img{
+    height: 13rem;
+}
+
+.bg-r{
+    background-image: radial-gradient(circle at 96% 96%,#1a0a23,#0d1727 43%,#121212 73%);;
+}

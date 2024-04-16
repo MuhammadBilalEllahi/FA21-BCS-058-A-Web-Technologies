@@ -1,0 +1,79 @@
+.error{
+    border: 1px solid red;
+    background-color: rgb(246, 98, 98);
+}
+
+.success{
+    border: 1px solid green;
+    background-color: rgb(138, 255, 138);
+}
+
+
+
+
+
+input{
+    width: 100%;
+    border: 1px solid grey;
+    margin-top: 2% !important;
+    /* flex-basis: 48%; */
+    border-radius: 25%;
+}
+input:nth-child(1){
+    margin-right: 1% !important;
+}
+
+
+.border-red{
+    border: 1px solid red !important;
+}
+
+.hr-line{
+    width: 5%;
+    border: 2px solid black;
+    height: fit-content;
+
+  
+}
+
+.bg-whitish{
+    background-color: #DBEFFE;
+}
+
+
+
+#response{
+    visibility: hidden;
+    /* background-color: #333; */
+    position: fixed;
+    min-width: 250px;
+    text-align: center;
+    border-radius: 2px;
+    right: 150px;
+    bottom: 80px;
+
+}
+.show{
+    visibility: visible !important;
+    animation: fadein .5s , fadeout 0.5s 2.5s ;
+}
+@keyframes fadein {
+    from { right: 0; opacity: 0;}
+    to { right: 150px; opacity: 1;}
+    
+ }
+ 
+ @keyframes fadeout {
+     from { bottom: 80px; opacity: 1;}
+     to { bottom: 0; opacity: 0;}
+ }
+/* @keyframes fadein {
+   from { bottom: 0; opacity: 0;}
+   to { bottom: 80px; opacity: 1;}
+   
+}
+
+@keyframes fadeout {
+    from { bottom: 80px; opacity: 1;}
+    to { bottom: 0; opacity: 0;}
+} */
