@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+
+// components
+import NavBar from "./component/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,15 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
 
-        <nav className=" flex ">
-          <h3>Shop</h3>
-
-          <Link href="/">Home</Link>
-          <Link href="/tickets">Tickets</Link>
-
-
-          <h1>Data from Layout can be seen in every dependent PAge</h1>
-        </nav>
+        <NavBar/>
 
 
         {children}</body>
