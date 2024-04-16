@@ -1,11 +1,11 @@
 import React from 'react'
 
-function News() {
+function Tickets() {
   return (
     <div>
-      News
+      Tickets
     </div>
   )
 }
 
-export default News
+export default Tickets
