@@ -11,6 +11,8 @@ export default function NavBar() {
 
           <Link className="links" href="/">Home</Link>
           <Link className="links" href="/products">Products</Link>
+          <Link className="links" href="/products/create">Create</Link>
+          
 
 
           {/* <h1>Data from Layout can be seen in every dependent PAge</h1> */}
