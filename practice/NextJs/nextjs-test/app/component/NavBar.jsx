@@ -16,9 +16,9 @@ export default function NavBar() {
           {/* <h1>Data from Layout can be seen in every dependent PAge</h1> */}
         </nav>
         <h3>All Products are &quot;This will not Load this is outside of static&quot;</h3>
-        <Suspense fallback={<Loading/>}>
+        {/* <Suspense fallback={<Loading/>}>
             <Products/>
-        </Suspense>
+        </Suspense> */}
     </>
   )
 }
