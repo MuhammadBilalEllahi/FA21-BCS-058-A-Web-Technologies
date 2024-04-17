@@ -20,3 +20,5 @@ export default async function ProductUnit({params}) {
     </div>
   )
 }
+// Dynamic rendering: fetch data at request time when page loads. This is useful when the data changes frequently.
+// Static rendering: fetch data at build time. This is useful when the data does not change often and can be generated at build time.
