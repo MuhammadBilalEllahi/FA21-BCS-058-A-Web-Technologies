@@ -5,7 +5,8 @@ import React from 'react'
 async function getData(){
   const res = await fetch("http://localhost:2211/api/products", {
     next:{
-      revalidate: 30 // if web "visit"(not while being on page) after 30 sec then  refecth //BAD APPROACH I THINK
+      revalidate: 0 // if web "visit"(not while being on page) after 30 sec then  refecth //BAD APPROACH I THINK
+      // 0 to opt out of cache
     }
   })
   return res.json()
