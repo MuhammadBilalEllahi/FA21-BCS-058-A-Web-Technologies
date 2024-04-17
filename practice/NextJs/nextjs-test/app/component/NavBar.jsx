@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Link from "next/link";
+import Loading from '../loading';
+import Products from '../products/page';
 
 export default function NavBar() {
   return (
@@ -13,6 +15,10 @@ export default function NavBar() {
 
           {/* <h1>Data from Layout can be seen in every dependent PAge</h1> */}
         </nav>
+        <h3>All Products are</h3>
+        <Suspense fallback={<Loading/>}>
+            <Products/>
+        </Suspense>
     </>
   )
 }

@@ -15,6 +15,7 @@ export async function generateStaticParams(){
 // To make this static 
 
 async function getData(id){
+    await new Promise(resolve => setTimeout(resolve,3000))
     const res = await fetch(`http://localhost:2211/api/products/${id}`)
     if(!res.ok){
         notFound()

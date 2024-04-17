@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
-import { resolve } from 'styled-jsx/css';
+import React, { Suspense } from 'react'
+import Loading from '../loading';
+
 
 
 
@@ -35,8 +36,10 @@ export default  async function Products() {
   console.log(products)
   
   return (
+    <>
     
     <div className=' flex flex-wrap'>
+      
     {products.map(
       (product) =>(
         
@@ -62,6 +65,7 @@ export default  async function Products() {
     )}
     
     </div>
+    </>
   )
 }
 
