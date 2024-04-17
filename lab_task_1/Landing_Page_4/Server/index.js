@@ -31,3 +31,10 @@ const crud = require("./routes/crud.js")
 server.use("/api",crud)
 
 
+server.get("*", async function (req, res) {
+    
+    res.send("Page Not Found")
+})
+
+
+
