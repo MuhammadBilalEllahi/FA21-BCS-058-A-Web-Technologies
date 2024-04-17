@@ -1,5 +1,5 @@
 const express = require("express");
-const crud = express();
+const crud = express.Router();
 let Products = require("../models/Products.js")
 // const fs = require("fs").promises;
 const { db } = require("../connection.js")
