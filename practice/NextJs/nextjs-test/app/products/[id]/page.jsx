@@ -15,7 +15,8 @@ export default async function ProductUnit({params}) {
     // 6619a5422a7bfba1201ef8ce use as id
   return (
     <div>
-      {products.p_name}
+      <h1>{products.p_name}</h1>
+      <p>{products.p_orig_price}$</p>
     </div>
   )
 }

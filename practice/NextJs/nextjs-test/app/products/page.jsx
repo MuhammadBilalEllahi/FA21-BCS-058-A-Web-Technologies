@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 
@@ -25,10 +26,13 @@ export default  async function Products() {
     <>
     {products.map(
       (product) =>(
+        
         <div key={product._id}>
+          <Link href={`/products/${product._id}`}>
           <h1 >{product.p_name}</h1>
-          
+          </Link>
         </div>
+        
     )
     )}
     </>
