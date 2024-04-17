@@ -41,6 +41,7 @@ export default  async function Products() {
         <div key={product._id} className=' w-60 m-2 p-2 border-teal-400 border'>
           <Link href={`/products/${product._id}`}>
             <Image 
+            className=' w-full p-2'
             src={`data: ${product.p_img.contentType};base64,${ Buffer.from(product.p_img.data).toString('base64')}`}
             // `data: ${product.p_img.contentType};base64,${ product.p_img.data.toString('base64')}`
                         // Buffer.from(product.p_img.data).toString('base64')
