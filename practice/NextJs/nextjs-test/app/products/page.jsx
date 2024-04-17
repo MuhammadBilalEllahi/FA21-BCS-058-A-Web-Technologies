@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { resolve } from 'styled-jsx/css';
 
 
 
@@ -9,6 +10,7 @@ import React from 'react'
 
 
 async function getData(){
+  await new Promise(resolve => setTimeout(resolve,3000))
   const res = await fetch("http://localhost:2211/api/products", {
     next:{
       revalidate: 60 //if zero  then generateStaticParams is redundent
