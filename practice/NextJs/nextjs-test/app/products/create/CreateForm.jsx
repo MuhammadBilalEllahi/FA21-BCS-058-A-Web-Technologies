@@ -3,23 +3,23 @@
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
-
-function stringify(obj) {
-    let cache = [];
-    let str = JSON.stringify(obj, function(key, value) {
-      if (typeof value === "object" && value !== null) {
-        if (cache.indexOf(value) !== -1) {
-          // Circular reference found, discard key
-          return;
-        }
-        // Store value in our collection
-        cache.push(value);
-      }
-      return value;
-    });
-    cache = null; // reset the cache
-    return str;
-  }
+// This function was created to solce circular reference problem but later on it was resolved by corrected Product Json
+// function stringify(obj) {
+//     let cache = [];
+//     let str = JSON.stringify(obj, function(key, value) {
+//       if (typeof value === "object" && value !== null) {
+//         if (cache.indexOf(value) !== -1) {
+//           // Circular reference found, discard key
+//           return;
+//         }
+//         // Store value in our collection
+//         cache.push(value);
+//       }
+//       return value;
+//     });
+//     cache = null; // reset the cache
+//     return str;
+//   }
 
 export default function CreateForm() {
     const router = useRouter()
@@ -67,8 +67,9 @@ export default function CreateForm() {
             });
 
             if (res.status === 201) {
-                router.push("/products");
                 router.refresh()
+                router.push("/products");
+                
             } else {
                 console.error("Failed to submit product. Server responded with status:", res.status);
             }
