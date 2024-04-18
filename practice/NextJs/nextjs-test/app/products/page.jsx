@@ -11,7 +11,7 @@ import Loading from '../loading';
 
 
 async function getData(){
-  await new Promise(resolve => setTimeout(resolve,3000))
+  // await new Promise(resolve => setTimeout(resolve,3000))
   const res = await fetch("http://localhost:2211/api/products", {
     next:{
       revalidate: 60 //if zero  then generateStaticParams is redundent
@@ -48,8 +48,9 @@ export default  async function Products() {
             <Image 
             className=' w-full p-2'
             src={`data: ${product.p_img.contentType};base64,${ Buffer.from(product.p_img.data).toString('base64')}`}
-            // `data: ${product.p_img.contentType};base64,${ product.p_img.data.toString('base64')}`
-                        // Buffer.from(product.p_img.data).toString('base64')
+              
+            // onError={(e)=>{e.target.src ="/product-9-1-600x655.jpg"}}
+            
             alt={product.p_name}
             width={200}
             height={200}

@@ -1,12 +1,14 @@
-"use client" //now this is client js
-import React from 'react'
-
 // Hydration 
 
-export default function CreateForm() {
+import CreateForm from "./CreateForm";
+
+export default function CreateFormPage() {
+
+
   return (
-    <div>
-      Form
-    </div>
+   <>
+   <h1 className='text-3xl font-bold underline bg-red-500 text-white'>Add Products</h1>
+   <CreateForm/>
+   </>
   )
 }
