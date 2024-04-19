@@ -27,11 +27,15 @@ server.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
 
 
-const user = require("./routes/user.js")
-server.use("/",user)
+// const user = require("./routes/user.js")
+// server.use("/",user)
 
-const crud = require("./routes/crud.js")
-server.use("/api",crud)
+// const crud = require("./routes/crud.js")
+// server.use("/api",crud)
+
+// Better make modules thus, 
+const apiRouter = require("./routes/routes.js")
+server.use(apiRouter)
 
 
 server.get("*", async function (req, res) {
