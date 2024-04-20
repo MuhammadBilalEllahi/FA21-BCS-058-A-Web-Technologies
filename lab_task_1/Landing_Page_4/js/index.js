@@ -36,3 +36,7 @@ range.addEventListener('input', function() {
     priceTo.textContent = this.value;
 });
 
+
+
+
+
