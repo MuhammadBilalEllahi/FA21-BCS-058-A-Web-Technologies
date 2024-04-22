@@ -33,11 +33,9 @@
                 <h5 class="nav-logo">Wooden</h5>
 
                 <ul class="nav-ul">
-                    <li class="nav-li"><a href="./index.html">Home</a> </li>
-                    <li class="nav-li"><a
-                            href="./standard-shop.html">Shop</a> </li>
-                    <li
-                        class="nav-li"> <a href="#Products">Products</a> </li>
+                    <li id="home" class="nav-li"><a href="./index.html">Home</a> </li>
+                    <li id="shop" class="nav-li"><a href="./standard-shop.html">Shop</a> </li>
+                    <li class="nav-li"> <a href="#Products">Products</a> </li>
                     <li class="nav-li"> <a href="#Blog">Blog</a> </li>
                     <li class="nav-li"> <a href="#Page">Page</a> </li>
                 </ul>
@@ -598,7 +596,12 @@
         {
           element: document.querySelector('.introjs'),
           intro: 'This is Carousal'
-        }]
+        }],
+
+        hints: [
+        { hint: 'First hint', element: '#home' },
+        { hint: 'Second hint', element: '#shop', hintAnimation: false }
+    ]
       }).setOption("dontShowAgain", true).start();
 </script>
 
