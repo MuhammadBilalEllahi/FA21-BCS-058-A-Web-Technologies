@@ -50,7 +50,7 @@
     </nav>
 
 
-    <section id="backToTop" class="hero-container">
+    <section id="backToTop" class="hero-container introjs">
         <div class="slider-wrapper">
 
             <div class="slider">
@@ -77,8 +77,8 @@
 
 
     <section class="container">
-        <div class="support container">
-            <div class="support-sec">
+        <div class="support container ">
+            <div class="support-sec ">
                 <div class="d-flex">
                     <div class="support-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -93,7 +93,7 @@
                         </svg>
                     </div>
                     <div class="">
-                        <h5 class="h5-support">Free Shipping Over $50
+                        <h5 class="h5-support ">Free Shipping Over $50
                         </h5>
                         <p class="p-support">Deliver within 24 hours
 
@@ -551,7 +551,30 @@
         crossorigin="anonymous"></script>
 
 
-
+        <!-- IntroJs CDN -->
+        <script
+        src="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js"></script>
+        <link
+        href="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/minified/introjs.min.css"
+        rel="stylesheet">
+        <!-- IntroJs CDN -->
 </body>
+
+
+<script>
+    introJs().setOptions({
+        steps: [{
+          title: 'Welcome',
+          intro: 'Hello User! 👋'
+        },
+        {
+          intro: '<img src="https://i.giphy.com/media/ujUdrdpX7Ok5W/giphy.webp" onerror="this.onerror=null;this.src=\'https://i.giphy.com/ujUdrdpX7Ok5W.gif\';" alt="">'
+        },
+        {
+          element: document.querySelector('.introjs'),
+          intro: 'This is Carousal'
+        }]
+      }).start();
+</script>
 
 </html>
