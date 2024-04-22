@@ -23,7 +23,7 @@
     <body>
 
         <div class="quote container-fluid">
-            <a href="#" data-intro='Hello step one!'> Quick sale: 20% off
+            <a href="#" data-title="Discount!" data-intro='Discount For Only You'> Quick sale: 20% off
                 products purchased today </a>
 
         </div>
@@ -67,8 +67,8 @@
             <div class="container d-flex justify-content-between">
                 <ul class="nav-ul">
 
-                    <li class><a href="./index.html">Home</a> </li>
-                    <li class><a href="./standard-shop.html">Shop</a> </li>
+                    <li class><a data-title="Home!" data-intro="Click Here for Home!" href="./index.html">Home</a> </li>
+                    <li class><a data-title="Farewell!" data-intro="And this is the last step!" href="./standard-shop.html">Shop</a> </li>
                     <li class> <a href="#Products">Products</a> </li>
                     <li class> <a href="#Blog">Blog</a> </li>
                     <li class> <a href="#Page">Page</a> </li>
@@ -232,16 +232,16 @@
                             <option value>Display</option>
                         </div>
 
-                        <div class="d-flex flex-wrap mt-2 online-products-ajax">
+                        <div class="d-flex flex-wrap mt-2 online-products-ajax" data-title="Our Products!" data-intro='Check All'>
 
-                            <div class="col-3 margin-product">
-                                <div>
+                            <div class="col-3 margin-product" data-title="Product" data-intro='Admire the Product'>
+                                <div data-title="Product Image" data-intro='Admire the Image'>
                                     <img class="col-11"
                                         src="./public/product-2-600x655.jpg"
                                         alt>
                                 </div>
 
-                                <div class="p-l-prod-disp">
+                                <div data-title="Product Pricing" data-intro='Price now less costly' class="p-l-prod-disp">
                                     <h6>Upholstered Double Bed</h6>
                                     <p><strike>200.00$</strike>
                                         <span>116.00$</span></p>
@@ -412,14 +412,27 @@
         rel="stylesheet">
 
     <script defer>
-    introJs().start();
 
-    introJs().setOptions({
+   /* introJs().setOptions({
         steps: [{
             title: "This is Intro",
             intro: "Welcome Back"
-        }]}
+        },
+        {
+            element: document.querySelector(".online-products-ajax"),
+            intro: "This is the first Product"
+        }
+
+        ]}
     ).start()
+*/
+    //introJs(".online-products-ajax").start();
+
+
+
+    introJs().start()
+
+
     </script>
 
 </html>
