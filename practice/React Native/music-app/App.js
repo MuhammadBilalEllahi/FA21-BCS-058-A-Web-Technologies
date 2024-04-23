@@ -5,11 +5,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>I am using Text</Text>
-      <TouchableHighlight onPress={() => this._onPressButton('http://www.someurl.com')}>
-      <Text>
-            Start
+      <TouchableHighlight
+        style={styles.button}
+        onPress={() => this._onPressButton('http://www.someurl.com')}>
+        <Text style={styles.buttonText} >
+          Start
         </Text>
-        </TouchableHighlight>
+      </TouchableHighlight>
       <StatusBar style="auto" />
     </View>
   );
@@ -22,4 +24,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    backgroundColor: "#f3f3",
+    color: "red",
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    backgroundColor: 'black',
+    padding: 10,
+    borderRadius: 5,
+  }
+
 });
