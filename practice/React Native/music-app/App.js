@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+
+const AnImage = require("./assets/favicon.png")
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>I am using Text</Text>
+
+      <Image 
+      source={AnImage}
+      ></Image>
+
+      
       <TouchableHighlight
         style={styles.button}
         onPress={() => this._onPressButton('http://www.someurl.com')}>
@@ -20,7 +28,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#25292e',
     alignItems: 'center',
     justifyContent: 'center',
   },
