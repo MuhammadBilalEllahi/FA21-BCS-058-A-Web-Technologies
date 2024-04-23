@@ -16,6 +16,7 @@ export default function TextButton({ label ,theme}) {
                     color="#25292e"
                     style={styles.buttonIcon}
                 />
+                
                 <Text style={styles.buttonLabel}>
                     {label}
                 </Text>
