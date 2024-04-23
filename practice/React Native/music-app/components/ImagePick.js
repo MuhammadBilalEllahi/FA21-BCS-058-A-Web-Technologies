@@ -10,6 +10,12 @@ export default function ImagePick() {
       }
       
     )
+
+    if(!res.canceled){
+      console.log(res)
+    }else{
+      alert("Image Not Pick")
+    }
   }
   
 }

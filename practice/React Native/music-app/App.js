@@ -1,12 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, Pressable, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import {  Pressable, StyleSheet, View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
+import * as ImagePicker from 'expo-image-picker';
+
 
 const AnImage = require("./assets/sample.jpg")
 // const textLabel = "Click Here"
 
 export default function App() {
+  const pickImageAsset = async ()=>{
+    let res = await ImagePicker.launchImageLibraryAsync(
+      {
+        allowEditing: true,
+        quality: 1
+      }
+      
+    )
+  
+    if(!res.canceled){
+      console.log(res)
+    }else{
+      alert("Image Not Pick")
+    }
+  }
+
+  
   return (
     <View style={styles.container}>
       {/* <Text>I am using Text</Text> */}
@@ -35,7 +54,7 @@ export default function App() {
       </TouchableHighlight> */}
 
       <View style={styles.footerContainer}>
-      <TextButton theme="primary"  label={"Choose a Photo"}></TextButton>
+      <TextButton onPress={pickImageAsset} theme="primary"  label={"Choose a Photo"}></TextButton>
       <TextButton label={"Use this Photo"}></TextButton>
       
       </View>
@@ -44,6 +63,7 @@ export default function App() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
