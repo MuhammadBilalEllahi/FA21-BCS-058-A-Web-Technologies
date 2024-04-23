@@ -4,7 +4,7 @@ import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
 
 const AnImage = require("./assets/sample.jpg")
-const textLabel = "Click Here"
+// const textLabel = "Click Here"
 
 export default function App() {
   return (
@@ -34,7 +34,10 @@ export default function App() {
         </Text>
       </TouchableHighlight> */}
 
-      <TextButton label={textLabel}></TextButton>
+      <View style={styles.footerContainer}>
+      <TextButton label={"Use this Photo"}></TextButton>
+      <TextButton label={"Choose a Photo"}></TextButton>
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -68,6 +71,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     // display: "absolute",
     // top: 0,
-  }
-
+  },
+  footerContainer: {
+    flex: 1 / 3,
+    alignItems: 'center',
+    marginTop: 20
+  },
 });
