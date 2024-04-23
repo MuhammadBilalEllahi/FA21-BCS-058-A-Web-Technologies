@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, Pressable, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
+import TextButton from './components/TextButton';
 
 const AnImage = require("./assets/adaptive-icon.png")
+const textLabel = "Click Here"
 
 export default function App() {
   return (
@@ -24,13 +26,16 @@ export default function App() {
 
 
 
-      <TouchableHighlight
+      {/* <TouchableHighlight
         style={styles.button}
         onPress={() => console.log('http://www.someurl.com')}>
         <Text style={styles.buttonText} >
           Start
         </Text>
-      </TouchableHighlight>
+      </TouchableHighlight> */}
+
+      <TextButton label={textLabel}></TextButton>
+
       <StatusBar style="auto" />
     </View>
   );
