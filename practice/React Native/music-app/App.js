@@ -1,18 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import ImageViewer from './components/ImageViewer';
 
-const AnImage = require("./assets/favicon.png")
+const AnImage = require("./assets/adaptive-icon.png")
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>I am using Text</Text>
 
-      <Image 
+      {/* <Image 
       source={AnImage}
-      ></Image>
+      style={styles.image}
+      ></Image> */}
 
-      
+
+      <ImageViewer imageSrc={AnImage}></ImageViewer>
+
       <TouchableHighlight
         style={styles.button}
         onPress={() => this._onPressButton('http://www.someurl.com')}>
@@ -31,6 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#25292e',
     alignItems: 'center',
     justifyContent: 'center',
+    // position: "relative"
   },
   button: {
     backgroundColor: "#f3f3",
@@ -43,6 +48,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 10,
     borderRadius: 5,
+  },
+
+  image:{
+    width: 200,
+    height: 300,
+    borderRadius: 50,
+    // display: "absolute",
+    // top: 0,
   }
 
 });
