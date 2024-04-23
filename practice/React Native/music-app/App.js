@@ -14,9 +14,11 @@ export default function App() {
       style={styles.image}
       ></Image> */}
 
+      <View>
 
       <ImageViewer imageSrc={AnImage}></ImageViewer>
 
+      </View>
       <TouchableHighlight
         style={styles.button}
         onPress={() => this._onPressButton('http://www.someurl.com')}>
