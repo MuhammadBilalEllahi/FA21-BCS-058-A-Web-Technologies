@@ -3,13 +3,13 @@ import { Image, Pressable, StyleSheet, Text, TouchableHighlight, View } from 're
 import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
 
-const AnImage = require("./assets/adaptive-icon.png")
+const AnImage = require("./assets/sample.jpg")
 const textLabel = "Click Here"
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>I am using Text</Text>
+      {/* <Text>I am using Text</Text> */}
 
       {/* <Image 
       source={AnImage}
