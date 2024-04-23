@@ -1,10 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>I am using Text</Text>
+      <TouchableHighlight onPress={() => this._onPressButton('http://www.someurl.com')}>
+      <Text>
+            Start
+        </Text>
+        </TouchableHighlight>
       <StatusBar style="auto" />
     </View>
   );
