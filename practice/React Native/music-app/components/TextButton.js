@@ -4,9 +4,9 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function TextButton({ label ,theme}) {
     return (
-        theme="primary"?  <View styles={[styles.buttonContainer, { borderWidth: 4, borderColor: "#ffd33d", borderRadius: 18 }]}>
+        theme==="primary" ?  <View style={[styles.buttonContainer, { borderWidth: 4, borderColor: "#ffd33d", borderRadius: 18 }]}>
             <Pressable
-                styles={[styles.button, , { backgroundColor: "#fff" }]}
+                style={[styles.button, ]}
                 onPress={() => { console.log("Pressable button") }}
 
             >
