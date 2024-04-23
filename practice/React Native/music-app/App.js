@@ -35,7 +35,7 @@ export default function App() {
       </TouchableHighlight> */}
 
       <View style={styles.footerContainer}>
-      <TextButton label={"Use this Photo"}></TextButton>
+      <TextButton theme="primary" label={"Use this Photo"}></TextButton>
       <TextButton label={"Choose a Photo"}></TextButton>
       </View>
 
