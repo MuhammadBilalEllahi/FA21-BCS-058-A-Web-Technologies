@@ -3,12 +3,22 @@ import {  Pressable, StyleSheet, View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
 import * as ImagePicker from "expo-image-picker"
+import { useState } from 'react';
 
 
 const AnImage = require("./assets/sample.jpg")
 // const textLabel = "Click Here"
 
 export default function App() {
+  
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+
+
+
+
+
 
   
   const pickImageAsync = async () => {
@@ -18,6 +28,7 @@ export default function App() {
     });
 
     if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
       console.log(result);
     } else {
       alert('You did not select any image.');
@@ -37,7 +48,12 @@ export default function App() {
       <View>
 
       <Pressable onPress={()=>{console.log("From Pressable ")}}>
-      <ImageViewer imageSrc={AnImage}></ImageViewer>
+
+      <ImageViewer
+          placeholderImageSource={AnImage}
+          selectedImage={selectedImage}
+        />
+      {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
       </Pressable>
 
       </View>
