@@ -4,6 +4,7 @@ import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
 import * as ImagePicker from "expo-image-picker"
 import { useState } from 'react';
+import CircleButton from './components/CircleButton';
 
 
 const AnImage = require("./assets/sample.jpg")
@@ -16,7 +17,17 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
 
 
+  const onReset = () => {
+    setShowAppOptions(false);
+  };
 
+  const onAddSticker = () => {
+    
+  };
+
+  const onSaveImageAsync = async () => {
+    
+  };
 
 
 
@@ -71,7 +82,9 @@ export default function App() {
       </TouchableHighlight> */}
 
       {showAppOptions ? (
-        <View/>
+        <View>
+        <CircleButton onPress={onAddSticker}/>
+        </View>
       ):(
 
       <View style={styles.footerContainer}>
