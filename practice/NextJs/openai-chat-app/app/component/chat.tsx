@@ -6,7 +6,7 @@ export default function MyComponent() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
  
   return (
-    <div>
+    <div className=' flex-col'>
       <ul>
         {messages.map((m, index) => (
           <li key={index}>
@@ -21,7 +21,7 @@ export default function MyComponent() {
           Say something...
           <input value={input} onChange={handleInputChange} />
         </label>
-        <button type="submit">Send</button>
+        <button type="submit">Sdsend</button>
       </form>
     </div>
   );

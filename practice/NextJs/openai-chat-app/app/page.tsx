@@ -1,4 +1,4 @@
-import Chat from '../component/chat';
+import Chat from './component/chat';
  
 export const dynamic = 'force-dynamic';
  
