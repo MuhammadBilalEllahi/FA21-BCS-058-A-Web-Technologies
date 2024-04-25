@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import {  Pressable, StyleSheet, View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
-// import * as ImagePicker from "expo-image-picker"
+import * as ImagePicker from "expo-image-picker"
 
 
 const AnImage = require("./assets/sample.jpg")
@@ -11,18 +11,18 @@ const AnImage = require("./assets/sample.jpg")
 export default function App() {
 
   
-  // const pickImageAsync = async () => {
-  //   let result = await ImagePicker.launchImageLibraryAsync({
-  //     allowsEditing: true,
-  //     quality: 1,
-  //   });
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      quality: 1,
+    });
 
-  //   if (!result.canceled) {
-  //     console.log(result);
-  //   } else {
-  //     alert('You did not select any image.');
-  //   }
-  // };
+    if (!result.canceled) {
+      console.log(result);
+    } else {
+      alert('You did not select any image.');
+    }
+  };
 
   
   return (
@@ -52,8 +52,9 @@ export default function App() {
         </Text>
       </TouchableHighlight> */}
 
-      <View style={styles.footerContainer}>
-      <TextButton  theme="primary"  label={"Choose a Photo"}></TextButton>
+      <View style={styles.footerContainer}> 
+      <TextButton onPress={pickImageAsync}  theme="primary"  label={"Choose a Photo"}></TextButton>
+      
       <TextButton label={"Use this Photo"}></TextButton>
       
       </View>
