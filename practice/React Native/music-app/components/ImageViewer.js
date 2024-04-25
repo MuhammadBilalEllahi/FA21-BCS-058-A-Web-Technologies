@@ -2,9 +2,12 @@ import React from 'react'
 import { Image, StyleSheet } from 'react-native'
 
 export default function ImageViewer({imageSrc, placeholderImageSource}) {
+    // console.log(imageSrc)
 
     const imageSource = imageSrc  ? { uri: imageSrc } : placeholderImageSource;
-
+    // console.log("STARTS HERE ")
+    // console.log(imageSource)
+    // console.log(" ENDS HERE")
   return (
    
    <Image 

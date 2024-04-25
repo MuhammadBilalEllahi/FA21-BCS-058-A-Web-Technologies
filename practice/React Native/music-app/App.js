@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {  Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import ImageViewer from './components/ImageViewer';
 import TextButton from './components/TextButton';
 import * as ImagePicker from "expo-image-picker"
@@ -10,9 +10,10 @@ const AnImage = require("./assets/sample.jpg")
 // const textLabel = "Click Here"
 
 export default function App() {
-  
+
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showAppOptions, setShowAppOptions] = useState(false);
 
 
 
@@ -20,7 +21,7 @@ export default function App() {
 
 
 
-  
+
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -29,13 +30,14 @@ export default function App() {
 
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
       console.log(result);
     } else {
       alert('You did not select any image.');
     }
   };
 
-  
+
   return (
     <View style={styles.container}>
       {/* <Text>I am using Text</Text> */}
@@ -47,14 +49,14 @@ export default function App() {
 
       <View>
 
-      <Pressable onPress={()=>{console.log("From Pressable ")}}>
+        <Pressable onPress={() => { console.log("From Pressable ") }}>
 
-      <ImageViewer
-          placeholderImageSource={AnImage}
-          imageSrc={selectedImage}
-        />
-      {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
-      </Pressable>
+          <ImageViewer
+            placeholderImageSource={AnImage}
+            imageSrc={selectedImage}
+          />
+          {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
+        </Pressable>
 
       </View>
 
@@ -68,12 +70,16 @@ export default function App() {
         </Text>
       </TouchableHighlight> */}
 
-      <View style={styles.footerContainer}> 
-      <TextButton onPress={pickImageAsync}  theme="primary"  label={"Choose a Photo"}></TextButton>
-      
-      <TextButton label={"Use this Photo"}></TextButton>
-      
+      {showAppOptions ? (
+        <View/>
+      ):(
+
+      <View style={styles.footerContainer}>
+        <TextButton label={"Choose a Photo"} onPress={pickImageAsync} theme="primary" ></TextButton>
+        <TextButton label={"Use this Photo"} onPress={() => { setShowAppOptions(true) }} ></TextButton>
       </View>
+      
+      )}
 
       <StatusBar style="auto" />
     </View>
@@ -102,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-  image:{
+  image: {
     width: 200,
     height: 300,
     borderRadius: 50,

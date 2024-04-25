@@ -25,7 +25,7 @@ export default function TextButton({ label ,theme, onPress}) {
             </Pressable>
         </View> :
          <View style={styles.buttonContainer}>
-         <Pressable style={styles.button} onPress={() => alert('You pressed a button.')}>
+         <Pressable onPress={onPress} style={styles.button} >
            <Text style={styles.buttonLabel}>{label}</Text>
          </Pressable>
        </View>
