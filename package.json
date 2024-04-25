@@ -9,6 +9,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.2"
+        "ai": "^3.0.31",
+        "express": "^4.17.2",
+        "openai": "^4.38.5"
     }
 }
