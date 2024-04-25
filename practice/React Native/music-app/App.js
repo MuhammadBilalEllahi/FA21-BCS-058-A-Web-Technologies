@@ -51,7 +51,7 @@ export default function App() {
 
       <ImageViewer
           placeholderImageSource={AnImage}
-          selectedImage={selectedImage}
+          imageSrc={selectedImage}
         />
       {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
       </Pressable>
