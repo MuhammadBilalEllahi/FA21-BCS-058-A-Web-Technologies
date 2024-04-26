@@ -8,6 +8,7 @@ import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
 import EmojiPicker from './components/models/EmojiPicker';
 import EmojiList from './components/models/EmojiList';
+import EmojiSticker from './components/models/EmojiSticker';
 
 
 const AnImage = require("./assets/sample.jpg")
@@ -76,6 +77,8 @@ export default function App() {
             placeholderImageSource={AnImage}
             imageSrc={selectedImage}
           />
+                  {pickedEmoji && <EmojiSticker  imageSize={40} stickerSource={pickedEmoji} />}
+
           {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
         </Pressable>
 
