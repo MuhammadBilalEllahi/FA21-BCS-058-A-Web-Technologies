@@ -5,6 +5,9 @@ import TextButton from './components/TextButton';
 import * as ImagePicker from "expo-image-picker"
 import { useState } from 'react';
 import CircleButton from './components/CircleButton';
+import IconButton from './components/IconButton';
+import EmojiPicker from './components/models/EmojiPicker';
+import EmojiList from './components/models/EmojiList';
 
 
 const AnImage = require("./assets/sample.jpg")
@@ -15,18 +18,25 @@ export default function App() {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
+  
 
   const onReset = () => {
     setShowAppOptions(false);
   };
 
   const onAddSticker = () => {
-    
+      setIsModalVisible(true)
   };
 
+  const onModalClose = ()=>{
+    setIsModalVisible(false);
+  }
+
   const onSaveImageAsync = async () => {
-    
+
   };
 
 
@@ -82,17 +92,27 @@ export default function App() {
       </TouchableHighlight> */}
 
       {showAppOptions ? (
-        <View>
-        <CircleButton onPress={onAddSticker}/>
-        </View>
-      ):(
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
 
-      <View style={styles.footerContainer}>
-        <TextButton label={"Choose a Photo"} onPress={pickImageAsync} theme="primary" ></TextButton>
-        <TextButton label={"Use this Photo"} onPress={() => { setShowAppOptions(true) }} ></TextButton>
-      </View>
-      
+            <IconButton label={"Reset"} icon={"refresh"} onPress={onReset}/>
+            <CircleButton onPress={onAddSticker} />
+            <IconButton label={"Save"} icon={"save-alt"} onPress={onSaveImageAsync} />
+
+          </View>
+        </View>
+      ) : (
+
+        <View style={styles.footerContainer}>
+          <TextButton label={"Choose a Photo"} onPress={pickImageAsync} theme="primary" ></TextButton>
+          <TextButton label={"Use this Photo"} onPress={() => { setShowAppOptions(true) }} ></TextButton>
+        </View>
+
       )}
+
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose}/>
+         </EmojiPicker>
 
       <StatusBar style="auto" />
     </View>
@@ -132,5 +152,13 @@ const styles = StyleSheet.create({
     flex: 1 / 3,
     alignItems: 'center',
     marginTop: 20
+  },
+  optionsContainer: {
+    position: 'absolute',
+    bottom: 80,
+  },
+  optionsRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
