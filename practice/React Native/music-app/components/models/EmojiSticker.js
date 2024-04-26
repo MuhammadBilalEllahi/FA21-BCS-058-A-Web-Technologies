@@ -2,8 +2,11 @@ import { View, Image } from 'react-native'
 import React from 'react'
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
+
+    // let val = -1 * (Math.floor(Math.random() * 400))
+    val = -320
   return (
-    <View style={{ top: -350 }}>
+    <View style={{ top: val }}>
       <Image
         source={stickerSource}
         resizeMode="contain"
