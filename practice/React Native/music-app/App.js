@@ -21,25 +21,26 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [pickedEmoji, setPickedEmoji] = useState(null);
-  
 
-  
+
+
 
   const onReset = () => {
     setShowAppOptions(false);
   };
 
   const onAddSticker = () => {
-      setIsModalVisible(true)
+    setIsModalVisible(true)
   };
 
-  const onModalClose = ()=>{
+  const onModalClose = () => {
     setIsModalVisible(false);
   }
 
   const onSaveImageAsync = async () => {
 
   };
+
 
 
 
@@ -78,7 +79,7 @@ export default function App() {
             placeholderImageSource={AnImage}
             imageSrc={selectedImage}
           />
-                  {pickedEmoji && <EmojiSticker  imageSize={40} stickerSource={pickedEmoji} />}
+          {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
 
           {/* <ImageViewer imageSrc={AnImage}></ImageViewer> */}
         </Pressable>
@@ -99,7 +100,7 @@ export default function App() {
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
 
-            <IconButton label={"Reset"} icon={"refresh"} onPress={onReset}/>
+            <IconButton label={"Reset"} icon={"refresh"} onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
             <IconButton label={"Save"} icon={"save-alt"} onPress={onSaveImageAsync} />
 
@@ -115,8 +116,8 @@ export default function App() {
       )}
 
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose}/>
-         </EmojiPicker>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
+      </EmojiPicker>
 
       <StatusBar style="auto" />
     </View>
