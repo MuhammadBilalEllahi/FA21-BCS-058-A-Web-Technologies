@@ -11,3 +11,4 @@
 20240429	03:47:53	6fde5cc5-3ffe-43fb-bc04-82d150cc7a59	POST	undefined	/login
 20240429	03:48:27	b2bafb3e-46fc-4a56-b0d3-254dd34533a4	POST	undefined	/login
 20240429	03:48:47	3979de72-c407-4ae8-88ed-9392a8270c4b	GET	undefined	/employees
+20240429	03:49:06	d438235f-fa5a-476e-a934-7cdddf4bfae3	GET	undefined	/employees
