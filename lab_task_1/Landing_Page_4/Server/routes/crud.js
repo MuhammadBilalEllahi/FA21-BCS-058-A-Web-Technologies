@@ -7,7 +7,7 @@ const { ObjectId } = require('mongodb');
 const path = require('path')
 
 const {logger} = require("../middlewares/logEvents")
-app.use(logger)
+express.use(logger)
 
 // RESTFUL METHODS
 
