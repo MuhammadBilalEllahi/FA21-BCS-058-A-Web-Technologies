@@ -36,5 +36,18 @@ server.get("*", async function (req, res) {
     res.send("Page Not Found")
 })
 
+
+
+server.all('*', (req, res) => {
+    res.status(404);
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404'));
+    } else if (req.accepts('json')) {
+        res.json({ "error": "404 Not Found" });
+    } else {
+        res.type('txt').send("404 Not Found");
+    }
+});
+
 server.use(errorHandler);
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
