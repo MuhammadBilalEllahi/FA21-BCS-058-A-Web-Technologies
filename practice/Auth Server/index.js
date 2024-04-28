@@ -15,8 +15,12 @@ server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
 
 
 
-const apiRouter = require("./routes/api/register")
-server.use("/register",apiRouter)
+const registerRouter = require("./routes/api/register")
+server.use("/register",registerRouter)
+
+
+const loginRouter = require("./routes/api/auth")
+server.use("/login",loginRouter)
 
 
 server.get("*", async function (req, res) {
