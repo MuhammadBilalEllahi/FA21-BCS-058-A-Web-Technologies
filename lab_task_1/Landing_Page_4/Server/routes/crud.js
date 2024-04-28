@@ -6,7 +6,7 @@ const { db } = require("../connection.js")
 const { ObjectId } = require('mongodb');
 const path = require('path')
 
-
+const {logger} = require("../middlewares/logEvents")
 
 
 // RESTFUL METHODS

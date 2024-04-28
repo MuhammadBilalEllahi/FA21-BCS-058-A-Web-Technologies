@@ -1,5 +1,5 @@
 const fsPromises = require('fs').promises;
-const logEvents = require('../middlewares/logs');
+const logEvents = require('../middlewares/logEvents');
 const EventEmitter = require('events');
 class Emitter extends EventEmitter { };
 // initialize object 
