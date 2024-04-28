@@ -9,7 +9,7 @@ const emitter = require('./Emitter/emitter.js')
 let ejs_layout = require("express-ejs-layouts")
 server.use(ejs_layout)
 
-server.set("view engine","ejs");
+server.set("view engine", "ejs");
 // server.set("views","./template/pages")
 server.use(express.json());
 server.use(express.static("public"))
@@ -22,7 +22,7 @@ server.use(cors())
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json({ limit: '100mb' }));
-server.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+server.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
 
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
@@ -40,7 +40,7 @@ server.use(apiRouter)
 
 
 server.get("*", async function (req, res) {
-    
+
     res.send("Page Not Found")
 })
 

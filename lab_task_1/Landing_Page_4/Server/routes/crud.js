@@ -1,9 +1,10 @@
 const express = require("express");
 const crud = express.Router();
 let Products = require("../models/Products.js")
-// const fs = require("fs").promises;
+const fs = require("fs");
 const { db } = require("../connection.js")
 const { ObjectId } = require('mongodb');
+const path = require('path')
 
 
 
@@ -305,16 +306,16 @@ crud.post("/products/refresh", function (req, res) {
 });
 
 
-// const filePath = './dumb.json';
 
-// // Asynchronously read the file
-// fs.readFile(filePath, 'utf-8', (error, data) => {
-//     if (error) {
-//         console.error('Error reading file:', error);
-//     } else {
-//         console.log(data); // Output file contents
-//     }
-// });
+
+// Asynchronously read the file
+fs.readFile(path.join(__dirname,"..", "dumb.txt"), 'utf-8', (error, data) => {
+    if (error) {
+        console.error('Error reading file:', error);
+    } else {
+        console.log(data); // Output file contents
+    }
+});
 
 
 
