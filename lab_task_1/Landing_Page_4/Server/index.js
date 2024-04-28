@@ -20,9 +20,9 @@ const cors = require('cors');
 server.use(cors())
 
 
-const bodyParser = require('body-parser');
-server.use(bodyParser.json({ limit: '100mb' }));
-server.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
+// const bodyParser = require('body-parser');
+// server.use(bodyParser.json({ limit: '100mb' }));
+// server.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 
 
 server.listen(PORT, () => { console.log(`server running on port ${PORT}`) })
