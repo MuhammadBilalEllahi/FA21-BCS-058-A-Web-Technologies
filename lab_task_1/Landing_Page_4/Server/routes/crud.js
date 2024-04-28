@@ -289,15 +289,15 @@ crud.post("/products", async function (req, res) {
 
 
 // Refresh
-crud.post("/products/refresh", function (req, res) {
+crud.get("/products/refresh", function (req, res) {
     console.log("here0")
     try {
         console.log("here1")
-        const data = fs.readFileSync("./dumb.json", "utf-8");
+        const data = fs.readFile(path.join(__dirname,"..", "dumb.json"), "utf-8");
         console.log("here")
         const productDataFromFile = JSON.parse(data);
 
-        Products.insertMany(productDataFromFile);
+        // Products.insertMany(productDataFromFile);
         res.send({ "message": "Data refreshed" });
     } catch (error) {
         console.error("Error refreshing data:", error);
@@ -309,11 +309,11 @@ crud.post("/products/refresh", function (req, res) {
 
 
 // Asynchronously read the file
-fs.readFile(path.join(__dirname,"..", "dumb.txt"), 'utf-8', (error, data) => {
+fs.readFile(path.join(__dirname,"..", "dumb.json"), 'utf-8', (error, data) => {
     if (error) {
         console.error('Error reading file:', error);
     } else {
-        console.log(data); // Output file contents
+        // console.log(data); 
     }
 });
 
