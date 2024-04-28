@@ -7,7 +7,8 @@ let ejs_layout = require("express-ejs-layouts")
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const corsOptions = require('./config/corsOption');
-
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 
 server.use(ejs_layout)
 server.set("view engine", "ejs");
@@ -21,7 +22,7 @@ server.use(cors())
 server.use(logger);
 server.use(cors(corsOptions));
 server.use(express.json());
-
+server.use(cookieParser())
 
 const registerRouter = require("./routes/api/register")
 server.use("/register",registerRouter)
@@ -29,6 +30,11 @@ server.use("/register",registerRouter)
 
 const loginRouter = require("./routes/api/auth")
 server.use("/login",loginRouter)
+
+
+server.use(verifyJWT);
+server.use('/employees', require('./routes/api/employees'));
+
 
 
 server.get("*", async function (req, res) {
