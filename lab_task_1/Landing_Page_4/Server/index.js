@@ -4,6 +4,7 @@ const express = require("express");
 const server = express();
 const PORT = 2211;
 const mongoDB = require('./connection.js')
+const emitter = require('./Emitter/emitter.js')
 
 let ejs_layout = require("express-ejs-layouts")
 server.use(ejs_layout)

@@ -7,5 +7,3 @@ db.once("open", () => { console.log("Connected to database") });
 module.exports = {
     db
 }
-
-
