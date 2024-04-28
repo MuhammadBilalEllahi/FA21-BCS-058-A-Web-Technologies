@@ -7,7 +7,7 @@ const authController = require("../../controller/authController")
 router.post("/", authController.handleLogin)
 
 router.get("/",(res,req)=>{
-    req.send({"message":"Hi"})
+    req.send({"message":"Auth PAge"})
 })
 
 module.exports = router;
