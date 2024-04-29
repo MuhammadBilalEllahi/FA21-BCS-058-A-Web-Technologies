@@ -91,3 +91,7 @@
 20240429	22:32:53	8c9b6edb-c923-4201-9838-b5f4a7cecbe0	GET	undefined	/refresh
 20240429	22:33:11	15ccfdd4-b177-4c9e-b26c-16c3764e6acc	GET	undefined	/logout
 20240429	22:33:17	d8bbbb2a-bdbe-4dd3-b32f-1a2e80c3e943	GET	undefined	/refresh
+20240429	22:34:26	224b276f-e9a2-48a6-8ec5-0075c078dbc4	GET	undefined	/refresh
+20240429	22:34:35	3bab6d73-a93f-4290-bf23-8fec242ccaab	OPTIONS	http://127.0.0.1:5500	/login
+20240429	22:34:38	eca5b74e-d549-4968-8f34-2af22c8de9e3	GET	undefined	/refresh
+20240429	22:34:40	0459c6e1-0669-45fb-8ae5-052b90f85312	GET	undefined	/refresh
