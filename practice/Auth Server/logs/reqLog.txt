@@ -55,3 +55,5 @@
 20240429	21:14:30	8d21c7c0-8f62-4158-9bbf-0226327e0feb	POST	undefined	/login
 20240429	21:14:44	5a56ae28-0b5c-4764-875b-6ce9edc5dd52	GET	undefined	/refresh
 20240429	21:14:52	2438704a-56ee-4fd1-b2f8-4de7bdc7868f	GET	undefined	/logout
+20240429	21:22:12	038ddce5-e11f-4045-97fb-2a209667bfbc	GET	undefined	/logout
+20240429	21:22:24	c4c3cb45-a79c-4ac1-8ba2-d884d8d70ab8	GET	undefined	/refresh
