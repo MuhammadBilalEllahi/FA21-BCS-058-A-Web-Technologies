@@ -24,12 +24,13 @@ server.use(cors(corsOptions));
 server.use(express.json());
 server.use(cookieParser())
 
-const registerRouter = require("./routes/api/register")
+const registerRouter = require("./routes/register")
 server.use("/register",registerRouter)
 
 
-const loginRouter = require("./routes/api/auth")
-server.use("/login",loginRouter)
+const authRouter = require("./routes/auth")
+server.use("/login",authRouter)
+server.use("/refresh",require("./routes/refresh"))
 
 
 server.use(verifyJWT);

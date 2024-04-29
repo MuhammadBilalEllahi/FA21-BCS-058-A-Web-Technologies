@@ -7,7 +7,7 @@ const usersDB = {
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
-const handleRefresh = async (req, res) => {
+const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
 
     if (!cookies?.jwt) return res.status(401)
@@ -15,12 +15,12 @@ const handleRefresh = async (req, res) => {
     const refreshToken = cookies.jwt;
 
 
-    const foundUser = usersDB.users.find(person => person.username === user);
+    const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
     if (!foundUser) return res.sendStatus(401) //Forbidden
     jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
-        (errr, decoded) => {
+        (err, decoded) => {
             if (err || foundUser.username !== decoded.username) return res.sendStatus(403)
             const accessToken = jwt.sign(
                 {
@@ -37,4 +37,4 @@ const handleRefresh = async (req, res) => {
 
 
 }
-module.exports = { handleRefresh }
+module.exports = { handleRefreshToken }
