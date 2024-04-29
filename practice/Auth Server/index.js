@@ -31,6 +31,7 @@ server.use("/register",registerRouter)
 const authRouter = require("./routes/auth")
 server.use("/login",authRouter)
 server.use("/refresh",require("./routes/refresh"))
+server.use("/logout",require("./routes/logout"))
 
 
 server.use(verifyJWT);

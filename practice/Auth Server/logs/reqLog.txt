@@ -18,3 +18,6 @@
 20240429	20:27:58	44232a7b-1d0e-408e-917e-409de96ad8e7	POST	undefined	/login
 20240429	20:28:24	ff8e5df6-414d-4f27-8a53-913523733765	POST	undefined	/login
 20240429	20:28:26	1679d907-77fc-45cd-8b22-e98a770007cc	GET	undefined	/refresh
+20240429	20:28:41	7138f46f-a85a-40ad-b955-a83ddd7d9156	GET	undefined	/refresh
+20240429	20:28:42	21fdf546-2d06-429f-9070-20e1c0a5abbd	GET	undefined	/refresh
+20240429	20:29:51	8d6da551-be65-43d5-9a00-53997f0cb491	GET	undefined	/refresh
