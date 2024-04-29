@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+    </head>
+    <body>
+
+        <form method="post" onsubmit="sendLogin()">
+
+            <input id="user" placeholder="User" />
+            <input id="pwd" placeholder="Password" />
+
+            <button value="submit">Submit</button>
+        </form>
+
+        <script>
+
+
+const sendLogin = async  (e)=>{
+// e.preventDefault()
+    const user = document.getElementById('user').value;
+    const pwd = document.getElementById('pwd').value;
+
+    console.log(user)
+    console.log(pwd)
+
+    try{
+        const response = await fetch("http://localhost:1122/login", {
+            method: "POST",
+            headers: { "Content-Type": 'applicaation/json'},
+            credentials: "include",
+            body: JSON.stringify({user,pwd})
+        });
+        if(!response.ok){
+            if(response.status === 401){
+                return await sendRefreshToken();
+            }
+            throw new Error(`${response.status} ${response.statusText}`)
+        }
+    } catch (err){
+        console.log(err.stack)
+        displayErr();
+    }
+}
+
+const sendRefreshToken = ()=>{
+    console.log("fresh")
+}
+
+const displayErr = ()=>{
+    console.log("err")
+}
+    </script>
+    </body>
+
+</html>
