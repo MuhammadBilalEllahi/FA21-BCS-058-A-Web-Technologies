@@ -18,6 +18,9 @@ const handleNewUser = async (req, res) => {
         const hashedPwd = await bcrypt.hash(pwd, 10);
         const newuser = {
             "username": user, 
+            "roles":{
+                "User": 2001
+            },
             "password": hashedPwd
         }
 
