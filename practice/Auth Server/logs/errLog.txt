@@ -1,3 +1,9 @@
 20240429	02:45:39	7e47ebd3-1fb7-4f8c-a82e-6e2748952235	Error: Not allowed by CORS
 20240429	03:48:04	be6b6373-f6ab-4b93-b15a-13c928672d99	SyntaxError: Unexpected token e in JSON at position 0
 20240429	21:12:56	e206debb-57c9-4842-b1f9-9f4fdc3380c6	SyntaxError: Unexpected token e in JSON at position 0
+20240430	00:06:35	a26ecf8c-93b6-46b1-97ae-d7a8afede781	SyntaxError: Unexpected token e in JSON at position 0
+20240430	00:06:49	8a17a51f-80d7-495b-bb1d-e5d4d7d460a9	SyntaxError: Unexpected token e in JSON at position 0
+20240430	00:06:57	0dcac667-09c5-46b4-a0fc-5dd9725e7bf5	SyntaxError: Unexpected token e in JSON at position 0
+20240430	00:07:47	742e6c5c-5613-4a86-a110-ff558f9d6480	SyntaxError: Unexpected token e in JSON at position 0
+20240430	00:08:36	a50ddf75-1d98-4780-901a-a410ab40832d	TypeError: authHeader?.startswith is not a function
+20240430	00:08:47	b9e283bc-6dbd-4d47-9de1-4226b4e5a6b7	TypeError: authHeader?.startswith is not a function

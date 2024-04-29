@@ -95,3 +95,15 @@
 20240429	22:34:35	3bab6d73-a93f-4290-bf23-8fec242ccaab	OPTIONS	http://127.0.0.1:5500	/login
 20240429	22:34:38	eca5b74e-d549-4968-8f34-2af22c8de9e3	GET	undefined	/refresh
 20240429	22:34:40	0459c6e1-0669-45fb-8ae5-052b90f85312	GET	undefined	/refresh
+20240430	00:05:37	27903cde-a542-42ce-9a6f-d8a4946b0a1e	POST	undefined	/login
+20240430	00:06:14	2bbf58af-ee0a-4aff-b590-c4a0087aa242	POST	undefined	/login
+20240430	00:06:54	20a8af1f-8aa1-4c93-bf57-df2f587bbf23	POST	undefined	/login
+20240430	00:07:39	d7b881a0-5406-478a-ac38-6e9895813e3a	POST	undefined	/login
+20240430	00:08:36	ae0121ab-7dd4-4615-bf94-46a1e3881ea2	GET	undefined	/employees
+20240430	00:08:38	77abc0c8-964d-451d-a3ee-2727ca230c88	POST	undefined	/login
+20240430	00:08:47	162fb754-c8f8-4ea4-8e5f-be8570b5b69f	GET	undefined	/employees
+20240430	00:10:27	a781b821-dcb3-4d5a-b4da-40c52d6bbd2a	POST	undefined	/login
+20240430	00:10:35	6c70b254-4795-4891-946d-3d00c11e5fb8	GET	undefined	/employees
+20240430	00:11:51	54779788-ecee-41ce-b35e-34a947873a47	POST	undefined	/login
+20240430	00:11:56	1362368e-4d8c-40b0-ac1c-605c64e8796a	GET	undefined	/employees
+20240430	00:12:05	4c47543a-412f-4e2f-a392-1d930fa997b3	GET	undefined	/logout
