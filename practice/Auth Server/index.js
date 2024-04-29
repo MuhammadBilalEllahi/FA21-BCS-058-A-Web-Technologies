@@ -9,16 +9,19 @@ const errorHandler = require('./middleware/errorHandler');
 const corsOptions = require('./config/corsOption');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
+const credentials = require("./middleware/credentials")
 
 server.use(ejs_layout)
 server.set("view engine", "ejs");
 server.use(express.json());
 server.use(express.static("public"))
-server.use(cors())
 
 
+
+ 
 
 // custom middleware logger
+server.use(credentials)
 server.use(logger);
 server.use(cors(corsOptions));
 server.use(express.json());
