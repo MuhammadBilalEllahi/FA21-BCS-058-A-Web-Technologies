@@ -45,7 +45,8 @@ const handleLogin = async (req, res) => {
             path.join(__dirname, "..", "model", "users.json"),
             JSON.stringify(usersDB.users)
         )
-        res.cookie("jwt", refreshToken, {httpOnly: true,secure: true,sameSite: "None" , maxAge: 24 * 60 * 60 * 1000})
+        res.cookie("jwt", refreshToken, {httpOnly: true,maxAge: 24 * 60 * 60 * 1000})
+        // secure: true,sameSite: "None" , 
         res.json({ accessToken})
     } else {
         res.sendStatus(401)
