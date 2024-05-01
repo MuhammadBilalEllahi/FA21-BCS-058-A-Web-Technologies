@@ -8,6 +8,6 @@ router.post("/login", loginUserController)
 router.get("/get-users",getAllUsers)
 router.get("/get-a-user/:id",authMiddleware,isAdmin, getaUser)
 router.get("/delete-a-user/:id", deleteaUser)
-router.get("/update-a-user/:id", updateaUser)
+router.get("/update-a-user/:id", authMiddleware,updateaUser)
 
 module.exports = router;
