@@ -42,4 +42,14 @@ const loginUserController = asyncHandler(async (req, res) => {
     }
 })
 
-module.exports = { createUser, loginUserController }
+
+const getAllUsers = async (req,res)=>{
+    try {
+        const getUsers = await User.find()
+        res.json(getUsers)
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+module.exports = { createUser, loginUserController ,getAllUsers}
