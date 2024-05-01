@@ -5,8 +5,9 @@ const createUser = async (req,res)=>{
     const foundUser = await User.findOne({email:email})
 
     if(!foundUser){
-        const newUser = User.create(req.body);
-        res.json(newUser)
+        const newUser =await User.create(req.body);
+        res.json( newUser)
+        // console.log((await newUser))
     }
     else{
         res.json({
