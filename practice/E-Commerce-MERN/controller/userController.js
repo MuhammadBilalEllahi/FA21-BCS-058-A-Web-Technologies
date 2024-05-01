@@ -2,7 +2,7 @@ const User = require("../models/userModel")
 
 const createUser = async (req,res)=>{
     const email = req.body.email
-    const foundUser = await User.findOne(email)
+    const foundUser = await User.findOne({email:email})
 
     if(!foundUser){
         const newUser = User.create(req.body);
