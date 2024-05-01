@@ -52,4 +52,39 @@ const getAllUsers = async (req,res)=>{
     }
 }
 
-module.exports = { createUser, loginUserController ,getAllUsers}
+const getaUser = async (req,res)=>{
+    // const user = await User.find()
+    const {id} = req.params
+    console.log(id)
+
+    try {
+        const user = await User.findById(id);
+        res.json(
+            {
+                user : user
+            }
+        )
+        
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+const deleteaUser = async (req,res)=>{
+    // const user = await User.find()
+    const {id} = req.params
+    console.log(id)
+
+    try {
+        const deleted_user = await User.findByIdAndDelete(id);
+        res.json(
+            {
+                deleted_user : deleted_user
+            }
+        )
+        
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+module.exports = { createUser, loginUserController ,getAllUsers, getaUser, deleteaUser}
