@@ -13,7 +13,7 @@ dbConnect()
 // app.use(bodyParser()) //deprecated
 app.use(bodyParser.json())  //helps send data from postman or etc
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(cookieParser)
+app.use(cookieParser())
 
 
 app.use("/api/user", authRouter)
