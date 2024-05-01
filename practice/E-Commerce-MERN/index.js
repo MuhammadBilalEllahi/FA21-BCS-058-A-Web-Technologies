@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use("/api/user", authRouter)
 
+
+
 // middlewares after routes
 app.use(notFound)
 app.use(errorHandler)

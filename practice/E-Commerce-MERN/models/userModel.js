@@ -4,26 +4,30 @@ const bcrypt = require('bcrypt');
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
     firstname:{
-        type:String,
+        type: String,
         required:true,
     },
     lastname:{
-        type:String,
+        type: String,
         required:true,
     },
     email:{
-        type:String,
+        type: String,
         required:true,
         unique:true,
     },
     mobile:{
-        type:String,
+        type: String,
         required:true,
         unique:true,
     },
     password:{
-        type:String,
+        type: String,
         required:true,
+    },
+    isAdmin:{
+        type: String,
+        default: "user"
     },
 });
 saltRounds = 10;
