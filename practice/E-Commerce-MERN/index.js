@@ -6,15 +6,19 @@ const authRouter = require("./routes/authRoute")
 const productRoute = require("./routes/productRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const morgan = require("morgan")
 
 const dbConnect = require("./config/dbConnect");
 const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 
+
+app.use(morgan("combined")) //pass combined to remove deprecated
 // app.use(bodyParser()) //deprecated
 app.use(bodyParser.json())  //helps send data from postman or etc
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
+
 
 
 app.use("/api/user", authRouter)
