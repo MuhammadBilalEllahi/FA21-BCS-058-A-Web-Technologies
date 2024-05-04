@@ -13,7 +13,8 @@ const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 
 
-app.use(morgan("combined")) //pass combined to remove deprecated
+app.use(morgan("combined")) //pass combined to for dev and production
+app.use(morgan('dev'))
 // app.use(bodyParser()) //deprecated
 app.use(bodyParser.json())  //helps send data from postman or etc
 app.use(bodyParser.urlencoded({extended: false}))
