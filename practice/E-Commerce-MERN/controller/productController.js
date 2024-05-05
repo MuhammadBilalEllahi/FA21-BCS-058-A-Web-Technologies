@@ -5,7 +5,7 @@ const slugify = require("slugify")
 const createProduct = asyncHandler(async (req,res)=>{
     
     try {
-        if(re.body.title){
+        if(req.body.title){
             req.body.slug = slugify(req.body.title)
         }
         const createNewProduct = await Product.create(req.body)
@@ -55,7 +55,7 @@ const getaProduct = asyncHandler(async (req,res)=>{
 })
 
 const getAllProduct = asyncHandler(async (req,res)=>{
-    console.log(req.query)// to search different items in db by addign ? in url and field name and value. it tells all those vales requestes
+    // console.log(req.query)// to search different items in db by addign ? in url and field name and value. it tells all those vales requestes
     
     try {
         const getAllProducts = await Product.find()
