@@ -18,7 +18,7 @@
 
 <h2>How  to install mongoDB</h2>
 <ul>
-  <li>install mongodb shell</li>
+  <li>install mongodb shell <a href="https://www.mongodb.com/try/download/shell">Download Shell</a></li>
   <ol>
     <li>Extract zip file</li>
   <li>Move file to Local Drive C </li>
@@ -28,14 +28,16 @@
   <li>Open evironment variables, add path to both User and System</li>
   <li>Must Create a data folder in Local Drive C and Folder: db in Folder data (Folder all Empty for win10)</li>
   </ol>
-  <li>install Comunity Server</li>
+  <li>install Comunity Server  <a href="https://www.mongodb.com/try/download/community">Download Server</a> </li>
   <ol>
     <li>Download the msi file.(easiest)</li>
     <li>Click on Compelte option during installation</li>
     <li>Download in Local Drive C</li>
     <li>Path variables will be set automatically(might be)</li>
     <li>BETTER! or manually set it. It might look like : C:\Program Files\MongoDB\Server\7.0\bin</li>
-    <li>ADD this path to USer and System Environment Variables</li>
+    <li>ADD this path to User and System Environment Variables</li>
     <li>Now Run mongod in terminal/CMD. The server should run</li>
   </ol>
+
+  <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">here</a> </li>
 </ul>
