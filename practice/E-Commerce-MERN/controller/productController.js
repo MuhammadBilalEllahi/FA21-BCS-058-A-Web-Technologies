@@ -36,9 +36,7 @@ const deleteProduct = asyncHandler(async (req,res)=>{
         if(re.body.title){
             req.body.slug = slugify(req.body.title)
         }
-        const deleteaProduct = await Product.findOneAndDelete({id},req.body,{
-            new: true
-        })
+        const deleteaProduct = await Product.findOneAndDelete(id)
         res.json(deleteaProduct)
     } catch (error) {
         throw new Error(error)
