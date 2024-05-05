@@ -41,3 +41,4 @@
 
   <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">Compass</a> </li>
 </ul>
+<a href="https://www.youtube.com/watch?v=gB6WLkSrtJk">Further info, Video Link</a>
