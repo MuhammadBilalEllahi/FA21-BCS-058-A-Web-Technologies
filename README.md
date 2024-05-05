@@ -37,6 +37,7 @@
     <li>BETTER! or manually set it. It might look like : C:\Program Files\MongoDB\Server\7.0\bin</li>
     <li>ADD this path to User and System Environment Variables</li>
     <li>Now Run mongod in terminal/CMD. The server should run</li>
+    <li>Test again, Now Run mongosh in terminal/CMD. The server should run</li>
   </ol>
 
   <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">Compass</a> </li>
