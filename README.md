@@ -39,5 +39,5 @@
     <li>Now Run mongod in terminal/CMD. The server should run</li>
   </ol>
 
-  <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">here</a> </li>
+  <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">Compass</a> </li>
 </ul>
