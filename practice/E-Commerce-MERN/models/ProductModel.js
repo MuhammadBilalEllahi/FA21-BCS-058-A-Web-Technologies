@@ -46,7 +46,8 @@ var productSchema = new mongoose.Schema({
     },
     sold:{
         type: Number,
-        default: 0
+        default: 0,
+        select: false //hides sold data from users
     },
     ratings:{
         star: Number,
