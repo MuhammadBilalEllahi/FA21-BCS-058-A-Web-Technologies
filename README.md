@@ -57,12 +57,12 @@
     <li>Open .zshrc</li>
     <li>copy the bin path. /Users/yourUserName/mongodb-macos-x64-7.0.4/bin/</li>
     <li>Use can also copy path by opening the bin directory, clicking in view in tabs, then click Show Path Bar. It now shows path in the finder windows at the bottom right click it. and select Copy "bin" as pathname</li>
-    <li> Now write : export PATH=${PATH}:(the copied path) <br>For example:  export PATH=${PATH}:/Users/yourUserName/mongodb-macos-x64-7.0.4/bin/ </li>
-    <li> run source .zshrc in terminal in home directory where .zshrc is present</li>
-    <li><h6>mongod command will now run in terminal but with an error saying data path not defined</h6></li>
-    <li>Make directory in home directory name as data/db or run > sudo mkdir -p data/db in terminal in home directory /Users/yourUserName/</li>
-    <li><h6>Now run mongod with data path </h6> <p>sudo mongod --dbpath=/Users/yourUserName/data/db <br> without sudo it will not run</p></li>
+    <li> Now write : export PATH=${PATH}:(the copied path) <br>For example:  <h6>export PATH=${PATH}:/Users/yourUserName/mongodb-macos-x64-7.0.4/bin/ </h6></li>
+    <li> run <h6>source .zshrc </h6>in terminal in home directory where .zshrc is present</li>
+    <li>mongod command will now run in terminal but with an error saying data path not defined</li>
+    <li>Make directory in home directory name as data/db or run > <h6>sudo mkdir -p data/db</h6> in terminal in home directory /Users/yourUserName/</li>
+    <li><h5>Now run mongod with data path </h5> <h6>sudo mongod --dbpath=/Users/yourUserName/data/db</h6> <br> <p>without sudo it will not run</p></li>
   </ol>
-  <li>Now install MongoDB Compass</li>
-  <li>In addition you can also install Shell</li>
+  <li>Now install MongoDB <a href="https://www.mongodb.com/try/download/compass">Compass</a></li>
+  <li>In addition you can also install Shell <a href="https://www.mongodb.com/try/download/shell">Download Shell</a></li>
 </ul>
