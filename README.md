@@ -17,6 +17,7 @@
 <a href="https://fa-21-bcs-058-a-web-technologies.vercel.app/" target="_blank">Practice on vercel</a>
 
 <h2>How  to install mongoDB</h2>
+<h5>Install on Win</h5>
 <ul>
   <li>install mongodb shell <a href="https://www.mongodb.com/try/download/shell">Download Shell</a></li>
   <ol>
@@ -43,3 +44,25 @@
   <li>MongoDB Compass should have be automatically installed with Community Server. If unchecked during installation. Install Compass from <a href="https://www.mongodb.com/try/download/compass">Compass</a> </li>
 </ul>
 <a href="https://www.youtube.com/watch?v=gB6WLkSrtJk">Further info, Video Link</a>
+
+<h5>Install on Mac</h5>
+<ul>
+  <li>install Comunity Server  <a href="https://www.mongodb.com/try/download/community">Download Server</a> </li>
+  <ol>
+    <li>Install using brew in terminal or download TGZ package</li>
+    <li>Extract TGZ file </li>
+    <li>Move it to Home folder, Path is /Users/yourUserName/</li>
+    <li>Now set path for Mongo command (exists in bin folder of extracted file)</li>
+    <li>In same Home directory /Users/yourUserName/ there exists .zshrc file</li>
+    <li>Open .zshrc</li>
+    <li>copy the bin path. /Users/yourUserName/mongodb-macos-x64-7.0.4/bin/</li>
+    <li>Use can also copy path by opening the bin directory, clicking in view in tabs, then click Show Path Bar. It now shows path in the finder windows at the bottom right click it. and select Copy "bin" as pathname</li>
+    <li> Now write : export PATH=${PATH}:(the copied path) <br>For example:  export PATH=${PATH}:/Users/yourUserName/mongodb-macos-x64-7.0.4/bin/ </li>
+    <li> run source .zshrc in terminal in home directory where .zshrc is present</li>
+    <li><h6>mongod command will now run in terminal but with an error saying data path not defined</h6></li>
+    <li>Make directory in home directory name as data/db or run > sudo mkdir -p data/db in terminal in home directory /Users/yourUserName/</li>
+    <li><h6>Now run mongod with data path </h6> <p>sudo mongod --dbpath=/Users/yourUserName/data/db <br> without sudo it will not run</p></li>
+  </ol>
+  <li>Now install MongoDB Compass</li>
+  <li>In addition you can also install Shell</li>
+</ul>
