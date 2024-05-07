@@ -93,6 +93,21 @@ const getAllProduct = asyncHandler(async (req,res)=>{
             query = query.select('-__v')
         }
 
+        // Pagination
+        const page = req.query.page
+        const limit = req.query.limit
+        const skip = (page-1)* limit
+        console.log(page,limit,skip) // not show e.g first 10 products if page is 2 and limit is 10. show 11th and onwards product from page 2 
+        query = query.skip(skip).limit(limit)
+
+        if(req.query.page) {
+            const productCount = await Product.countDocuments()
+            if(skip >= productCount) throw new Error("This Page Doesnot Exists")            
+        }
+        else{
+
+        }
+
         const product = await query;
         res.json(product)
     } catch (error) {
