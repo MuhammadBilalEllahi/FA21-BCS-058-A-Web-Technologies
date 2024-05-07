@@ -79,8 +79,20 @@ const getAllProduct = asyncHandler(async (req,res)=>{
             console.log(sortBy);
             query = query.sort(sortBy)
         }else{
-            query = query.sort('-createdAt ')
+            query = query.sort('-createdAt')
         }
+        //  in url "?sort=  -price" sort inverse, "?sort=   price" without - sort in less to greater val
+
+
+        // Limiting the fields
+        if(req.query.fields){
+            const fields = req.query.fields.split(',').join(' ')
+            query = query.select(fields)
+
+        }else{
+            query = query.select('-__v')
+        }
+
         const product = await query;
         res.json(product)
     } catch (error) {
