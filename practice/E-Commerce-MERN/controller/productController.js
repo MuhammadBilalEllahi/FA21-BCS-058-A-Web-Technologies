@@ -58,6 +58,9 @@ const getAllProduct = asyncHandler(async (req,res)=>{
     // console.log(req.query)// to search different items in db by addign ? in url and field name and value. it tells all those vales requestes
     
     try {
+
+        const queryObj = {...req.query}
+        console.log(queryObj)
         const getAllProducts = await Product.find()
         res.json(getAllProducts)
     } catch (error) {
