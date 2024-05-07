@@ -1,55 +1,55 @@
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 
 var productSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
-        trim:true,
+    title: {
+        type: String,
+        required: true,
+        trim: true,
     },
-    slug:{
-        type:String,
-        required:true,
-        unique:true,
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
         lowercase: true
     },
-    description:{
-        type:String,
-        required:true,
+    description: {
+        type: String,
+        required: true,
     },
-    price:{
-        type:Number,
-        required:true,
+    price: {
+        type: Number,
+        required: true,
     },
-    category:{
-        type:String,
-        required:true
+    category: {
+        type: String,
+        required: true
         // type: mongoose.Schema.Types.ObjectId,
         // ref: "Category"
     },
-    brand:{
-        
+    brand: {
+
         type: String,
-        required:true
+        required: true
         // enum: ['Apple', 'Samsung', 'Lenovo']
     },
-    quantity:{
+    quantity: {
         type: Number,
         required: true
     },
-    images:{
+    images: {
         type: Array
     },
     color: {
         type: String,
-        required:true
+        required: true
         // enum: ['Black', 'Brown', 'Red']
     },
-    sold:{
+    sold: {
         type: Number,
         default: 0,
         select: false //hides sold data from users
     },
-    ratings:{
+    ratings: {
         star: Number,
         postedBy: {
             type: mongoose.Schema.Types.ObjectId,
