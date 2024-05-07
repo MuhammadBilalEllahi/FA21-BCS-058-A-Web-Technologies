@@ -58,7 +58,7 @@ const getAllProduct = asyncHandler(async (req,res)=>{
     // console.log(req.query)// to search different items in db by addign ? in url and field name and value. it tells all those vales requestes
     
     try {
-
+        // Filtering
         const queryObj = {...req.query}
         const excludedField = ["page","sort","limit","fields"]
         excludedField.forEach((el)=> delete queryObj[el]);
@@ -68,9 +68,20 @@ const getAllProduct = asyncHandler(async (req,res)=>{
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g,(match) =>  `$${match}`)
         console.log(JSON.parse(queryStr));
 
-        const query = Product.find(JSON.parse(queryStr))
-        const product = await query;
+        let query = Product.find(JSON.parse(queryStr))
+        // TypeError: Assignment to constant variable. if const is used instead of let
+
+        
         // const getAllProducts = await Product.find()
+        // Sorting
+        if(req.query.sort){
+            const sortBy = req.query.sort.split(',').join(' ')
+            console.log(sortBy);
+            query = query.sort(sortBy)
+        }else{
+            query = query.sort('-createdAt ')
+        }
+        const product = await query;
         res.json(product)
     } catch (error) {
         throw new Error(error)
