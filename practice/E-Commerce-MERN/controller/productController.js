@@ -68,9 +68,10 @@ const getAllProduct = asyncHandler(async (req,res)=>{
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g,(match) =>  `$${match}`)
         console.log(JSON.parse(queryStr));
 
-
-        const getAllProducts = await Product.find()
-        res.json(getAllProducts)
+        const query = Product.find(JSON.parse(queryStr))
+        const product = await query;
+        // const getAllProducts = await Product.find()
+        res.json(product)
     } catch (error) {
         throw new Error(error)
     }
