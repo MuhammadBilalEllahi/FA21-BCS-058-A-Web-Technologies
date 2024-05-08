@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
 const authRouter = require("./routes/authRoute")
 const productRoute = require("./routes/productRoute")
+const blogRoute = require("./routes/blogRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const morgan = require("morgan")
@@ -25,7 +26,7 @@ app.use(cookieParser())
 
 app.use("/api/user", authRouter)
 app.use("/api/product",productRoute )
-
+app.use("/api/blog",blogRoute)
 
 
 // middlewares after routes
