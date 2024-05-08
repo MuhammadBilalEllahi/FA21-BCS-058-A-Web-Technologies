@@ -11,7 +11,9 @@ const {
     unBlockUser, 
     handleRefreshToken, 
     logout,
-    updatePassword} = require("../controller/userController")
+    updatePassword,
+    forgotPasswordToken
+} = require("../controller/userController")
 const {
     authMiddleware, 
     isAdmin} = require("../middlewares/authMiddleware")
@@ -19,6 +21,7 @@ const {
 
 
 router.post("/register", createUser)
+router.post('/forgot-password-token',forgotPasswordToken)
 router.post("/login", loginUserController)
 router.put('/password', authMiddleware,updatePassword)
 router.get("/get-users",getAllUsers)
