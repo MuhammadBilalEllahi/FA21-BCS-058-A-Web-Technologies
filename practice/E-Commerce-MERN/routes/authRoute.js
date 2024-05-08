@@ -12,7 +12,9 @@ const {
     handleRefreshToken, 
     logout,
     updatePassword,
-    forgotPasswordToken
+    forgotPasswordToken,
+    resetPassword
+    
 } = require("../controller/userController")
 const {
     authMiddleware, 
@@ -22,6 +24,7 @@ const {
 
 router.post("/register", createUser)
 router.post('/forgot-password-token',forgotPasswordToken)
+router.post('/reset-password/:token',resetPassword)
 router.post("/login", loginUserController)
 router.put('/password', authMiddleware,updatePassword)
 router.get("/get-users",getAllUsers)
