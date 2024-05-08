@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+
+
 // !mdbgum snippet
 // Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema({
