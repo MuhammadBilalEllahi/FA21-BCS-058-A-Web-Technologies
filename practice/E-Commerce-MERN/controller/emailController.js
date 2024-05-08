@@ -24,7 +24,7 @@ const sendEmail = asyncHandler( async(data,req,res)=>{ //always pass data before
       });
     
       console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", info.getTestMessageUrl(info));
+      console.log("Preview URL: %s", info.response);
 })
 
 module.exports = {sendEmail}

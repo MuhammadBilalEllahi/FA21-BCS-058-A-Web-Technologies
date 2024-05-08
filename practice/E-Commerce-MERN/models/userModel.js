@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto')
 
 
 // !mdbgum snippet
@@ -73,7 +74,8 @@ userSchema.methods.isPasswordMatched = async function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password)
 }
 userSchema.methods.createPasswordResetToken = async ()=>{
-    const resetToken = crypto.getRandomBytes(32).toString('hex');
+    
+    const resetToken = crypto.randomBytes(32).toString('hex');
     this.passwordResetToken = 
     crypto
     .createHash('sha256')
