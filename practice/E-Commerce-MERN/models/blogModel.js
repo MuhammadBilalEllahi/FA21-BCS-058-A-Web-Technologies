@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); // Erase if already required
 
 // Declare the Schema of the Mongo model
-var userSchema = new mongoose.Schema({
+var blogSchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
@@ -36,9 +36,21 @@ var userSchema = new mongoose.Schema({
     },
     image:{
         type: String,
-        default: ""
-    }
+        default: "https://cms.payloadcms.com/media/nodemailer-blog.jpg"
+    },
+    author:{
+        type: String,
+        default: 'Admin'
+    },
+    toJSON:{
+        virtuals: true
+    },
+    toObject:{
+        virtuals: true
+    },
+    timestamps: true
+
 });
 
 //Export the model
-module.exports = mongoose.model('Blog', userSchema);
+module.exports = mongoose.model('Blog', blogSchema);
