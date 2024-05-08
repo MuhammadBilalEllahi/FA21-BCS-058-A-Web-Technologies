@@ -279,7 +279,7 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
         }
         console.log(data)
 
-        // sendEmail(data)
+        sendEmail(data)
         res.json(token)
     } catch (error) {
         throw new Error(error)
