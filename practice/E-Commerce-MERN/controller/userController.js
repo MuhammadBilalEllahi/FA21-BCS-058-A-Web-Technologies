@@ -121,7 +121,7 @@ const getaUser = async (req, res) => {
     // const user = await User.find()
     const { _id } = req.user
     validateMongoDbId(_id)
-    console.log(_id)
+    // console.log(_id)
 
     try {
         const user = await User.findById(_id);
@@ -248,8 +248,8 @@ const updatePassword = asyncHandler(async (req, res) => {
     const user = await User.findById(_id)
     if (password) {
         user.password = password
-        console.log(user.password)
-        console.log(password)
+        // console.log(user.password)
+        // console.log(password)
         const updatedPassword = await user.save()
         res.json(updatedPassword)
     }
@@ -261,7 +261,7 @@ const updatePassword = asyncHandler(async (req, res) => {
 const forgotPasswordToken = asyncHandler(async (req, res) => {
     const { email } = req.body
     const user = await User.findOne({ email })
-    console.log(user)
+    // console.log(user)
     if (!user) throw new Error("User not found with this email")
 
 
@@ -277,7 +277,7 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
             text: "Hey User, \n",
             html: resetURL
         }
-        console.log(data)
+        // console.log(data)
 
         sendEmail(data)
         res.json(token)
@@ -291,7 +291,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
     const { token } = req.params;
     const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
-console.log(hashedToken)
+// console.log(hashedToken)
     const user = await User.findOne({
 
         passwordResetToken: hashedToken,
@@ -299,7 +299,7 @@ console.log(hashedToken)
     })
 
 
-    console.log(user)
+    // console.log(user)
     if (!user) throw new Error('Token Expired, Please Try again Later')
     user.password = password;
     user.passwordResetToken = undefined
