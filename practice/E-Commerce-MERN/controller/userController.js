@@ -261,14 +261,15 @@ const updatePassword = asyncHandler(async (req, res) => {
 const forgotPasswordToken = asyncHandler(async (req, res) => {
     const { email } = req.body
     const user = await User.findOne({ email })
-    if (!user) throw new Error("USer not found with this email")
+    console.log(user)
+    if (!user) throw new Error("User not found with this email")
 
 
     try {
         const token = await user.createPasswordResetToken()
-        console.log("here")
+        
         await user.save()
-        const resetURL = `Hi , Please Follow this Link to reset Password. This link is valid for 10 min till now <a href="http://localhost:5000/api/user/reset-password${token}">Click Here</a>`
+        const resetURL = `Hi , Please Follow this Link to reset Password. This link is valid for 10 min till now <a href="http://localhost:5000/api/user/reset-password/${token}">Click Here</a>`
 
         const data = {
             to: email,
@@ -276,8 +277,9 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
             text: "Hey User, \n",
             html: resetURL
         }
+        console.log(data)
 
-        sendEmail(data)
+        // sendEmail(data)
         res.json(token)
     } catch (error) {
         throw new Error(error)
@@ -289,11 +291,15 @@ const resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
     const { token } = req.params;
     const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
-    const user = User.findOne({
+console.log(hashedToken)
+    const user = await User.findOne({
 
         passwordResetToken: hashedToken,
-        passwordResetTokenExpires: { $gt: Date.now() }
+        passwordResetTokenExpires: { $gt : Date.now() }
     })
+
+
+    console.log(user)
     if (!user) throw new Error('Token Expired, Please Try again Later')
     user.password = password;
     user.passwordResetToken = undefined
