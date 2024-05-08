@@ -42,6 +42,9 @@ var blogSchema = new mongoose.Schema({
         type: String,
         default: 'Admin'
     },
+    
+
+}, {
     toJSON:{
         virtuals: true
     },
@@ -49,7 +52,6 @@ var blogSchema = new mongoose.Schema({
         virtuals: true
     },
     timestamps: true
-
 });
 
 //Export the model
