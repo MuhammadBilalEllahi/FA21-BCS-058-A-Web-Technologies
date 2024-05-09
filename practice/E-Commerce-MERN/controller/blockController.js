@@ -35,15 +35,26 @@ const getBlog = asyncHandler( async (req,res)=>{
     const { id} = req.params
     try {
         const getaBlog = await Blog.findById(id)
-         await Blog.findByIdAndUpdate(id,{
+       const updatedBlog=   await Blog.findByIdAndUpdate(id,{
             $inc: {numViews: 1}
          }, {
             new : true
          })
-        res.json(getaBlog)
+        res.json(updatedBlog)
     } catch (error) {
         throw new Error(error)
     }
 })
 
-module.exports = {createBlog,updateBlog, getBlog}
+const getAllBlogs = asyncHandler( async (req,res)=>{
+    const { id} = req.params
+    try {
+        const getBlogs = await Blog.find()
+       
+        res.json(getBlogs)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+module.exports = {createBlog,updateBlog, getBlog, getAllBlogs}
