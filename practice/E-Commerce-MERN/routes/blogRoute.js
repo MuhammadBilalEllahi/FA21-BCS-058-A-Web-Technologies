@@ -6,8 +6,8 @@ const router = express.Router()
 
 router.post('/',authMiddleware,isAdmin,createBlog)
 router.put('/:id',authMiddleware,isAdmin,updateBlog)
-router.get('/get-blog/:id',getBlog)
-router.get('/get-all-blogs',getAllBlogs)
+router.get('/:id',getBlog)
+router.get('/',getAllBlogs)
 
 
 module.exports = router
