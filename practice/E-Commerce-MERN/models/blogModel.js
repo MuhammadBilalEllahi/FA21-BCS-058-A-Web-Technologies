@@ -2,53 +2,53 @@ const mongoose = require('mongoose'); // Erase if already required
 
 // Declare the Schema of the Mongo model
 var blogSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
+    title: {
+        type: String,
+        required: true,
     },
-    description:{
-        type:String,
-        required:true,
+    description: {
+        type: String,
+        required: true,
     },
-    category:{
-        type:String,
-        required:true,
+    category: {
+        type: String,
+        required: true,
     },
-    numViews:{
-        type:Number,
+    numViews: {
+        type: Number,
         default: 0
     },
-    isLiked:{
+    isLiked: {
         type: Boolean,
         default: false
     },
-    isDisliked:{
+    isDisliked: {
         type: Boolean,
         default: false
     },
-    likes:{
+    likes: [{ //i changed it to array for multiple users ids
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }, 
-    dislikes:{
+    }],
+    dislikes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    },
-    image:{
+    }],
+    image: {
         type: String,
         default: "https://cms.payloadcms.com/media/nodemailer-blog.jpg"
     },
-    author:{
+    author: {
         type: String,
         default: 'Admin'
     },
-    
+
 
 }, {
-    toJSON:{
+    toJSON: {
         virtuals: true
     },
-    toObject:{
+    toObject: {
         virtuals: true
     },
     timestamps: true
