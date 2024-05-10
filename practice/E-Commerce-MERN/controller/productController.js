@@ -135,7 +135,7 @@ const addToWishList = asyncHandler(async (req, res) => {
     try {
         const user = await User.findById(_id)
 
-        const alreadyAdded = await user.wishlist?.find(
+        const alreadyAdded = user.wishlist.find(
             (id) => id.toString() === prodId
         )
 
