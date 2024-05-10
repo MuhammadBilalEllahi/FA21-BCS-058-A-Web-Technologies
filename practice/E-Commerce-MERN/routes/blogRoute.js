@@ -1,5 +1,5 @@
 const express = require("express")
-const { createBlog, updateBlog, getBlog, getAllBlogs, deleteBlog, likeBlog, disLikeBlog } = require("../controller/blockController")
+const { createBlog, updateBlog, getBlog, getAllBlogs, deleteBlog, likeBlog, disLikeBlog } = require("../controller/blogController")
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware")
 const router = express.Router()
 
