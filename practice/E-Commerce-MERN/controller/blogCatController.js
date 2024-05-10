@@ -5,7 +5,7 @@ const validateMongoDbId = require("../utils/validateMongodbid")
 const createBlogCategory = asyncHandler(async (req, res) => {
 
     try {
-        const createNewBlogCategory = await Category.create(
+        const createNewBlogCategory = await BlogCategory.create(
             req.body
         )
         res.json(createNewBlogCategory)
@@ -20,7 +20,7 @@ const updateBlogCategory = asyncHandler(async (req, res) => {
 
     validateMongoDbId(id)
     try {
-        const updatedBlogCategory = await Category.findByIdAndUpdate(
+        const updatedBlogCategory = await BlogCategory.findByIdAndUpdate(
             id,
             req.body,
             {
@@ -40,7 +40,7 @@ const deleteBlogCategory = asyncHandler(async (req, res) => {
 
     validateMongoDbId(id)
     try {
-        const deletedBlogCategory = await Category.findByIdAndDelete(id)
+        const deletedBlogCategory = await BlogCategory.findByIdAndDelete(id)
         res.json(deletedBlogCategory)
     } catch (error) {
         throw new Error(error)
@@ -53,7 +53,7 @@ const getaBlogCategory = asyncHandler(async (req, res) => {
 
     validateMongoDbId(id)
     try {
-        const gotaBlogCategory = await Category.findById(id)
+        const gotaBlogCategory = await BlogCategory.findById(id)
         res.json(gotaBlogCategory)
     } catch (error) {
         throw new Error(error)
@@ -64,7 +64,7 @@ const getaBlogCategory = asyncHandler(async (req, res) => {
 const getAllBlogCategory = asyncHandler(async (req, res) => {
 
     try {
-        const getBlogCategories = await Category.find()
+        const getBlogCategories = await BlogCategory.find()
         res.json(getBlogCategories)
     } catch (error) {
         throw new Error(error)
