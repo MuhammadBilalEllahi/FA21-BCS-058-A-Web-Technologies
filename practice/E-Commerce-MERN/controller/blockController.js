@@ -3,7 +3,7 @@ const User = require("../models/userModel")
 const asyncHandler = require("express-async-handler")
 const validateMongoDbId = require("../utils/validateMongodbid")
 
-const createBlog = asyncHandler(async (req,res)=>{
+const createBlog = asyncHandler(async (req, res) => {
     try {
         const newBlog = await Blog.create(req.body)
         res.json(newBlog)
@@ -13,11 +13,12 @@ const createBlog = asyncHandler(async (req,res)=>{
 })
 
 
-const updateBlog = asyncHandler(async (req,res)=>{
-    const {id} = req.params
+const updateBlog = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    validateMongoDbId(id)
 
     try {
-        const updatedBlog = await Blog.findByIdAndUpdate(id,req.body, {
+        const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, {
             new: true
         })
         res.json(updatedBlog)
@@ -31,30 +32,90 @@ const updateBlog = asyncHandler(async (req,res)=>{
 })
 
 
-const getBlog = asyncHandler( async (req,res)=>{
-    const { id} = req.params
+const getBlog = asyncHandler(async (req, res) => {
+    const { id } = req.params
+    validateMongoDbId(id)
     try {
         const getaBlog = await Blog.findById(id)
-       const updatedBlog=   await Blog.findByIdAndUpdate(id,{
-            $inc: {numViews: 1}
-         }, {
-            new : true
-         })
+        const updatedBlog = await Blog.findByIdAndUpdate(id, {
+            $inc: { numViews: 1 }
+        }, {
+            new: true
+        })
         res.json(updatedBlog)
     } catch (error) {
         throw new Error(error)
     }
 })
 
-const getAllBlogs = asyncHandler( async (req,res)=>{
-    const { id} = req.params
+const getAllBlogs = asyncHandler(async (req, res) => {
+
     try {
         const getBlogs = await Blog.find()
-       
+
         res.json(getBlogs)
     } catch (error) {
         throw new Error(error)
     }
 })
 
-module.exports = {createBlog,updateBlog, getBlog, getAllBlogs}
+const deleteBlog = asyncHandler(async (req, res) => {
+    const { id } = req.params
+    validateMongoDbId(id)
+    try {
+        const deletedBlog = await Blog.findByIdAndDelete(id)
+        res.json(deletedBlog)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+const likeBlog = asyncHandler(async (req, res) => {
+    console.log(req.body)
+    const { BlogId } = req.body;
+    // validateMongoDbId(BlogId)
+
+    // Find the blog which you want to be liked
+    const blog = await Blog.findById(BlogId)
+    // Find the logged in user
+    const userID = req?.user?._id
+    // Find if user has already liked the post
+    const isLiked = blog?.isLiked;
+    // Find the user if he disliked the post
+    const alreadyDisliked = blog?.dislikes?.find(
+        (userId) => userId?.toString() === userID?.toString()
+    )
+
+    if (alreadyDisliked) {
+        const blog = await Blog.findByIdAndUpdate(BlogId, {
+            $pull: { dislikes: userID },
+            isDisliked: false
+        }, {
+            new: true
+        })
+        res.json(blog)
+    }
+
+    if (isLiked) {
+        const blog = await Blog.findByIdAndUpdate(BlogId, {
+            $pull: { likes: userID },
+            isLiked: false
+        }, {
+            new: true
+        })
+        res.json(blog)
+    }
+    else {
+        const blog = await Blog.findByIdAndUpdate(BlogId, {
+            $push: { likes: userID },
+            isLiked: true
+        }, {
+            new: true
+        })
+        res.json(blog)
+    }
+
+
+})
+
+module.exports = { createBlog, updateBlog, getBlog, getAllBlogs, deleteBlog, likeBlog }
