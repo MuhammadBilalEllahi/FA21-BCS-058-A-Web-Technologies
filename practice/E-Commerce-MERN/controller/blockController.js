@@ -73,7 +73,7 @@ const deleteBlog = asyncHandler(async (req, res) => {
 const likeBlog = asyncHandler(async (req, res) => {
     console.log(req.body)
     const { BlogId } = req.body;
-    // validateMongoDbId(BlogId)
+    validateMongoDbId(BlogId)
 
     // Find the blog which you want to be liked
     const blog = await Blog.findById(BlogId)
