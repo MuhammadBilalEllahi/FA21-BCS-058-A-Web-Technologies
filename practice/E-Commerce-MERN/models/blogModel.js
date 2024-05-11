@@ -34,10 +34,11 @@ var blogSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
-    image: {
-        type: String,
-        default: "https://cms.payloadcms.com/media/nodemailer-blog.jpg"
-    },
+    images: [],
+    // image: {
+    //     type: String,
+    //     default: "https://cms.payloadcms.com/media/nodemailer-blog.jpg"
+    // },
     author: {
         type: String,
         default: 'Admin'
