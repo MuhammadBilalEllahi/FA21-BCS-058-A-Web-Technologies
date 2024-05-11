@@ -63,11 +63,11 @@ const getAllProduct = asyncHandler(async (req, res) => {
         const queryObj = { ...req.query }
         const excludedField = ["page", "sort", "limit", "fields"]
         excludedField.forEach((el) => delete queryObj[el]);
-        console.log(queryObj)
+        // console.log(queryObj)
 
         let queryStr = JSON.stringify(queryObj)
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
-        console.log(JSON.parse(queryStr));
+        // console.log(JSON.parse(queryStr));
 
         let query = Product.find(JSON.parse(queryStr))
         // TypeError: Assignment to constant variable. if const is used instead of let
@@ -77,7 +77,7 @@ const getAllProduct = asyncHandler(async (req, res) => {
         // Sorting
         if (req.query.sort) {
             const sortBy = req.query.sort.split(',').join(' ')
-            console.log(sortBy);
+            // console.log(sortBy);
             query = query.sort(sortBy)
         } else {
             query = query.sort('-createdAt')
@@ -98,7 +98,7 @@ const getAllProduct = asyncHandler(async (req, res) => {
         const page = req.query.page
         const limit = req.query.limit
         const skip = (page - 1) * limit
-        console.log(page, limit, skip) // not show e.g first 10 products if page is 2 and limit is 10. show 11th and onwards product from page 2 
+        // console.log(page, limit, skip) // not show e.g first 10 products if page is 2 and limit is 10. show 11th and onwards product from page 2 
         query = query.skip(skip).limit(limit)
 
         if (req.query.page) {
@@ -166,6 +166,58 @@ const addToWishList = asyncHandler(async (req, res) => {
     }
 })
 
+const rating = asyncHandler(async (req, res) => {
+    const { _id } = req.user
+    const { stars, prodId } = req.body;
+
+    try {
+        const product = await Product.findById(prodId);
+        // console.log(product)
 
 
-module.exports = { createProduct, getaProduct, getAllProduct, updateProduct, deleteProduct, addToWishList }
+        let alreadyRated = product?.ratings?.find(
+            (userId) => userId.postedBy.toString() === _id.toString()
+        )
+
+        // console.log(alreadyRated)
+        if (alreadyRated) {
+            const updateRating = await Product.updateOne(
+                {
+                    ratings: { $elemMatch: alreadyRated }
+                },
+                {
+                    $set: { "ratings.$.star": stars }
+
+                },
+                {
+
+                    new: true
+                }
+            )
+            res.json(updateRating)
+        }
+        else {
+            const rateProduct = await Product.findByIdAndUpdate(prodId, {
+                $push: {
+                    ratings: {
+                        star: stars,
+                        postedBy: _id
+                    }
+                }
+            }, {
+                new: true
+            })
+
+
+            res.json(rateProduct)
+        }
+
+    } catch (error) {
+        throw new Error(error)
+    }
+
+
+
+})
+
+module.exports = { createProduct, getaProduct, getAllProduct, updateProduct, deleteProduct, addToWishList, rating }

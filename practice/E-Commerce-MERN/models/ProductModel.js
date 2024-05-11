@@ -49,12 +49,16 @@ var productSchema = new mongoose.Schema({
         default: 0,
         select: false //hides sold data from users
     },
-    ratings: {
+    ratings: [{
         star: Number,
         postedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
+    }],
+    totalratings: {
+        type: String,
+        default: 0
     }
 }, {
     timestamps: true
