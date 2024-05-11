@@ -219,9 +219,9 @@ const rating = asyncHandler(async (req, res) => {
         const getAllRatings = await Product.findById(prodId)
         let allRatings = getAllRatings.ratings.length
         let ratingSum = getAllRatings.ratings.map((item) => item.star).reduce((prev, curr) => prev + curr, 0)
-        console.log(ratingSum, allRatings)
+        // console.log(ratingSum, allRatings)
         let actualRating = Math.round(ratingSum / allRatings) //should i round it or make it float?
-        console.log(actualRating)
+        // console.log(actualRating)
 
 
         let finalProduct = await Product.findByIdAndUpdate(prodId, {
@@ -233,7 +233,7 @@ const rating = asyncHandler(async (req, res) => {
 
 
         res.json(finalProduct)
-        console.log(finalProduct)
+        // console.log(finalProduct)
 
 
     } catch (error) {
