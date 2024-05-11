@@ -502,9 +502,9 @@ const createOrder = asyncHandler(async (req, res) => {
         let userCart = await Cart.findOne({ orderBy: user._id })
         let finalAmount = 0;
         if (couponApplied && userCart.totalAfterDiscount) {
-            finalAmount = userCart.totalAfterDiscount * 100
+            finalAmount = userCart.totalAfterDiscount
         } else {
-            finalAmount = userCart.cartTotal * 100
+            finalAmount = userCart.cartTotal
         }
 
         let newOrder = await new Order({
