@@ -4,7 +4,8 @@ const User = require("../models/userModel")
 const Product = require("../models/ProductModel")
 const Cart = require("../models/cartModel")
 const Coupon = require("../models/couponModel")
-
+const Order = require("../models/orderModel")
+const uniqid = require("uniqid")
 
 const asyncHandler = require("express-async-handler")
 const validateMongoDbId = require("../utils/validateMongodbid")
@@ -470,9 +471,10 @@ const applyCoupon = asyncHandler(async (req, res) => {
     if (validCoupon === null) { throw new Error("Invalid Coupon") }
     console.log(validCoupon)
     const user = await User.findOne({ _id })
-    let { products, cartTotal } = await Cart.findOne({ orderBy: user._id }).populate(
-        "products.product"
-    )
+    let { products, cartTotal } = await Cart.findOne(
+        { orderBy: user._id }).populate(
+            "products.product"
+        )
     let totalAfterDiscount = (cartTotal - (cartTotal * validCoupon.discount) / 100).toFixed(2)
     await Cart.findOneAndUpdate(
         {
@@ -489,7 +491,51 @@ const applyCoupon = asyncHandler(async (req, res) => {
 })
 
 
+const createOrder = asyncHandler(async (req, res) => {
+    const { COD, couponApplied } = req.body
+    try {
+        if (!COD) throw new Error("Create Cash Order Failed")
+        const user = await User.findByID(_id)
+        let userCart = await Cart.findOne({ orderBy: user._id })
+        let finalAmount = 0;
+        if (couponApplied && userCart.totalAfterDiscount) {
+            finalAmount = userCart.totalAfterDiscount * 100
+        } else {
+            finalAmount = userCart.cartTotal * 100
+        }
 
+        let newOrder = await new Order({
+            products: userCart.products,
+            paymentIntent: {
+                id: uniqid(),
+                method: "COD",
+                amount: finalAmount,
+                status: "Cash on Delievery",
+                created: Date.now(),
+                currency: "usd"
+            },
+            orderBy: user._id,
+            orderStatus: "Cash on Delievery"
+        }).save()
+
+        let update = userCart.products.map((item) => {
+            return {
+                updateOne: {
+                    filter: { _id: item.product._id },
+                    update: { $inc: { quantity: -item.count, sold: +item.count } }
+                }
+            }
+        })
+
+        const updated = await Product.bulkWrite(update, {})
+
+        res.json({ message: success })
+
+    } catch (error) {
+        throw new Error(error)
+    }
+
+})
 
 module.exports = {
     createUser,
@@ -511,7 +557,8 @@ module.exports = {
     userCart,
     getUserCart,
     emptyCart,
-    applyCoupon
+    applyCoupon,
+    createOrder
 }
 
 
