@@ -40,10 +40,13 @@ var userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    address: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Address"
-    }],
+    address: {
+        type: String
+    },
+    // address: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Address"
+    // }],
     wishlist: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product"
@@ -63,7 +66,7 @@ var userSchema = new mongoose.Schema({
 );
 saltRounds = 10;
 userSchema.pre("save", async function (next) {
-    if(!this.isModified('password')){
+    if (!this.isModified('password')) {
         next()
     }
     const salt = await bcrypt.genSaltSync(saltRounds);
@@ -73,20 +76,20 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isPasswordMatched = async function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password)
 }
-userSchema.methods.createPasswordResetToken = async function(){
-    
+userSchema.methods.createPasswordResetToken = async function () {
+
     const resetToken = crypto.randomBytes(32).toString('hex');
     // console.log(">reset",resetToken)
-    this.passwordResetToken = 
-    crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
+    this.passwordResetToken =
+        crypto
+            .createHash('sha256')
+            .update(resetToken)
+            .digest('hex');
     // console.log("this.pass", this.passwordResetToken)
 
-    this.passwordResetTokenExpires = (Date.now() + (60 * 1000 * 320  ))// 10 minutes, playing with time NEVER!
+    this.passwordResetTokenExpires = (Date.now() + (60 * 1000 * 320))// 10 minutes, playing with time NEVER!
     // console.log("this.reset",this.passwordResetToken)
-    return resetToken 
+    return resetToken
 
 }
 //Export the model

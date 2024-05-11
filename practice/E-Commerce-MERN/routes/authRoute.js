@@ -16,7 +16,8 @@ const {
     resetPassword,
 
     loginAdminController,
-    getWishList
+    getWishList,
+    saveUserAddress
 
 } = require("../controller/userController")
 const {
@@ -32,10 +33,13 @@ router.post("/login", loginUserController)
 router.post("/admin-login", loginAdminController)
 
 router.put('/password', authMiddleware, updatePassword)
+router.put('/save-address', authMiddleware, saveUserAddress)
+
 router.get("/get-users", getAllUsers)
 router.get("/refresh", handleRefreshToken)
 router.get("/logout", logout)
 router.get('/wishList', authMiddleware, getWishList)
+
 
 
 
