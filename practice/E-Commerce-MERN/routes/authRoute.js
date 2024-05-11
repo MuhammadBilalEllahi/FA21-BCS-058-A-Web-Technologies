@@ -21,7 +21,8 @@ const {
     userCart,
     getUserCart,
     emptyCart,
-    applyCoupon
+    applyCoupon,
+    createOrder
 
 } = require("../controller/userController")
 const {
@@ -37,6 +38,7 @@ router.post("/login", loginUserController)
 router.post("/admin-login", loginAdminController)
 router.post("/cart", authMiddleware, userCart)
 router.post("/cart/applycoupon", authMiddleware, applyCoupon)
+router.post("/cart/cash-order", authMiddleware, createOrder)
 
 
 router.put('/password', authMiddleware, updatePassword)

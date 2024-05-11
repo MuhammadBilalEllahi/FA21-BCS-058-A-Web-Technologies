@@ -464,6 +464,7 @@ const emptyCart = asyncHandler(async (req, res) => {
 
 const applyCoupon = asyncHandler(async (req, res) => {
     const { _id } = req.user;
+    validateMongoDbId(_id)
     const { coupon } = req.body;
     console.log(coupon)
     const validCoupon = await Coupon.findOne({ name: coupon })
@@ -492,10 +493,12 @@ const applyCoupon = asyncHandler(async (req, res) => {
 
 
 const createOrder = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    validateMongoDbId(_id)
     const { COD, couponApplied } = req.body
     try {
         if (!COD) throw new Error("Create Cash Order Failed")
-        const user = await User.findByID(_id)
+        const user = await User.findById(_id)
         let userCart = await Cart.findOne({ orderBy: user._id })
         let finalAmount = 0;
         if (couponApplied && userCart.totalAfterDiscount) {
@@ -529,7 +532,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
         const updated = await Product.bulkWrite(update, {})
 
-        res.json({ message: success })
+        res.json({ "message": "success" })
 
     } catch (error) {
         throw new Error(error)
