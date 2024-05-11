@@ -17,7 +17,10 @@ const {
 
     loginAdminController,
     getWishList,
-    saveUserAddress
+    saveUserAddress,
+    userCart,
+    getUserCart,
+    emptyCart
 
 } = require("../controller/userController")
 const {
@@ -31,6 +34,7 @@ router.post('/forgot-password-token', forgotPasswordToken)
 router.put('/reset-password/:token', resetPassword)
 router.post("/login", loginUserController)
 router.post("/admin-login", loginAdminController)
+router.post("/cart", authMiddleware, userCart)
 
 router.put('/password', authMiddleware, updatePassword)
 router.put('/save-address', authMiddleware, saveUserAddress)
@@ -39,7 +43,7 @@ router.get("/get-users", getAllUsers)
 router.get("/refresh", handleRefreshToken)
 router.get("/logout", logout)
 router.get('/wishList', authMiddleware, getWishList)
-
+router.get("/user-cart", authMiddleware, getUserCart)
 
 
 
