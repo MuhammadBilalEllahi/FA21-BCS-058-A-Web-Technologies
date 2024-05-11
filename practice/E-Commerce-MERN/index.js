@@ -9,6 +9,7 @@ const categoryRoute = require("./routes/categoryRoute")
 const blogCatRoute = require("./routes/blogCatRoute")
 const prodCatRoute = require("./routes/productCategoryRoute")
 const brandRoute = require("./routes/brandRoute")
+const couponRoute = require("./routes/couponRoute")
 
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
@@ -36,6 +37,7 @@ app.use("/api/category", categoryRoute)
 app.use("/api/blogCategory", blogCatRoute)
 app.use("/api/productCategory", prodCatRoute)
 app.use("/api/brand", brandRoute)
+app.use("/api/coupon", couponRoute)
 
 
 // middlewares after routes
