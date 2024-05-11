@@ -164,6 +164,9 @@ const addToWishList = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new Error(error)
     }
+
+
+
 })
 
 const rating = asyncHandler(async (req, res) => {
@@ -194,7 +197,7 @@ const rating = asyncHandler(async (req, res) => {
                     new: true
                 }
             )
-            res.json(updateRating)
+            // res.json(updateRating)
         }
         else {
             const rateProduct = await Product.findByIdAndUpdate(prodId, {
@@ -209,8 +212,29 @@ const rating = asyncHandler(async (req, res) => {
             })
 
 
-            res.json(rateProduct)
+            // res.json(rateProduct)
         }
+
+
+        const getAllRatings = await Product.findById(prodId)
+        let allRatings = getAllRatings.ratings.length
+        let ratingSum = getAllRatings.ratings.map((item) => item.star).reduce((prev, curr) => prev + curr, 0)
+        console.log(ratingSum, allRatings)
+        let actualRating = Math.round(ratingSum / allRatings) //should i round it or make it float?
+        console.log(actualRating)
+
+
+        let finalProduct = await Product.findByIdAndUpdate(prodId, {
+            totalratings: actualRating
+        },
+            {
+                new: true
+            })
+
+
+        res.json(finalProduct)
+        console.log(finalProduct)
+
 
     } catch (error) {
         throw new Error(error)
