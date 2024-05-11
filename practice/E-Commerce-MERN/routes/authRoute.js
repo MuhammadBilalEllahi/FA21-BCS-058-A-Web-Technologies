@@ -20,7 +20,8 @@ const {
     saveUserAddress,
     userCart,
     getUserCart,
-    emptyCart
+    emptyCart,
+    applyCoupon
 
 } = require("../controller/userController")
 const {
@@ -35,6 +36,8 @@ router.put('/reset-password/:token', resetPassword)
 router.post("/login", loginUserController)
 router.post("/admin-login", loginAdminController)
 router.post("/cart", authMiddleware, userCart)
+router.post("/cart/applycoupon", authMiddleware, applyCoupon)
+
 
 router.put('/password', authMiddleware, updatePassword)
 router.put('/save-address', authMiddleware, saveUserAddress)
@@ -46,13 +49,13 @@ router.get('/wishList', authMiddleware, getWishList)
 router.get("/user-cart", authMiddleware, getUserCart)
 
 
-
-
-
 router.get("/get-a-user/:id", authMiddleware, isAdmin, getaUser)
+
+
+router.delete("/empty-cart", authMiddleware, emptyCart)
+
 router.put("/delete-a-user/:id", deleteaUser)
 router.put("/update-a-user/:id", authMiddleware, updateaUser)
-
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser)
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser)
 
