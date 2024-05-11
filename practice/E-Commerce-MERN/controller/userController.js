@@ -63,6 +63,46 @@ const loginUserController = asyncHandler(async (req, res) => {
     }
 })
 
+
+
+
+const loginAdminController = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    // console.log(email,password)
+    const foundAdmin = await User.findOne({ email })
+    if (foundAdmin.role !== 'admin') throw new Error("Not Authorized")
+    if (foundAdmin && await foundAdmin.isPasswordMatched(password)) {
+        const refreshToken = await generateRefreshToken(foundAdmin?.id)
+        const updateUser = await User.findByIdAndUpdate(
+            foundAdmin.id, {
+            refreshToken: refreshToken
+        },
+            {
+                new: true
+            }
+
+        )
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000
+        })
+
+
+        res.json({
+            id: foundAdmin?._id,
+            firstname: foundAdmin?.firstname,
+            lastname: foundAdmin?.lastname,
+            email: foundAdmin?.email,
+            mobile: foundAdmin?.mobile,
+            password: foundAdmin?.password,
+            token: generateToken(foundAdmin?._id)
+        })
+    } else {
+        throw new Error("Invalid Credentials")
+    }
+})
+
+
 const handleRefreshToken = asyncHandler(async (req, res) => {
     const cookie = req.cookies;
     if (!cookie?.refreshToken) throw new Error("No Refresh Token")
@@ -267,7 +307,7 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
 
     try {
         const token = await user.createPasswordResetToken()
-        
+
         await user.save()
         const resetURL = `Hi , Please Follow this Link to reset Password. This link is valid for 10 min till now <a href="http://localhost:5000/api/user/reset-password/${token}">Click Here</a>`
 
@@ -291,11 +331,11 @@ const resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
     const { token } = req.params;
     const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
-// console.log(hashedToken)
+    // console.log(hashedToken)
     const user = await User.findOne({
 
         passwordResetToken: hashedToken,
-        passwordResetTokenExpires: { $gt : Date.now() }
+        passwordResetTokenExpires: { $gt: Date.now() }
     })
 
 
@@ -307,6 +347,19 @@ const resetPassword = asyncHandler(async (req, res) => {
     await user.save()
     res.json(user)
 })
+
+
+const getWishList = asyncHandler(async (req, res) => {
+    const { _id } = req.user;
+    try {
+        const findUser = await User.findById(_id).populate('wishlist')
+        res.json(findUser)
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+)
 module.exports = {
     createUser,
     loginUserController,
@@ -320,7 +373,9 @@ module.exports = {
     logout,
     updatePassword,
     forgotPasswordToken,
-    resetPassword
+    resetPassword,
+    loginAdminController,
+    getWishList
 }
 
 
