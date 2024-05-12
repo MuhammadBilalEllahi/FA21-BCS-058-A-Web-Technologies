@@ -14,7 +14,7 @@
 <br/>
 <a href="https://fa-21-bcs-058-a-web-technologies-9xet.vercel.app/" target="_blank">Asignment 1 on CV vercel</a>
 <br/>
-<a href="https://fa-21-bcs-058-a-web-technologies.vercel.app/" target="_blank">Practice on vercel</a>
+<a href="https://fa-21-bcs-058-a-web-technologies.vercel.app/#about" target="_blank">Practice on vercel</a>
 
 <h2>How  to install mongoDB</h2>
 <h5>Install on Win</h5>
