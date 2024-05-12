@@ -16,10 +16,15 @@ var enquirySchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    commment: {
+    comment: {
         type: String,
         required: true,
     },
+    status: {
+        type: String,
+        default: "Submitted",
+        enum: ["Submitted", "Contacted", "In Progress"]
+    }
 });
 
 //Export the model
