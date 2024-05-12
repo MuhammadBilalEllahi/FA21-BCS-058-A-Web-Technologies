@@ -11,6 +11,8 @@ const prodCatRoute = require("./routes/productCategoryRoute")
 const brandRoute = require("./routes/brandRoute")
 const couponRoute = require("./routes/couponRoute")
 const colorRoute = require("./routes/colorRoute")
+const enqRouter = require("./routes/enqRoute")
+
 
 
 const bodyParser = require("body-parser")
@@ -41,6 +43,7 @@ app.use("/api/productCategory", prodCatRoute)
 app.use("/api/brand", brandRoute)
 app.use("/api/coupon", couponRoute)
 app.use("/api/color", colorRoute)
+app.use("/api/enquiry", enqRouter)
 
 
 // middlewares after routes

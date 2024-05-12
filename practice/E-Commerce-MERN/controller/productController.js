@@ -4,7 +4,7 @@ const slugify = require("slugify")
 const User = require("../models/userModel")
 const fs = require('fs')
 const validateMongoDbId = require("../utils/validateMongodbid")
-const { cloudinaryUploadImg } = require("../utils/cloudinary")
+const { cloudinaryUploadImg, cloudinaryDeleteImg } = require("../utils/cloudinary")
 
 const createProduct = asyncHandler(async (req, res) => {
 
@@ -288,4 +288,25 @@ const uploadImages = asyncHandler(async (req, res) => {
     }
 
 })
-module.exports = { createProduct, getaProduct, getAllProduct, updateProduct, deleteProduct, addToWishList, rating, uploadImages }
+
+
+
+
+
+const deleteImages = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deleted = cloudinaryDeleteImg(id, "images")
+        res.json({ "message": "deleted" })
+    } catch (error) {
+        throw new Error(error)
+    }
+
+})
+
+
+
+
+
+module.exports = { createProduct, getaProduct, getAllProduct, updateProduct, deleteProduct, addToWishList, rating, uploadImages, deleteImages }
