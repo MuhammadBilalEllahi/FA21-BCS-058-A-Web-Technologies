@@ -9,10 +9,13 @@
 
     <body>
         <section style="width:100%; height: 100vh ">
-
             <h1
-                style="display: flex; align-items: center; justify-content: center; ">Some
+                style="display: flex; align-items: center; justify-content: center;  font-family: 'Arial', sans-serif; font-size: 2.5rem; color: #333; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">Some
                 Projects/Assignments</h1>
+            <p
+                style="display: flex; align-items: center; justify-content: center; font-family: 'Arial', sans-serif; font-size: 1.7rem; color: #555; margin-top: 10px;  ">Click
+                on buttons to view full page</p>
+
             <div class="grid">
 
                 <div>
@@ -142,6 +145,8 @@
         background-color: white;
         color: black;
         font-family: Calibri, 'Trebuchet MS', sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
     div {
@@ -180,9 +185,5 @@
         });
     };
 
-    function navigateToIframeUrl(element) {
-            var iframe = element.previousElementSibling; 
-            window.location.href = iframe.src;
-        }
 
 </script>
