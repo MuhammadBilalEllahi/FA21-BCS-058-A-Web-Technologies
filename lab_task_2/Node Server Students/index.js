@@ -52,15 +52,15 @@ server.put("/api/students/:id", async function (req, res) {
     // if(!student) return res.status(404).send("Record Not Found")
 
 
-    console.log(req.body,req.body.name, req.body.address)
+    console.log(req.body, req.body.name, req.body.address)
 
     student.name = req.body.name;
     student.address = req.body.address;
 
 
 
-  
-      
+
+
     await student.save()
     res.send({ "message": "Added Successfuly" })
 });
@@ -113,4 +113,3 @@ server.get("/api/students/refresh", async function (req, res) {
 //   })
 //   .then(data => console.log(data))
 //   .catch(error => console.error('Error:', error));
-  
