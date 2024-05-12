@@ -19,75 +19,90 @@
                     <iframe class="column"
                         src="./assignment_1/portfolio/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">CV</p>
+                    <p class="center" onclick="navigateToIframeUrl(this)">CV</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./lab_task_1/Landing_Page_2/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Landing Page - Around</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Landing Page -
+                        Around</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./assignment_2/Landing_Page_3/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Landing Page - Term Project</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Landing Page - Term
+                        Project</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./assignment_2/Form Handling with JavaScript/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Contact Page with Javascript enabled</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Contact Page with
+                        Javascript enabled</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./assignment_2/Landing_Page_3/contact.html"
                         frameborder="0"></iframe>
-                    <p class="center">Contact Page with JQuery enabled</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Contact Page with
+                        JQuery enabled</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./practice/Portfolio/index.html#about"
                         frameborder="0"></iframe>
-                    <p class="center">Portfolio Site</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Portfolio Site</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./lab_task_1/Landing_Page_1/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Landing Page - Universian</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Landing Page -
+                        Universian</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./lab_task_2/AJAX Example/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">AJAX Example</p>
+                    <p class="center" onclick="navigateToIframeUrl(this)">AJAX
+                        Example</p>
                 </div>
 
                 <div>
                     <iframe class="column" src="./practice/jquery/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Practice 1</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Practice 1</p>
                 </div>
 
                 <div>
                     <iframe class="column" src="./practice/InpageCss/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Practice 2</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Practice 2</p>
                 </div>
 
                 <div>
                     <iframe class="column"
                         src="./practice/Landing Practice/index.html"
                         frameborder="0"></iframe>
-                    <p class="center">Practice 3</p>
+                    <p class="center"
+                        onclick="navigateToIframeUrl(this)">Practice 3</p>
                 </div>
 
             </div>
@@ -99,7 +114,8 @@
 <style>
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, 49%);
+        grid-template-columns: repeat(auto-fill, 48%);
+        gap: 2%
     }
 
     @media (max-width: 1000px) {
@@ -128,9 +144,45 @@
         font-family: Calibri, 'Trebuchet MS', sans-serif;
     }
 
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .center {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer; 
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+        min-width: 50%;
+    }
+
+    .center:hover {
+        background-color: #555; /* Darker shade on hover */
     }
 </style>
+
+<script>
+    window.onload = function () {
+        var iframes = document.querySelectorAll('iframe');
+        iframes.forEach(function (iframe) {
+            iframe.addEventListener('click', function () {
+                window.location.href = iframe.src;
+            });
+        });
+    };
+
+    function navigateToIframeUrl(element) {
+            var iframe = element.previousElementSibling; 
+            window.location.href = iframe.src;
+        }
+
+</script>
