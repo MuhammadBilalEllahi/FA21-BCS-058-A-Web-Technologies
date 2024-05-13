@@ -16,16 +16,22 @@ const crypto = require('crypto')
 
 
 const createUser = asyncHandler(async (req, res) => {
-    const email = req.body.email
+    const email = req.body.email;
+
+    console.log(req.body)
     const foundUser = await User.findOne({ email: email })
 
     if (!foundUser) {
         const newUser = await User.create(req.body);
-        res.json(newUser)
+        // res.json(newUser)
+        res.redirect("/")
         // console.log((await newUser))
     }
     else {
-        throw new Error("User Already Exists")
+        req.flash("danger", "User Already Exists");
+        res.redirect("/api/user/register")
+
+        // throw new Error("User Already Exists")
         // res.json({
         //     "message": "User Already Exists", 
         //     success: false,
