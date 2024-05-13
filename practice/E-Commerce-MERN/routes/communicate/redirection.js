@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 
+const Product = require("./../../models/ProductModel")
+
 
 
 router.get("/", async (req, res) => {
@@ -11,8 +13,13 @@ router.get("/", async (req, res) => {
 
 
 router.get("/shop", async (req, res) => {
+    // <!-- src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>" -->
+    // <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
 
-    res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
+
+    const product = await Product.find()
+
+    res.render("shop", { layout: "layouts/noNavLayout", products: product, title: "Woodie Shop" })
 
     // res.render("index", { layout: "layouts/layout" })
 })

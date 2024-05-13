@@ -91,6 +91,29 @@
                     <div class="row pad-t">
                         <h4>Featured Product</h4>
 
+                        <% if (products && products.length> 0 ) { %>
+
+                        <% products.forEach((product)=>{ %>
+
+                        <% if (product.tags &&
+                        product.tags.includes("featured")) { %>
+                        <div class="d-flex f-prod">
+                            <div class="cont-img">
+                                <img src="/images/banner/banner-9.jpg" alt>
+                            </div>
+                            <div class="p-l-prod">
+                                <h6> <%= product.title %> </h6>
+                                <p><strike>200.00$</strike>
+                                    <span><%= product.price %>$</span></p>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                        <% }); %>
+
+                        <% } %>
+
                         <div class="d-flex f-prod">
                             <div class="cont-img">
                                 <img src="/images/banner/banner-8.jpg" alt>
@@ -153,31 +176,30 @@
 
                     <div class="d-flex flex-wrap mt-2 online-products-ajax">
 
-                        <% if (products && products.length> 0) { %>
+                        <% if (products && products.length> 0 ) { %>
 
                         <% products.forEach((product)=>{ %>
 
                         <div class="col-3 margin-product">
                             <div>
                                 <img class="col-11"
-                                    src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>"
+                                    src='/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
                                     alt
                                     onerror="
                                         this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
 
-                                <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
                             </div>
 
                             <div class="p-l-prod-disp">
                                 <h6>
-                                    <%=product.p_name%>
+                                    <%=product.title%>
                                 </h6>
                                 <p><strike>
-                                        <%= product.p_orig_price.toFixed(2)
+                                        <%= product.price.toFixed(2)
                                         %>$
                                     </strike>
                                     <span>
-                                        <%= product.p_sale_price.toFixed(2)
+                                        <%= product.price.toFixed(2)
                                         %>$
                                     </span>
                                 </p>
