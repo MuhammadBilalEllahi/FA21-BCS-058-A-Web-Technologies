@@ -258,7 +258,7 @@ const uploadImages = asyncHandler(async (req, res) => {
     // validateMongoDbId(id)
 
     try {
-        const uploader = (path) => cloudinaryUploadImg(path, "images")
+        const uploader = (path) => cloudinaryUploadImg(path, "imagesCloudinary")
         const urls = []
         const files = req.files;
         for (const file of files) {
@@ -297,7 +297,7 @@ const deleteImages = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deleted = cloudinaryDeleteImg(id, "images")
+        const deleted = cloudinaryDeleteImg(id, "imagesCloudinary")
         res.json({ "message": "deleted" })
     } catch (error) {
         throw new Error(error)
