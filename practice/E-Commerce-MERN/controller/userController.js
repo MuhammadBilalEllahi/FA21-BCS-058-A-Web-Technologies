@@ -57,7 +57,7 @@ const loginUserController = asyncHandler(async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         })
 
-        // req.session.user = req.user
+
 
 
         // res.json({
@@ -75,7 +75,8 @@ const loginUserController = asyncHandler(async (req, res) => {
 
         throw new Error("Invalid Credentials")
     }
-
+    req.session.user = foundUser
+    console.log("Session: ", req.session.user)
     res.redirect("/")
 })
 
@@ -167,8 +168,10 @@ const logout = asyncHandler(async (req, res) => {
         httpOnly: true,
         secure: true
     })
+    req.session.user = null
     res.clearCookie('refreshToken')
-    res.sendStatus(204)
+    // res.sendStatus(204)
+    res.redirect("/shop")
 })
 
 
@@ -613,6 +616,18 @@ const loginUserGET = asyncHandler(async (req, res) => {
 
 })
 
+const registerUserGET = asyncHandler(async (req, res) => {
+
+    res.render("auth/register", { layout: "layouts/layout" })
+
+
+    // res.render("index", { layout: "layouts/layout" })
+    // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
+
+})
+
+
+
 module.exports = {
     createUser,
     loginUserController,
@@ -637,7 +652,11 @@ module.exports = {
     createOrder,
     getOrders,
     updateOrderStatus,
-    loginUserGET
+
+
+
+    loginUserGET,
+    registerUserGET
 }
 
 

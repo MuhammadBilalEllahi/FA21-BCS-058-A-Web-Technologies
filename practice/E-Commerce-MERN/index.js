@@ -14,7 +14,7 @@ const colorRoute = require("./routes/colorRoute")
 const enqRouter = require("./routes/enqRoute")
 const redirectionRouter = require("./routes/communicate/redirection")
 
-
+const flash = require('express-flash')
 const config = require("config");
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
@@ -24,6 +24,7 @@ const dbConnect = require("./config/dbConnect");
 const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 let ejs_layout = require("express-ejs-layouts")
+
 
 
 app.use(ejs_layout)
@@ -37,10 +38,8 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())  //helps send data from postman or etc
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-
-
 // console.log(config.get("sessionSecret"))
-
+// file excluded with gitignore
 app.use(
     session({
         secret: config.get("sessionSecret"),
@@ -49,6 +48,11 @@ app.use(
         saveUninitialized: true,
     })
 );
+app.use(flash());
+
+
+
+
 
 
 app.use("/api/user", authRouter)

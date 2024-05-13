@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 const Product = require("./../../models/ProductModel")
+const checkSessionAuth = require("../../middlewares/checkSession")
 
 
 
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
 })
 
 
-router.get("/shop", async (req, res) => {
+router.get("/shop", checkSessionAuth, async (req, res) => {
     // <!-- src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>" -->
     // <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
 
