@@ -587,7 +587,11 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 // For Front End
 
 const loginUserGET = asyncHandler(async (req, res) => {
-    res.render("auth/login")
+    res.render("index", { layout: "layouts/layout" })
+
+    // res.render("auth/login", { layout: "layouts/layout" })
+
+    // res.render("auth/login", { layout: "layouts/layout" })
 })
 
 module.exports = {

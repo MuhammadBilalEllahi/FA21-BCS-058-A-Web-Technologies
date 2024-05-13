@@ -1,368 +1,276 @@
-<!DOCTYPE html>
-<html lang="en">
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Shop</title>
-
-        <!-- bootstrap css  -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-            crossorigin="anonymous">
-        <!-- bootstrap css  -->
-        <link rel="stylesheet" href="../../css/index.css">
-        <link rel="stylesheet" href="../../css/shop-nav.css">
-
-        <script src="../../js/index.js" defer></script>
-
-    </head>
-
-    <body>
-
-        <div class="quote container-fluid">
-            <a href="#"> Quick sale: 20% off products purchased today </a>
-        </div>
-
-        <nav class="navbar">
-            <div class="nav-container container">
-                <h5 class="nav-logo">
-                    <%=title %>
-                </h5>
-
-                <div class>
-                    <div class="d-flex search-box">
-                        <select class="search-select" name id>
-                            <option class="search-option" value>All
-                                Categories</option>
-                            <option class="search-option" value>All
-                                Categories</option>
-                        </select>
-                        <input class="search-input" type="text" class>
-                        <object class="search-svg"
-                            data="../../public/icons/search.svg"
-                            type="image/svg+xml"></object>
-
-                    </div>
-                </div>
-
-                <div class="icon-btn-container">
-                    <object class="icon-svg" data="../../public/search.svg"
-                        type="image/svg+xml"></object>
-                    <object class="icon-svg" data="../../public/user.svg"
-                        type="image/svg+xml"></object>
-                    <object class="icon-svg" data="../../public/heart.svg"
-                        type="image/svg+xml"></object>
-                    <object class="icon-svg"
-                        data="../../public/shopping-bag.svg"
-                        type="image/svg+xml"></object>
-
-                </div>
-            </div>
-
-        </nav>
-
-        <nav class="shop-nav ">
-            <div class="container d-flex justify-content-between">
-
-                <%- include("./partial/header.ejs") %>
-                <!-- <ul class="nav-ul">
-
-                    <li class><a href="/">Home</a> </li>
-                    <li class><a href="/shops">Shop</a> </li>
-                    <li class> <a href="#Products">Products</a> </li>
-                    <li class> <a href="#Blog">Blog</a> </li>
-                    <li class> <a href="#Page">Page</a> </li>
-                </ul> -->
-
-                <div class="red-box-contact">
-                    <h4>Call us: +92311111190</h4>
-                </div>
-            </div>
-
-        </nav>
-
-        <section
-            class="container d-flex justify-content-center align-items-center ">
-            <div class="links p-5">
-                <div>
-                    <h2>Shop</h2>
-                    <div class="d-flex">
-                        <a href="#">Home</a>
-                        <span>></span>
-                        <a href="#">Shop</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="min-vh-100 mb-5">
-            <div class="container mb-5 ">
+    <section
+        class="container d-flex justify-content-center align-items-center ">
+        <div class="links p-5">
+            <div>
+                <h2>Shop</h2>
                 <div class="d-flex">
-                    <div class="aside col-3">
-                        <div class="row">
-                            <h4>Categories</h4>
-                            <ul class="product-ul">
-                                <li class="li">Bed</li>
-                                <li class="li">Decor</li>
-                                <li class="li">Furniture</li>
-                                <li class="li">Kitchen</li>
-                                <li class="li">Lighting</li>
-                                <li class="li">Outdoor</li>
-                                <li class="li">Table</li>
-                            </ul>
+                    <a href="#">Home</a>
+                    <span>></span>
+                    <a href="#">Shop</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="min-vh-100 mb-5">
+        <div class="container mb-5 ">
+            <div class="d-flex">
+                <div class="aside col-3">
+                    <div class="row">
+                        <h4>Categories</h4>
+                        <ul class="product-ul">
+                            <li class="li">Bed</li>
+                            <li class="li">Decor</li>
+                            <li class="li">Furniture</li>
+                            <li class="li">Kitchen</li>
+                            <li class="li">Lighting</li>
+                            <li class="li">Outdoor</li>
+                            <li class="li">Table</li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <h4>Price</h4>
+
+                        <div class="p-2">
+                            <input type="range" min="1" max="100" value="50"
+                                id="price_range" />
+
                         </div>
 
-                        <div class="row">
-                            <h4>Price</h4>
-
-                            <div class="p-2">
-                                <input type="range" min="1" max="100" value="50"
-                                    id="price_range" />
-
-                            </div>
-
-                            <div class="p-3 d-flex">
-                                <p>From: $<span id="price_from">1</span></p>
-                                <p>To: $<span id="price_to">100</span></p>
-                            </div>
-
+                        <div class="p-3 d-flex">
+                            <p>From: $<span id="price_from">1</span></p>
+                            <p>To: $<span id="price_to">100</span></p>
                         </div>
 
-                        <div class="row">
-                            <h4>Colors</h4>
-                            <div class="colors ">
-                                <div class="color"
-                                    style="background-color: #ffffff;"></div>
-                                <div class="color"
-                                    style="background-color: #E7D3B4;"></div>
-                                <div class="color"
-                                    style="background-color: #292929;"></div>
-                                <div class="color"
-                                    style="background-color: #828282;"></div>
-                                <div class="color"
-                                    style="background-color: #303aff;"></div>
-                                <div class="color"
-                                    style="background-color: #ead118;"></div>
+                    </div>
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <h4>Size</h4>
-                            <div class="colors ">
-                                <button class="btn size-border ">L</button>
-                                <button class="btn size-border ">M</button>
-                                <button class="btn size-border ">S</button>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <h4>Brands</h4>
-                            <div class="wrap-brand ">
-                                <button class=" brand-title ">Art Decor</button>
-                                <button class=" brand-title ">Art Decor</button>
-                                <button class=" brand-title ">Art Decor</button>
-                                <button class=" brand-title ">Art Decor</button>
-                                <button class=" brand-title ">Art Decor</button>
-                                <button class=" brand-title ">Art Decor</button>
-
-                            </div>
-                        </div>
-
-                        <div class="row pad-t">
-                            <h4>Featured Product</h4>
-
-                            <div class="d-flex f-prod">
-                                <div class="cont-img">
-                                    <img src="../../public/banner-8.jpg" alt>
-                                </div>
-                                <div class="p-l-prod">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex f-prod">
-                                <div class="cont-img">
-                                    <img src="../../public/banner-8.jpg" alt>
-                                </div>
-                                <div class="p-l-prod">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex f-prod">
-                                <div class="cont-img">
-                                    <img src="../../public/banner-8.jpg" alt>
-                                </div>
-                                <div class="p-l-prod">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex f-prod">
-                                <div class="cont-img">
-                                    <img src="../../public/banner-8.jpg" alt>
-                                </div>
-                                <div class="p-l-prod">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <h4>Colors</h4>
+                        <div class="colors ">
+                            <div class="color"
+                                style="background-color: #ffffff;"></div>
+                            <div class="color"
+                                style="background-color: #E7D3B4;"></div>
+                            <div class="color"
+                                style="background-color: #292929;"></div>
+                            <div class="color"
+                                style="background-color: #828282;"></div>
+                            <div class="color"
+                                style="background-color: #303aff;"></div>
+                            <div class="color"
+                                style="background-color: #ead118;"></div>
 
                         </div>
                     </div>
 
-                    <div class="products col-9  min-vh-100">
+                    <div class="row">
+                        <h4>Size</h4>
+                        <div class="colors ">
+                            <button class="btn size-border ">L</button>
+                            <button class="btn size-border ">M</button>
+                            <button class="btn size-border ">S</button>
+                        </div>
+                    </div>
 
-                        <div class="d-flex justify-content-between">
-                            <select class="border-1" name id>
-                                <option value>Default Sorting</option>
-                                <option value>Sort by Popularity</option>
-                                <option value>Sort by Average Rating</option>
-                                <option value>Sort by Latest</option>
-                            </select>
+                    <div class="row">
+                        <h4>Brands</h4>
+                        <div class="wrap-brand ">
+                            <button class=" brand-title ">Art Decor</button>
+                            <button class=" brand-title ">Art Decor</button>
+                            <button class=" brand-title ">Art Decor</button>
+                            <button class=" brand-title ">Art Decor</button>
+                            <button class=" brand-title ">Art Decor</button>
+                            <button class=" brand-title ">Art Decor</button>
 
-                            <option value>Display</option>
+                        </div>
+                    </div>
+
+                    <div class="row pad-t">
+                        <h4>Featured Product</h4>
+
+                        <div class="d-flex f-prod">
+                            <div class="cont-img">
+                                <img src="/images/banner/banner-8.jpg" alt>
+                            </div>
+                            <div class="p-l-prod">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
                         </div>
 
-                        <div class="d-flex flex-wrap mt-2 online-products-ajax">
+                        <div class="d-flex f-prod">
+                            <div class="cont-img">
+                                <img src="/images/banner/banner-8.jpg" alt>
+                            </div>
+                            <div class="p-l-prod">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+                        </div>
 
-                            <% if (products && products.length> 0) { %>
+                        <div class="d-flex f-prod">
+                            <div class="cont-img">
+                                <img src="/images/banner/banner-8.jpg" alt>
+                            </div>
+                            <div class="p-l-prod">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+                        </div>
 
-                            <% products.forEach((product)=>{ %>
+                        <div class="d-flex f-prod">
+                            <div class="cont-img">
+                                <img src="/images/banner/banner-8.jpg" alt>
+                            </div>
+                            <div class="p-l-prod">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+                        </div>
 
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>"
-                                        alt
-                                        onerror="
-                                        this.src = '../../public/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
+                    </div>
+                </div>
 
-                                    <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
-                                </div>
+                <div class="products col-9  min-vh-100">
 
-                                <div class="p-l-prod-disp">
-                                    <h6>
-                                        <%=product.p_name%>
-                                    </h6>
-                                    <p><strike>
-                                            <%= product.p_orig_price.toFixed(2)
-                                            %>$
-                                        </strike>
-                                        <span>
-                                            <%= product.p_sale_price.toFixed(2)
-                                            %>$
-                                        </span>
-                                    </p>
-                                </div>
+                    <div class="d-flex justify-content-between">
+                        <select class="border-1" name id>
+                            <option value>Default Sorting</option>
+                            <option value>Sort by Popularity</option>
+                            <option value>Sort by Average Rating</option>
+                            <option value>Sort by Latest</option>
+                        </select>
 
+                        <option value>Display</option>
+                    </div>
+
+                    <div class="d-flex flex-wrap mt-2 online-products-ajax">
+
+                        <% if (products && products.length> 0) { %>
+
+                        <% products.forEach((product)=>{ %>
+
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>"
+                                    alt
+                                    onerror="
+                                        this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
+
+                                <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
                             </div>
 
-                            <% }); %>
-
-                            <% } else { %>
-                            <p>No products found.</p>
-                            <% } %>
-
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="../../public/product-2-600x655.jpg"
-                                        alt>
-                                </div>
-
-                                <div class="p-l-prod-disp">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-
-                            </div>
-
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="../../public/product-9-1-600x655.jpg"
-                                        alt>
-                                </div>
-
-                                <div class="p-l-prod-disp">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-
-                            </div>
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="../../public/product-27-600x655.jpg"
-                                        alt>
-                                </div>
-
-                                <div class="p-l-prod-disp">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-
-                            </div>
-
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="../../public/prduct-18-600x655.jpg"
-                                        alt
-                                        onerror="
-                                this.src = '../../public/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
-                                </div>
-
-                                <div class="p-l-prod-disp">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-
-                            </div>
-
-                            <div class="col-3 margin-product">
-                                <div>
-                                    <img class="col-11"
-                                        src="../../public/product-51-600x655.jpg"
-                                        alt>
-                                </div>
-
-                                <div class="p-l-prod-disp">
-                                    <h6>Upholstered Double Bed</h6>
-                                    <p><strike>200.00$</strike>
-                                        <span>116.00$</span></p>
-                                </div>
-
+                            <div class="p-l-prod-disp">
+                                <h6>
+                                    <%=product.p_name%>
+                                </h6>
+                                <p><strike>
+                                        <%= product.p_orig_price.toFixed(2)
+                                        %>$
+                                    </strike>
+                                    <span>
+                                        <%= product.p_sale_price.toFixed(2)
+                                        %>$
+                                    </span>
+                                </p>
                             </div>
 
                         </div>
+
+                        <% }); %>
+
+                        <% } else { %>
+                        <p>No products found.</p>
+                        <% } %>
+
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="/images/product/product-2-600x655.jpg"
+                                    alt>
+                            </div>
+
+                            <div class="p-l-prod-disp">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="/images/product/product-9-1-600x655.jpg"
+                                    alt>
+                            </div>
+
+                            <div class="p-l-prod-disp">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+
+                        </div>
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="/images/product/product-27-600x655.jpg"
+                                    alt>
+                            </div>
+
+                            <div class="p-l-prod-disp">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="/images/product/product-18-600x655.jpg"
+                                    alt
+                                    onerror="
+                                this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
+                            </div>
+
+                            <div class="p-l-prod-disp">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 margin-product">
+                            <div>
+                                <img class="col-11"
+                                    src="/images/product/product-51-600x655.jpg"
+                                    alt>
+                            </div>
+
+                            <div class="p-l-prod-disp">
+                                <h6>Upholstered Double Bed</h6>
+                                <p><strike>200.00$</strike>
+                                    <span>116.00$</span></p>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-
-    </body>
-
-</html>
+</body>
