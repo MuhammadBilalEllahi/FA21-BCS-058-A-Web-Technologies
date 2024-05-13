@@ -12,33 +12,25 @@ const brandRoute = require("./routes/brandRoute")
 const couponRoute = require("./routes/couponRoute")
 const colorRoute = require("./routes/colorRoute")
 const enqRouter = require("./routes/enqRoute")
-
 const redirectionRouter = require("./routes/communicate/redirection")
 
 
-
+const config = require("config");
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const morgan = require("morgan")
-
-
+const session = require("express-session");
 const dbConnect = require("./config/dbConnect");
 const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
-
-
-
-
 let ejs_layout = require("express-ejs-layouts")
-app.use(ejs_layout)
 
+
+app.use(ejs_layout)
 app.set("view engine", "ejs");
 // app.set("views","./template/pages")
 app.use(express.json());
 app.use(express.static("public"))
-
-
-
 // app.use(morgan("combined")) //pass combined to for dev and production
 app.use(morgan('dev'))
 // app.use(bodyParser()) //deprecated
@@ -46,6 +38,17 @@ app.use(bodyParser.json())  //helps send data from postman or etc
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+
+// console.log(config.get("sessionSecret"))
+
+app.use(
+    session({
+        secret: config.get("sessionSecret"),
+        cookie: { maxAge: 60000 },
+        resave: true,
+        saveUninitialized: true,
+    })
+);
 
 
 app.use("/api/user", authRouter)
