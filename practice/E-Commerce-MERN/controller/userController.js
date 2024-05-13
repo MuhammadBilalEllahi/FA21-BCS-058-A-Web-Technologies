@@ -57,19 +57,26 @@ const loginUserController = asyncHandler(async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         })
 
+        // req.session.user = req.user
 
-        res.json({
-            id: foundUser?._id,
-            firstname: foundUser?.firstname,
-            lastname: foundUser?.lastname,
-            email: foundUser?.email,
-            mobile: foundUser?.mobile,
-            password: foundUser?.password,
-            token: generateToken(foundUser?._id)
-        })
+
+        // res.json({
+        //     id: foundUser?._id,
+        //     firstname: foundUser?.firstname,
+        //     lastname: foundUser?.lastname,
+        //     email: foundUser?.email,
+        //     mobile: foundUser?.mobile,
+        //     password: foundUser?.password,
+        //     token: generateToken(foundUser?._id)
+        // })
     } else {
+
+        res.redirect("/api/user/login")
+
         throw new Error("Invalid Credentials")
     }
+
+    res.redirect("/")
 })
 
 
@@ -97,18 +104,26 @@ const loginAdminController = asyncHandler(async (req, res) => {
         })
 
 
-        res.json({
-            id: foundAdmin?._id,
-            firstname: foundAdmin?.firstname,
-            lastname: foundAdmin?.lastname,
-            email: foundAdmin?.email,
-            mobile: foundAdmin?.mobile,
-            password: foundAdmin?.password,
-            token: generateToken(foundAdmin?._id)
-        })
+
+        // Comment this res.json for it is not needed 
+        // res.json({
+        //     id: foundAdmin?._id,
+        //     firstname: foundAdmin?.firstname,
+        //     lastname: foundAdmin?.lastname,
+        //     email: foundAdmin?.email,
+        //     mobile: foundAdmin?.mobile,
+        //     password: foundAdmin?.password,
+        //     token: generateToken(foundAdmin?._id)
+        // })
     } else {
-        throw new Error("Invalid Credentials")
+        res.redirect("/api/user/login")
+        // throw new Error("Invalid Credentials")
     }
+
+    res.redirect("/")
+
+
+
 })
 
 
