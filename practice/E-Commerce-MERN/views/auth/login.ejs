@@ -1,23 +1,30 @@
-<form action="/api/user/login" method="post">
-    <div class="mb-3">
-        <label for class="form-label">Email</label>
-        <input
-            type="email"
-            class="form-control"
-            name="email"
-            aria-describedby="emailHelpId"
-            placeholder="abc@mail.com" />
-        <small id="emailHelpId" class="form-text text-muted">Help text</small>
-    </div>
+<div class="container">
 
-    <div class="mb-3">
-        <label for class="form-label">Password</label>
-        <input
-            type="password"
-            class="form-control"
-            name
-            id
-            placeholder />
-    </div>
+    <div class="p-5">
+        <form action="/api/user/login" method="post">
+            <div class="mb-3">
+                <label for class="form-label">Email</label>
+                <input
+                    id="email"
+                    class="form-control"
+                    type="email"
+                    name="email"
+                    aria-describedby="emailHelpId"
+                    placeholder="abc@mail.com" />
+                <!-- <small id="emailHelpId" class="form-text text-muted">Help
+                    text</small> -->
+            </div>
 
-</form>
+            <div class="mb-3">
+                <label for class="form-label">Password</label>
+                <input
+                    class="form-control"
+                    id="password"
+                    type="password"
+                    name="password" />
+            </div>
+
+            <button class="btn border-3 bg-success" type="submit">Login</button>
+        </form>
+    </div>
+</div>

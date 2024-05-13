@@ -37,6 +37,8 @@ const createUser = asyncHandler(async (req, res) => {
 
 const loginUserController = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+
+    console.log(req.body, password)
     // console.log(email,password)
     const foundUser = await User.findOne({ email })
     if (foundUser && await foundUser.isPasswordMatched(password)) {
@@ -587,11 +589,13 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 // For Front End
 
 const loginUserGET = asyncHandler(async (req, res) => {
-    res.render("index", { layout: "layouts/layout" })
 
-    // res.render("auth/login", { layout: "layouts/layout" })
+    res.render("auth/login", { layout: "layouts/layout" })
 
-    // res.render("auth/login", { layout: "layouts/layout" })
+
+    // res.render("index", { layout: "layouts/layout" })
+    // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
+
 })
 
 module.exports = {
