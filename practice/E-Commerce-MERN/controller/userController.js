@@ -580,6 +580,16 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
         throw new Error(error)
     }
 })
+
+
+
+
+// For Front End
+
+const loginUserGET = asyncHandler(async (req, res) => {
+    res.render("auth/login")
+})
+
 module.exports = {
     createUser,
     loginUserController,
@@ -603,7 +613,8 @@ module.exports = {
     applyCoupon,
     createOrder,
     getOrders,
-    updateOrderStatus
+    updateOrderStatus,
+    loginUserGET
 }
 
 

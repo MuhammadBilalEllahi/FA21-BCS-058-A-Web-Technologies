@@ -25,6 +25,18 @@ const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 
 
+
+
+let ejs_layout = require("express-ejs-layouts")
+app.use(ejs_layout)
+
+app.set("view engine", "ejs");
+// app.set("views","./template/pages")
+app.use(express.json());
+app.use(express.static("public"))
+
+
+
 // app.use(morgan("combined")) //pass combined to for dev and production
 app.use(morgan('dev'))
 // app.use(bodyParser()) //deprecated
@@ -44,6 +56,8 @@ app.use("/api/brand", brandRoute)
 app.use("/api/coupon", couponRoute)
 app.use("/api/color", colorRoute)
 app.use("/api/enquiry", enqRouter)
+
+
 
 
 // middlewares after routes

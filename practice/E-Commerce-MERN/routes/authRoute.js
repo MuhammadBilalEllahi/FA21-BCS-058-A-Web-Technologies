@@ -24,7 +24,8 @@ const {
     applyCoupon,
     createOrder,
     getOrders,
-    updateOrderStatus
+    updateOrderStatus,
+    loginUserGET
 
 } = require("../controller/userController")
 const {
@@ -66,5 +67,12 @@ router.put("/update-a-user/:id", authMiddleware, updateaUser)
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser)
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser)
 
+
+
+
+
+// For Front End
+
+router.get("/login", loginUserGET)
 
 module.exports = router;
