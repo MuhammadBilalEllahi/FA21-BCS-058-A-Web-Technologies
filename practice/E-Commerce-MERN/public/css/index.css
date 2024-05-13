@@ -14,14 +14,15 @@ body {
 }
 
 
-.quote{
+.quote {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 2.5rem;
     background-color: #ba0f0c;
 }
-.quote a{
+
+.quote a {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -39,9 +40,9 @@ body {
 .nav-container {
     display: flex;
     flex-wrap: nowrap;
-    
+
     justify-content: space-between;
-    padding:  1rem;
+    padding: 1rem;
 }
 
 .nav-ul {
@@ -74,6 +75,7 @@ body {
 
 .icon-svg {
     margin: 0 1rem;
+    width: 1.2rem;
 }
 
 
@@ -291,18 +293,18 @@ body {
     width: 48%;
 }
 
-.insta-pic{
+.insta-pic {
     margin: 1%;
     height: 15rem;
 }
 
-.bg-greyish{
+.bg-greyish {
     background-color: #5A674D0D;
-    
+
 }
 
-.shop-now{
-    margin-top: 5% ;
+.shop-now {
+    margin-top: 5%;
     min-height: 80vh;
     padding: 5%;
 }
@@ -326,58 +328,61 @@ body {
     font-size: .89rem;
 }
 
-.description2 button{
+.description2 button {
     background-color: transparent;
 }
 
-.description2 button:hover{
-    color:#ba0f0c;
+.description2 button:hover {
+    color: #ba0f0c;
 }
 
-.ul{
+.ul {
     list-style: none;
 }
 
-.font-s-b{
+.font-s-b {
     font-size: 1rem !important;
     font-weight: bold;
     margin-bottom: 5%;
     color: rgb(20, 20, 20) !important;
 }
-.ul .li{
+
+.ul .li {
     font-size: .79rem;
     color: rgb(130, 130, 130);
 }
+
 .ul {
     line-height: 2rem;
 }
-.t-dark{
+
+.t-dark {
     color: rgb(20, 20, 20) !important;
     font-size: .85rem !important;
     font-weight: bold;
 }
 
-.input-newsletter{
+.input-newsletter {
     border: 1px solid black !important;
     width: 60%;
     padding: 1% 4%;
 }
 
-.btn-newsletter{
+.btn-newsletter {
     border: 0;
     background-color: #ba0f0c;
     color: white;
     font-size: .9rem;
     margin: 2%;
-    padding:  1% 5%;
+    padding: 1% 5%;
 }
 
 
-.w-c{
+.w-c {
     width: 30%;
 }
 
-.circle-icon{
+.circle-icon {
     border-radius: 50%;
     background-color: rgb(218, 218, 218);
     width: 2.2rem;
@@ -398,11 +403,11 @@ body {
 }
 
 
-.circle-icon i{
+.circle-icon i {
     color: inherit;
 }
 
-.red-box{
+.red-box {
     overflow: unset;
     position: absolute;
     z-index: 20;
@@ -414,7 +419,7 @@ body {
     background-color: #ba0f0c;
 }
 
-.red-box svg{
+.red-box svg {
     color: white;
     width: 64px;
     height: 64px;
