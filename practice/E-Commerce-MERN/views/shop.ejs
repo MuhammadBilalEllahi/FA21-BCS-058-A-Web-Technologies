@@ -185,9 +185,10 @@
                             onclick="window.location= '/api/product/<%=product._id%>'"
                             class="col-3 margin-product"
                             style="cursor: pointer;">
+                            <!-- <% console.log(product.images[0]?.url)%> -->
                             <div>
                                 <img class="col-11"
-                                    src='/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
+                                    src='<%= product.images[0]?.url%>'
                                     alt
                                     onerror="
                                         this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
