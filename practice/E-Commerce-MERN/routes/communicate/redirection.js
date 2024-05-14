@@ -19,9 +19,6 @@ router.get("/", async (req, res) => {
 router.get("/shop", checkSessionAuth, async (req, res) => {
     // <!-- src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>" -->
     // <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
-
-
-
     const product = await Product.find()
     // console.log(wishlistLength)
 

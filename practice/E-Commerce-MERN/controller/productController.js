@@ -52,7 +52,8 @@ const getaProduct = asyncHandler(async (req, res) => {
 
     try {
         const getOneProduct = await Product.findById(id)
-        res.json(getOneProduct)
+        res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct })
+        // res.json(getOneProduct)
     } catch (error) {
         throw new Error(error)
     }

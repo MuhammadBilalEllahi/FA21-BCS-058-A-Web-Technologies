@@ -106,6 +106,7 @@
                                 <p><strike>200.00$</strike>
                                     <span><%= product.price %>$</span></p>
                             </div>
+
                         </div>
 
                         <% } %>
@@ -202,6 +203,9 @@
                                         <%= product.price.toFixed(2)
                                         %>$
                                     </span>
+
+                                    <a
+                                        href="/api/product/<%=product._id%>">Next</a>
                                 </p>
                             </div>
 
