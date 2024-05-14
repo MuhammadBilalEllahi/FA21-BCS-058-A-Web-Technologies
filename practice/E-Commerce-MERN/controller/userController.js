@@ -44,7 +44,7 @@ const createUser = asyncHandler(async (req, res) => {
 const loginUserController = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
-    console.log(req.body, password)
+    // console.log(req.body)
     // console.log(email,password)
     const foundUser = await User.findOne({ email })
     if (foundUser && await foundUser.isPasswordMatched(password)) {
@@ -82,7 +82,7 @@ const loginUserController = asyncHandler(async (req, res) => {
         throw new Error("Invalid Credentials")
     }
     req.session.user = foundUser
-    console.log("Session: ", req.session.user)
+    // console.log("Session: ", req.session.user)
     res.redirect("/")
 })
 
@@ -613,8 +613,9 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 // For Front End
 
 const loginUserGET = asyncHandler(async (req, res) => {
+    const wishlistLength = 8;
+    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength });
 
-    res.render("auth/login", { layout: "layouts/layout" })
 
 
     // res.render("index", { layout: "layouts/layout" })
@@ -624,7 +625,8 @@ const loginUserGET = asyncHandler(async (req, res) => {
 
 const registerUserGET = asyncHandler(async (req, res) => {
 
-    res.render("auth/register", { layout: "layouts/layout" })
+    const wishlistLength = 8
+    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength })
 
 
     // res.render("index", { layout: "layouts/layout" })

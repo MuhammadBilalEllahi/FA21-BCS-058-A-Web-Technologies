@@ -3,9 +3,10 @@
         <h5 class="nav-logo">Wooden</h5>
 
         <!-- Advance Templating Partial -->
-        <%- include("./nav.ejs") %>
+        <%= console.log("Here2",wishlistLength) %>
+        <%- include("./nav.ejs", {req, wishlistLength}) %>
 
-        <%- include("./svg_ejs/svg_container.ejs") %>
+        <%- include("./svg_ejs/svg_container.ejs", { wishlistLength}) %>
     </div>
 
 </nav>

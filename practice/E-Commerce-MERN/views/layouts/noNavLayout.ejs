@@ -28,7 +28,9 @@
         <a href="#"> Quick sale: 20% off products purchased today </a>
     </div>
 
-    <%- include('../partial/shop_partials/shopNonav.ejs') %>
+    <%- include('../partial/shop_partials/shopNonav.ejs', {req, wishlistLength})
+    %>
+
     <body>
         <%-body %>
     </body>

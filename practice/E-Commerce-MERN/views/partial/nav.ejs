@@ -1,11 +1,28 @@
-<ul class="nav-ul">
+<!-- <ul class="nav-ul">
     <li class="nav-li"><a href="/">Home</a> </li>
     <li class="nav-li"><a href="/shop">Shop</a> </li>
-    <!-- <li class="nav-li"> <a href="/products">Products</a> </li>
-    <li class="nav-li"> <a href="/blog">Blog</a> </li> -->
-    <!-- <li class="nav-li"> <a href="/contact">Contact</a> </li> -->
+    <li class="nav-li"> <a href="/products">Products</a> </li>
+    <li class="nav-li"> <a href="/blog">Blog</a> </li>
+    <li class="nav-li"> <a href="/contact">Contact</a> </li>
     <li class="nav-li"> <a href="/api/user/login">LOGIN</a> </li>
     <li class="nav-li"> <a href="/api/user/register">REGISTER</a> </li>
     <li class="nav-li"> <a href="/api/user/logout">LOGOUT</a> </li>
     <li class="nav-li"> <a href="/">Hi </a> </li>
+</ul> -->
+
+<ul class="nav-ul">
+    <li class="nav-li"><a href="/">Home</a> </li>
+    <li class="nav-li"><a href="/shop">Shop</a> </li>
+    <li class="nav-li"> <a href="/products">Products</a> </li>
+    <li class="nav-li"> <a href="/blog">Blog</a> </li>
+    <li class="nav-li"> <a href="/contact">Contact</a> </li>
+    <% if (!req.session.user) { %>
+    <li class="nav-li"> <a href="/api/user/login">LOGIN</a> </li>
+    <li class="nav-li"> <a href="/api/user/register">REGISTER</a> </li>
+    <%} else{ %>
+    <li class="nav-li"> <a href="/">Hi, <%= req.session.user.firstname%> </a>
+    </li>
+    <li class="nav-li"> <a href="/api/user/logout">LOGOUT</a> </li>
+    <% }%>
+
 </ul>

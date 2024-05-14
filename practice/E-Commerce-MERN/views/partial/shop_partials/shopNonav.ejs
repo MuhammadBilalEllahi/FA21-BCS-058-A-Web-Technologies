@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <%- include("../svg_ejs/svg_container.ejs") %>
+        <%- include("../svg_ejs/svg_container.ejs", { wishlistLength }) %>
 
     </div>
 
@@ -30,7 +30,7 @@
 <nav class="shop-nav ">
     <div class="container d-flex justify-content-between">
 
-        <%- include("../../partial/nav.ejs") %>
+        <%- include("../../partial/nav.ejs", {req}) %>
 
         <div class="red-box-contact">
             <h4>Call us: +92311111190</h4>
