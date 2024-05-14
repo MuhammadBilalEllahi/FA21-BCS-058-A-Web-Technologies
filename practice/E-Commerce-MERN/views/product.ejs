@@ -1,30 +1,85 @@
+<section>
 
+    <div class="d-flex container-fluid justify-content-center ">
+        <div class="d-flex column col-6 container">
 
-<section class="container" style="min-height: 50vh;">
-    <div class="col-3 margin-product border">
-        <div>
-            <% console.log(productSent.images[0]?.url)%>
+            <div class="d-flex row col-3">
 
-            <img class="col-11"
-                src='<%= productSent.images[0]?.url %>'
-                alt
-                onerror="
+                <% productSent.images.forEach((src)=> { %>
+                <%= console.log(src.url)%>
+
+                <img class="col-10"
+                    src='<%= src.url %>'
+                    alt
+                    height="150rem"
+                    onerror="
                 this.src = '/images/banner/banner-9.jpg'">
 
+                <%});%>
+            </div>
+
+            <div class="d-flex col-8">
+                <img class="col-12"
+                    src='<%= productSent.images[0]?.url %>'
+                    alt
+                    onerror="
+                this.src = '/images/banner/banner-9.jpg'">
+            </div>
+
         </div>
 
-        <div class="p-l-prod-disp">
-            <h6>
+        <div class="d-flex row col-5 p-2">
+            <h5>
                 <%=productSent.title %>
+            </h5>
+            <span>
+                <%= productSent.price.toFixed(2)
+                %>$
+            </span>
+            <hr />
+            <h6>
+                <%=productSent.description %>
             </h6>
-            <p>
-                <span>
-                    <%= productSent.price.toFixed(2)
-                    %>$
-                </span>
-
-            </p>
         </div>
-
     </div>
+
+    <div
+        class="container-fluid d-flex justify-content-center align-items-center  "
+        style="min-height: 40vh;">
+
+        <div>
+            <h3>More Like This</h3>
+            <div class="col-4  border d-flex py-2">
+                <div
+                    class="col-6 d-flex justify-content-center align-center">
+                    <% console.log(productSent.images[0]?.url)%>
+
+                    <img class="col-11"
+                        src='<%= productSent.images[0]?.url %>'
+                        alt
+                        onerror="
+                this.src = '/images/banner/banner-9.jpg'">
+
+                </div>
+
+                <div class="p-l-prod-disp col-6">
+                    <h5>
+                        <%=productSent.title %>
+                    </h5>
+                    <h6>
+                        <%=productSent.description %>
+                    </h6>
+                    <p>
+                        <span>
+                            <%= productSent.price.toFixed(2)
+                            %>$
+                        </span>
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </section>
