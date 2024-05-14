@@ -613,8 +613,8 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 // For Front End
 
 const loginUserGET = asyncHandler(async (req, res) => {
-    const wishlistLength = 8;
-    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength });
+    // const wishlistLength = 8;
+    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength });
 
 
 
@@ -625,8 +625,8 @@ const loginUserGET = asyncHandler(async (req, res) => {
 
 const registerUserGET = asyncHandler(async (req, res) => {
 
-    const wishlistLength = 8
-    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength })
+    // const wishlistLength = 8
+    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength })
 
 
     // res.render("index", { layout: "layouts/layout" })

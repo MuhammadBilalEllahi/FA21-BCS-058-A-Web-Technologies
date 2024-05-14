@@ -23,7 +23,8 @@ const session = require("express-session");
 const dbConnect = require("./config/dbConnect");
 const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
-let ejs_layout = require("express-ejs-layouts")
+let ejs_layout = require("express-ejs-layouts");
+const setWishlistLength = require("./middlewares/wishlistMiddleware");
 
 
 
@@ -52,7 +53,7 @@ app.use(flash());
 
 
 
-
+app.use(setWishlistLength)
 
 
 app.use("/api/user", authRouter)
@@ -66,7 +67,11 @@ app.use("/api/coupon", couponRoute)
 app.use("/api/color", colorRoute)
 app.use("/api/enquiry", enqRouter)
 
-app.use("/", redirectionRouter)
+
+
+
+
+app.use("/", setWishlistLength, redirectionRouter)
 
 
 

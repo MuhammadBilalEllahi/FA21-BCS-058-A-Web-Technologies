@@ -12,15 +12,15 @@ router.get("/", async (req, res) => {
     // const user = await User.findById(_id)
     // const wishlistLength = user.wishlist.length ? 0 : 1
 
-    let wishlistLength = 0
-    if (req.session.user) {
+    // let wishlistLength = 0
+    // if (req.session.user) {
 
-        const { _id } = req.session.user;
-        const user = await User.findById(_id)
-        wishlistLength = user.wishlist.length
-    }
+    //     const { _id } = req.session.user;
+    //     const user = await User.findById(_id)
+    //     wishlistLength = user.wishlist.length
+    // }
 
-    res.render("index", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength })
+    res.render("index", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength })
     // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
 })
 
@@ -31,18 +31,18 @@ router.get("/shop", checkSessionAuth, async (req, res) => {
 
     // console.log(req.session.user)
 
-    let wishlistLength = 0
-    if (req.session.user) {
+    // let wishlistLength = 0
+    // if (req.session.user) {
 
-        const { _id } = req.session.user;
-        const user = await User.findById(_id)
-        wishlistLength = user.wishlist.length
-    }
+    //     const { _id } = req.session.user;
+    //     const user = await User.findById(_id)
+    //     wishlistLength = user.wishlist.length
+    // }
 
     const product = await Product.find()
-    console.log(wishlistLength)
+    // console.log(wishlistLength)
 
-    res.render("shop", { layout: "layouts/noNavLayout", products: product, title: "Woodie Shop", req: req, wishlistLength: wishlistLength })
+    res.render("shop", { layout: "layouts/noNavLayout", products: product, title: "Woodie Shop", req: req, wishlistLength: res.locals.wishlistLength })
 
     // res.render("index", { layout: "layouts/layout" })
 })
