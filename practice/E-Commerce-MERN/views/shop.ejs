@@ -97,9 +97,16 @@
 
                         <% if (product.tags &&
                         product.tags.includes("featured")) { %>
-                        <div class="d-flex f-prod">
+                        <div
+                            onclick="window.location= '/api/product/<%=product._id%>'"
+                            style="cursor: pointer;"
+                            class="d-flex f-prod">
                             <div class="cont-img">
-                                <img src="/images/banner/banner-9.jpg" alt>
+                                <img
+                                    src='<%= product.images[0]?.url%>'
+                                    alt
+                                    onerror="
+                                    this.src = '/images/banner/banner-9.jpg'" />
                             </div>
                             <div class="p-l-prod">
                                 <h6> <%= product.title %> </h6>

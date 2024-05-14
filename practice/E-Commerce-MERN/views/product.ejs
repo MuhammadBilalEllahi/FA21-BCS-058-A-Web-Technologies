@@ -1,19 +1,15 @@
-<h1>
-    HI
-    <%= productSent._id %>
-    <%= productSent.title %>
-    <%= productSent.price %>
-</h1>
+
 
 <section class="container" style="min-height: 50vh;">
     <div class="col-3 margin-product border">
         <div>
-            <!-- <% console.log(productSent.images[0].url)%> -->
+            <% console.log(productSent.images[0]?.url)%>
+
             <img class="col-11"
-                src='<%= productSent.images[0].url%>'
+                src='<%= productSent.images[0]?.url %>'
                 alt
                 onerror="
-                    this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
+                this.src = '/images/banner/banner-9.jpg'">
 
         </div>
 
