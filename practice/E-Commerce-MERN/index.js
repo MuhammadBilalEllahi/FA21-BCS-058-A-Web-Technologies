@@ -56,6 +56,7 @@ app.use(flash());
 app.use(setWishlistLength)
 
 
+
 app.use("/api/user", authRouter)
 app.use("/api/product", productRoute)
 app.use("/api/blog", blogRoute)
