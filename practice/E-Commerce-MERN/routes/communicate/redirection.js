@@ -12,21 +12,26 @@ router.get("/", async (req, res) => {
     // const user = await User.findById(_id)
     // const wishlistLength = user.wishlist.length ? 0 : 1
 
+    let wishlistLength = 0
+    if (req.session.user) {
 
-    const wishlistLength = 1
+        const { _id } = req.session.user;
+        const user = await User.findById(_id)
+        wishlistLength = user.wishlist.length
+    }
 
     res.render("index", { layout: "layouts/layout", req: req, wishlistLength: wishlistLength })
     // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
 })
 
 
-router.get("/shop", async (req, res) => {
+router.get("/shop", checkSessionAuth, async (req, res) => {
     // <!-- src="data:<%= product.p_img.contentType %>;base64,<%= product.p_img.data.toString('base64') %>" -->
     // <!-- <img class="col-11" src="<%= product.p_img.data%>" alt=""> -->
 
     // console.log(req.session.user)
 
-    const wishlistLength = 0
+    let wishlistLength = 0
     if (req.session.user) {
 
         const { _id } = req.session.user;
