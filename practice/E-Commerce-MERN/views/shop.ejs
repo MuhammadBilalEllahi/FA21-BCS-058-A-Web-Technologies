@@ -181,7 +181,10 @@
 
                         <% products.forEach((product)=>{ %>
 
-                        <div class="col-3 margin-product">
+                        <div
+                            onclick="window.location= '/api/product/<%=product._id%>'"
+                            class="col-3 margin-product"
+                            style="cursor: pointer;">
                             <div>
                                 <img class="col-11"
                                     src='/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
@@ -203,9 +206,6 @@
                                         <%= product.price.toFixed(2)
                                         %>$
                                     </span>
-
-                                    <a
-                                        href="/api/product/<%=product._id%>">Next</a>
                                 </p>
                             </div>
 

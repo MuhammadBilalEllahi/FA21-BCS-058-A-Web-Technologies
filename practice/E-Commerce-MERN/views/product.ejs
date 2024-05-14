@@ -4,3 +4,30 @@
     <%= productSent.title %>
     <%= productSent.price %>
 </h1>
+
+<section class="container" style="min-height: 50vh;">
+    <div class="col-3 margin-product border">
+        <div>
+            <img class="col-11"
+                src='/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
+                alt
+                onerror="
+                    this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
+
+        </div>
+
+        <div class="p-l-prod-disp">
+            <h6>
+                <%=productSent.title %>
+            </h6>
+            <p>
+                <span>
+                    <%= productSent.price.toFixed(2)
+                    %>$
+                </span>
+
+            </p>
+        </div>
+
+    </div>
+</section>

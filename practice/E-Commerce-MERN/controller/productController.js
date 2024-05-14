@@ -52,7 +52,7 @@ const getaProduct = asyncHandler(async (req, res) => {
 
     try {
         const getOneProduct = await Product.findById(id)
-        res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct })
+        res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct, req: req, wishlistLength: res.locals.wishlistLength })
         // res.json(getOneProduct)
     } catch (error) {
         throw new Error(error)
