@@ -19,7 +19,7 @@ const { uploadPhoto, productImgResize } = require("../middlewares/uploadImages")
 router.post("/", authMiddleware, isAdmin, createProduct)
 router.post("/:id", authMiddleware, isAdmin, updateProduct)
 
-router.put("/upload/", authMiddleware, isAdmin, uploadPhoto.array('images', 10), productImgResize, uploadImages)
+router.put("/upload/:id", authMiddleware, isAdmin, uploadPhoto.array('images', 10), productImgResize, uploadImages)
 router.put("/wishlist", authMiddleware, addToWishList)
 router.put("/ratings", authMiddleware, rating)
 
