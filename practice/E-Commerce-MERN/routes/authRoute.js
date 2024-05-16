@@ -65,8 +65,8 @@ router.get("/get-a-user/:id", authMiddleware, isAdmin, getaUser)
 
 
 router.delete("/empty-cart", authMiddleware, emptyCart)
+router.delete("/delete-a-user/:id", deleteaUser)
 
-router.put("/delete-a-user/:id", deleteaUser)
 router.put("/update-a-user/:id", authMiddleware, updateaUser)
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser)
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser)

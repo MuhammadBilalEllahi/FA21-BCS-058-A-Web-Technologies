@@ -24,7 +24,7 @@ const createUser = asyncHandler(async (req, res) => {
     if (!foundUser) {
         const newUser = await User.create(req.body);
         // res.json(newUser)
-        res.redirect("/")
+        res.redirect("/login")
         // console.log((await newUser))
     }
     else {
