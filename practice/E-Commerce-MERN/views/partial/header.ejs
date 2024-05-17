@@ -4,9 +4,10 @@
 
         <!-- Advance Templating Partial -->
 
-        <%- include("./nav.ejs", {req, wishlistLength}) %>
+        <%- include("./nav.ejs", {req, wishlistLength, cartLength}) %>
 
-        <%- include("./svg_ejs/svg_container.ejs", { wishlistLength}) %>
+        <%- include("./svg_ejs/svg_container.ejs", { wishlistLength,
+        cartLength}) %>
     </div>
 
 </nav>

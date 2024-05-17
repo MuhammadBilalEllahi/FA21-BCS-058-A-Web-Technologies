@@ -63,7 +63,7 @@ const loginUserController = asyncHandler(async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         })
 
-
+        console.log(generateToken(foundUser?._id))
 
 
         // res.json({
@@ -109,7 +109,7 @@ const loginAdminController = asyncHandler(async (req, res) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000
         })
-
+        console.log(generateToken(updateUser?._id))
 
 
         // Comment this res.json for it is not needed 
@@ -154,10 +154,11 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
 })
 
 const logout = asyncHandler(async (req, res) => {
-    if (req?.session?.user) {
-        req.session.user = null
-    }
+    // if (req?.session?.user) {
+    //     req.session.user = null
+    // }
     const cookie = req.cookies
+    console.log(cookie)
     if (!cookie?.refreshToken) throw new Error("No Refresh Token")
     const refreshToken = cookie.refreshToken;
     const user = await User.findOne({ refreshToken })
@@ -217,7 +218,7 @@ const saveUserAddress = asyncHandler(async (req, res) => {
 })
 
 
-const getaUser = async (req, res) => {
+const getaUser = async (req, res) => { // get user not get a user
     // const user = await User.find()
     const { _id } = req.user
     validateMongoDbId(_id)
@@ -457,6 +458,8 @@ const userCart = asyncHandler(async (req, res) => {
             cartTotal,
             orderBy: user?._id
         }).save()
+
+        // await User.findByIdAndUpdate({cart: []})
         res.json(newCart)
     } catch (error) {
         throw new Error(error)
@@ -617,7 +620,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
 const loginUserGET = asyncHandler(async (req, res) => {
     // const wishlistLength = 8;
-    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength });
+    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength });
 
 
 
@@ -629,7 +632,7 @@ const loginUserGET = asyncHandler(async (req, res) => {
 const registerUserGET = asyncHandler(async (req, res) => {
 
     // const wishlistLength = 8
-    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength })
+    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
 
 
     // res.render("index", { layout: "layouts/layout" })

@@ -24,7 +24,7 @@ const dbConnect = require("./config/dbConnect");
 const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 let ejs_layout = require("express-ejs-layouts");
-const setWishlistLength = require("./middlewares/wishlistMiddleware");
+const { setWishlistLength, setCartLength } = require("./middlewares/wishlistMiddleware");
 
 
 
@@ -54,6 +54,7 @@ app.use(flash());
 
 
 app.use(setWishlistLength)
+app.use(setCartLength)
 
 
 
