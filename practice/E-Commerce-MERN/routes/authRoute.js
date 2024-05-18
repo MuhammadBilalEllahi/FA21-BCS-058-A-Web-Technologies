@@ -25,7 +25,7 @@ const {
     createOrder,
     getOrders,
     updateOrderStatus,
-
+    // setWishList,
 
 
     loginUserGET,
@@ -51,7 +51,7 @@ router.post("/cart/cash-order", authMiddleware, createOrder)
 router.put('/password', authMiddleware, updatePassword)
 router.put('/save-address', authMiddleware, saveUserAddress)
 router.put('/orders/update-order/:id', authMiddleware, isAdmin, updateOrderStatus)
-
+// router.post('/wishList', authMiddleware, setWishList)
 
 router.get("/get-users", getAllUsers)
 router.get("/refresh", handleRefreshToken)

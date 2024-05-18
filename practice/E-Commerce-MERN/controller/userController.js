@@ -1,4 +1,3 @@
-const { generateToken } = require("../config/jwtToken")
 const User = require("../models/userModel")
 
 const Product = require("../models/ProductModel")
@@ -9,7 +8,9 @@ const uniqid = require("uniqid")
 
 const asyncHandler = require("express-async-handler")
 const validateMongoDbId = require("../utils/validateMongodbid")
-const { generateRefreshToken } = require("../config/refreshToken")
+const { generateRefreshToken, } = require("../config/refreshToken")
+const { generateToken } = require("../config/jwtToken");
+
 const jwt = require('jsonwebtoken');
 const { sendEmail } = require("./emailController")
 const crypto = require('crypto')
@@ -133,25 +134,58 @@ const loginAdminController = asyncHandler(async (req, res) => {
 
 })
 
-
 const handleRefreshToken = asyncHandler(async (req, res) => {
     const cookie = req.cookies;
-    if (!cookie?.refreshToken) throw new Error("No Refresh Token")
+    if (!cookie?.refreshToken) {
+        res.status(400).json({ error: 'No Refresh Token' });
+        return;
+    }
+
     const refreshToken = cookie.refreshToken;
-    const user = await User.findOne({ refreshToken })
+    const user = await User.findOne({ refreshToken });
 
-    if (!user) throw new Error("No refresh Token present in DB or not matched")
-    jwt.verify(refreshToken, process.env.refreshToken, (err, decoded) => {
-        if (err || user.id !== decoded.id) {
+    if (!user) {
+        res.status(400).json({ error: 'Refresh Token not found or not matched' });
+        return;
+    }
 
-            throw new Error("There is something wrong with refrsh Token")
+    try {
+        const decoded = await jwt.verify(refreshToken, process.env.JWT_SECRET_KEY);
+
+        if (user.id !== decoded.id) {
+            throw new Error("There is something wrong with refresh Token");
         }
-        const accessToken = generateRefreshToken(user?._id)
-        res.json({ accessToken })
-    })
+
+        const accessToken = generateToken(user._id);
+
+        res.json({ accessToken });
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
-})
+// const handleRefreshToken = asyncHandler(async (req, res) => {
+//     console.log("hi")
+//     const cookie = req.cookies;
+//     console.log("From req", cookie.refreshToken)
+//     if (!cookie?.refreshToken) throw new Error("No Refresh Token")
+//     const refreshToken = cookie.refreshToken;
+//     const user = await User.findOne({ refreshToken })
+
+//     if (!user) throw new Error("No refresh Token present in DB or not matched")
+//     jwt.verify(refreshToken, process.env.refreshToken, (err, decoded) => {
+//         if (err || user.id !== decoded.id) {
+
+//             throw new Error("There is something wrong with refrsh Token")
+//         }
+//         const accessToken = generateRefreshToken(user?._id)
+//         res.json({ accessToken })
+//     })
+
+//     res.json({ accessToken })
+// })
 
 const logout = asyncHandler(async (req, res) => {
     // if (req?.session?.user) {
@@ -420,6 +454,39 @@ const getWishList = asyncHandler(async (req, res) => {
     }
 })
 
+// const setWishList = asyncHandler(async (req, res) => {
+//     const { id } = req.params; // The product ID to add/remove from wishlist
+//     const { _id } = req.user;
+
+//     console.log(id, _id)
+
+//     try {
+//         const user = await User.findById(_id);
+//         if (!user) {
+//             return res.status(404).json({ message: "User not found" });
+//         }
+
+//         const isProductInWishlist = user.wishlist.includes(id);
+
+//         if (isProductInWishlist) {
+//             // Remove the product from the wishlist
+//             user.wishlist = user.wishlist.filter(productId => productId.toString() !== id);
+//         } else {
+//             // Add the product to the wishlist
+//             user.wishlist.push(id);
+//         }
+
+//         await user.save();
+
+//         // Populate the wishlist field and return the updated user
+//         const updatedUser = await User.findById(_id).populate('wishlist');
+//         res.json(updatedUser);
+
+//     } catch (error) {
+//         throw new Error(error);
+//     }
+// });
+
 
 const userCart = asyncHandler(async (req, res) => {
     const { cart } = req.body;
@@ -466,6 +533,12 @@ const userCart = asyncHandler(async (req, res) => {
     }
 })
 
+
+// const postCart = asyncHandler(async (req, res) => {
+//     const pid = req.params
+
+//     const addtoCart = Cart.
+// })
 const getUserCart = asyncHandler(async (req, res) => {
     const { _id } = req.user
     validateMongoDbId(_id)
@@ -666,7 +739,7 @@ module.exports = {
     createOrder,
     getOrders,
     updateOrderStatus,
-
+    // setWishList,
 
 
     loginUserGET,
