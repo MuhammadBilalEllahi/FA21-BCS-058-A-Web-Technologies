@@ -32,6 +32,12 @@ router.get("/register", async (req, res) => {
 })
 
 
+router.get("/wishlist", async (req, res) => {
+    res.render("pages/wishlist", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
+
 
 
 

@@ -17,26 +17,26 @@
     <a style class="d-flex">
         <img class="icon-svg" src="/images/icon_png/person.png" />
     </a>
-    <a id="fav-svg-btn"
-        style class="d-flex">
+    <a href="/wishlist" id="fav-svg-btn"
+        style="text-decoration: none !important; " class="d-flex">
         <img class="icon-svg"
             src="/images/icon_png/favourite.png" />
         <p
-            style="background-color: red; border-radius: 2rem; padding: 0.1rem; color: white; "><%=
+            style="background-color: red; border-radius: 2rem; padding: 0 0.2rem ; color: white; "><%=
             wishlistLength %></p>
     </a>
 
-    <a style class="d-flex">
+    <a style="text-decoration: none !important; " class="d-flex">
         <img class="icon-svg" src="/images/icon_png/cart.png" />
         <p
-            style="background-color: red; border-radius: 2rem; padding: 0.1rem;  color: white; "><%=
+            style="background-color: red; border-radius: 2rem; padding: 0 0.2rem;  color: white; "><%=
             cartLength
             %></p>
     </a>
 
 </div>
 
-<script>
+<!-- <script>
 
 document.addEventListener("DOMContentLoaded", async ()=>{
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
         })
 
         if(response.ok){
-            // window.location.href = "/"
+            window.location.href = "/wishlist"
             alert("works")
         }
         
@@ -72,4 +72,4 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     }
 
 })});
-</script>
+</script> -->

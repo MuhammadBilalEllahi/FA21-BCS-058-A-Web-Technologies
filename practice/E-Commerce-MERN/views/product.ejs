@@ -119,7 +119,7 @@
 
                     <button type="submit" id="addToWishListBtn" class=" btn"
                         style="width: 3rem;">
-                        <img style="height: 1.5rem;"
+                        <img id="addToWishListBtnImg" style="height: 1.5rem;"
                             src="/images/icon_png/favourite.png" />
                     </button>
 
@@ -239,17 +239,45 @@
     });
 });
 
-// window.onload('DOMContentLoaded', async (e)=>{
-//     e.preventDefault();
-//     try {
-//         const v = 
-//     } catch (error) {
+
+document.addEventListener('DOMContentLoaded', async (e)=>{
+    e.preventDefault();
+    const addToWishListBtn = document.getElementById("addToWishListBtn")
+    const prodID = "<%= productSent._id%>";
+
+    try {
+        const token = localStorage.getItem('token')
+            console.log("Token from get wishlist:", token);
+
+        const response = await fetch(`/api/user/wishlist`, {
+                method: 'GET',
+                headers:{
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            const data = await response.json()
+
+            const isInWishlist = data.wishlist.some(product => product._id === prodID);
+
+            if(isInWishlist) {
+               
+               addToWishListBtn.classList.add("bg-red");
+
+            }
+            else{
+                addToWishListBtn.classList.remove("bg-red")
+
+            }
+
+            console.log(isInWishlist)
+    } catch (error) {
         
-//     }
+    }
 
-//     const button = document.getElementById('addToWishListBtn');
+    const button = document.getElementById('addToWishListBtn');
 
-// })
+})
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
@@ -261,14 +289,15 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         event.preventDefault();
 
         try {
-            const responseToken = await fetch(`http://localhost:5000/api/user/refresh`, { method: 'GET' });
-            if (!responseToken.ok) {
-                throw new Error('Failed to fetch token');
-            }
+            // const responseToken = await fetch(`http://localhost:5000/api/user/refresh`, { method: 'GET' });
+            // if (!responseToken.ok) {
+            //     throw new Error('Failed to fetch token');
+            // }
 
-            console.log(responseToken)
+            // console.log(responseToken)
             
-            const token = responseToken.headers.get('Authorization');
+            // const token = responseToken.headers.get('Authorization');
+            const token = localStorage.getItem('token')
             console.log("Token:", token);
             
             const response = await fetch(`http://localhost:5000/api/product/wishlist`, {
@@ -364,7 +393,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
 
-
+.bg-red{
+    background-color: red;
+}
 
 
 
