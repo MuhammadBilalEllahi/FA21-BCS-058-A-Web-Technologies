@@ -27,10 +27,6 @@ const {
     updateOrderStatus,
     // setWishList,
 
-
-    loginUserGET,
-    registerUserGET
-
 } = require("../controller/userController")
 const {
     authMiddleware,
@@ -75,9 +71,5 @@ router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser)
 
 
 
-// For Front End
-
-router.get("/login", loginUserGET)
-router.get("/register", registerUserGET)
 
 module.exports = router;

@@ -25,6 +25,7 @@ const { errorHandler, notFound } = require("./middlewares/errorHandler");
 dbConnect()
 let ejs_layout = require("express-ejs-layouts");
 const { setWishlistLength, setCartLength } = require("./middlewares/wishlistMiddleware");
+const checkSessionAuth = require("./middlewares/checkSession");
 
 
 

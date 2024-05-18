@@ -64,27 +64,29 @@ const loginUserController = asyncHandler(async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         })
 
-        console.log(generateToken(foundUser?._id))
+        // console.log(generateToken(foundUser?._id))
 
-
-        // res.json({
-        //     id: foundUser?._id,
-        //     firstname: foundUser?.firstname,
-        //     lastname: foundUser?.lastname,
-        //     email: foundUser?.email,
-        //     mobile: foundUser?.mobile,
-        //     password: foundUser?.password,
-        //     token: generateToken(foundUser?._id)
-        // })
+        req.session.user = foundUser
+        res.json({
+            id: foundUser?._id,
+            firstname: foundUser?.firstname,
+            lastname: foundUser?.lastname,
+            email: foundUser?.email,
+            mobile: foundUser?.mobile,
+            password: foundUser?.password,
+            token: generateToken(foundUser?._id)
+        })
     } else {
 
-        res.redirect("/api/user/login")
+        // res.redirect("/api/user/login")
+        res.redirect("/login")
 
         throw new Error("Invalid Credentials")
     }
-    req.session.user = foundUser
+
     // console.log("Session: ", req.session.user)
-    res.redirect("/")
+
+    // res.redirect("/")
 })
 
 
@@ -110,25 +112,26 @@ const loginAdminController = asyncHandler(async (req, res) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000
         })
-        console.log(generateToken(updateUser?._id))
+        // console.log(generateToken(updateUser?._id))
 
-
+        req.session.user = foundAdmin
         // Comment this res.json for it is not needed 
-        // res.json({
-        //     id: foundAdmin?._id,
-        //     firstname: foundAdmin?.firstname,
-        //     lastname: foundAdmin?.lastname,
-        //     email: foundAdmin?.email,
-        //     mobile: foundAdmin?.mobile,
-        //     password: foundAdmin?.password,
-        //     token: generateToken(foundAdmin?._id)
-        // })
+        res.json({
+            id: foundAdmin?._id,
+            firstname: foundAdmin?.firstname,
+            lastname: foundAdmin?.lastname,
+            email: foundAdmin?.email,
+            mobile: foundAdmin?.mobile,
+            password: foundAdmin?.password,
+            token: generateToken(foundAdmin?._id)
+        })
     } else {
-        res.redirect("/api/user/login")
+        res.redirect("/login")
         // throw new Error("Invalid Credentials")
     }
 
-    res.redirect("/")
+
+    // res.redirect("/")
 
 
 
@@ -691,27 +694,6 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
 // For Front End
 
-const loginUserGET = asyncHandler(async (req, res) => {
-    // const wishlistLength = 8;
-    res.render("auth/login", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength });
-
-
-
-    // res.render("index", { layout: "layouts/layout" })
-    // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
-
-})
-
-const registerUserGET = asyncHandler(async (req, res) => {
-
-    // const wishlistLength = 8
-    res.render("auth/register", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
-
-
-    // res.render("index", { layout: "layouts/layout" })
-    // res.render("shop", { layout: "layouts/noNavLayout", products: undefined, title: "Woodie Shop" })
-
-})
 
 
 
@@ -741,9 +723,6 @@ module.exports = {
     updateOrderStatus,
     // setWishList,
 
-
-    loginUserGET,
-    registerUserGET
 }
 
 

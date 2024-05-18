@@ -7,7 +7,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                 <div class="card-body p-4 ">
                     <h4 class="mb-4">Login</h4>
-                    <form action="/api/user/login" method="post">
+                    <form id="login-form">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input
@@ -48,3 +48,44 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        console.log(email,password)
+
+        try {
+            const response = await fetch('/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            
+
+            if (response.ok) {
+                const data = await response.json();
+
+                console.log("token here in login form",data.token)
+                localStorage.setItem('token', data.token);
+                // alert('Login successful!');
+
+                window.location.href = '/';
+                
+            } else {
+                const errorData = await response.json();
+                // alert('Login failed: ' + errorData.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // alert('An error occurred. Please try again.', error);
+        }
+    });
+
+    // action="/api/user/login" method="post"
+</script>

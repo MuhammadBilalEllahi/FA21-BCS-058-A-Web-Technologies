@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { createCoupon, getAllCoupon, updateCoupon, deleteCoupon } = require("../controller/couponController")
+const { createCoupon, getAllCoupon, updateCoupon, deleteCoupon } = require("..//controller/couponController")
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware")
 
 router.post("/", authMiddleware, isAdmin, createCoupon)

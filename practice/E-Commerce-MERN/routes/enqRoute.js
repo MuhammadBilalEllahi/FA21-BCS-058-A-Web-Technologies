@@ -1,5 +1,5 @@
 const express = require("express");
-const { createEnquiry, getAllEnquiry, updateEnquiry, deleteEnquiry, getaEnquiry } = require("../controller/enquiryController");
+const { createEnquiry, getAllEnquiry, updateEnquiry, deleteEnquiry, getaEnquiry } = require("..//controller/enquiryController");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware")
 
 const router = express.Router()

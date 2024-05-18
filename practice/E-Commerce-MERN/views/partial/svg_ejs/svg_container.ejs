@@ -11,11 +11,65 @@
 </div> -->
 
 <div class="icon-btn-container">
-    <img class="icon-svg" src="/images/icon_png/search.png" />
-    <img class="icon-svg" src="/images/icon_png/person.png" />
-    <img class="icon-svg" src="/images/icon_png/favourite.png" />
-    <%= wishlistLength %>
-    <img class="icon-svg" src="/images/icon_png/cart.png" />
-    <%= cartLength %>
+    <a style class="d-flex">
+        <img class="icon-svg" src="/images/icon_png/search.png" />
+    </a>
+    <a style class="d-flex">
+        <img class="icon-svg" src="/images/icon_png/person.png" />
+    </a>
+    <a id="fav-svg-btn"
+        style class="d-flex">
+        <img class="icon-svg"
+            src="/images/icon_png/favourite.png" />
+        <p
+            style="background-color: red; border-radius: 2rem; padding: 0.1rem; color: white; "><%=
+            wishlistLength %></p>
+    </a>
+
+    <a style class="d-flex">
+        <img class="icon-svg" src="/images/icon_png/cart.png" />
+        <p
+            style="background-color: red; border-radius: 2rem; padding: 0.1rem;  color: white; "><%=
+            cartLength
+            %></p>
+    </a>
 
 </div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+
+    const button = document.getElementById('fav-svg-btn');
+
+    button.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem('token')
+    console.log("Bearer ",token)
+
+    try {
+        const response = await fetch("/api/user/wishlist", {
+            method: "GET",
+            headers: {
+                
+                'Content-Type': 'application/json',
+
+                'Authorization': `Bearer ${token}`
+                
+            }
+
+
+        })
+
+        if(response.ok){
+            // window.location.href = "/"
+            alert("works")
+        }
+        
+    } catch (error) {
+        alert("no work ", error)
+    }
+
+})});
+</script>

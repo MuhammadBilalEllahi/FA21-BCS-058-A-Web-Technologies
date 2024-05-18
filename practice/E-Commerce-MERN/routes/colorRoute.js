@@ -1,5 +1,5 @@
 const express = require("express");
-const { createColor, getAllColor, updateColor, deleteColor, getaColor } = require("../controller/colorController");
+const { createColor, getAllColor, updateColor, deleteColor, getaColor } = require("..//controller/colorController");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware")
 
 const router = express.Router()

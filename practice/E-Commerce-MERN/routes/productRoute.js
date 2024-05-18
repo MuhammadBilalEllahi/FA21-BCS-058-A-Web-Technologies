@@ -11,7 +11,7 @@ const {
     uploadImages,
     deleteImages
 
-} = require("../controller/productController");
+} = require("..//controller/productController");
 const { isAdmin, authMiddleware } = require("../middlewares/authMiddleware");
 const { uploadPhoto, productImgResize } = require("../middlewares/uploadImages");
 
