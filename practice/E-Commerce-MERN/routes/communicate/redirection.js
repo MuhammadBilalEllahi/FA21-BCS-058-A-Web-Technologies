@@ -45,6 +45,13 @@ router.get("/cart", async (req, res) => {
 
 
 
+router.get("/contact", async (req, res) => {
+    res.render("pages/contactPage", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
+
+
 
 
 
