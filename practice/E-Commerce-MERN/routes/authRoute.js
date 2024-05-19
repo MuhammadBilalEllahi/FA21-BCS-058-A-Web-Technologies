@@ -25,6 +25,7 @@ const {
     createOrder,
     getOrders,
     updateOrderStatus,
+    sendQuery
     // setWishList,
 
 } = require("../controller/userController")
@@ -42,6 +43,8 @@ router.post("/admin-login", loginAdminController)
 router.post("/cart", authMiddleware, userCart)
 router.post("/cart/applycoupon", authMiddleware, applyCoupon)
 router.post("/cart/cash-order", authMiddleware, createOrder)
+
+router.post("/contact-form", authMiddleware, sendQuery)
 
 
 router.put('/password', authMiddleware, updatePassword)

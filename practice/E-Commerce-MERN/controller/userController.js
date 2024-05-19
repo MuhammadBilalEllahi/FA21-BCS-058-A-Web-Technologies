@@ -12,8 +12,9 @@ const { generateRefreshToken, } = require("../config/refreshToken")
 const { generateToken } = require("../config/jwtToken");
 
 const jwt = require('jsonwebtoken');
-const { sendEmail } = require("./emailController")
+const { sendEmail, sendContactEmail } = require("./emailController")
 const crypto = require('crypto')
+const { sendEmailVerification } = require("firebase/auth")
 
 
 const createUser = asyncHandler(async (req, res) => {
@@ -692,8 +693,24 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
 
 
-// For Front End
+const sendQuery = asyncHandler(async (req, res) => {
+    const { name, email, phone, message } = req.body;
 
+    console.log(name, email, phone, message)
+    try {
+        const data = {
+            from: email,
+            subject: "Contact Form",
+            text: `${name} & ${phone}`,
+            html: `${name} & ${phone} ${email} ${message}`
+        }
+
+        sendContactEmail(data)
+        res.sendStatus(200)
+    } catch (error) {
+        throw new Error(error)
+    }
+});
 
 
 
@@ -721,6 +738,7 @@ module.exports = {
     createOrder,
     getOrders,
     updateOrderStatus,
+    sendQuery
     // setWishList,
 
 }

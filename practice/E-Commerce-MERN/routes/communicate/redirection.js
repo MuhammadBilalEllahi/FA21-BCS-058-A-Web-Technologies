@@ -50,6 +50,19 @@ router.get("/contact", async (req, res) => {
 
 })
 
+router.get("/forgot-password", async (req, res) => {
+    res.render("auth/forgotPass", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
+
+router.get("/api/user/reset-password/:token", async (req, res) => {
+    res.render("auth/resetPass", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
+
+
 
 
 

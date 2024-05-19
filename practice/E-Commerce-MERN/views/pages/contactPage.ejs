@@ -2,7 +2,7 @@
 
 <div class="form-container">
     <h1>Contact Details</h1>
-    <form action="/submit-contact" method="POST">
+    <form id="contact-form">
         <div class="form-row">
             <div>
                 <label for="name">Name</label>
@@ -23,13 +23,57 @@
         <div class="form-row">
             <div>
                 <label for="message">Comment or Message</label>
-                <textarea id="message" name="message" form-rows="6"
+                <textarea id="message" name="message" rows="6"
                     placeholder="Comment or Message" required></textarea>
             </div>
         </div>
-        <button class="send-btn" type="submit">Send Message</button>
+        <button class="send-btn" type="submit" id="submit-btn">Send
+            Message</button>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", (e)=>{
+        e.preventDefault()
+        const form = document.getElementById("contact-form");
+
+        // const submitBtn = document.getElementById("submit-btn");
+
+
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault();
+
+            const name = document.getElementById("name").value ;
+            const email = document.getElementById("email").value;
+             const phone = document.getElementById("phone").value; 
+             const message = document.getElementById("message").value; 
+
+             console.log(name, email, phone, message )
+
+            const token = localStorage.getItem("token");
+
+            try {
+                const response =fetch("/api/user/contact-form",{
+                    method: "POST",
+                    body:JSON.stringify({ name, email, phone, message }),
+                    headers:{
+                    'Content-Type': 'application/json',
+                     'Authorization': `Bearer ${token}`
+                    }
+                })
+
+
+                if (response.ok) {
+                        alert("Message sent successfully!");
+                    } else {
+                        throw new Error("Failed to send message");
+                    }
+            } catch (error) {
+                console.error(error)
+            }
+        })
+    })
+</script>
 
 <style>
     .form-container {
