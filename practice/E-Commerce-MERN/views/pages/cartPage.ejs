@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shopping Cart</title>
+        <link rel="stylesheet" href="/path/to/your/css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>My Cart</h1>
+            <div id="cart-container" class="row"></div>
+            <p id="no-items-message" style="display:none;">Your cart is
+                empty.</p>
+
+            <div id="cart-summary" style="display:none;">
+                <h2>Cart Summary</h2>
+                <p><strong>Subtotal:</strong> $<span id="cart-total"></span></p>
+                <div>
+                    <label for="coupon-code">Coupon Code:</label>
+                    <input type="text" id="coupon-code"
+                        placeholder="Enter coupon code">
+                    <button id="apply-coupon-btn">Apply Coupon</button>
+                </div>
+                <p><strong>Total After Discount:</strong> $<span
+                        id="total-after-discount"></span></p>
+                <button id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    alert('You need to log in first.');
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const response = await fetch('/api/user/user-cart', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch cart');
+                }
+
+                const data = await response.json();
+                const cartContainer = document.getElementById('cart-container');
+                const noItemsMessage = document.getElementById('no-items-message');
+                const cartSummary = document.getElementById('cart-summary');
+                const cartTotal = document.getElementById('cart-total');
+                const totalAfterDiscount = document.getElementById('total-after-discount');
+
+                if (data.products.length === 0) {
+                    noItemsMessage.style.display = 'block';
+                } else {
+                    noItemsMessage.style.display = 'none';
+                    cartSummary.style.display = 'block';
+                    cartTotal.textContent = data.cartTotal;
+                    totalAfterDiscount.textContent = data.totalAfterDiscount || data.cartTotal;
+
+                    data.products.forEach(item => {
+                        const product = item.product;
+                        const productCard = document.createElement('div');
+                        productCard.className = 'col-md-4';
+                        productCard.innerHTML = `
+                            <div class="card" style="margin-bottom: 20px;">
+                                <img src="${product.images[0]}" class="card-img-top" alt="${product.title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.title}</h5>
+                                    <p class="card-text">${product.description}</p>
+                                    <p class="card-text"><strong>Price:</strong> $${item.price}</p>
+                                    <p class="card-text"><strong>Quantity:</strong> ${item.count}</p>
+                                    <p class="card-text"><strong>Color:</strong> ${item.color}</p>
+                                </div>
+                            </div>
+                        `;
+                        cartContainer.appendChild(productCard);
+                    });
+                }
+
+                document.getElementById('apply-coupon-btn').addEventListener('click', async () => {
+                    const couponCode = document.getElementById('coupon-code').value;
+                    try {
+                        const couponResponse = await fetch('/api/user/cart/applycoupon', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify({ coupon: couponCode })
+                        });
+
+                        if (!couponResponse.ok) {
+                            throw new Error('Failed to apply coupon');
+                        }
+
+                        const couponData = await couponResponse.json();
+                        totalAfterDiscount.textContent = couponData.totalAfterDiscount;
+                        window.location = "/cart"
+                    } catch (error) {
+                        console.error('Error applying coupon:', error);
+                        alert('An error occurred while applying the coupon.');
+                    }
+                });
+
+                document.getElementById('checkout-btn').addEventListener('click', () => {
+                    window.location.href = '/checkout';
+                });
+
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+                alert('An error occurred while fetching your cart.');
+            }
+        });
+    </script>
+    </body>
+</html>
