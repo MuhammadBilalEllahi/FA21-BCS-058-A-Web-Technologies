@@ -61,6 +61,11 @@ router.get("/api/user/reset-password/:token", async (req, res) => {
 
 })
 
+router.get("/blogs", async (req, res) => {
+    res.render("pages/blogPage", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
 
 
 
