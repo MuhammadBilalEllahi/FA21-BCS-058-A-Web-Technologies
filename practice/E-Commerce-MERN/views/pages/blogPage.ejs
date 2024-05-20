@@ -36,7 +36,7 @@
                     </div>
                         
                         <hr>
-                        <a href="/blog/:id" class="btn btn-dark" >Read More</a>
+                        <a id="read-more-btn" href="/blog/${blog._id}" class="btn btn-dark" >Read More</a>
                     `;
                     blogListContainer.appendChild(blogElement);
                 });
@@ -46,7 +46,7 @@
                 alert("Failed to fetch blogs.");
             }
         });
-    </script>
+</script>
 
 <style>
     /* styles.css */

@@ -66,6 +66,11 @@ router.get("/blogs", async (req, res) => {
 
 })
 
+router.get("/blog/:id", async (req, res) => {
+    res.render("pages/blogIndv", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+})
+
 
 router.get("/products", async (req, res) => {
     res.render("pages/products", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
