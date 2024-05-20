@@ -601,8 +601,8 @@ const userCart = asyncHandler(async (req, res) => {
                 price: product.price
             });
         } else {
-            console.log("\nelse\t", existingCart.products[existingProductIndex].count)
-            console.log("\nelse\t", prodID.count)
+            // console.log("\nelse\t", existingCart.products[existingProductIndex].count)
+            // console.log("\nelse\t", prodID.count)
 
             // If the product exists, update its count and price
             existingCart.products[existingProductIndex].count += Number(prodID.count);

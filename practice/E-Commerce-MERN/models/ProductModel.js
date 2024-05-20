@@ -45,7 +45,15 @@ var productSchema = new mongoose.Schema({
     //     required: true
     //     // enum: ['Black', 'Brown', 'Red']
     // },
-    color: [],
+    color: [
+
+    ],
+    // color: [ change this tomorrow
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "ProductCategory"
+    //     }
+    // ],
     tags: [],
     sold: {
         type: Number,

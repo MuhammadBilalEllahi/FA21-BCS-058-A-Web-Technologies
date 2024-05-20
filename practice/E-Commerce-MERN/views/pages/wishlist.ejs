@@ -33,6 +33,8 @@
     
     
             })
+
+            
             
     
             if(response.ok){
@@ -53,16 +55,20 @@
                         const productCard = document.createElement('div');
                         productCard.className = 'col-md-4';
                         productCard.innerHTML = `
+                        
                             <div class="card" style="margin-bottom: 20px;">
+                                <button id="${product._id}" class="btn btn-danger remove-from-wishlist-btn " >X</button>
                                 <img src="${product.images[0]?.url}" class="card-img-top" alt="${product.title}">
                                 <div class="card-body">
+
                                     <h5 class="card-title">${product.title}</h5>
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text"><strong>Price:</strong> $${product.price}</p>
                                     <p class="card-text"><strong>Category:</strong> ${product.category}</p>
                                     <p class="card-text"><strong>Brand:</strong> ${product.brand}</p>
                                     <p class="card-text"><strong>Colors:</strong> ${product.color.join(', ')}</p>
-                                    <a href="/product/${product.slug}" class="btn btn-primary">View Product</a>
+                                    <a href="/api/product/${product._id}" class="btn btn-primary">View Product</a>
+                                    
                                 </div>
                             </div>
                         `;
@@ -74,5 +80,76 @@
                 // alert('An error occurred while fetching your wishlist.');
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    document.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        // console.log(this)
+
+        if (event.target.classList.contains('remove-from-wishlist-btn')) {
+
+
+        try {
+            const prodID = event.target.id;
+            console.log(prodID)
+            const token = localStorage.getItem('token')
+            console.log("Token:", token);
+            
+            const response = await fetch(`/api/product/wishlist`, {
+                method: 'PUT',
+                body: JSON.stringify({ prodId: prodID }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.message);
+            }
+            // const data = await response.json()
+            // const isInWishlist = data.wishlist.some(product => product._id === prodID);
+
+            // if(isInWishlist){
+            // }
+            event.target.closest('.col-md-4').remove();
+
+
+            const updatedUser = await response.json();
+            console.log('Updated User:', updatedUser);
+
+
+            
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    }
+    
+    });
+
 
         </script>

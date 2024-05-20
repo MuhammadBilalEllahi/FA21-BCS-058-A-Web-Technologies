@@ -8,7 +8,7 @@ const setWishlistLength = async (req, res, next) => {
         if (req.session.user) {
             const { _id } = req.session.user;
             const user = await User.findById(_id)
-            console.log(user.email)
+            // console.log(user.email)
             wishlistLength = user.wishlist.length;
         }
         res.locals.wishlistLength = wishlistLength
@@ -29,7 +29,7 @@ const setCartLength = async (req, res, next) => {
         if (req.session.user) {
             const { _id } = req.session.user;
             const user = await User.findById(_id)
-            console.log(user.email)
+            //console.log(user.email)
             let cart = await Cart.findOne({ orderBy: _id })
 
             if (!cart) {
@@ -38,11 +38,11 @@ const setCartLength = async (req, res, next) => {
             } else {
                 cartLength = cart.products.length ?? 0
             }
-            console.log(cart)
+            // console.log(cart)
             // console.log(cart.products.length ?? 0)
 
 
-            console.log("Cart", cartLength)
+            // console.log("Cart", cartLength)
         }
         res.locals.cartLength = cartLength
         next()
