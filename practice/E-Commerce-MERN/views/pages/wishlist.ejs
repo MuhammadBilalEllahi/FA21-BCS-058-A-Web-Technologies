@@ -57,7 +57,7 @@
                         productCard.innerHTML = `
                         
                             <div class="card" style="margin-bottom: 20px;">
-                                <button id="${product._id}" class="btn btn-danger remove-from-wishlist-btn " >X</button>
+                                <button id="${product._id}" class="btn btn-danger remove-from-wishlist-btn " style="position: absolute; top: 1%; right: 1%; z-index: 2" >X</button>
                                 <img src="${product.images[0]?.url}" class="card-img-top" alt="${product.title}">
                                 <div class="card-body">
 
