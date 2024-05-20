@@ -553,6 +553,8 @@ const userCart = asyncHandler(async (req, res) => {
 
     validateMongoDbId(_id);
 
+    // console.log(prodID.count)
+
     try {
         // Find the user
         const user = await User.findById(_id);
@@ -599,10 +601,11 @@ const userCart = asyncHandler(async (req, res) => {
                 price: product.price
             });
         } else {
-            // console.log("\nelse\t", existingCart.products[existingProductIndex])
+            console.log("\nelse\t", existingCart.products[existingProductIndex].count)
+            console.log("\nelse\t", prodID.count)
 
             // If the product exists, update its count and price
-            existingCart.products[existingProductIndex].count += prodID.count;
+            existingCart.products[existingProductIndex].count += Number(prodID.count);
             const product = await Product.findById(prodID._id).select('price').exec();
             // console.log("\nelse product.price\t", product.price)
             // console.log("\nelse product.price\t", Number(product.price.toFixed(2)))

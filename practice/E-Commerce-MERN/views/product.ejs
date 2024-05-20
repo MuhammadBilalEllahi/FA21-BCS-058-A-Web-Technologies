@@ -111,10 +111,13 @@
                 <div class="d-flex "
                     style="gap: 1rem; justify-content: baseline; align-items: baseline;">
                     <div class="quantity-selector">
-                        <button class="quantity-btn">-</button>
-                        <input type="text" value="1">
-                        <button class="quantity-btn">+</button>
+                        <button class="quantity-btn"
+                            id="decrement-btn">-</button>
+                        <input id="countValue" type="text" value="1">
+                        <button class="quantity-btn"
+                            id="increment-btn">+</button>
                     </div>
+
                     <button id="add-to-cart" class=" add-to-cart">Add To
                         Cart</button>
 
@@ -218,6 +221,31 @@
 </section>
 
 <script defer>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const decrementBtn = document.getElementById('decrement-btn');
+    const incrementBtn = document.getElementById('increment-btn');
+    const countInput = document.getElementById('countValue');
+
+    decrementBtn.addEventListener('click', () => {
+        let currentValue = parseInt(countInput.value, 10);
+        if (currentValue > 1) {
+            countInput.value = currentValue - 1;
+        }
+    });
+
+    incrementBtn.addEventListener('click', () => {
+        let currentValue = parseInt(countInput.value, 10);
+        countInput.value = currentValue + 1;
+    });
+
+    countInput.addEventListener('input', () => {
+        let value = parseInt(countInput.value, 10);
+        if (isNaN(value) || value < 1) {
+            countInput.value = 1;
+        }
+    });
+});
     document.addEventListener('DOMContentLoaded', function() {
     const ratingElement = document.querySelector('.rating');
     const ratingValue = ratingElement.getAttribute('data-rating');
@@ -329,18 +357,28 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
 document.addEventListener('DOMContentLoaded', async (e) => {
+    
     e.preventDefault();
-    const prodID = {
-         _id : "<%= productSent._id%>",
-         count : 1,
-         color : "<%= productSent.color%>",
-         
-    }
+
+
+ 
     
     const button = document.getElementById('add-to-cart');
 
     button.addEventListener('click', async (event) => {
         event.preventDefault();
+
+
+            const countValue = document.getElementById("countValue");
+            console.log(countValue.value)
+
+
+            const prodID = {
+                _id : "<%= productSent._id%>",
+                count : `${countValue.value}`,
+                color : "<%= productSent.color%>",
+                
+            }
 
         try {
             // const responseToken = await fetch(`/api/user/refresh`, { method: 'GET' });
