@@ -30,11 +30,18 @@ const setCartLength = async (req, res, next) => {
             const { _id } = req.session.user;
             const user = await User.findById(_id)
             console.log(user.email)
-            const cart = await Cart.findOne({ orderBy: _id })
+            let cart = await Cart.findOne({ orderBy: _id })
 
-            console.log(cart.products.length ?? 0)
+            if (!cart) {
+                cart = []
+                cartLength = cart.length
+            } else {
+                cartLength = cart.products.length ?? 0
+            }
+            console.log(cart)
+            // console.log(cart.products.length ?? 0)
 
-            cartLength = cart.products.length ?? 0
+
             console.log("Cart", cartLength)
         }
         res.locals.cartLength = cartLength

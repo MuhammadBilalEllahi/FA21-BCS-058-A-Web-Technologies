@@ -2,6 +2,11 @@
 <div class="container">
     <div class="cart-items">
         <h1>My Cart</h1>
+
+        <div id="empty-cart">
+            <a href style="text-decoration: none;">Empty Cart?</a>
+        </div>
+
         <div id="cart-container"></div>
         <p id="no-items-message" style="display:none;">Your cart is
             empty.</p>
@@ -26,10 +31,11 @@
 
 <script>
  document.addEventListener('DOMContentLoaded', async () => {
+    
      try {
          const token = localStorage.getItem('token');
          if (!token) {
-             alert('You need to log in first.');
+            //  alert('You need to log in first.');
              window.location.href = '/login';
              return;
          }
@@ -46,7 +52,12 @@
          }
 
          const data = await response.json();
-         const cartContainer = document.getElementById('cart-container');
+
+         if (!data) {
+                //cart = []
+                
+            } else {
+                const cartContainer = document.getElementById('cart-container');
          const noItemsMessage = document.getElementById('no-items-message');
          const cartTotal = document.getElementById('cart-total');
          const totalAfterDiscount = document.getElementById('total-after-discount');
@@ -75,10 +86,35 @@
                  cartContainer.appendChild(productCard);
              });
          }
+            }
 
-         document.getElementById('apply-coupon-btn').addEventListener('click', async () => {
+         
+         console.log(data)
+       
+
+         document.getElementById('checkout-btn').addEventListener('click', () => {
+             window.location.href = '/checkout';
+         });
+
+
+
+     } catch (error) {
+         console.error('Error fetching cart:', error);
+      //   alert('An error occurred while fetching your cart.');
+     }
+
+
+
+     document.getElementById('apply-coupon-btn').addEventListener('click', async () => {
              const couponCode = document.getElementById('coupon-code').value;
              try {
+                const token = localStorage.getItem('token');
+                    if (!token) {
+                        alert('You need to log in first.');
+                        window.location.href = '/login';
+                        return;
+                    }
+
                  const couponResponse = await fetch('/api/user/cart/applycoupon', {
                      method: 'POST',
                      headers: {
@@ -98,18 +134,51 @@
 
              } catch (error) {
                  console.error('Error applying coupon:', error);
-                 alert('An error occurred while applying the coupon.');
+                //  alert('An error occurred while applying the coupon.');
              }
          });
 
-         document.getElementById('checkout-btn').addEventListener('click', () => {
-             window.location.href = '/checkout';
+
+
+
+
+
+
+
+
+
+
+     const emptyCartBtn = document.getElementById("empty-cart");
+
+
+     emptyCartBtn.addEventListener("click", async ()=>{
+        try {
+         const token = localStorage.getItem('token');
+         if (!token) {
+            //  alert('You need to log in first.');
+             window.location.href = '/login';
+             return;
+         }
+
+         const response = await fetch('/api/user/empty-cart', {
+             method: 'DELETE',
+             headers: {
+                 'Authorization': `Bearer ${token}`
+             }
          });
 
+         if (!response.ok) {
+             throw new Error('Failed to Empty cart');
+         }
+
+        
+         
+
      } catch (error) {
-         console.error('Error fetching cart:', error);
-         alert('An error occurred while fetching your cart.');
+         console.error('Error fetching Emptying cart:', error);
+         // alert('An error occurred while Emptying  your cart.');
      }
+     })
  });
  </script>
 

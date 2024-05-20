@@ -115,7 +115,8 @@
                         <input type="text" value="1">
                         <button class="quantity-btn">+</button>
                     </div>
-                    <button class=" add-to-cart">Add To Cart</button>
+                    <button id="add-to-cart" class=" add-to-cart">Add To
+                        Cart</button>
 
                     <button type="submit" id="addToWishListBtn" class=" btn"
                         style="width: 3rem;">
@@ -160,16 +161,6 @@
                         href="#">Shipping &
                         Return</a>
                 </div>
-
-                <form action="/api/user/cart" method="post">
-
-                    <div class=" ">
-                        <button type="submit"
-                            class="p-2 rounded border-0 bg-black text-white">
-                            Add to Cart
-                        </button>
-                    </div>
-                </form>
 
                 <hr />
                 <div class="d-flex " style="font-size: 0.9rem; gap: 0.5rem;">
@@ -289,7 +280,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         event.preventDefault();
 
         try {
-            // const responseToken = await fetch(`http://localhost:5000/api/user/refresh`, { method: 'GET' });
+            // const responseToken = await fetch(`/api/user/refresh`, { method: 'GET' });
             // if (!responseToken.ok) {
             //     throw new Error('Failed to fetch token');
             // }
@@ -300,7 +291,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             const token = localStorage.getItem('token')
             console.log("Token:", token);
             
-            const response = await fetch(`http://localhost:5000/api/product/wishlist`, {
+            const response = await fetch(`/api/product/wishlist`, {
                 method: 'PUT',
                 body: JSON.stringify({ prodId: prodID }),
                 headers: {
@@ -324,6 +315,68 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', async (e) => {
+    e.preventDefault();
+    const prodID = {
+         _id : "<%= productSent._id%>",
+         count : 1,
+         color : "<%= productSent.color%>",
+         
+    }
+    
+    const button = document.getElementById('add-to-cart');
+
+    button.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        try {
+            // const responseToken = await fetch(`/api/user/refresh`, { method: 'GET' });
+            // if (!responseToken.ok) {
+            //     throw new Error('Failed to fetch token');
+            // }
+
+            // console.log(responseToken)
+            
+            // const token = responseToken.headers.get('Authorization');
+            const token = localStorage.getItem('token')
+            console.log("Token:", token);
+            
+            const response = await fetch(`/api/user/cart`, {
+                method: 'POST',
+                body: JSON.stringify({ prodID: prodID }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.message);
+            }
+
+            const updatedUser = await response.json();
+            console.log('Updated User:', updatedUser);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    });
+});
+
+
 // document.addEventListener('DOMContentLoaded', (e) => {
 //     e.preventDefault()
 //     const prodID = "<%= productSent._id%>"
@@ -343,7 +396,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 //             // const token = localStorage.getItem('refreshToken');
 //             // const token = getCookie('refreshToken')
           
-//             const responseToken = await fetch(`http://localhost:5000/api/user/refresh`, {method: 'GET'})
+//             const responseToken = await fetch(`/api/user/refresh`, {method: 'GET'})
 //             if (!responseToken.ok) {
 //         throw new Error('Failed to fetch token');
 //     }
@@ -356,7 +409,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 //     console.log("Token:", token)
 //             console.log(prodID)
             
-//             const response = await fetch(`http://localhost:5000/api/product/wishlist`, {
+//             const response = await fetch(`/api/product/wishlist`, {
 //                 method: 'PUT',
 //                 body: JSON.stringify({
 //                     prodId: prodID

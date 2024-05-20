@@ -20,7 +20,7 @@ const { sendEmailVerification } = require("firebase/auth")
 const createUser = asyncHandler(async (req, res) => {
     const email = req.body.email;
 
-    console.log(req.body)
+    //    console.log(req.body)
     const foundUser = await User.findOne({ email: email })
 
     if (!foundUser) {
@@ -68,6 +68,8 @@ const loginUserController = asyncHandler(async (req, res) => {
         // console.log(generateToken(foundUser?._id))
 
         req.session.user = foundUser
+        req.user = foundUser
+
         res.json({
             id: foundUser?._id,
             firstname: foundUser?.firstname,
@@ -116,6 +118,7 @@ const loginAdminController = asyncHandler(async (req, res) => {
         // console.log(generateToken(updateUser?._id))
 
         req.session.user = foundAdmin
+        req.user = foundAdmin
         // Comment this res.json for it is not needed 
         res.json({
             id: foundAdmin?._id,
@@ -196,7 +199,7 @@ const logout = asyncHandler(async (req, res) => {
     //     req.session.user = null
     // }
     const cookie = req.cookies
-    console.log(cookie)
+    //console.log(cookie)
     if (!cookie?.refreshToken) throw new Error("No Refresh Token")
     const refreshToken = cookie.refreshToken;
     const user = await User.findOne({ refreshToken })
@@ -492,57 +495,138 @@ const getWishList = asyncHandler(async (req, res) => {
 // });
 
 
-const userCart = asyncHandler(async (req, res) => {
-    const { cart } = req.body;
-
-    const { _id } = req.user;
-    validateMongoDbId(_id)
-    try {
-        let products = []
-        const user = await User.findById(_id)
-        // check if user  already has product in cart
-        const alreadyExistCart = await Cart.findOne({ orderby: user._id })
-        if (alreadyExistCart) {
-            alreadyExistCart.remove()
-        }
-        for (let i = 0; i < cart.length; i++) {
-            let object = {}
-            object.product = cart[i]._id;
-            object.count = cart[i].count;
-            object.color = cart[i].color;
-
-            let getPrice = await Product.findById(
-                cart[i]._id
-            ).select('price').exec()
-            object.price = getPrice.price
-            products.push(object)
-
-        }
-        let cartTotal = 0;
-        for (let i = 0; i < products.length; i++) {
-            cartTotal = cartTotal + products[i].price * products[i].count
-        }
-        cartTotal = Math.round(cartTotal)
-        console.log(products, cartTotal)
-        let newCart = await new Cart({
-            products,
-            cartTotal,
-            orderBy: user?._id
-        }).save()
-
-        // await User.findByIdAndUpdate({cart: []})
-        res.json(newCart)
-    } catch (error) {
-        throw new Error(error)
-    }
-})
 
 
-// const postCart = asyncHandler(async (req, res) => {
-//     const pid = req.params
 
-//     const addtoCart = Cart.
+
+
+
+// const userCart = asyncHandler(async (req, res) => {
+//     const { cart } = req.body;
+
+//     const { _id } = req.user;
+//     validateMongoDbId(_id)
+//     try {
+//         let products = []
+//         const user = await User.findById(_id)
+//         // check if user  already has product in cart
+//         const alreadyExistCart = await Cart.findOne({ orderby: user._id })
+//         if (!alreadyExistCart) {
+//             alreadyExistCart.remove()
+//         }
+//         for (let i = 0; i < cart.length; i++) {
+//             let object = {}
+//             object.product = cart[i]._id;
+//             object.count = cart[i].count;
+//             object.color = cart[i].color;
+
+//             let getPrice = await Product.findById(
+//                 cart[i]._id
+//             ).select('price').exec()
+//             object.price = getPrice.price
+//             products.push(object)
+
+//         }
+//         let cartTotal = 0;
+//         for (let i = 0; i < products.length; i++) {
+//             cartTotal = cartTotal + products[i].price * products[i].count
+//         }
+//         cartTotal = Math.round(cartTotal)
+//         console.log(products, cartTotal)
+//         let newCart = await new Cart({
+//             products,
+//             cartTotal,
+//             orderBy: user?._id
+//         }).save()
+
+//         // await User.findByIdAndUpdate({cart: []})
+//         res.json(newCart)
+//     } catch (error) {
+//         throw new Error(error)
+//     }
 // })
+
+
+const userCart = asyncHandler(async (req, res) => {
+    const { prodID } = req.body;
+    const { _id } = req.user;
+
+    validateMongoDbId(_id);
+
+    try {
+        // Find the user
+        const user = await User.findById(_id);
+
+        // Check if the user already has a cart
+        let existingCart = await Cart.findOne({ orderBy: user._id });
+        // console.log(",hi", existingCart)
+
+        if (!existingCart) {
+            // If the user doesn't have a cart, create a new one
+            existingCart = new Cart({ orderBy: user._id });
+        }
+        // console.log("Length", existingCart.products.length)
+
+        // Process the cart items
+
+        // console.log("cart item")
+        // Check if the product already exists in the cart
+        const existingProductIndex = existingCart.products.findIndex(
+            (product) => {
+                // console.log("\n")
+                // console.log("Here PRODUCT", product)
+                // console.log("Here ID PRODUCT", product.product.toString())
+                // console.log("Here ID CART", prodID._id)
+                // console.log("Here BOOL", product.product.toString() === prodID._id)
+                // console.log("\n")
+                // console.log("\n")
+                return product.product.toString() === prodID._id.toString()
+            }
+        );
+
+        // console.log("existing Index:", !existingProductIndex)
+        // !existingProductIndex || gives true for zero, should not use again
+
+
+        if (existingProductIndex === -1) {
+            // If the product doesn't exist, add it to the cart
+            const product = await Product.findById(prodID._id).select('price').exec();
+
+            existingCart.products.push({
+                product: prodID._id,
+                count: prodID.count,
+                color: prodID.color,
+                price: product.price
+            });
+        } else {
+            // console.log("\nelse\t", existingCart.products[existingProductIndex])
+
+            // If the product exists, update its count and price
+            existingCart.products[existingProductIndex].count += prodID.count;
+            const product = await Product.findById(prodID._id).select('price').exec();
+            // console.log("\nelse product.price\t", product.price)
+            // console.log("\nelse product.price\t", Number(product.price.toFixed(2)))
+            existingCart.products[existingProductIndex].price += Number(product.price.toFixed(2));
+        }
+
+
+        // Calculate the total cart price
+        existingCart.cartTotal = existingCart.products.reduce((total, product) => {
+            return total + product.price * product.count;
+        }, 0).toFixed(2);
+
+        // Save the updated cart
+        await existingCart.save();
+
+        res.json(existingCart);
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+);
+
+
+
 const getUserCart = asyncHandler(async (req, res) => {
     const { _id } = req.user
     validateMongoDbId(_id)
@@ -575,11 +659,11 @@ const applyCoupon = asyncHandler(async (req, res) => {
     const { _id } = req.user;
     validateMongoDbId(_id)
     const { coupon } = req.body;
-    console.log(coupon)
+    //console.log(coupon)
     const validCoupon = await Coupon.findOne({ name: coupon })
 
     if (validCoupon === null) { throw new Error("Invalid Coupon") }
-    console.log(validCoupon)
+    // console.log(validCoupon)
     const user = await User.findOne({ _id })
     let { products, cartTotal } = await Cart.findOne(
         { orderBy: user._id }).populate(
@@ -696,7 +780,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 const sendQuery = asyncHandler(async (req, res) => {
     const { name, email, phone, message } = req.body;
 
-    console.log(name, email, phone, message)
+    // console.log(name, email, phone, message)
     try {
         const data = {
             from: email,
