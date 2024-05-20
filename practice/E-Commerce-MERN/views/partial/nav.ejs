@@ -18,12 +18,55 @@
     <li class="nav-li"> <a href="/contact">Contact</a> </li>
 
     <% if (!req.session.user) { %>
-    <li class="nav-li"> <a href="/login">LOGIN</a> </li>
-    <li class="nav-li"> <a href="/register">REGISTER</a> </li>
+    <li class="req-user nav-li"> <a href="/login">LOGIN</a> </li>
+    <li class="req-user nav-li"> <a href="/register">REGISTER</a> </li>
     <%} else{ %>
-    <li class="nav-li"> <a href="/">Hi, <%= req.session.user.firstname%> </a>
+    <li class="req-user nav-li"> <a href="/">Hi, <%=
+            req.session.user.firstname%> </a>
     </li>
-    <li class="nav-li"> <a href="/api/user/logout">LOGOUT</a> </li>
+    <li class="req-user nav-li"> <a href="/api/user/logout">LOGOUT</a>
+    </li>
     <% }%>
 
 </ul>
+
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        let req_user_li = document.getElementsByClassName("req-user")
+
+
+        if(window.location.pathname === '/'){
+        console.log("Path /? ", window.location.pathname)
+        
+
+        // req_user_li.forEach((element) => {
+        //     element.style.display = "none"
+        // });
+
+        for (let i= 0 ; i < req_user_li.length; i++ ){
+            req_user_li[i].style.display = "none"
+        }
+        // req_user_li.style.display = "none"
+        }
+
+        
+        // else{
+        //     console.log("Path", window.location.pathname)
+
+        //     const token = localStorage.getItem("token")
+
+        //     if(!token){
+        //         console.log("TPath", window.location.pathname)
+        //         for (let i= 0 ; i < req_user_li.length; i++ ){
+        //             req_user_li[i].style.display = (i>=2) ? "block": "none"
+        //         }
+        //     }else{console.log("NtPath", window.location.pathname)
+                
+        //         for (let i= req_user_li.length ; i >-1 ; i++ ){
+        //             req_user_li[i].style.display = (i<=2) ? "block": "none"
+        //         }
+        //     }
+        // }
+    } )
+  
+</script>
