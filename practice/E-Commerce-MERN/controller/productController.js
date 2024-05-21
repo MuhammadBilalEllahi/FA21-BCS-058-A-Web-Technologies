@@ -51,9 +51,10 @@ const getaProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     try {
+        console.log("ok")
         const getOneProduct = await Product.findById(id)
-        res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct, req: req, wishlistLength: res.locals.wishlistLength })
-        // res.json(getOneProduct)
+        //res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct, req: req, wishlistLength: res.locals.wishlistLength })
+        res.json(getOneProduct)
     } catch (error) {
         throw new Error(error)
     }
@@ -114,7 +115,7 @@ const getAllProduct = asyncHandler(async (req, res) => {
         }
 
         const product = await query;
-        //console.log(product)
+        // console.log(product)
         res.json(product)
     } catch (error) {
         throw new Error(error)

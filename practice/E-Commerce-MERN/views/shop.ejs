@@ -20,7 +20,7 @@
                 <div class="aside col-3">
                     <div class="row">
                         <h4>Categories</h4>
-                        <ul class="product-ul">
+                        <ul id="category-container" class="product-ul">
                             <li class="li">Bed</li>
                             <li class="li">Decor</li>
                             <li class="li">Furniture</li>
@@ -35,7 +35,7 @@
                         <h4>Price</h4>
 
                         <div class="p-2">
-                            <input type="range" min="1" max="100" value="50"
+                            <input type="range" min="1" max="10000" value="200"
                                 id="price_range" />
 
                         </div>
@@ -49,7 +49,7 @@
 
                     <div class="row">
                         <h4>Colors</h4>
-                        <div class="colors ">
+                        <div id="colors-box" class="colors ">
                             <div class="color"
                                 style="background-color: #ffffff;"></div>
                             <div class="color"
@@ -66,18 +66,18 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <h4>Size</h4>
                         <div class="colors ">
                             <button class="btn size-border ">L</button>
                             <button class="btn size-border ">M</button>
                             <button class="btn size-border ">S</button>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row">
                         <h4>Brands</h4>
-                        <div class="wrap-brand ">
+                        <div id="brand-container" class="wrap-brand ">
                             <button class=" brand-title ">Art Decor</button>
                             <button class=" brand-title ">Art Decor</button>
                             <button class=" brand-title ">Art Decor</button>
@@ -87,40 +87,8 @@
 
                         </div>
                     </div>
-
-                    <div class="row pad-t">
-                        <h4>Featured Product</h4>
-
-                        <% if (products && products.length> 0 ) { %>
-
-                        <% products.forEach((product)=>{ %>
-
-                        <% if (product.tags &&
-                        product.tags.includes("featured")) { %>
-                        <div
-                            onclick="window.location= '/api/product/<%=product._id%>'"
-                            style="cursor: pointer;"
-                            class="d-flex f-prod">
-                            <div class="cont-img">
-                                <img
-                                    src='<%= product.images[0]?.url%>'
-                                    alt
-                                    onerror="
-                                    this.src = '/images/banner/banner-9.jpg'" />
-                            </div>
-                            <div class="p-l-prod">
-                                <h6> <%= product.title %> </h6>
-                                <p><strike>200.00$</strike>
-                                    <span><%= product.price %>$</span></p>
-                            </div>
-
-                        </div>
-
-                        <% } %>
-
-                        <% }); %>
-
-                        <% } %>
+                    <h4>Featured Product</h4>
+                    <div id="featured-products" class="row pad-t ">
 
                         <div class="d-flex f-prod">
                             <div class="cont-img">
@@ -172,59 +140,22 @@
                 <div class="products col-9  min-vh-100">
 
                     <div class="d-flex justify-content-between">
-                        <select class="border-1" name id>
+                        <select id="sort-select" class="border-1 rounded" name>
                             <option value>Default Sorting</option>
-                            <option value>Sort by Popularity</option>
-                            <option value>Sort by Average Rating</option>
-                            <option value>Sort by Latest</option>
+                            <option value="price">Sort By Price</option>
+                            <option value="brand">Sort By Brand</option>
+                            <option value="category">Sort By Category</option>
                         </select>
-
-                        <option value>Display</option>
+                        <div>
+                            <button class="btn "
+                                id="prev-page">Previous</button>
+                            <button class="btn " id="next-page">Next</button>
+                        </div>
+                        <!-- <option value>Display</option> -->
                     </div>
 
                     <div id="online-products-ajax"
                         class="d-flex flex-wrap mt-2 ">
-
-                        <% if (products && products.length> 0 ) { %>
-
-                        <% products.forEach((product)=>{ %>
-
-                        <div
-                            onclick="window.location= '/api/product/<%=product._id%>'"
-                            class="col-3 margin-product"
-                            style="cursor: pointer;">
-                            <!-- <% console.log(product.images[0]?.url)%> -->
-                            <div>
-                                <img class="col-11"
-                                    src='<%= product.images[0]?.url%>'
-                                    alt
-                                    onerror="
-                                        this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'">
-
-                            </div>
-
-                            <div class="p-l-prod-disp">
-                                <h6>
-                                    <%=product.title%>
-                                </h6>
-                                <p><strike>
-                                        <%= product.price.toFixed(2)
-                                        %>$
-                                    </strike>
-                                    <span>
-                                        <%= product.price.toFixed(2)
-                                        %>$
-                                    </span>
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <% }); %>
-
-                        <% } else { %>
-                        <p>No products found.</p>
-                        <% } %>
 
                         <div class="col-3 margin-product">
                             <div>
@@ -309,3 +240,402 @@
     </section>
 
 </body>
+
+<script>
+    //Products in shop
+    // document.addEventListener("DOMContentLoaded", async ()=>{
+        
+    //     const product_container = document.getElementById("online-products-ajax")
+        
+
+    //     try {
+    //         const response = await fetch("/product/", {
+    //             method : "GET",
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         })
+            
+    //         if(response.ok){
+    //             const products = await response.json()
+    //             console.log(products)
+
+    //             product_container.innerHTML = ''
+                
+    //             products.forEach((product) => {
+    //                 product_container.innerHTML += `
+    //                     <div conclick="window.location= '/product/${product._id}'"
+    //                     class="col-3 margin-product"
+    //                     style="cursor: pointer;">
+                        
+    //                     <div>
+    //                         <img class="col-11"
+    //                             src='${ product.images[0]?.url}'
+    //                             alt
+    //                             onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+
+    //                     </div>
+
+    //                     <div class="p-l-prod-disp">
+    //                         <h6>
+    //                             ${product.title}
+    //                         </h6>
+    //                         <p><strike>
+    //                                 ${ product.price.toFixed(2)
+    //                                 }$
+    //                             </strike>
+    //                             <span>
+    //                                 ${ product.price.toFixed(2)
+    //                                 }$
+    //                             </span>
+    //                         </p>
+    //                     </div>
+    //                     </div>`;
+    //             });
+    //         }
+
+            
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+
+
+
+
+
+    // })
+
+
+    // Pagination Product
+   
+   
+    document.addEventListener("DOMContentLoaded", () => {
+        const productContainer = document.getElementById("online-products-ajax");
+        const sortSelect = document.getElementById("sort-select");
+        const prevPageBtn = document.getElementById("prev-page");
+        const nextPageBtn = document.getElementById("next-page");
+
+        let currentPage = 1;
+        const limit = 10;
+
+        const fetchProducts = async () => {
+            try {
+                const sortValue = sortSelect.value;
+                let query = `/api/product?page=${currentPage}&limit=${limit}`;
+                if (sortValue) {
+                    query += `&sort=${sortValue}`;
+                }
+
+                const response = await fetch(query, {
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    const products = await response.json();
+                    renderProducts(products);
+                } else {
+                    throw new Error("Failed to fetch products");
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        const renderProducts = (products) => {
+            productContainer.innerHTML = '';
+            products.forEach((product) => {
+                productContainer.innerHTML += `
+                    <div onclick="window.location= '/product/${product._id}'" class="col-3 margin-product" style="cursor: pointer;">
+                        <div>
+                            <img class="col-11" src='${product.images[0]?.url}' alt="Product Image" onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+                        </div>
+                        <div class="p-l-prod-disp">
+                            <h6>${product.title}</h6>
+                            <p><strike>${product.price.toFixed(2)}$</strike> <span>${product.price.toFixed(2)}$</span></p>
+                        </div>
+                    </div>`;
+            });
+        };
+
+        sortSelect.addEventListener("change", () => {
+            currentPage = 1;
+            fetchProducts();
+        });
+
+        prevPageBtn.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchProducts();
+            }
+        });
+
+        nextPageBtn.addEventListener("click", () => {
+            currentPage++;
+            fetchProducts();
+        });
+
+        fetchProducts();
+    });
+
+//Featured Products
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const product_container = document.getElementById("featured-products")
+
+        try {
+            const response = await fetch("/product/", {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const products = await response.json()
+                console.log(products)
+
+
+                  // Filter out featured products
+                const featuredProducts = products.filter(product => product.tags && product.tags.includes("featured"));
+
+                // Shuffle the array of featured products
+                const shuffledProducts = featuredProducts.sort(() => 0.5 - Math.random());
+
+                // Select the first 5 featured products from the shuffled array
+                const productsToDisplay = shuffledProducts.slice(0, 5);
+
+
+                
+                product_container.innerHTML = ''
+                
+                productsToDisplay.forEach((product) => {
+                    console.log(product.tags)
+                    if(product.tags && product.tags.includes("featured")){
+                        product_container.innerHTML += `<div
+                                    onclick="window.location= '/product/${product._id}'"
+                                    style="cursor: pointer;"
+                                    class="d-flex f-prod">
+                                    <div class="cont-img">
+                                        <img
+                                            src='${ product.images[0]?.url}'
+                                            alt
+                                            onerror="
+                                                this.src = '/images/banner/banner-9.jpg'" />
+                                    </div>
+                                    <div class="p-l-prod">
+                                        <h6> ${ product.title } </h6>
+                                        <p><strike>200.00$</strike>
+                                            <span>${ product.price }$</span></p>
+                                    </div>
+
+                                </div>`;
+                    }
+                    
+                });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+    })
+
+
+    // Colors
+
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const color_container = document.getElementById("colors-box")
+
+        try {
+            const response = await fetch("/api/color/", {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const colors = await response.json()
+                console.log("Color",colors)
+
+                
+                color_container.innerHTML = ''
+                
+                colors.forEach((color) => {
+                    console.log(color.title)
+                    color_container.innerHTML += `
+                            <div class="color"
+                                style="background-color: ${color.title};"></div>`
+                    
+                    
+                    
+                });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+    })
+
+
+    // brands
+
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const brand_container = document.getElementById("brand-container")
+
+        try {
+            const response = await fetch("/api/brand/", {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const brands = await response.json()
+                console.log("Brand",brands)
+
+                
+                brand_container.innerHTML = ''
+                
+                brands.forEach((brand) => {
+                    console.log(brand.title)
+                    brand_container.innerHTML += `<button class=" brand-title ">${brand.title}</button>`
+                    
+                    
+                    
+                });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+    })
+
+    // Categories
+
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const categories_container = document.getElementById("category-container")
+
+        try {
+            const response = await fetch("/api/category/", {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const categories = await response.json()
+                console.log("Category",categories)
+
+                
+                categories_container.innerHTML = ''
+                
+                categories.forEach((category) => {
+                    console.log(category.title)
+                    categories_container.innerHTML += `<li class="li">${category.title}</li>`
+                    
+                    
+                    
+                });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+    })
+
+
+//price sort
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const productContainer = document.getElementById("online-products-ajax");
+    const priceRangeInput = document.getElementById("price_range");
+
+    // Fetch products and update the container
+    const fetchAndDisplayProducts = async (maxPrice) => {
+        try {
+            const response = await fetch("/product/", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const products = await response.json();
+                console.log(products);
+
+                // Filter and sort products by price
+                const filteredProducts = products
+                    .filter(product => product.price <= maxPrice)
+                    .sort((a, b) => a.price - b.price);
+
+                productContainer.innerHTML = '';
+
+                filteredProducts.forEach((product) => {
+                    productContainer.innerHTML += `
+                        <div onclick="window.location= '/product/${product._id}'"
+                             class="col-3 margin-product" style="cursor: pointer;">
+                            <div>
+                                <img class="col-11" src='${product.images[0]?.url}' alt
+                                     onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+                            </div>
+                            <div class="p-l-prod-disp">
+                                <h6>${product.title}</h6>
+                                <p><strike>${product.price.toFixed(2)}$</strike>
+                                    <span>${product.price.toFixed(2)}$</span></p>
+                            </div>
+                        </div>`;
+                });
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // Initial fetch and display
+    fetchAndDisplayProducts(priceRangeInput.value);
+
+    // Event listener for price range input change
+    priceRangeInput.addEventListener("input", (event) => {
+        fetchAndDisplayProducts(event.target.value);
+    });
+});
+
+
+
+
+
+
+</script>

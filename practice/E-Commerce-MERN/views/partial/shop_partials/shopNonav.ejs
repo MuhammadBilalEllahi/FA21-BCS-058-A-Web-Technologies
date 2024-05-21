@@ -63,33 +63,32 @@
                 products.forEach(product => {
                     resultsContainer.innerHTML += `
                         <div conclick="window.location= '/api/product/${product._id}'"
-        class="col-3 margin-product"
-        style="cursor: pointer;">
-        
-        <div>
-            <img class="col-11"
-                src='${ product.images[0]?.url}'
-                alt
-                onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+                                class="col-3 margin-product"
+                                style="cursor: pointer;">
+                                
+                                <div>
+                                    <img class="col-11"
+                                        src='${ product.images[0]?.url}'
+                                        alt
+                                        onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
 
-        </div>
+                                </div>
 
-        <div class="p-l-prod-disp">
-            <h6>
-                ${product.title}
-            </h6>
-            <p><strike>
-                    ${ product.price.toFixed(2)
-                    }$
-                </strike>
-                <span>
-                    ${ product.price.toFixed(2)
-                    }$
-                </span>
-            </p>
-        </div>
-
-    </div>`;
+                                <div class="p-l-prod-disp">
+                                    <h6>
+                                        ${product.title}
+                                    </h6>
+                                    <p><strike>
+                                            ${ product.price.toFixed(2)
+                                            }$
+                                        </strike>
+                                        <span>
+                                            ${ product.price.toFixed(2)
+                                            }$
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>`;
 
 
 

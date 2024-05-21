@@ -1,46 +1,24 @@
 <section>
 
     <div class="d-flex container-fluid justify-content-center ">
-        <div class="d-flex column col-6 container">
+        <div class="d-flex column col-6 container ">
 
-            <div class="d-flex row col-3 " style="height: fit-content;">
+            <div id="carousal-images" class="d-flex row col-3 "
+                style="height: fit-content;">
 
-                <% productSent.images.forEach((src)=> { %>
-                <%= console.log(src.url)%>
-
-                <img class="col-10"
-                    src='<%= src.url %>'
-                    alt
-                    style="min-height:10rem"
-                    onerror="
-                this.src = '/images/banner/banner-9.jpg'">
-
-                <%});%>
             </div>
 
             <div id="carouselId" class="carousel slide w-100"
                 data-bs-ride="carousel">
-                <ol class="carousel-indicators">
-                    <% productSent.images.forEach((_, index) => { %>
-                    <li data-bs-target="#carouselId"
-                        data-bs-slide-to="<%= index %>"
-                        class="<%= index === 0 ? 'active' : '' %>"
-                        aria-current="<%= index === 0 ? 'true' : '' %>"
-                        aria-label="Slide <%= index + 1 %>"></li>
-                    <% }); %>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <% productSent.images.forEach((image, index) => { %>
-                    <div
-                        class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                        <img class="w-100 d-block"
-                            src="<%= image.url %>"
-                            alt="Slide <%= index + 1 %>"
-                            onerror="this.src = '/images/banner/banner-9.jpg'"
-                            style="width: 100%; height: 500px; object-fit: contain;">
 
-                    </div>
-                    <% }); %>
+                <!-- This -->
+                <ol id="carousalOL" class="carousel-indicators">
+
+                </ol>
+                <!-- This 2 -->
+                <div id="carousel-inner-div" class="carousel-inner"
+                    role="listbox">
+
                 </div>
                 <button style="transform: translateY(-25%);"
                     class="carousel-control-prev" type="button"
@@ -58,23 +36,203 @@
                 </button>
             </div>
 
-            <!-- <div class="d-flex col-8" style="max-height: 30rem;">
-                <img class="col-12"
-                    src='<%= productSent.images[0]?.url %>'
-                    alt
-                    onerror="
-                this.src = '/images/banner/banner-9.jpg'">
-            </div> -->
-
         </div>
 
-        <div class="d-flex row col-5 p-2">
-            <div>
+        <div class="d-flex row col-5 p-2 ">
+            <div id="product-info-box"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="d-flex "
+                style="gap: 1rem; justify-content: baseline; align-items: baseline;">
+                <div class="quantity-selector">
+                    <button class="quantity-btn"
+                        id="decrement-btn">-</button>
+                    <input id="countValue" type="text" value="1">
+                    <button class="quantity-btn"
+                        id="increment-btn">+</button>
+                </div>
+
+                <button id="add-to-cart" class=" add-to-cart">Add To
+                    Cart</button>
+
+                <button type="submit" id="addToWishListBtn"
+                    class="addToWishListClass btn"
+                    style="width: 3rem;">
+                    <img id="addToWishListBtnImg" style="height: 1.5rem;"
+                        src="/images/icon_png/favourite.png" />
+                </button>
+
+            </div>
+
+            <button class="buy-now">Buy Now</button>
+
+            <hr />
+            <div class="payment-methods container ">
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+                    alt="Visa" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+
+            </div>
+
+            <hr />
+
+            <div class="shipping-info">
+                <span>&#128230;</span> Free worldwide shipping on all orders
+                over $100
+            </div>
+            <div class="delivery-info">
+                <span>&#128339;</span> Delivers in: 3-7 Working Days <a
+                    style="text-decoration: none; color: grey;"
+                    href="#">Shipping &
+                    Return</a>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="container-fluid d-flex justify-content-center align-items-center  "
+        style="min-height: 40vh;">
+
+        <div class="container ">
+            <h3>More Like This</h3>
+            <div class="col-10  border py-2" style="gap: 1rem">
+                <div class="d-flex flex-wrap" id="more-like-this">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+
+
+
+
+
+    // Render Products
+
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const carousal_images_container = document.getElementById("carousal-images")
+
+        const carousal_id_container = document.getElementById("carouselId")
+        const carousalOL = document.getElementById("carousalOL")
+        const carousel_inner_div = document.getElementById("carousel-inner-div")
+        const product_info_box = document.getElementById("product-info-box")
+        const more_like_this_box = document.getElementById("more-like-this")
+        
+
+
+        
+
+        const prodID = window.location.pathname.split("/").pop()
+
+        console.log("PRODID : ", prodID)
+        
+
+        try {
+            const response = await fetch(`/api/product/${prodID}`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            console.log(response)
+            
+            if(response.ok){
+                const products = await response.json()
+                console.log("FROM Foreach",products)
+
+                carousal_images_container.innerHTML = ''
+                carousalOL.innerHTML = ''
+                carousel_inner_div.innerHTML = ''
+
+            
+
+                
+                products.images.forEach(( src,index) => {
+
+
+                    console.log("carousal_images_container",  src?.url )
+                    console.log("carousalOL", index )
+                    console.log("carousel_inner_div", index )
+
+
+                    carousal_images_container.innerHTML += `<img class="col-10"
+                                        src='${ src?.url }'
+                                        alt
+                                        style="min-height:10rem"
+                                        onerror="this.src = '/images/banner/banner-9.jpg'"
+                                        />`
+                
+                    carousalOL.innerHTML += ` <li data-bs-target="#carouselId"
+                        data-bs-slide-to="${ index}"
+                        class="${ index === 0 ? 'active' : ''}"
+                        aria-current="${ index === 0 ? 'true' : ''}"
+                        aria-label="Slide ${ index + 1}"></li>`
+                   
+                    carousel_inner_div.innerHTML += `  <div
+                        class="carousel-item ${index === 0 ? 'active' : '' }">
+                        <img class="w-100 d-block"
+                            src="${src?.url }"
+                            alt="Slide ${index + 1 }"
+                            onerror="this.src = '/images/banner/banner-9.jpg'"
+                            style="width: 100%; height: 500px; object-fit: contain;"/>
+
+                    </div> `
+                    });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+
+
+
+
+        try {
+            const response = await fetch(`/api/product/${prodID}`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const product = await response.json()
+                console.log("FROM Singe",product)
+
+                // product_info_box.innerHTML = ''
+                
+                product_info_box.innerHTML += ` <div>
                 <h5>
-                    <%=productSent.title %>
+                    ${product.title }
                 </h5>
 
-                <div class="rating" data-rating="<%=productSent.ratings %>">
+                <div class="rating" data-rating="${product.ratings }">
                     <span class="star" data-value="1">&#9733;</span>
                     <span class="star" data-value="2">&#9733;</span>
                     <span class="star" data-value="3">&#9733;</span>
@@ -83,15 +241,15 @@
                 </div>
                 <div class="d-flex " style="gap: 2px; font-size: 0.9rem;">
                     <p>Brand: </p>
-                    <p style="color: rgb(43, 43, 43);"><%=productSent.brand
-                        %></p>
+                    <p style="color: rgb(43, 43, 43);">${product.brand
+                        }</p>
                 </div>
                 <span style="color: rgb(255, 47, 47);">
-                    <%= productSent.price.toFixed(2)%>$
+                    ${ product.price.toFixed(2)}$
                 </span>
 
                 <h6>
-                    <%=productSent.description %>
+                    ${product.description }
 
                 </h6>
                 <hr />
@@ -102,125 +260,114 @@
                 <p class="description">Duis aute irure dolor in reprehenderit in
                     voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur.</p>
-                <div class="stock">Only <span><%= productSent.quantity %></span>
+                <div class="stock">Only <span>${ product.quantity }</span>
                     left in
                     stock!</div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="d-flex "
-                    style="gap: 1rem; justify-content: baseline; align-items: baseline;">
-                    <div class="quantity-selector">
-                        <button class="quantity-btn"
-                            id="decrement-btn">-</button>
-                        <input id="countValue" type="text" value="1">
-                        <button class="quantity-btn"
-                            id="increment-btn">+</button>
-                    </div>
-
-                    <button id="add-to-cart" class=" add-to-cart">Add To
-                        Cart</button>
-
-                    <button type="submit" id="addToWishListBtn" class=" btn"
-                        style="width: 3rem;">
-                        <img id="addToWishListBtnImg" style="height: 1.5rem;"
-                            src="/images/icon_png/favourite.png" />
-                    </button>
-
-                </div>
-
-                <button class="buy-now">Buy Now</button>
-
-                <hr />
-                <div class="payment-methods container ">
-
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
-                        alt="Visa" height="10">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                        alt="PayPal" height="10">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                        alt="PayPal" height="10">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                        alt="PayPal" height="10">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                        alt="PayPal" height="10">
-
-                </div>
-
-                <hr />
-
-                <div class="shipping-info">
-                    <span>&#128230;</span> Free worldwide shipping on all orders
-                    over $100
-                </div>
-                <div class="delivery-info">
-                    <span>&#128339;</span> Delivers in: 3-7 Working Days <a
-                        style="text-decoration: none; color: grey;"
-                        href="#">Shipping &
-                        Return</a>
-                </div>
+               
 
                 <hr />
                 <div class="d-flex " style="font-size: 0.9rem; gap: 0.5rem;">
                     <p class style="color: rgb(102, 102, 102);">Categories:</p>
-                    <p class="text-dark"><%=productSent.category %></p>
+                    <p class="text-dark">${product.category }</p>
                 </div>
 
                 <div class="d-flex " style="font-size: 0.9rem; gap: 0.5rem;">
                     <p class style="color: rgb(102, 102, 102);">Tags:</p>
-                    <p class="text-dark"><%=productSent.tags %></p>
+                    <p class="text-dark">${product.tags }</p>
                 </div>
-            </div>
-        </div>
-    </div>
+            
+        </div>`
+                    
+            }
 
-    <div
-        class="container-fluid d-flex justify-content-center align-items-center  "
-        style="min-height: 40vh;">
+            
+        } catch (error) {
+            console.error(error)
+        }
 
-        <div>
-            <h3>More Like This</h3>
-            <div class="col-4  border d-flex py-2">
-                <div
-                    class="col-6 d-flex justify-content-center align-center">
-                    <% console.log(productSent.images[0]?.url)%>
 
-                    <img class="col-11"
-                        src='<%= productSent.images[0]?.url %>'
-                        alt
-                        onerror="
-                this.src = '/images/banner/banner-9.jpg'">
 
-                </div>
 
-                <div class="p-l-prod-disp col-6 ">
+
+        try {
+            const response = await fetch(`/api/product/`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            console.log(response)
+            if(response.ok){
+                const products = await response.json()
+                console.log(products)
+
+                more_like_this_box.innerHTML = ''
+                
+                products.forEach((product, index) => {
+
+                    // if((index === 4) )return
+                    
+                    more_like_this_box.innerHTML += ` <div
+                    class="col-3 d-flex justify-content-center align-center">
+                    
+
+                                <img class="col-3"
+                                    src='${ product.images[0]?.url }'
+                                    alt
+                                    onerror="
+                            this.src = '/images/banner/banner-9.jpg'"/>
+
+                            </div>
+
+                <div class="p-l-prod-disp col-3 ">
                     <h5>
-                        <%=productSent.title %>
+                        ${product.title }
                     </h5>
                     <h6>
-                        <%=productSent.description %>
+                        ${product.description }
                     </h6>
                     <p>
                         <span>
-                            <%= productSent.price.toFixed(2)
-                            %>$
+                            ${ product.price.toFixed(2)
+                            }$
                         </span>
 
                     </p>
-                </div>
+                </div>`;
 
-            </div>
-        </div>
-    </div>
+                
+                
+                    });
+            }
 
-</section>
+            
+        } catch (error) {
+            console.error(error)
+        }
 
-<script defer>
+
+
+    })
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const decrementBtn = document.getElementById('decrement-btn');
@@ -262,7 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', async (e)=>{
     e.preventDefault();
     const addToWishListBtn = document.getElementById("addToWishListBtn")
-    const prodID = "<%= productSent._id%>";
+    // const addToWishListClass = document.getElementsByClassName("addToWishListClass")
+    const prodID = window.location.pathname.split("/").pop();
 
     try {
         const token = localStorage.getItem('token')
@@ -300,7 +448,7 @@ document.addEventListener('DOMContentLoaded', async (e)=>{
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
-    const prodID = "<%= productSent._id%>";
+    const prodID = window.location.pathname.split("/").pop();
     
     const button = document.getElementById('addToWishListBtn');
 
@@ -364,8 +512,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     
     const button = document.getElementById('add-to-cart');
 
+
     button.addEventListener('click', async (event) => {
         event.preventDefault();
+
+        const paramProdId = window.location.pathname.split("/").pop()
 
 
             const countValue = document.getElementById("countValue");
@@ -373,9 +524,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 
             const prodID = {
-                _id : "<%= productSent._id%>",
+                _id : paramProdId,
                 count : `${countValue.value}`,
-                color : "<%= productSent.color%>",
+                color : "productSent.color",
                 
             }
 
@@ -414,73 +565,16 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 });
 
 
-// document.addEventListener('DOMContentLoaded', (e) => {
-//     e.preventDefault()
-//     const prodID = "<%= productSent._id%>"
-    
-//     const button = document.getElementById('addToWishListBtn');
-
-//     console.log(prodID)
-//     button.addEventListener('click', async (event) => {
-//         event.preventDefault();
-//         console.log(prodID)
-
-//         // console.log("Token:",token)
-//             // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzI5YjIzMmNmYWY5ODE5OWJjMTgwYSIsImlhdCI6MTcxNTk3MjIzMywiZXhwIjoxNzE2ODM2MjMzfQ.GtVWBSUxRse6jA8ipqp5FuH0xTbdp3NT9AQ0lhwj5iI"
-
-           
-//         try {
-//             // const token = localStorage.getItem('refreshToken');
-//             // const token = getCookie('refreshToken')
-          
-//             const responseToken = await fetch(`/api/user/refresh`, {method: 'GET'})
-//             if (!responseToken.ok) {
-//         throw new Error('Failed to fetch token');
-//     }
-    
-//         console.log("Token:",responseToken.headers.get('Authorization'))
-
-
-//     const token = responseToken.headers.get('Authorization')
-
-//     console.log("Token:", token)
-//             console.log(prodID)
-            
-//             const response = await fetch(`/api/product/wishlist`, {
-//                 method: 'PUT',
-//                 body: JSON.stringify({
-//                     prodId: prodID
-//                 }),
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'Authorization': `Bearer ${token}`
-                   
-//                 }
-//             });
-
-//             if (!response.ok) {
-//                 const errorMessage = await response.json();
-//                 throw new Error(errorMessage.message);
-//             }
-
-           
-//             const updatedUser = await response.json();
-//             console.log('Updated User:', updatedUser);
-           
-//         } catch (error) {
-//             console.error('Error:', error.message);
-           
-//         }
-//     });
-// });
-
-
 </script>
 
 <style>
 
 
-
+html,body{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
 
 
 .bg-red{
