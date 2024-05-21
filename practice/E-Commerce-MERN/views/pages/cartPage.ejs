@@ -78,11 +78,11 @@
                  const productCard = document.createElement('div');
                  productCard.className = 'cart-item';
                  productCard.innerHTML = `
-                     <img src="${product.images[0]?.url}" alt="${product.title}">
+                     <img src="${product.images[0]?.url}" alt="${product.title}" onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';">
                      <div class="cart-item-details">
                          <h5 class="cart-title">${product.title}</h5>
                          <p class="cart-text">${product.description}</p>
-                         <p class="cart-text"><strong>Price:</strong> $${item.price}</p>
+                         <p class="cart-text"><strong>Price:</strong> $${item.price.toFixed(2)}</p>
                          <p class="cart-text"><strong>Quantity:</strong> ${item.count}</p>
                          <p class="cart-text"><strong>Color:</strong> ${item.color}</p>
                      </div>

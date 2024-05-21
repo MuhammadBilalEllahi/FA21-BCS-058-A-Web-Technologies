@@ -26,7 +26,7 @@
                     });
 
                     blogElement.innerHTML = `
-                    <img style="width: 100%" src=${blog.images[0]?.url}  />
+                    <img style="width: 100%" src=${blog.images[0]?.url} onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"  />
                     <div class="my-5">
                         
                         <h2 class="blog-title">${blog.title}</h2>
