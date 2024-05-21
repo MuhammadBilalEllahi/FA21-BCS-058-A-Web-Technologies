@@ -158,7 +158,7 @@
             
             if(response.ok){
                 const products = await response.json()
-                console.log("FROM Foreach",products)
+                // console.log("FROM Foreach",products)
 
                 carousal_images_container.innerHTML = ''
                 carousalOL.innerHTML = ''
@@ -170,16 +170,16 @@
                 products.images.forEach(( src,index) => {
 
 
-                    console.log("carousal_images_container",  src?.url )
-                    console.log("carousalOL", index )
-                    console.log("carousel_inner_div", index )
+                    // console.log("carousal_images_container",  src?.url )
+                    // console.log("carousalOL", index )
+                    // console.log("carousel_inner_div", index )
 
 
                     carousal_images_container.innerHTML += `<img class="col-10"
                                         src='${ src?.url }'
                                         alt
                                         style="min-height:10rem"
-                                        onerror="this.src = '/images/banner/banner-9.jpg'"
+                                        onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"
                                         />`
                 
                     carousalOL.innerHTML += ` <li data-bs-target="#carouselId"
@@ -193,7 +193,7 @@
                         <img class="w-100 d-block"
                             src="${src?.url }"
                             alt="Slide ${index + 1 }"
-                            onerror="this.src = '/images/banner/banner-9.jpg'"
+                            onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"
                             style="width: 100%; height: 500px; object-fit: contain;"/>
 
                     </div> `
@@ -260,9 +260,7 @@
                 <p class="description">Duis aute irure dolor in reprehenderit in
                     voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur.</p>
-                <div class="stock">Only <span>${ product.quantity }</span>
-                    left in
-                    stock!</div>
+                
                
 
                 <hr />
@@ -275,6 +273,11 @@
                     <p class style="color: rgb(102, 102, 102);">Tags:</p>
                     <p class="text-dark">${product.tags }</p>
                 </div>
+                <hr/>
+
+                <div class="stock">Only <span>${ product.quantity }</span>
+                    left in
+                    stock!</div>
             
         </div>`
                     
@@ -315,8 +318,7 @@
                                 <img class="col-3"
                                     src='${ product.images[0]?.url }'
                                     alt
-                                    onerror="
-                            this.src = '/images/banner/banner-9.jpg'"/>
+                                    onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"/>
 
                             </div>
 
