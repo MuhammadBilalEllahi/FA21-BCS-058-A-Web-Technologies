@@ -87,14 +87,15 @@ router.get("/product/:id", async (req, res) => {
 
 
 router.get('/search', async (req, res) => {
-    const { query } = req.query;
+    const { query, category } = req.query;
     console.group("Query", query)
     try {
         const products = await Product.find({
             $or: [
                 { title: { $regex: query, $options: 'i' } },
                 { category: { $regex: query, $options: 'i' } },
-                { description: { $regex: query, $options: 'i' } }
+                { description: { $regex: query, $options: 'i' } },
+                { category: { $regex: category, $options: 'i' } }
             ]
         });
         res.json(products);

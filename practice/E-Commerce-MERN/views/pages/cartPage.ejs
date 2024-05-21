@@ -69,7 +69,7 @@
          if (data.products.length === 0) {
              noItemsMessage.style.display = 'block';
          } else {
-             noItemsMessage.style.display = 'none';
+             noItemsMessage.style.display = 'none'; 
              cartTotal.textContent = data.cartTotal;
              totalAfterDiscount.textContent = data.totalAfterDiscount || data.cartTotal;
 
@@ -94,6 +94,7 @@
 
          
          console.log(data)
+         
        
 
          document.getElementById('checkout-btn').addEventListener('click', () => {

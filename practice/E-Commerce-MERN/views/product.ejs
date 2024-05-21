@@ -394,8 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             countInput.value = 1;
         }
     });
-});
-    document.addEventListener('DOMContentLoaded', function() {
+
     const ratingElement = document.querySelector('.rating');
     const ratingValue = ratingElement.getAttribute('data-rating');
     const stars = ratingElement.querySelectorAll('.star');
@@ -440,11 +439,12 @@ document.addEventListener('DOMContentLoaded', async (e)=>{
             }
 
             console.log(isInWishlist)
+            
     } catch (error) {
         console.error(error)
     }
 
-    const button = document.getElementById('addToWishListBtn');
+    
 
 })
 
@@ -452,9 +452,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
     const prodID = window.location.pathname.split("/").pop();
     
-    const button = document.getElementById('addToWishListBtn');
+    const wishListbutton = document.getElementById('addToWishListBtn');
 
-    button.addEventListener('click', async (event) => {
+    wishListbutton.addEventListener('click', async (event) => {
         event.preventDefault();
 
         try {
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     
     e.preventDefault();
 
-
+    const paramProdId = window.location.pathname.split("/").pop()
  
     
     const button = document.getElementById('add-to-cart');
@@ -518,35 +518,45 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     button.addEventListener('click', async (event) => {
         event.preventDefault();
 
-        const paramProdId = window.location.pathname.split("/").pop()
-
-
-            const countValue = document.getElementById("countValue");
+        const countValue = document.getElementById("countValue");
            // console.log(countValue.value)
 
-
-            const prodID = {
+           let prodObject = {
                 _id : paramProdId,
                 count : `${countValue.value}`,
-                color : "productSent.color",
+                color : "",
                 
             }
 
-        try {
-            // const responseToken = await fetch(`/api/user/refresh`, { method: 'GET' });
-            // if (!responseToken.ok) {
-            //     throw new Error('Failed to fetch token');
-            // }
-
-            // console.log(responseToken)
+            try {
+                
+            const productColor = await fetch(`/api/product/${paramProdId}`, {
+                method: "GET"
+            })
+            if(!productColor.ok){
+                prodObject.color = "default"
+                
             
-            // const token = responseToken.headers.get('Authorization');
+            }else{
+
+             const product = await productColor.json()
+                prodObject.color = `${product.color[0]}`
+                console.log("Workings", product)
+            }
+            } catch (error) {
+                console.error(error)
+            }
+
+        try {
+
+    
+
             const token = localStorage.getItem('token')
             console.log("Token:", token);
             
             const response = await fetch(`/api/user/cart`, {
                 method: 'POST',
-                body: JSON.stringify({ prodID: prodID }),
+                body: JSON.stringify({ prodID: prodObject }),
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
