@@ -31,7 +31,7 @@ async function checkSessionAuth(req, res, next) {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        // req.user = decoded;
         req.session.user = decoded;
 
         next();

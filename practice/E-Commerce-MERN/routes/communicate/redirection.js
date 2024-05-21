@@ -7,7 +7,7 @@ const User = require("../../models/userModel")
 
 
 router.get("/", async (req, res) => {
-
+    // console.log("Here is requser", req.user)
     res.render("index", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength })
 })
 
@@ -81,6 +81,27 @@ router.get("/products", async (req, res) => {
 
 
 
+
+
+
+
+
+router.get('/search', async (req, res) => {
+    const { query } = req.query;
+    console.group("Query", query)
+    try {
+        const products = await Product.find({
+            $or: [
+                { title: { $regex: query, $options: 'i' } },
+                { category: { $regex: query, $options: 'i' } },
+                { description: { $regex: query, $options: 'i' } }
+            ]
+        });
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 
 

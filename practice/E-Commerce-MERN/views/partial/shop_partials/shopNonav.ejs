@@ -1,41 +1,107 @@
-
 <nav class="navbar">
     <div class="nav-container container">
         <h5 class="nav-logo">
-            <%=title %>
+            <%= title %>
         </h5>
 
-        <div class>
+        <div>
             <div class="d-flex search-box">
-                <select class="search-select" name id>
-                    <option class="search-option" value>All
+                <select class="search-select" id="category-select">
+                    <option class="search-option" value="all">All
                         Categories</option>
-                    <option class="search-option" value>All
-                        Categories</option>
+                    <!-- Add more categories here if needed -->
                 </select>
-                <input class="search-input" type="text" class>
-                <object class="search-svg"
-                    data="/images/icons/search.svg"
-                    type="image/svg+xml"></object>
+                <input class="search-input" type="text" id="search-input" />
+
+                <img id="search-button" class="search-svg"
+                    src="/images/icons/search.svg"
+                    alt="Search">
 
             </div>
         </div>
 
-        <%- include("../svg_ejs/svg_container.ejs", { wishlistLength,
-        cartLength}) %>
-
+        <%- include("../svg_ejs/svg_container.ejs", { wishlistLength, cartLength
+        }) %>
     </div>
-
 </nav>
 
-<nav class="shop-nav ">
+<nav class="shop-nav">
     <div class="container d-flex justify-content-between">
-
-        <%- include("../../partial/nav.ejs", {req}) %>
-
+        <%- include("../../partial/nav.ejs", { req }) %>
         <div class="red-box-contact">
             <h4>Call us: +92311111190</h4>
         </div>
     </div>
-
 </nav>
+
+<div id="search-results" class="container mt-4">
+    <!-- Search results will be displayed here -->
+</div>
+
+<script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById('search-button');
+
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value;
+            console.log(query);
+
+            try {
+                const response = await fetch(`/search?query=${query}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const products = await response.json();
+
+                // Display products
+                const resultsContainer = document.getElementById('online-products-ajax');
+
+                console.log(resultsContainer)
+                resultsContainer.innerHTML = '';
+                products.forEach(product => {
+                    resultsContainer.innerHTML += `
+                        <div conclick="window.location= '/api/product/${product._id}'"
+        class="col-3 margin-product"
+        style="cursor: pointer;">
+        
+        <div>
+            <img class="col-11"
+                src='${ product.images[0]?.url}'
+                alt
+                onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+
+        </div>
+
+        <div class="p-l-prod-disp">
+            <h6>
+                ${product.title}
+            </h6>
+            <p><strike>
+                    ${ product.price.toFixed(2)
+                    }$
+                </strike>
+                <span>
+                    ${ product.price.toFixed(2)
+                    }$
+                </span>
+            </p>
+        </div>
+
+    </div>`;
+
+
+
+
+
+                    
+        
+                });
+            } catch (error) {
+                console.error('Error fetching search results:', error);
+                alert('An error occurred while fetching search results.');
+            }
+        });
+    });
+</script>
