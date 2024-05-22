@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Fetch products and update the container
     const fetchAndDisplayProducts = async (maxPrice) => {
         try {
-            const response = await fetch("/product/", {
+            const response = await fetch("/api/product/", {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
