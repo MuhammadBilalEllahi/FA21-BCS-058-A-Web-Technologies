@@ -79,7 +79,10 @@ router.get("/product/:id", async (req, res) => {
 
 
 
+router.get("/checkout", async (req, res) => {
+    res.render("pages/checkout", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
 
+})
 
 
 

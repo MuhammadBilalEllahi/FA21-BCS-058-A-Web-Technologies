@@ -1,0 +1,131 @@
+<div class="checkout-container container-fluid">
+    <div class="checkout-section">
+        <div class="checkout-box" id="checkout-box">
+
+            <h3>Delivery Information</h3>
+            <form action method="post">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="address" placeholder="Address"
+                        required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="city" placeholder="City" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="apartment"
+                        placeholder="Apartment (optional)">
+                </div>
+                <div class="input-group">
+                    <input type="text" id="zip" placeholder="Zip/Postal Code"
+                        required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="country" placeholder="Country"
+                        required>
+                </div>
+                <h3>Contact Information</h3>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="delivery_name"
+                        placeholder="Recipient's Name" required>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="summary-section">
+        <div class="summary-box">
+            <h2>Order Summary</h2>
+            <p>Subtotal: $100.00</p>
+            <p>Shipping: $10.00</p>
+            <p>Total: $110.00</p>
+            <div class="button-group">
+                <button type="submit" class="continue-shopping-btn"
+                    id="continue-shopping-btn">Continue Shopping</button>
+                <button type="submit" class="pay-btn" id="pay-btn">Pay
+                    Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    padding: 0 2rem;
+}
+
+.checkout-section {
+    width: 48%;
+}
+
+.summary-section {
+    width: 48%;
+}
+
+.checkout-box,
+.summary-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-bottom: 20px;
+    border: 2px solid rgb(178, 178, 178);
+}
+
+.checkout-box h2,
+.summary-box h2 {
+    margin-top: 0;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.continue-shopping-btn,
+.pay-btn {
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.continue-shopping-btn {
+    background-color: #007bff;
+}
+
+.pay-btn {
+    background-color: #28a745;
+}
+
+</style>

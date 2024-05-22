@@ -75,6 +75,7 @@ app.use("/api/enquiry", enqRouter)
 
 
 app.use("/", setWishlistLength, redirectionRouter)
+app.use("/admin", require("./routes/communicate/admin"))
 
 
 
