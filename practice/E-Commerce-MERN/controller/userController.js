@@ -14,7 +14,7 @@ const { generateToken } = require("../config/jwtToken");
 const jwt = require('jsonwebtoken');
 const { sendEmail, sendContactEmail } = require("./emailController")
 const crypto = require('crypto')
-const { sendEmailVerification } = require("firebase/auth")
+
 
 
 const createUser = asyncHandler(async (req, res) => {
