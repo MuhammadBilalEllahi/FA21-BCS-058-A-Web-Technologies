@@ -3,19 +3,21 @@
 <ul class="nav-ul">
     <li class="nav-li"><a href="/">Home</a> </li>
     <li class="nav-li"><a href="/shop">Shop</a> </li>
-    <li class="nav-li"> <a href="/products">Products</a> </li>
+
     <li class="nav-li"> <a href="/blogs">Blog</a> </li>
     <li class="nav-li"> <a href="/contact">Contact</a> </li>
 
-    <% if (!req.session.user) { %>
+    <% if (!req.session.user){%>
 
-    <li class="req-user nav-li"> <a href="/login">LOGIN</a> </li>
-    <li class="req-user nav-li"> <a href="/register">REGISTER</a> </li>
+    <li id="login" class="req-user nav-li"> <a href="/login">LOGIN</a> </li>
+    <li id="register" class="req-user nav-li"> <a href="/register">REGISTER</a>
+    </li>
     <%} else{ %>
-    <li class="req-user nav-li"> <a href="/">Hi, <%=
+    <li id="name" class="req-user nav-li"> <a href="/">Hi, <%=
             req.session.user.firstname%> </a>
     </li>
-    <li class="req-user nav-li"> <a href="/api/user/logout">LOGOUT</a>
+    <li id="logout" class="req-user nav-li"> <a
+            href="/api/user/logout">LOGOUT</a>
     </li>
     <% }%>
 
@@ -24,6 +26,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", ()=>{
         let req_user_li = document.getElementsByClassName("req-user")
+        // const reqs = `<% req %>`
 
 
         if(window.location.pathname === '/'){
@@ -39,6 +42,13 @@
         }
         // req_user_li.style.display = "none"
         }
+        // if(!(req.headers['authorization']?.split(' ')[1])){
+        //     document.getElementById("login").style.display = "none"
+        //     document.getElementById("register").style.display = "none"
+        // }else{
+        //     document.getElementById("name").style.display = "none"
+        //     document.getElementById("logout").style.display = "none"
+        // }
 
 
         // else{

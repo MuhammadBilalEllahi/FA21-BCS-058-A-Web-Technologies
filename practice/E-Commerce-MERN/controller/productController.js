@@ -67,10 +67,13 @@ const getAllProduct = asyncHandler(async (req, res) => {
         // Filtering
         const queryObj = { ...req.query }
         const excludedField = ["page", "sort", "limit", "fields"]
+
         excludedField.forEach((el) => delete queryObj[el]);
-        // console.log(queryObj)
+        console.log(queryObj)
+        // console.log(excludedField)
 
         let queryStr = JSON.stringify(queryObj)
+        console.log("Query:", queryStr)
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`)
         // console.log(JSON.parse(queryStr));
 

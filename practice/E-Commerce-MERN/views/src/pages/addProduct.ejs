@@ -1,53 +1,58 @@
-<div class="main-content">
-    <!-- Edit Product Heading -->
-    <h3>Edit Product</h3>
+<div id="update-product-div" class>
 
-    <!-- Basic Information Heading -->
+    <h3>Update Product</h3>
+
     <h4>Basic Information</h4>
-    <form action="/products" method="POST">
+    <form action="/api/products" method="POST">
         <p>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required>
+            <label for="title">Name:</label><br>
+            <input type="text" id="title" name="title" required>
         </p>
-        <p>
+        <!-- <p>
             <label for="slug">Slug:</label><br>
             <input type="text" id="slug" name="slug" required>
-        </p>
+        </p> -->
         <p>
             <label for="description">Description:</label><br>
             <textarea id="description" name="description" rows="4"
                 required></textarea>
         </p>
         <p>
+            <label for="category">category:</label><br>
+            <textarea id="category" name="category" rows="4"
+                required></textarea>
+        </p>
+        <!-- <p>
             <label for="shortDescription">Short Description:</label><br>
             <textarea id="shortDescription" name="shortDescription" rows="2"
                 required></textarea>
-        </p>
+        </p> -->
 
-        <!-- Pricing Heading -->
         <h4>Pricing</h4>
         <p>
             <label for="price">Price:</label><br>
-            <input type="number" id="price" name="price" step="0.01" required>
+            <input type="number" id="price" name="price" step="0.01" min="0"
+                oninput="this.value = 
+            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+                required>
         </p>
-        <p>
+        <!-- <p>
             <label for="oldPrice">Old Price:</label><br>
             <input type="number" id="oldPrice" name="oldPrice" step="0.01">
-        </p>
-        <p>
+        </p> -->
+        <!-- <p>
             <label for="scheduleDiscount">Schedule Discount:</label><br>
             <input type="text" id="scheduleDiscount" name="scheduleDiscount">
-        </p>
+        </p> -->
 
-        <!-- Inventory Heading -->
         <h4>Inventory</h4>
         <p>
             <label for="stockQuantity">Stock Quantity:</label><br>
-            <input type="number" id="stockQuantity" name="stockQuantity"
+            <input type="number" id="stockQuantity" name="stockQuantity "
+                min="0"
                 required>
         </p>
 
-        <!-- Images Heading -->
         <h4>Images</h4>
         <p>
             <label for="image">Image:</label><br>
@@ -58,20 +63,17 @@
             <input type="file" id="newImage" name="newImage">
         </p>
 
-        <!-- Page Title -->
-        <p>
+        <!-- <p>
             <label for="pageTitle">Page Title:</label><br>
             <input type="text" id="pageTitle" name="pageTitle">
-        </p>
+        </p> -->
 
-        <!-- Meta Description -->
-        <p>
+        <!-- <p>
             <label for="metaDescription">Meta Description:</label><br>
             <textarea id="metaDescription" name="metaDescription"
                 rows="2"></textarea>
-        </p>
+        </p> -->
 
-        <!-- Submit Button -->
         <button type="submit">Save Product</button>
     </form>
 </div>

@@ -582,7 +582,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productContainer = document.getElementById("online-products-ajax");
     const priceRangeInput = document.getElementById("price_range");
 
-    // Fetch products and update the container
+    
     const fetchAndDisplayProducts = async (maxPrice) => {
         try {
             const response = await fetch("/api/product/", {
@@ -596,7 +596,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const products = await response.json();
                 console.log(products);
 
-                // Filter and sort products by price
+                
                 const filteredProducts = products
                     .filter(product => product.price <= maxPrice)
                     .sort((a, b) => a.price - b.price);
@@ -624,10 +624,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
-    // Initial fetch and display
+    
     fetchAndDisplayProducts(priceRangeInput.value);
 
-    // Event listener for price range input change
+    
     priceRangeInput.addEventListener("input", (event) => {
         fetchAndDisplayProducts(event.target.value);
     });
