@@ -35,7 +35,8 @@
                         <h4>Price</h4>
 
                         <div class="p-2">
-                            <input type="range" min="1" max="10000" value="200"
+                            <input type="range" min="100" max="10000"
+                                value="500"
                                 id="price_range" />
 
                         </div>
@@ -155,7 +156,7 @@
                     </div>
 
                     <div id="online-products-ajax"
-                        class="d-flex flex-wrap mt-2 ">
+                        class="d-flex flex-wrap mt-2  col-12">
 
                         <div class="col-3 margin-product">
                             <div>
@@ -343,6 +344,7 @@
                 console.error(error);
             }
         };
+    
 
         const renderProducts = (products) => {
             productContainer.innerHTML = '';
@@ -350,9 +352,11 @@
                 productContainer.innerHTML += `
                     <div onclick="window.location= '/product/${product._id}'" class="col-3 margin-product" style="cursor: pointer;">
                         <div>
-                            <img class="col-11" src='${product.images[0]?.url}' alt="Product Image" onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
+                            <img  style="background-color: #F6F9FA" class="col-11" src='${product.images[0]?.url}' alt="Product Image" onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
                         </div>
                         <div class="p-l-prod-disp">
+                          
+                            <h6>${product.title}</h6>
                             <div class="rating" data-rating="${product.ratings }">
                     <span class="star" data-value="1">&#9733;</span>
                     <span class="star" data-value="2">&#9733;</span>
@@ -360,8 +364,6 @@
                     <span class="star" data-value="4">&#9733;</span>
                     <span class="star" data-value="5">&#9733;</span>
                 </div>
-                            <h6>${product.title}</h6>
-                         
                             <p><strike>${product.price.toFixed(2)}$</strike> <span>${product.price.toFixed(2)}$</span></p>
                         </div>
                     </div>`;
@@ -426,7 +428,7 @@
                                     onclick="window.location= '/product/${product._id}'"
                                     style="cursor: pointer;"
                                     class="d-flex f-prod">
-                                    <div class="cont-img">
+                                    <div class="cont-img" style="background-color: #F6F9FA">
                                         <img
                                             src='${ product.images[0]?.url}'
                                             alt
@@ -617,8 +619,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     productContainer.innerHTML += `
                         <div onclick="window.location= '/product/${product._id}'"
                              class="col-3 margin-product" style="cursor: pointer;">
-                            <div>
-                                <img class="col-11" src='${product.images[0]?.url}' alt
+                            <div >
+                                <img style="background-color: #F6F9FA;" class="col-11" src='${product.images[0]?.url}' alt
                                      onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
                             </div>
                             <div class="p-l-prod-disp">
@@ -686,4 +688,6 @@ const ratingElement = document.querySelector('.rating');
     .star.filled {
         color: gold;
     }
+
+  
 </style>
