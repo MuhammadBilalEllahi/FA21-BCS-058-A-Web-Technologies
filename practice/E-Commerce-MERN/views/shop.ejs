@@ -353,7 +353,15 @@
                             <img class="col-11" src='${product.images[0]?.url}' alt="Product Image" onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
                         </div>
                         <div class="p-l-prod-disp">
+                            <div class="rating" data-rating="${product.ratings }">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
                             <h6>${product.title}</h6>
+                         
                             <p><strike>${product.price.toFixed(2)}$</strike> <span>${product.price.toFixed(2)}$</span></p>
                         </div>
                     </div>`;
@@ -426,7 +434,9 @@
                                                 this.src = '/images/banner/banner-9.jpg'" />
                                     </div>
                                     <div class="p-l-prod">
+                                        
                                         <h6> ${ product.title } </h6>
+                               
                                         <p><strike>200.00$</strike>
                                             <span>${ product.price }$</span></p>
                                     </div>
@@ -612,7 +622,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                                      onerror="this.src = '/images/onErrorImg/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'"/>
                             </div>
                             <div class="p-l-prod-disp">
+                                <div class="rating" data-rating="${product.ratings }">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
                                 <h6>${product.title}</h6>
+                              
                                 <p><strike>${product.price.toFixed(2)}$</strike>
                                     <span>${product.price.toFixed(2)}$</span></p>
                             </div>
@@ -631,11 +649,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     priceRangeInput.addEventListener("input", (event) => {
         fetchAndDisplayProducts(event.target.value);
     });
+
+
+    
 });
+document.addEventListener("DOMContentLoaded", async () => {
 
+const ratingElement = document.querySelector('.rating');
+    const ratingValue = ratingElement.getAttribute('data-rating');
+    const stars = ratingElement.querySelectorAll('.star');
 
+    stars.forEach(star => {
+        if (star.getAttribute('data-value') <= ratingValue) {
+            star.classList.add('filled');
+        }
+    });
+})
 
 
 
 
 </script>
+
+<style>
+     .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .star {
+        font-size: 15px;
+        color: #ccc;
+    }
+    
+    .star.filled {
+        color: gold;
+    }
+</style>
