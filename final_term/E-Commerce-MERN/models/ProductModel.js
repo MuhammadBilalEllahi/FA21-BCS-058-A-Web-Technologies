@@ -56,6 +56,16 @@ var productSchema = new mongoose.Schema({
     //     }
     // ],
     tags: [],
+
+
+    // teacher code
+    isFeatured: {
+        type: Boolean,
+        default: false
+    },
+    // teacher code
+
+
     sold: {
         type: Number,
         default: 0,

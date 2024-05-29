@@ -51,6 +51,20 @@ const getaProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     try {
+        const product = await Product.findById(req.params.id);
+        console.log(req.params.id)
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+
+        if (!req.session.visitedProducts) {
+            req.session.visitedProducts = [];
+        }
+        if (!req.session.visitedProducts.includes(product._id.toString())) {
+            req.session.visitedProducts.push(product._id.toString());
+        }
+        console.log("REQSESSION PRODUCT Controller: ", req.session.visitedProducts)
+
         console.log("ok")
         const getOneProduct = await Product.findById(id)
         //res.render("product", { layout: "layouts/layout", req: req, productSent: getOneProduct, req: req, wishlistLength: res.locals.wishlistLength })

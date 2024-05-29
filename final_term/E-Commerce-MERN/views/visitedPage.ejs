@@ -1,0 +1,50 @@
+<div class="container min-vh-100 pt-5">
+    <% if(products.length > 0) { %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>ID</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach((product) => { %>
+            <tr>
+                <td>
+                    <img
+                        src="<%= product.images[0]?.url %>"
+                        alt="Product Image"
+                        style="height: 10rem; width: auto;"
+                        onerror="this.onerror=null;this.src='/images/banner/banner-8.jpg'" />
+                </td>
+                <td><%= product._id %></td>
+                <td><%= product.title %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <div>No products in History</div>
+    <% } %>
+</div>
+
+<!-- <div class="container min-vh-100 pt-5">
+    <% if(products.length > 0){ %>
+
+    <% products.forEach((product)=>{ %>
+    <div class="col-12 d-flex" style="height: 2rem;">
+        <img class="col-1"
+            src='<%= product.images[0]?.url %>'
+            alt
+            style="min-height:10rem"
+            onerror="this.onerror=null;this.src='/images/banner/banner-8.jpg'" />
+        <h3><%=product._id%></h3>
+        <p><%=product.title%></p>
+    </div>
+
+    <% }) %>
+    <% } else{%>
+    <div>No products in Histroy</div>
+    <% } %>
+</div> -->

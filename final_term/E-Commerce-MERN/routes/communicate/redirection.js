@@ -6,10 +6,76 @@ const checkSessionAuth = require("../../middlewares/checkSession")
 const User = require("../../models/userModel")
 
 
+
+
+
+
+
 router.get("/", async (req, res) => {
     // console.log("Here is requser", req.user)
-    res.render("index", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength })
+    const featured = await Product.find({ isFeatured: true }).limit(5);
+    res.render("index", { layout: "layouts/layout", featured: featured, req: req, wishlistLength: res.locals.wishlistLength })
 })
+
+
+
+router.get("/home", async (req, res) => {
+    // console.log("Here is requser", req.user)
+    const featured = await Product.find({ isFeatured: true }).limit(5);
+
+    res.render("index2", { layout: "layouts/layout", featured: featured, req: req, wishlistLength: res.locals.wishlistLength })
+})
+
+
+router.get("/products/:id", async (req, res) => {
+    console.log("Hi")
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+
+        if (!req.session.visitedProducts) {
+            req.session.visitedProducts = [];
+        }
+        if (!req.session.visitedProducts.includes(product._id.toString())) {
+            req.session.visitedProducts.push(product._id.toString());
+        }
+        console.log("REQSESSION PRODUCT: ", req.session.visitedProducts)
+
+
+
+
+        res.render("products", { layout: "layouts/layout", product: product, req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+    } catch (err) {
+        res.status(500).send(err);
+    }
+})
+
+router.get('/visited-products', async (req, res) => {
+    try {
+        if (!req.session.visitedProducts || req.session.visitedProducts.length === 0) {
+            return res.render('visitedPage', { layout: "layouts/layout", products: [], req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength });
+        }
+        const products = await Product.find({ _id: { $in: req.session.visitedProducts } });
+
+
+        res.render('visitedPage', { layout: "layouts/layout", products: products, req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 router.get("/shop", checkSessionAuth, async (req, res) => {
@@ -73,7 +139,34 @@ router.get("/blog/:id", async (req, res) => {
 
 
 router.get("/product/:id", async (req, res) => {
-    res.render("product", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+    console.log("Hi")
+
+    // console.log(req.params)
+    // console.log(req.body)
+    // console.log(req.query)
+    try {
+
+        // const product = await Product.findById(req.params.id);
+        // console.log(req.params.id)
+        // if (!product) {
+        //     return res.status(404).send('Product not found');
+        // }
+
+        // if (!req.session.visitedProducts) {
+        //     req.session.visitedProducts = [];
+        // }
+        // if (!req.session.visitedProducts.includes(product._id.toString())) {
+        //     req.session.visitedProducts.push(product._id.toString());
+        // }
+        // console.log("REQSESSION PRODUCT: ", req.session.visitedProducts)
+
+
+
+        res.render("product", { layout: "layouts/layout", req: req, wishlistLength: res.locals.wishlistLength, cartLength: res.locals.cartLength })
+
+    } catch (error) {
+        throw Error(error)
+    }
 
 })
 
