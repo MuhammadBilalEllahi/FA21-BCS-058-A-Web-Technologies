@@ -1,0 +1,444 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+
+.quote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    background-color: #ba0f0c;
+}
+
+.quote a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar {
+    width: 100%;
+    display: fixed;
+    top: 0;
+    position: sticky;
+    z-index: 1000 !important;
+    background-color: #ffffff;
+}
+
+.nav-container {
+    display: flex;
+    flex-wrap: nowrap;
+
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.nav-ul {
+    display: flex;
+    list-style: none;
+
+}
+
+.nav-li {
+    margin: 2% 2rem;
+
+}
+
+.nav-li a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+}
+
+.icon-btn-container {
+    /* padding: 1%; */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between !important;
+
+
+
+}
+
+.icon-svg {
+    margin: 0 0.1rem;
+    width: 1.5rem;
+    height: 1.7rem;
+}
+
+.a-img-svg {
+    position: relative;
+    width: 3rem;
+}
+
+.a-img-svg p {
+    position: absolute;
+    top: -50%;
+    right: 0;
+    padding: 0 0.4rem;
+
+}
+
+
+
+
+.hero-container {
+    width: 100%;
+    height: 70vh;
+    background-color: rgb(192, 142, 142);
+}
+
+.slider-wrapper {
+    position: relative;
+    /* max-width: 48rem; */
+    height: 70vh;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slider {
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0%, 0%, 0%, 0.25%);
+    /* border-radius: 0.5rem; */
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: fill;
+    height: 70vh;
+}
+
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #a1a1a1;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+
+
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+
+
+
+
+.support-container {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.support {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.support-sec {
+    padding: 2rem;
+}
+
+.support-svg {
+    margin: 0 .4rem;
+    margin-bottom: 2rem;
+    /* display: flex;
+    width: fit-content;
+    object-fit: fill;
+    flex: 1 0 100%; */
+}
+
+.support-svg svg {
+    width: 2.7rem;
+}
+
+.h5-support {
+    font-size: 1rem !important;
+}
+
+.p-support {
+    font-size: 0.75rem !important;
+
+}
+
+
+.slider-wrapper {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.slider-wrapper .slider::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+
+
+.shop-by-category {
+    padding: 5%;
+}
+
+
+.description {
+    margin-top: 1rem;
+}
+
+.description h6 {
+    font-weight: bold;
+}
+
+.description p {
+    font-weight: lighter;
+    color: #a1a1a1;
+    font-size: .84rem;
+}
+
+.slider-container {
+    /* max-width: 1200px; */
+    width: 100%;
+}
+
+.slider-wrappers .img-list {
+    display: grid;
+    gap: 1rem;
+    overflow-x: auto;
+    font-size: 0;
+    grid-template-columns: repeat(10, 1fr);
+    scrollbar-width: none;
+}
+
+.slider-wrappers .img-list .img-item {
+    width: 325px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.slider-wrappers .img-list::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.slider-wrappers {
+    position: relative;
+}
+
+.slider-wrappers .slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 80%;
+    right: 85%;
+    transform: translateX(10%);
+
+    border: 0;
+}
+
+.slider-wrappers .slide-btn#previous-slide {
+    left: -20px;
+}
+
+.slider-wrappers .slide-btn#next-slide {
+    right: 20px;
+}
+
+
+.item-img {
+    width: 100%;
+    height: 100%;
+}
+
+.img-container {
+    /* width: 500% !important; */
+    width: 40rem !important;
+}
+
+
+.bestseller-h6 {
+    font-weight: bold;
+}
+
+.bestseller-p {
+    font-weight: lighter;
+    color: #a1a1a1;
+    font-size: .84rem;
+}
+
+.bestseller-price {
+    color: #ba0f0c;
+}
+
+.sale {
+    height: 95%;
+    width: 48%;
+}
+
+.insta-pic {
+    margin: 1%;
+    height: 15rem;
+}
+
+.bg-greyish {
+    background-color: #5A674D0D;
+
+}
+
+.shop-now {
+    margin-top: 5%;
+    min-height: 80vh;
+    padding: 5%;
+}
+
+
+
+
+
+.description2 {
+    margin-top: 1rem;
+}
+
+.description2 h6 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.description2 p {
+    font-weight: lighter;
+    color: #868686;
+    font-size: .89rem;
+}
+
+.description2 button {
+    background-color: transparent;
+}
+
+.description2 button:hover {
+    color: #ba0f0c;
+}
+
+.ul {
+    list-style: none;
+}
+
+.font-s-b {
+    font-size: 1rem !important;
+    font-weight: bold;
+    margin-bottom: 5%;
+    color: rgb(20, 20, 20) !important;
+}
+
+.ul .li {
+    font-size: .79rem;
+    color: rgb(130, 130, 130);
+}
+
+.ul {
+    line-height: 2rem;
+}
+
+.t-dark {
+    color: rgb(20, 20, 20) !important;
+    font-size: .85rem !important;
+    font-weight: bold;
+}
+
+.input-newsletter {
+    border: 1px solid black !important;
+    width: 60%;
+    padding: 1% 4%;
+}
+
+.btn-newsletter {
+    border: 0;
+    background-color: #ba0f0c;
+    color: white;
+    font-size: .9rem;
+    margin: 2%;
+    padding: 1% 5%;
+}
+
+
+.w-c {
+    width: 30%;
+}
+
+.circle-icon {
+    border-radius: 50%;
+    background-color: rgb(218, 218, 218);
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 2% 1%;
+
+    text-decoration: none;
+
+    color: rgb(32, 32, 32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-icon:hover {
+    background-color: #ba0f0c;
+    color: white;
+}
+
+
+.circle-icon i {
+    color: inherit;
+}
+
+.red-box {
+    overflow: unset;
+    position: absolute;
+    z-index: 20;
+    right: 1rem;
+    bottom: 1rem;
+    height: 3rem;
+    width: 2.7rem;
+
+    background-color: #ba0f0c;
+}
+
+.red-box svg {
+    color: white;
+    width: 64px;
+    height: 64px;
+    /* background-color: #fff; */
+}

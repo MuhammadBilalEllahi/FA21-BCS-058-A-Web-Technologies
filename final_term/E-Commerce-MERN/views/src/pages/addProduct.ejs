@@ -1,0 +1,81 @@
+<div id="update-product-div" class>
+
+    <h3>Update Product</h3>
+
+    <h4>Basic Information</h4>
+    <form action="/api/products" method="POST">
+        <p>
+            <label for="title">Name:</label><br>
+            <input type="text" id="title" name="title" required>
+        </p>
+        <!-- <p>
+            <label for="slug">Slug:</label><br>
+            <input type="text" id="slug" name="slug" required>
+        </p> -->
+        <p>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4"
+                required></textarea>
+        </p>
+        <p>
+            <label for="category">category:</label><br>
+            <textarea id="category" name="category" rows="4"
+                required></textarea>
+        </p>
+        <!-- <p>
+            <label for="shortDescription">Short Description:</label><br>
+            <textarea id="shortDescription" name="shortDescription" rows="2"
+                required></textarea>
+        </p> -->
+
+        <h4>Pricing</h4>
+        <p>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" step="0.01" min="0"
+                oninput="this.value = 
+            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+                required>
+        </p>
+        <!-- <p>
+            <label for="oldPrice">Old Price:</label><br>
+            <input type="number" id="oldPrice" name="oldPrice" step="0.01">
+        </p> -->
+        <!-- <p>
+            <label for="scheduleDiscount">Schedule Discount:</label><br>
+            <input type="text" id="scheduleDiscount" name="scheduleDiscount">
+        </p> -->
+
+        <h4>Inventory</h4>
+        <p>
+            <label for="stockQuantity">Stock Quantity:</label><br>
+            <input type="number" id="stockQuantity" name="stockQuantity "
+                min="0"
+                required>
+        </p>
+
+        <h4>Images</h4>
+        <p>
+            <label for="image">Image:</label><br>
+            <input type="file" id="image" name="image">
+        </p>
+        <p>
+            <label for="newImage">Upload New Image:</label><br>
+            <input type="file" id="newImage" name="newImage">
+        </p>
+
+        <!-- <p>
+            <label for="pageTitle">Page Title:</label><br>
+            <input type="text" id="pageTitle" name="pageTitle">
+        </p> -->
+
+        <!-- <p>
+            <label for="metaDescription">Meta Description:</label><br>
+            <textarea id="metaDescription" name="metaDescription"
+                rows="2"></textarea>
+        </p> -->
+
+        <button type="submit">Save Product</button>
+    </form>
+</div>
+
+<%- include('../partials/scripts') %>

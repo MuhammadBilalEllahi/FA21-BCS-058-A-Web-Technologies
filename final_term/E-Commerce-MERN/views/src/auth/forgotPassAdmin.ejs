@@ -1,0 +1,94 @@
+<body>
+    <div class="form-container">
+        <h1>Forgot Password</h1>
+        <form id="forgot-password-form">
+            <div class="form-row">
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                        placeholder="Email Address" required>
+                </div>
+            </div>
+            <button class="send-btn" type="submit">Send Reset Link</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("forgot-password-form");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const email = document.getElementById("email").value;
+                console.log("Email:", email);
+
+                try {
+                    const response = await fetch("/api/user/forgot-password-token", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+
+                    if (response.ok) {
+                        alert("Password reset link sent to your email!");
+                    } else {
+                        throw new Error("Failed to send reset link");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert("An error occurred while sending the reset link.");
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 60vh;
+            max-width: 60%;
+            margin: 0 auto;
+            /* padding: 20px; */
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .form-row > div {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-row > div:last-child {
+            margin-right: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .send-btn {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .send-btn:hover {
+            background-color: #333;
+        }
+    </style>
+</body>

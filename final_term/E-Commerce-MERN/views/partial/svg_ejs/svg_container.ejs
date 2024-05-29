@@ -1,0 +1,78 @@
+<!-- <div class="icon-btn-container">
+    <object class="icon-svg" data="/images/svg/search.svg"
+        type="image/svg+xml"></object>
+    <object class="icon-svg" data="/images/svg/user.svg"
+        type="image/svg+xml"></object>
+    <object class="icon-svg" data="/images/svg/heart.svg"
+        type="image/svg+xml"></object>
+    <object class="icon-svg" data="/images/svg/shopping-bag.svg"
+        type="image/svg+xml"></object>
+
+</div> -->
+
+<div class="icon-btn-container">
+    <!-- <a style class="d-flex">
+        <img class="icon-svg" src="/images/icon_png/search.png" />
+    </a> -->
+    <a style class="d-flex a-img-svg">
+        <img class="icon-svg" style="width: 2rem;"
+            src="/images/icon_png/person.png" />
+    </a>
+
+    <a href="/wishlist" id="fav-svg-btn"
+        style="text-decoration: none !important; " class="d-flex a-img-svg">
+        <img class="icon-svg"
+            src="/images/icon_png/favourite.png" />
+        <p
+            style="background-color: red; border-radius: 25rem;  color: white; "><%=
+            wishlistLength %></p>
+    </a>
+
+    <a href="/cart" style="text-decoration: none !important; "
+        class="d-flex a-img-svg">
+        <img class="icon-svg" src="/images/icon_png/cart.png" />
+        <p
+            style="background-color: red; border-radius: 25rem;   color: white; "><%=
+            cartLength
+            %></p>
+    </a>
+
+</div>
+
+<!-- <script>
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+
+    const button = document.getElementById('fav-svg-btn');
+
+    button.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem('token')
+    console.log("Bearer ",token)
+
+    try {
+        const response = await fetch("/api/user/wishlist", {
+            method: "GET",
+            headers: {
+                
+                'Content-Type': 'application/json',
+
+                'Authorization': `Bearer ${token}`
+                
+            }
+
+
+        })
+
+        if(response.ok){
+            window.location.href = "/wishlist"
+            alert("works")
+        }
+        
+    } catch (error) {
+        alert("no work ", error)
+    }
+
+})});
+</script> -->

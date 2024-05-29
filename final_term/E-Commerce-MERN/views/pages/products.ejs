@@ -1,0 +1,59 @@
+
+<body>
+    <h1>All Products</h1>
+
+    <div id="product-list" class="product-list">
+
+    </div>
+
+    <div id="pagination" class="pagination">
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const productList = document.getElementById("product-list");
+                const pagination = document.getElementById("pagination");
+
+                // Fetch paginated product data from the server
+                const fetchProducts = async (page) => {
+                    const response = await fetch(`/api/product/?page=${page}`);
+                    const data = await response.json();
+
+                    console.log(response,data )
+                    
+                    productList.innerHTML = "";
+                    pagination.innerHTML = "";
+
+                    // Render products
+                    data.forEach(product => {
+                        const productCard = document.createElement("div");
+                        productCard.classList.add("product-card");
+                        productCard.innerHTML = `
+                            <h2>${product.title}</h2>
+                            
+                        `;
+                        productList.appendChild(productCard);
+                    });
+
+                    // Render pagination links
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageLink = document.createElement("a");
+                        pageLink.href = `#`;
+                        pageLink.textContent = i;
+                        pageLink.classList.toggle("active", i === currentPage);
+                        pageLink.addEventListener("click", () => fetchProducts(i));
+                        pagination.appendChild(pageLink);
+                    }
+                };
+
+                // Initial fetch for the first page of products
+                fetchProducts(1);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+                alert("Failed to fetch products.");
+            }
+        });
+    </script>
+</body>

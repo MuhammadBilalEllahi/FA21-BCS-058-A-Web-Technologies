@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <div class="nav-container container">
+        <h5 class="nav-logo">Wooden</h5>
+
+        <!-- Advance Templating Partial -->
+
+        <%- include("./nav.ejs", {req, wishlistLength, cartLength}) %>
+
+        <%- include("./svg_ejs/svg_container.ejs", { wishlistLength,
+        cartLength}) %>
+    </div>
+
+</nav>

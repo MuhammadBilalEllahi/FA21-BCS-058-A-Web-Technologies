@@ -1,0 +1,133 @@
+
+
+<div class="container " style="min-height: 50vh;">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card" style="border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <div class="card-body p-4 ">
+                    <h4 class="mb-4">Register</h4>
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input
+                                id="email"
+                                class="form-control"
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password"
+                                class="form-label">Password</label>
+                            <input
+                                id="password"
+                                class="form-control"
+                                type="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="firstname"
+                                class="form-label">Firstname</label>
+                            <input
+                                id="firstname"
+                                class="form-control"
+                                type="firstname"
+                                name="firstname"
+                                placeholder="Enter your firstname"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastname"
+                                class="form-label">Lastname</label>
+                            <input
+                                id="lastname"
+                                class="form-control"
+                                type="lastname"
+                                name="lastname"
+                                placeholder="Enter your lastname"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mobile"
+                                class="form-label">Mobile</label>
+                            <input
+                                id="mobile"
+                                class="form-control"
+                                type="mobile"
+                                name="mobile"
+                                placeholder="Enter your number"
+                                required />
+                        </div>
+
+                        <small id="emailHelpId"
+                            class="form-text text-muted"></small>
+
+                        <button class="btn btn-success w-100 mt-3"
+                            type="submit">Register</button>
+
+                        <p
+                            class="w-100 my-2 d-flex  justify-content-center">Or</p>
+
+                        <a class="btn btn-success w-100 mt-3"
+                            href="/admin/login">Login</a>
+
+                        <a href="/forgot-password" class="btn my-2 text-dark"
+                            style="text-decoration: none; text-align: end;">forgot
+                            password?</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+document.getElementById('register-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const firstname = document.getElementById('firstname').value;
+        const lastname = document.getElementById('lastname').value;
+        const mobile = document.getElementById('mobile').value;
+        
+        console.log(email,password, firstname,lastname,mobile)
+
+        try {
+            const response = await fetch('/api/user/register', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password, role: "admin", firstname,lastname,mobile }),
+            }); 
+
+            
+
+            if (response.ok) {
+                
+
+                window.location.href = '/admin/login';
+                
+            } else {
+                const errorData = await response.json();
+                alert(errorData)
+                
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert(error)
+        }
+    });
+
+    
+</script>

@@ -1,0 +1,240 @@
+<div class="container">
+    <h1>My Wishlist</h1>
+    <div id="wishlist-container" class="row">
+    </div>
+    <p id="no-items-message" style="display:none;">You have no items in your
+        wishlist.</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            alert('You need to log in first.');
+            window.location.href = '/login';
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/user/wishlist", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch wishlist');
+            }
+
+            const data = await response.json();
+            const wishlist = data.wishlist;
+            const wishlistContainer = document.getElementById('wishlist-container');
+            const noItemsMessage = document.getElementById('no-items-message');
+
+            if (wishlist.length === 0) {
+                noItemsMessage.style.display = 'block';
+            } else {
+                noItemsMessage.style.display = 'none';
+                wishlist.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'col-md-4';
+                    productCard.innerHTML = `
+                        <div class="card" style="margin-bottom: 20px;">
+                            <button id="${product._id}" class="btn btn-danger remove-from-wishlist-btn" style="position: absolute; top: 1%; right: 1%; z-index: 1;">X</button>
+                            <img src="${product.images[0]?.url}" class="card-img-top" alt="${product.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.title}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p class="card-text"><strong>Price:</strong> $${product.price}</p>
+                                <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                                <p class="card-text"><strong>Brand:</strong> ${product.brand}</p>
+                                <p class="card-text"><strong>Colors:</strong> ${product.color.join(', ')}</p>
+                                <a href="#" class="btn btn-primary view-product-btn" data-product-id="${product._id}">View Product</a>
+                            </div>
+                        </div>
+                    `;
+                    wishlistContainer.appendChild(productCard);
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching wishlist:', error);
+        }
+    });
+
+    document.getElementById('wishlist-container').addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const target = event.target;
+        if (target.classList.contains('remove-from-wishlist-btn')) {
+            const prodID = target.id;
+            const token = localStorage.getItem('token');
+            
+            try {
+                const response = await fetch(`/api/product/wishlist`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ prodId: prodID }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    const errorMessage = await response.json();
+                    throw new Error(errorMessage.message);
+                }
+
+                target.closest('.col-md-4').remove();
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+    });
+
+    document.getElementById('wishlist-container').addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList.contains('view-product-btn')) {
+            const productID = target.getAttribute('data-product-id');
+            window.location.href = `/api/product/${productID}`;
+        }
+    });
+</script>
+
+<!-- <div class="container">
+    <h1>My Wishlist</h1>
+    <div id="wishlist-container" class="row">
+    </div>
+    <p id="no-items-message" style="display:none;">You have no items in your
+        wishlist.</p>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+
+    
+        const token = localStorage.getItem('token')
+
+        if (!token) {
+                alert('You need to log in first.');
+                window.location.href = '/login';
+                return;
+            }
+
+        console.log("Bearer ",token)
+    
+        try {
+            const response = await fetch("/api/user/wishlist", {
+                method: "GET",
+                headers: {
+                    
+                    'Content-Type': 'application/json',
+    
+                    'Authorization': `Bearer ${token}`
+                    
+                }
+    
+    
+            })
+
+            
+            
+    
+            if(response.ok){
+                // window.location.href = "/wishlist"
+                console.log("/wishlist Working")
+                // alert("works")
+            }
+            const data = await response.json();
+          const wishlist = data.wishlist;
+                const wishlistContainer = document.getElementById('wishlist-container');
+                const noItemsMessage = document.getElementById('no-items-message');
+
+                if (wishlist.length === 0) {
+                    noItemsMessage.style.display = 'block';
+                } else {
+                    noItemsMessage.style.display = 'none';
+                    wishlist.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'col-md-4';
+                        productCard.innerHTML = `
+                        
+                            <div class="card" style="margin-bottom: 20px;">
+                                <img src="${product.images[0]?.url}" class="card-img-top" alt="${product.title}">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">${product.title}</h5>
+                                    <p class="card-text">${product.description}</p>
+                                    <p class="card-text"><strong>Price:</strong> $${product.price}</p>
+                                    <p class="card-text"><strong>Category:</strong> ${product.category}</p>
+                                    <p class="card-text"><strong>Brand:</strong> ${product.brand}</p>
+                                    <p class="card-text"><strong>Colors:</strong> ${product.color.join(', ')}</p>
+                                    <a href="/api/product/${product._id}"   class="btn btn-primary" >View Product</a>
+                                    
+                                </div>
+                                <button id="${product._id}" class="btn btn-danger remove-from-wishlist-btn " style="position: absolute; top: 1%; right: 1%; z-index: 1" >X</button>
+
+                            </div>
+                        `;
+                        wishlistContainer.appendChild(productCard);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching wishlist:', error);
+                // alert('An error occurred while fetching your wishlist.');
+            }
+        });
+
+
+    document.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const events = event.target.id;
+        // console.log(this)
+
+        if (event.target.classList.contains('remove-from-wishlist-btn')) {
+            
+
+        try {
+            const prodID = events;
+            console.log(prodID)
+            const token = localStorage.getItem('token')
+            console.log("Token:", token);
+            
+            const response = await fetch(`/api/product/wishlist`, {
+                method: 'PUT',
+                body: JSON.stringify({ prodId: prodID }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.message);
+            }
+            // const data = await response.json()
+            // const isInWishlist = data.wishlist.some(product => product._id === prodID);
+
+            // if(isInWishlist){
+            // }
+            event.target.closest('.col-md-4').remove();
+
+
+            const updatedUser = await response.json();
+            console.log('Updated User:', updatedUser);
+
+
+            
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    }
+    
+    });
+
+
+        </script> -->

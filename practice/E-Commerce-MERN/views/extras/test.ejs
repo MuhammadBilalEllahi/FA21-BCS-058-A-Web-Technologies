@@ -1,0 +1,35 @@
+<form action="/searchtest" method="get">
+    <input type="text" name="query" />
+    <button type="submit">Submit</button>
+</form>
+
+<div>
+
+    <% products.forEach((product)=>{%>
+    <% console.log(product?.title)%>
+    <div style="padding: 1rem;"><%= product?.title%></div>
+    <%})%>
+</div>
+
+<div>
+    <% if (currentPage > 1) { %>
+    <a href="?query=<%= query %>&page=<%= currentPage - 1 %>">Previous</a>
+    <% } %>
+
+    Page <%= currentPage %> of <%= totalPages %>
+
+    <% if (currentPage < totalPages) { %>
+    <a href="?query=<%= query %>&page=<%= currentPage + 1 %>">Next</a>
+    <% } %>
+</div>
+
+<div>
+    <ul>
+        <% if(history && history.length > 0){ %>
+        <% history.forEach((hist)=>{ %>
+        <li><%= hist %></li>
+        <% })%>
+
+        <%}%>
+    </ul>
+</div>

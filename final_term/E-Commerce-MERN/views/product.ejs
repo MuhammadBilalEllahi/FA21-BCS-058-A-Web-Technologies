@@ -1,0 +1,801 @@
+<section>
+
+    <div class="d-flex container-fluid justify-content-center ">
+        <div class="d-flex column col-6 container ">
+
+            <div id="carousal-images" class="d-flex row col-3 "
+                style="height: fit-content;">
+
+            </div>
+
+            <div id="carouselId" class="carousel slide w-100"
+                data-bs-ride="carousel">
+
+                <!-- This -->
+                <ol id="carousalOL" class="carousel-indicators">
+
+                </ol>
+                <!-- This 2 -->
+                <div id="carousel-inner-div" class="carousel-inner"
+                    role="listbox">
+
+                </div>
+                <button style="transform: translateY(-25%);"
+                    class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselId" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button style="transform: translateY(-25%);"
+                    class="carousel-control-next" type="button"
+                    data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="d-flex row col-5 p-2 ">
+            <div id="product-info-box"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="d-flex "
+                style="gap: 1rem; justify-content: baseline; align-items: baseline;">
+                <div class="quantity-selector">
+                    <button class="quantity-btn"
+                        id="decrement-btn">-</button>
+                    <input id="countValue" type="text" value="1">
+                    <button class="quantity-btn"
+                        id="increment-btn">+</button>
+                </div>
+
+                <button id="add-to-cart" class=" add-to-cart">Add To
+                    Cart</button>
+
+                <button type="submit" id="addToWishListBtn"
+                    class="addToWishListClass btn"
+                    style="width: 3rem;">
+                    <img id="addToWishListBtnImg" style="height: 1.5rem;"
+                        src="/images/icon_png/favourite.png" />
+                </button>
+
+            </div>
+
+            <button class="buy-now">Buy Now</button>
+
+            <hr />
+            <div class="payment-methods container ">
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+                    alt="Visa" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                    alt="PayPal" height="10" />
+
+            </div>
+
+            <hr />
+
+            <div class="shipping-info">
+                <span>&#128230;</span> Free worldwide shipping on all orders
+                over $100
+            </div>
+            <div class="delivery-info">
+                <span>&#128339;</span> Delivers in: 3-7 Working Days <a
+                    style="text-decoration: none; color: grey;"
+                    href="#">Shipping &
+                    Return</a>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="container-fluid d-flex justify-content-center align-items-center  "
+        style="min-height: 40vh;">
+
+        <div class="container ">
+            <h3>More Like This</h3>
+            <div class="col-10  border py-2" style="gap: 1rem">
+                <div class="d-flex flex-wrap" id="more-like-this">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+
+
+
+
+
+    // Render Products
+
+    document.addEventListener("DOMContentLoaded", async ()=>{
+        
+        const carousal_images_container = document.getElementById("carousal-images")
+
+        const carousal_id_container = document.getElementById("carouselId")
+        const carousalOL = document.getElementById("carousalOL")
+        const carousel_inner_div = document.getElementById("carousel-inner-div")
+        const product_info_box = document.getElementById("product-info-box")
+        const more_like_this_box = document.getElementById("more-like-this")
+        
+
+
+        
+
+        const prodID = window.location.pathname.split("/").pop()
+
+        console.log("PRODID : ", prodID)
+        
+
+        try {
+            const response = await fetch(`/api/product/${prodID}`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            console.log(response)
+            
+            if(response.ok){
+                const products = await response.json()
+                // console.log("FROM Foreach",products)
+
+                carousal_images_container.innerHTML = ''
+                carousalOL.innerHTML = ''
+                carousel_inner_div.innerHTML = ''
+
+            
+
+                
+                products.images.forEach(( src,index) => {
+
+
+                    // console.log("carousal_images_container",  src?.url )
+                    // console.log("carousalOL", index )
+                    // console.log("carousel_inner_div", index )
+
+
+                    carousal_images_container.innerHTML += `<img class="col-10"
+                                        src='${ src?.url }'
+                                        alt
+                                        style="min-height:10rem"
+                                        onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"
+                                        />`
+                
+                    carousalOL.innerHTML += ` <li data-bs-target="#carouselId"
+                        data-bs-slide-to="${ index}"
+                        class="${ index === 0 ? 'active' : ''}"
+                        aria-current="${ index === 0 ? 'true' : ''}"
+                        aria-label="Slide ${ index + 1}"></li>`
+                   
+                    carousel_inner_div.innerHTML += `  <div
+                        class="carousel-item ${index === 0 ? 'active' : '' }">
+                        <img class="w-100 d-block"
+                            src="${src?.url }"
+                            alt="Slide ${index + 1 }"
+                            onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"
+                            style="width: 100%; height: 500px; object-fit: contain;"/>
+
+                    </div> `
+                    });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+
+
+
+
+        try {
+            const response = await fetch(`/api/product/${prodID}`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            if(response.ok){
+                const product = await response.json()
+                console.log("FROM Singe",product)
+
+                // product_info_box.innerHTML = ''
+                
+                product_info_box.innerHTML += ` <div>
+                <h5>
+                    ${product.title }
+                </h5>
+
+                <div class="rating" data-rating="${product.ratings }">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <div class="d-flex " style="gap: 2px; font-size: 0.9rem;">
+                    <p>Brand: </p>
+                    <p style="color: rgb(43, 43, 43);">${product.brand
+                        }</p>
+                </div>
+                <span style="color: rgb(255, 47, 47);">
+                    ${ product.price.toFixed(2)}$
+                </span>
+
+                <h6>
+                    ${product.description }
+
+                </h6>
+                <hr />
+
+                <div class="viewing">
+                    <span>&#128065;</span> 35 people are viewing this right now
+                </div>
+                <p class="description">Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur.</p>
+                
+               
+
+                <hr />
+                <div class="d-flex " style="font-size: 0.9rem; gap: 0.5rem;">
+                    <p class style="color: rgb(102, 102, 102);">Categories:</p>
+                    <p class="text-dark">${product.category }</p>
+                </div>
+
+                <div class="d-flex " style="font-size: 0.9rem; gap: 0.5rem;">
+                    <p class style="color: rgb(102, 102, 102);">Tags:</p>
+                    <p class="text-dark">${product.tags }</p>
+                </div>
+                <hr/>
+
+                <div class="stock">Only <span>${ product.quantity }</span>
+                    left in
+                    stock!</div>
+            
+        </div>`
+                    
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+
+
+        try {
+            const response = await fetch(`/api/product/`, {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            
+            console.log(response)
+            if(response.ok){
+                const products = await response.json()
+                console.log(products)
+
+                more_like_this_box.innerHTML = ''
+                
+                products.forEach((product, index) => {
+
+                    // if((index === 4) )return
+                    
+                    more_like_this_box.innerHTML += ` <div
+                    class="col-3 d-flex justify-content-center align-center">
+                    
+
+                                <img class="col-3"
+                                    src='${ product.images[0]?.url }'
+                                    alt
+                                    onerror="this.onerror=null;this.src='/images/onErrorImg/no_image_found.jpg';"/>
+
+                            </div>
+
+                <div class="p-l-prod-disp col-3 ">
+                    <h5>
+                        ${product.title }
+                    </h5>
+                    <h6>
+                        ${product.description }
+                    </h6>
+                    <p>
+                        <span>
+                            ${ product.price.toFixed(2)
+                            }$
+                        </span>
+
+                    </p>
+                </div>`;
+
+                
+                
+                    });
+            }
+
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+
+
+    })
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const decrementBtn = document.getElementById('decrement-btn');
+    const incrementBtn = document.getElementById('increment-btn');
+    const countInput = document.getElementById('countValue');
+
+    decrementBtn.addEventListener('click', () => {
+        let currentValue = parseInt(countInput.value, 10);
+        if (currentValue > 1) {
+            countInput.value = currentValue - 1;
+        }
+    });
+
+    incrementBtn.addEventListener('click', () => {
+        let currentValue = parseInt(countInput.value, 10);
+        countInput.value = currentValue + 1;
+    });
+
+    countInput.addEventListener('input', () => {
+        let value = parseInt(countInput.value, 10);
+        if (isNaN(value) || value < 1) {
+            countInput.value = 1;
+        }
+    });
+
+    const ratingElement = document.querySelector('.rating');
+    const ratingValue = ratingElement.getAttribute('data-rating');
+    const stars = ratingElement.querySelectorAll('.star');
+
+    stars.forEach(star => {
+        if (star.getAttribute('data-value') <= ratingValue) {
+            star.classList.add('filled');
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', async (e)=>{
+    e.preventDefault();
+    const addToWishListBtn = document.getElementById("addToWishListBtn")
+    // const addToWishListClass = document.getElementsByClassName("addToWishListClass")
+    const prodID = window.location.pathname.split("/").pop();
+
+    try {
+        const token = localStorage.getItem('token')
+            console.log("Token from get wishlist:", token);
+
+        const response = await fetch(`/api/user/wishlist`, {
+                method: 'GET',
+                headers:{
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            const data = await response.json()
+
+            const isInWishlist = data.wishlist.some(product => product._id === prodID);
+
+            if(isInWishlist) {
+               
+               addToWishListBtn.classList.add("bg-red");
+
+            }
+            else{
+                addToWishListBtn.classList.remove("bg-red")
+
+            }
+
+            console.log(isInWishlist)
+            
+    } catch (error) {
+        console.error(error)
+    }
+
+    
+
+})
+
+document.addEventListener('DOMContentLoaded', async (e) => {
+    e.preventDefault();
+    const prodID = window.location.pathname.split("/").pop();
+    
+    const wishListbutton = document.getElementById('addToWishListBtn');
+
+    wishListbutton.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        try {
+            // const responseToken = await fetch(`/api/user/refresh`, { method: 'GET' });
+            // if (!responseToken.ok) {
+            //     throw new Error('Failed to fetch token');
+            // }
+
+            // console.log(responseToken)
+            
+            // const token = responseToken.headers.get('Authorization');
+            const token = localStorage.getItem('token')
+            console.log("Token:", token);
+            
+            const response = await fetch(`/api/product/wishlist`, {
+                method: 'PUT',
+                body: JSON.stringify({ prodId: prodID }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.message);
+            }
+
+            const updatedUser = await response.json();
+            console.log('Updated User:', updatedUser);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', async (e) => {
+    
+    e.preventDefault();
+
+    const paramProdId = window.location.pathname.split("/").pop()
+ 
+    
+    const button = document.getElementById('add-to-cart');
+
+
+    button.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const countValue = document.getElementById("countValue");
+           // console.log(countValue.value)
+
+           let prodObject = {
+                _id : paramProdId,
+                count : `${countValue.value}`,
+                color : "",
+                
+            }
+
+            try {
+                
+            const productColor = await fetch(`/api/product/${paramProdId}`, {
+                method: "GET"
+            })
+            if(!productColor.ok){
+                prodObject.color = "default"
+                
+            
+            }else{
+
+             const product = await productColor.json()
+                prodObject.color = `${product.color[0]}`
+                console.log("Workings", product)
+            }
+            } catch (error) {
+                console.error(error)
+            }
+
+        try {
+
+    
+
+            const token = localStorage.getItem('token')
+            console.log("Token:", token);
+            
+            const response = await fetch(`/api/user/cart`, {
+                method: 'POST',
+                body: JSON.stringify({ prodID: prodObject }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                throw new Error(errorMessage.message);
+            }
+
+            const updatedUser = await response.json();
+            console.log('Updated User:', updatedUser);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    });
+});
+
+
+</script>
+
+<style>
+
+
+html,body{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+.bg-red{
+    background-color: red;
+}
+
+
+
+
+    .carousel-inner img {
+                        width: 100%;
+                        height: 500px;
+                        object-fit: cover;
+                    }
+                
+                    .carousel-control-prev-icon,
+                    .carousel-control-next-icon {
+                        background-color: black;
+                        background-size: 100%, 100%;
+                        border-radius: 50%;
+                        width: 3rem;
+                        height: 3rem;
+                    }
+    .product-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    
+    
+    .carousel-inner img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+        }
+    
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black;
+            background-size: 100%, 100%;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+        }
+    
+        .carousel-control-prev,
+        .carousel-control-next {
+            filter: invert(100%);
+        }
+    
+    
+    
+    
+    
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .star {
+        font-size: 20px;
+        color: #ccc;
+    }
+    
+    .star.filled {
+        color: gold;
+    }
+    
+    .price {
+        font-size: 24px;
+        color: red;
+        margin-bottom: 10px;
+    }
+    
+    .viewing {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .viewing span {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+    
+    .description {
+        margin-bottom: 20px;
+    }
+    
+    .stock {
+        color: red;
+        margin-bottom: 10px;
+    }
+    
+    .stock span {
+        font-weight: bold;
+    }
+    
+    .progress-bar {
+        background: #f0f0f0;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .progress {
+        width: 20%;
+        height: 5px;
+        background: red;
+    }
+    
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .quantity-btn {
+        background: none;
+        border: 1px solid #ccc;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 28px;
+        cursor: pointer;
+    }
+    
+    .quantity-btn:focus {
+        outline: none;
+    }
+    
+    .quantity-selector input {
+        width: 40px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 10px;
+    }
+    
+    .add-to-cart,
+    .buy-now {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+    
+    .add-to-cart {
+        background: black;
+        color: white;
+    }
+    
+    .buy-now {
+        background: white;
+        color: black;
+        border: 1px solid #ccc;
+    }
+    
+    .payment-methods {
+        display: flex;
+        justify-content: space-around;
+        
+        margin-bottom: 20px;
+    }
+    
+    .payment-methods img {
+        height: 20px !important;
+        /* padding: 1rem; */
+    }
+    
+    .shipping-info,
+    .delivery-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .shipping-info span,
+    .delivery-info span {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    
+    .additional-info p {
+        margin: 5px 0;
+    }
+    
+    .additional-info a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    .additional-info a:hover {
+        text-decoration: underline;
+    }
+    
+    </style>
